@@ -74,13 +74,13 @@ Then clone:
 
 ```bash
 mkdir -p ~/work && cd ~/work
-git clone --recursive git@github.com:kelvininc/kelvin-support-tools.git
+git clone --recursive git@github.com:valdemarborgesk/kelvin-support-tools.git
 ```
 
 If SSH fails, try HTTPS:
 
 ```bash
-git clone --recursive https://github.com/kelvininc/kelvin-support-tools.git
+git clone --recursive https://github.com/valdemarborgesk/kelvin-support-tools.git
 ```
 
 Set `REPO_PATH` to wherever it landed.
