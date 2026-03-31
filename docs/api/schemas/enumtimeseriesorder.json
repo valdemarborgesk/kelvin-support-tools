@@ -1,0 +1,31 @@
+{
+  "id": "api/schemas/timeseriesorder",
+  "title": "TimeseriesOrder",
+  "type": "schema",
+  "category": "api",
+  "content": "# TimeseriesOrder\n\nSort order of the `timestamp` key for the returned data. This string is case sensitive.\n\n## Enum Values\n\n- `ASC`\n- `DESC`",
+  "summary": "Sort order of the `timestamp` key for the returned data. This string is case sensitive.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.TimeseriesOrder",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "example": "ASC",
+      "default": "ASC",
+      "enum": [
+        "ASC",
+        "DESC"
+      ],
+      "description": "Sort order of the `timestamp` key for the returned data. This string is case sensitive."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

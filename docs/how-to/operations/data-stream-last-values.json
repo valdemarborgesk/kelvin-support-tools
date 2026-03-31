@@ -1,0 +1,25 @@
+{
+  "id": "how-to/data-stream-last-values",
+  "title": "Data Streams - Last Values",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Data Streams - Last Values\n\nYou can retrieve the last recorded values for any Asset / Data Stream pair.\n\n    If you do not specify one or more Asset names in your prompt, then Kelvin AI will retrieve all Assets that have Data Stream values.\n\n## Video Example\n\nSee Kelvin AI in action for this widget.\n\n<!--ARCADE EMBED START--><div style=\"position: relative; padding-bottom: calc(48.333333333333336% + 41px); height: 0; width: 100%;\"><iframe src=\"https://demo.arcade.software/jPr90CohTj3UXLTUOIqm?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true\" title=\"Kelvin Core | Operations\" frameborder=\"0\" loading=\"lazy\" webkitallowfullscreen mozallowfullscreen allowfullscreen allow=\"clipboard-write\" style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;\" ></iframe></div><!--ARCADE EMBED END-->\n\n## Written Example\n\nTo start, click on the Kelvin AI menu and type a prompt similar to this;\n\n> give the last values for casing pressure\n\nKelvin AI will use the Data Stream widget to provide an accurate answer.",
+  "summary": "You can retrieve the last recorded values for any Asset / Data Stream pair.",
+  "source": "core-docs/docs/operations-tools/kelvin-ai/how-to/data-stream-last-values.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "data",
+    "last",
+    "operations",
+    "streams",
+    "values"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

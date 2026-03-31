@@ -1,0 +1,32 @@
+{
+  "id": "sdk/cli/krn.krn/krn",
+  "title": "KRN",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KRN\n\n\nKelvin Resource Name representation\n\n\n## Methods\n\n\n### __init__(ns_id: str, ns_string: str) -> None\n\n\n### validate(v: Any) -> KRN\n\n\n### from_krn(ns_id: str, ns_string: str) -> Self\n\n\n### from_string(v: str) -> Self\n\n\n### encode() -> str\n",
+  "summary": "Kelvin Resource Name representation",
+  "source": "cli/src/kelvin/krn/krn.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "krn.krn",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "validate",
+      "from_krn",
+      "from_string",
+      "encode"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

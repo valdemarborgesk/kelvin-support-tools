@@ -1,0 +1,23 @@
+{
+  "id": "how-to/user-management/keycloak/enable-2fa",
+  "title": "Enable 2FA",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Enable 2FA\n\n_On this page you will learn how to activate two factor authentication for your account._\n\n    The instructions here are only for the bult-in Keycloak solution. For other SSO solutions, refer to your SSO's documentation on how to activate two factor authenitcation.\n\n## Authenticator App\n\nBefore proceeding you have to choose an authenticator app that you want to use. There are three choices available\n\n* [Google Authenticator](https://support.google.com/accounts/answer/1066447?hl=en&co=GENIE.Platform%3DAndroid)\n* [Microsoft Authenticator](https://support.microsoft.com/en-us/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a)\n* [FreeOTP Authenticator](https://freeotp.github.io/)\n\nWhen you have install the app on your phone or tablet, then you can setup 2-Step verification. Simply use the app to scan the QR code on the Authenticator page, then type in the one time code which is displayed next to the Kelvin name.\n\n## Activating 2FA\n\nIn Kelvin you have the option to activate two factor authentications for better security.\n\nTo start go to your username and click on the account menu item;\n\nThis will open a new tab with all user account options.\n\nClick on the **Signing in** link in Account Security;\n\nNext click on the **Set up authenticator application** link to setup a new 2fa authenticator.\n\nYou will be asked to reconfirm your password before proceeding. Then you will see the usual QR code that you can scan and then type in the one time code which is displayed next to the Kelvin name for verification.",
+  "summary": "_On this page you will learn how to activate two factor authentication for your account._",
+  "source": "core-docs/docs/platform-administration/how-to/user-management/keycloak/enable-2fa.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "2fa",
+    "cli",
+    "enable",
+    "operations"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

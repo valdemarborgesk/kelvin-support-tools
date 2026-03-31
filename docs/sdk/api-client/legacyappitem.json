@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.responses/legacyappitem",
+  "title": "LegacyAppItem",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# LegacyAppItem\n\nInherits from: DataModelBase\n\n\nLegacyAppItem object.\n\nParameters\n----------\n    created: Optional[datetime]\n    description: Optional[StrictStr]\n    latest_version: Optional[StrictStr]\n    name: Optional[StrictStr]\n    title: Optional[StrictStr]\n    type: Optional[enum.LegacyAppType]\n    updated: Optional[datetime]\n",
+  "summary": "LegacyAppItem object.",
+  "source": "api/src/kelvin/api/client/model/responses.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.responses.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.responses",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "sdk/cli/sdk.lib.models.generic/instance-classproperty",
+  "title": "instance_classproperty",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# instance_classproperty\n\n\nProperty that works on instances and classes.\n\n\n## Methods\n\n\n### __init__(fget: Callable[Ellipsis, T]) -> None\n\nInitialize instance-class property.\n",
+  "summary": "Property that works on instances and classes.",
+  "source": "cli/src/kelvin/sdk/lib/models/generic.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.generic",
+    "item_type": "class",
+    "methods": [
+      "__init__"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

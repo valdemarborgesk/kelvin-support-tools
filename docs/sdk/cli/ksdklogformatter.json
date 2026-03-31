@@ -1,0 +1,29 @@
+{
+  "id": "sdk/cli/sdk.lib.utils.logger-utils/ksdklogformatter",
+  "title": "KSDKLogFormatter",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KSDKLogFormatter\n\nInherits from: BaseLogFormatter\n\n\nLogging Formatter to add colors and count warning / errors\n\n\n## Methods\n\n\n### __init__(log_color: Optional[LogColor], debug: bool) -> None\n\n\n### format(record: Any) -> str\n",
+  "summary": "Logging Formatter to add colors and count warning / errors",
+  "source": "cli/src/kelvin/sdk/lib/utils/logger_utils.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.utils.logger_utils",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "format"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

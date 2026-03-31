@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.type/configurationmodel2",
+  "title": "ConfigurationModel2",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ConfigurationModel2\n\nInherits from: DataModelBase\n\n\nConfigurationModel2 object.\n\nParameters\n----------\n    window_expected_number_msgs: Optional[StrictInt]\n    window_interval_unit: Optional[enum.WindowIntervalUnit]\n",
+  "summary": "ConfigurationModel2 object.",
+  "source": "api/src/kelvin/api/client/model/type.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.type.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.type",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

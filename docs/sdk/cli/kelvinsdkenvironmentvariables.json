@@ -1,0 +1,30 @@
+{
+  "id": "sdk/cli/sdk.lib.models.ksdk-global-configuration/kelvinsdkenvironmentvariables",
+  "title": "KelvinSDKEnvironmentVariables",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KelvinSDKEnvironmentVariables\n\nInherits from: KSDKSettings\n\n\n## Methods\n\n\n### invalid_value(value: Any) -> Any\n\n\n### descriptions() -> dict\n\n\n### private_fields() -> list\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/ksdk_global_configuration.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.ksdk_global_configuration",
+    "item_type": "class",
+    "methods": [
+      "invalid_value",
+      "descriptions",
+      "private_fields"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

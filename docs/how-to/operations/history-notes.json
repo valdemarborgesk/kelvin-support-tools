@@ -1,0 +1,23 @@
+{
+  "id": "how-to/history-notes",
+  "title": "Kelvin AI Notes",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Kelvin AI Notes\n\nNotes are any historical question/answers that you decide to keep from your general conversations with the Kelvin AI.\n\nAll Notes are automatically linked to an Asset so that it is easy to find and review key historical conversations.\n\n<iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/5ZQl1QQ9uEY?si=0IHcpjxpHd15NU7X\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\n# Save to Notes\n\nYou can save to Notes simply by clicking on the Notes icon at the bottom of a response.\n\n# View Notes\n\nClick on the **Assets** menu item and then on an Asset name of interest in the list.\n\nThen in the details page, click on the **Notes** button. A popup will appear with all question/answers you have saved.",
+  "summary": "Notes are any historical question/answers that you decide to keep from your general conversations with the Kelvin AI. All Notes are automatically linked to an Asset so that it is easy to find and review key historical conversations.",
+  "source": "core-docs/docs/operations-tools/kelvin-ai/how-to/history-notes.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "kelvin",
+    "notes",
+    "operations"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

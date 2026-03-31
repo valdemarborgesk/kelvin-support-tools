@@ -1,0 +1,33 @@
+{
+  "id": "sdk/app/application.window/hoppingwindow",
+  "title": "HoppingWindow",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# HoppingWindow\n\nInherits from: BaseTimeWindow\n\n\nOverlapping time windows when hop_size is smaller than window_size.\n\n\n## Methods\n\n\n### __init__(assets: List[str], inputs: List[str], queue: asyncio.Queue[AssetDataMessage], window_size: timedelta, hop_size: timedelta) -> None\n",
+  "summary": "Overlapping time windows when hop_size is smaller than window_size.",
+  "source": "app/src/kelvin/application/window.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import HoppingWindow\n\n# Usage example\napp = HoppingWindow()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "application.window",
+    "item_type": "class",
+    "methods": [
+      "__init__"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

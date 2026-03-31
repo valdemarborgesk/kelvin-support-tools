@@ -1,0 +1,32 @@
+{
+  "id": "api/schemas/assetinsightssortbydirection",
+  "title": "AssetInsightsSortByDirection",
+  "type": "schema",
+  "category": "api",
+  "content": "# AssetInsightsSortByDirection\n\nSorting order for the results returned.\n\n## Enum Values\n\n- `asc`\n- `desc`",
+  "summary": "Sorting order for the results returned.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.AssetInsightsSortByDirection",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "default": "asc",
+      "example": "desc",
+      "enum": [
+        "asc",
+        "desc"
+      ],
+      "description": "Sorting order for the results returned.",
+      "x-enum-inline": true
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "api/schemas/controlchangefilterfield",
+  "title": "ControlChangeFilterField",
+  "type": "schema",
+  "category": "api",
+  "content": "# ControlChangeFilterField\n\nField name of the Control Change to filter by.\n\n## Enum Values\n\n- `timestamp`\n- `last_state`\n- `datastream_name`",
+  "summary": "Field name of the Control Change to filter by.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.ControlChangeFilterField",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "example": "timestamp",
+      "enum": [
+        "timestamp",
+        "last_state",
+        "datastream_name"
+      ],
+      "description": "Field name of the Control Change to filter by."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

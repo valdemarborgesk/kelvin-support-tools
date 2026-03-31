@@ -1,0 +1,30 @@
+{
+  "id": "how-to/control-changes",
+  "title": "AI Generated Control Change",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# AI Generated Control Change\n\nYou can create quickly create control changes directly from the Kelvin AI prompt screen.\n\n<iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/iLrRO81J7a0?si=AYL3XzGq8ThXcKf1\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\n## Create Control Change\n\nTo start, click on the **Kelvin AI** menu item.\n\nYou will see the popup like this;\n\nThen type in your request like;\n\n```\nchange motor speed setpoint to 50rpm on PCP #01\n```\n\nYou will then see a response showing you the current value and the value you want to set.\n\nIf you are satisfied, you can click confirm to initiate the control change.\n\n    You can also change multiple assets at the same time by adapting the prompt to say \"... from PCP #01 to #05\".\n\n    Like all LLM's you have flexibility how to phrase your prompt.",
+  "summary": "You can create quickly create control changes directly from the Kelvin AI prompt screen. <iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/iLrRO81J7a0?si=AYL3XzGq8ThXcKf1\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accel...",
+  "source": "core-docs/docs/operations-tools/kelvin-ai/how-to/control-changes.md",
+  "code_examples": [
+    {
+      "language": "text",
+      "code": "change motor speed setpoint to 50rpm on PCP #01"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "change",
+    "cli",
+    "control",
+    "create",
+    "generated",
+    "operations"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

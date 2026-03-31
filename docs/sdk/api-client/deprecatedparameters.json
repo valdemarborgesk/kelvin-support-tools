@@ -1,0 +1,36 @@
+{
+  "id": "sdk/api-client/client.api.deprecated-parameters/deprecatedparameters",
+  "title": "DeprecatedParameters",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DeprecatedParameters\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### update_parameters_app_version(app_name: str, version: str, data: Optional[Union[requests.ParametersAppVersionUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nBulk update Parameters for multiple resources of a given App Version. Parameters belonging to the App Version but not specified in the payload will **not** be changed. Setting a value to `null` will cause the parameter to be unset.  Additionally, it's also possible to set a comment for each parameter change.\n\n\n### list_parameters_definitions(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.ParametersDefinitionsList, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.ParameterDefinitionItem], responses.ParametersDefinitionsListPaginatedResponseCursor]\n\nReturns a list of Parameters and its definition in each App. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### list_resource_parameters(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.ResourceParametersList, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.ParameterValueHistorianItem], responses.ResourceParametersListPaginatedResponseCursor]\n\nReturns a list of Parameters and all values for each Resource. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### get_parameters_values(data: Optional[Union[requests.ParametersValuesGet, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.ParametersValuesGet\n\nReturns a list of all unique values for each Parameter. Default values will not be shown. If the App is not specified, then the response will be grouped by App Name.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/deprecated_parameters.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.deprecated_parameters.update_parameters_app_version()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.deprecated_parameters",
+    "item_type": "class",
+    "methods": [
+      "update_parameters_app_version",
+      "list_parameters_definitions",
+      "list_resource_parameters",
+      "get_parameters_values"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

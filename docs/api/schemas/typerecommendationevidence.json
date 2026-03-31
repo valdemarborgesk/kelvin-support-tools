@@ -1,0 +1,45 @@
+{
+  "id": "api/schemas/recommendationevidence",
+  "title": "RecommendationEvidence",
+  "type": "schema",
+  "category": "api",
+  "content": "# RecommendationEvidence\n\n\n## Properties\n\n- **type** (`string`): Type of evidence that is being used to create the Recommendation.\n- **payload** (`object`): The payload of the evidence that is being used to create the Recommendation.",
+  "summary": "Object with properties: type, payload",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.RecommendationEvidence",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "image",
+          "enum": [
+            "markdown",
+            "image",
+            "iframe",
+            "chart",
+            "line-chart",
+            "bar-chart",
+            "dynacard",
+            "data-explorer"
+          ],
+          "description": "Type of evidence that is being used to create the Recommendation."
+        },
+        "payload": {
+          "type": "object",
+          "description": "The payload of the evidence that is being used to create the Recommendation."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

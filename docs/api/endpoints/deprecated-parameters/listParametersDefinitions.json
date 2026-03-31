@@ -1,0 +1,160 @@
+{
+  "id": "api/endpoints/deprecated-parameters/listParametersDefinitions",
+  "title": "List Parameter Definitions",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# List Parameter Definitions\n\nReturns a list of Parameters and its definition in each App. The list can be optionally filtered and sorted on the server before being returned.\n\n## Endpoint\n\n`POST /parameters/definitions/list`",
+  "summary": "List Parameter Definitions",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/parameters/definitions/list' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.deprecated_parameters.listParametersDefinitions()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/deprecated-parameters"
+  ],
+  "tags": [
+    "deprecated-parameters",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/parameters/definitions/list",
+    "method": "POST",
+    "operation_id": "listParametersDefinitions",
+    "tag": "(Deprecated) Parameters",
+    "permission": "kelvin.permission.parameter.read",
+    "parameters": [
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": "sort_by",
+        "in": "query",
+        "required": false,
+        "description": "Sort the results by one or more enumerators.",
+        "type": "array"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "app_names": {
+            "type": "array",
+            "description": "A filter on the list based on the key `app_name`. The filter is on the full name only. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+              "example": "motor-speed-control",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "names": {
+            "type": "array",
+            "description": "Unique identifier name for this Parameter.",
+            "items": {
+              "type": "string",
+              "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+              "example": "gas_flow_rate_max_threshold",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "primitive_types": {
+            "type": "array",
+            "description": "Filter on the list based on the Primitive data type key `primitive_type` of the Parameter.",
+            "example": [
+              "number",
+              "boolean"
+            ],
+            "items": {
+              "type": "string",
+              "enum": [
+                "number",
+                "string",
+                "boolean"
+              ]
+            }
+          },
+          "search": {
+            "type": "array",
+            "description": "Search and filter on the list based on the keys `parameter_name`. The search is case insensitive and will find partial matches as well. All strings in the array are treated as `OR`.",
+            "example": [
+              "motor",
+              "water"
+            ],
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK"
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

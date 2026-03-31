@@ -1,0 +1,49 @@
+{
+  "id": "api/schemas/statisticsdata",
+  "title": "StatisticsData",
+  "type": "schema",
+  "category": "api",
+  "content": "# StatisticsData\n\n\n## Properties\n\n- **payload** (`any`): Value represented in one of these formats.\n- **timestamp** (`string`): UTC time when the `payload` values were saved, formatted in RFC 3339.",
+  "summary": "Object with properties: payload, timestamp",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.StatisticsData",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "payload": {
+          "description": "Value represented in one of these formats.",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-11-13T12:00:00Z",
+          "description": "UTC time when the `payload` values were saved, formatted in RFC 3339."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

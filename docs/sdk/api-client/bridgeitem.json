@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.responses/bridgeitem",
+  "title": "BridgeItem",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# BridgeItem\n\nInherits from: DataModelBase\n\n\nBridgeItem object.\n\nParameters\n----------\n    cluster_name: Optional[StrictStr]\n    created: Optional[datetime]\n    enabled: Optional[StrictBool]\n    name: Optional[StrictStr]\n    node_name: Optional[StrictStr]\n    status: Optional[type_1.WorkloadStatus]\n    title: Optional[StrictStr]\n    updated: Optional[datetime]\n    workload_name: Optional[StrictStr]\n    app_name: Optional[StrictStr]\n    app_version: Optional[StrictStr]\n",
+  "summary": "BridgeItem object.",
+  "source": "api/src/kelvin/api/client/model/responses.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.responses.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.responses",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "how-to/workspace/windows/vscode-setup",
+  "title": "Vscode Setup",
+  "type": "how_to",
+  "category": "development",
+  "content": "<p style=\"text-align: center;\">\n  <a href=\"../vscode/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">⬅</span>\n    Install Virtual Studio Code\n  </a>\n  <a href=\"../venv/\" class=\"md-button md-button--primary\">\n    Python Virtual Environments\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">➡</span>\n  </a>\n</p>\n\n## Setup Visual Studio Code\n\n### Video Tutorial\n\nYou can watch this video tutorial or read the full step-by step written tutorial below.\n\n<iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/QVqx844Jh7A?si=JqtLkLf9SSckfYPe\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\n### Written Tutorial\n\nWhen you first start Visual Studio Code, there are a some basic questions to answer.\n\nFirst choose you theme, then click **Next Section**.\n\nNow click on the Python logo.\n\nThen click on the **Install** button.\n\nWhen finished the install button will disappear.\n\nif you have an alert to install WSL extension, then click on the **Install** button.\n\nIt will then be automatically installed.\n\nCongratulations, you have setup your Visual Studio Code program. Now we move on to finalize the Virtual Environments for Python.\n\n<p style=\"text-align: center;\">\n  <a href=\"../vscode/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">⬅</span>\n    Install Virtual Studio Code\n  </a>\n  <a href=\"../venv/\" class=\"md-button md-button--primary\">\n    Python Virtual Environments\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">➡</span>\n  </a>\n</p>",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/workspace/windows/vscode-setup.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "development",
+    "sdk",
+    "setup",
+    "vscode"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

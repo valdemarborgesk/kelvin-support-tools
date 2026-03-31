@@ -1,0 +1,34 @@
+{
+  "id": "sdk/app/message.msg-builders/customactionresult",
+  "title": "CustomActionResult",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# CustomActionResult\n\n\nCustom Action Result Builder. Use this helper class to build a Kelvin custom action ack.\nArgs:\n    resource (KRN): The kelvin resource targeted by the action, represented by a KRN (usually\n        KRNAssetDataStream)\n    action_id (UUID): The ID of the action\n    success (bool): Whether the action was successful\n    message (Optional[str]): Optional message\n    metadata: Dict[str, Any]: Optional metadata for the action ack\n    trace_id (Optional[str]): Optional trace ID for the action\n\n\n## Methods\n\n\n### to_message() -> CustomActionResultMsg\n\n\n### from_message(msg: CustomActionResultMsg) -> CustomActionResult\n",
+  "summary": "Custom Action Result Builder. Use this helper class to build a Kelvin custom action ack. Args: resource (KRN): The kelvin resource targeted by the action, represented by a KRN (usually KRNAssetDataStream) action_id (UUID): The ID of the action success (bool): Whether the action was successful message (Optional[str]): Optional message metadata: Dict[str, Any]: Optional metadata for the action ack trace_id (Optional[str]): Optional trace ID for the action",
+  "source": "app/src/kelvin/message/msg_builders.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import CustomActionResult\n\n# Usage example\napp = CustomActionResult()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.msg_builders",
+    "item_type": "class",
+    "methods": [
+      "to_message",
+      "from_message"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "how-to/asset-details",
+  "title": "Asset Details",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Asset Details\n\nEach Asset has some quick view details attached to the pin as well as more details in a popup if you click on the Asset.\n\n## Pin Details\n\nOn each pin showing the location of the Asset there are a number of status tags attached.\n\n### Failure Control Changes\n\nThe top tag shows any Control Changes that have failed to be written to the Asset.\n\nIf there are failures the background color will be red otherwise it will be white.\n\n### Recommendations\n\nThe middle tag shows the number of recommendations that are waiting for Operations to approve or reject.\n\nIf there are any outstanding Recommendations the background color will be orange, otherwise it will be green.\n\n### Status\n\nThe bottom tag shows the current status of the Asset. There are three options; online, offline and unknown.\n\n## Popup Details\n\nSelecting an asset on the map shows asset-specific metadata including historical control changes, current Recommendations and current Data Stream values.\n\nIn the recommendation card you will see two types of options;\n\nOption | UI | Description\n--- | --- | ---\n**View More** Button |  | This means that there is a pending Recommendation. Clicking will show a popup where you can accept/reject the pending Recommendation.\n**Details** Link | {height=25} | This means that there are NO pending Recommendations. Clicking will show a popup with the last Recommendation details.\n\n[Click here](../../assets-page/how-to/manage-recommendations/recommendation-action.md) for full details on the Recommendation popup.",
+  "summary": "Each Asset has some quick view details attached to the pin as well as more details in a popup if you click on the Asset.",
+  "source": "core-docs/docs/operations-tools/asset-map/how-to/asset-details.md",
+  "code_examples": [],
+  "related": [
+    "how-to/recommendation-action"
+  ],
+  "tags": [
+    "asset",
+    "cli",
+    "details",
+    "operations"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

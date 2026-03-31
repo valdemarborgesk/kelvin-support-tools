@@ -1,0 +1,171 @@
+{
+  "id": "api/schemas/recommendationactionscreate",
+  "title": "RecommendationActionsCreate",
+  "type": "schema",
+  "category": "api",
+  "content": "# RecommendationActionsCreate\n\nA list of all actions to be performed if the Recommendation is accepted.\n\n\n## Properties\n\n- **control_changes** (`array`): An array of objects with Control Change information. If the Recommendation is `pending`, it will display creation information or if the Recommendation is `accepted` or `auto_accepted` it will show the Control Change status. Each Control Change does not need to be related to the `resource` of the Recommendation.\n- **custom_actions** (`array`): ",
+  "summary": "A list of all actions to be performed if the Recommendation is accepted.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.RecommendationActionsCreate",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "description": "A list of all actions to be performed if the Recommendation is accepted.",
+      "properties": {
+        "control_changes": {
+          "type": "array",
+          "description": "An array of objects with Control Change information. If the Recommendation is `pending`, it will display creation information or if the Recommendation is `accepted` or `auto_accepted` it will show the Control Change status. Each Control Change does not need to be related to the `resource` of the Recommendation.",
+          "items": {
+            "type": "object",
+            "required": [
+              "resource",
+              "payload",
+              "expiration_date"
+            ],
+            "properties": {
+              "control_change_id": {
+                "type": "string",
+                "format": "uuid",
+                "example": "0002bc79-b42f-461b-95d6-cf0a28ba87aa",
+                "description": "Unique identifier id for the Control Change request. This will only be returned when the Recommendation state is `accepted` or `auto_accepted` where the actions have been created and an id registered on the Server."
+              },
+              "expiration_date": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2024-12-18T18:22:18.582724Z",
+                "description": "UTC time when any the Control Change initiated will expire and the `status` automatically marked as `failed`, formatted in RFC 3339."
+              },
+              "trace_id": {
+                "type": "string",
+                "example": "app-trace-123",
+                "maxLength": 256
+              },
+              "payload": {
+                "description": "Value represented in one of these formats.",
+                "oneOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "object"
+                  }
+                ]
+              },
+              "resource": {
+                "type": "string",
+                "format": "krn",
+                "example": "krn:ad:bp_16/motor_speed_setpoint",
+                "minLength": 1,
+                "maxLength": 256,
+                "description": "The asset / data stream pair that this Control Change will be applied to."
+              },
+              "retries": {
+                "type": "integer",
+                "default": 0,
+                "example": 3,
+                "description": "Number of retry attempts to write the Control Change to the Bridge until a `processed` acknowledgment is received from the Bridge. If number of attempts exceeds `retries` then the Control Change Manager updates the Control Change key `state` with the value `failed`."
+              },
+              "timeout": {
+                "type": "integer",
+                "default": 300,
+                "example": 600,
+                "description": "Time in seconds the Control Change Manager will wait after sending the Control Change for the Bridge to send a `processed` acknowledgement reply before retry sending the Control Change."
+              },
+              "from": {
+                "type": "object",
+                "description": "Information about the current `resource` data when the the Control Change `payload` is created.",
+                "required": [
+                  "value",
+                  "timestamp"
+                ],
+                "properties": {
+                  "value": {
+                    "$ref": "#/components/schemas/type.Any"
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2024-12-18T18:22:18.582724Z",
+                    "description": "UTC time when the current `value` is recorded in the Control Change object, formatted in RFC 3339."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "custom_actions": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "email",
+                "description": "The type of the action. This is used to identify the action in the system."
+              },
+              "type_title": {
+                "type": "string",
+                "example": "Web Hook",
+                "description": "The type name of the action."
+              },
+              "resource": {
+                "type": "string",
+                "example": "krn:asset:my-asset",
+                "description": "",
+                "format": "krn"
+              },
+              "title": {
+                "type": "string",
+                "example": "Diagnose Beam Pump GW-B12-037",
+                "description": "The title of the action. This is a short description of the action that will be displayed to the user."
+              },
+              "description": {
+                "type": "string",
+                "example": "Beam Pump GW-B12-037 needs to be diagnosed.",
+                "description": "The description of the action. This is a longer description of the action that will be displayed to the user."
+              },
+              "expiration_date": {
+                "type": "string",
+                "description": "The expiration date of the action. The action will be automatically cancelled if it is not completed by this date.",
+                "format": "date-time"
+              },
+              "payload": {
+                "type": "object",
+                "example": {
+                  "id": "WO-2025-0412",
+                  "priority": "high",
+                  "description": "Diagnose Beam Pump GW-B12-037."
+                },
+                "description": "The payload is a JSON object that contains the necessary information for the executor to perform the action. The structure of the payload will depend on the action type."
+              },
+              "trace_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "resource",
+              "type",
+              "title",
+              "expiration_date"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

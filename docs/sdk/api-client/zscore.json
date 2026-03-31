@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.type/zscore",
+  "title": "ZScore",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ZScore\n\nInherits from: DataModelBase\n\n\nZScore object.\n\nParameters\n----------\n    threshold: Optional[StrictFloat]\n    window_size: Optional[StrictInt]\n",
+  "summary": "ZScore object.",
+  "source": "api/src/kelvin/api/client/model/type.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.type.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.type",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

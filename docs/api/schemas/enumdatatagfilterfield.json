@@ -1,0 +1,31 @@
+{
+  "id": "api/schemas/datatagfilterfield",
+  "title": "DataTagFilterField",
+  "type": "schema",
+  "category": "api",
+  "content": "# DataTagFilterField\n\nField name of the Data Tag to filter by.\n\n## Enum Values\n\n- `tag`\n- `source`\n- `end_date`",
+  "summary": "Field name of the Data Tag to filter by.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.DataTagFilterField",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "example": "tag",
+      "enum": [
+        "tag",
+        "source",
+        "end_date"
+      ],
+      "description": "Field name of the Data Tag to filter by."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "how-to/connect/connections-delete",
+  "title": "Delete a Connection",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Delete a Connection\n\nYou can delete a Connection in two ways.\n\n    This action is permanent and can not be undone. You will need to deploy a new workload with all the right settings.\n\n<div class=\"result\" markdown>\n\n=== \"From Connection List\"\n\n    Go to **Connections** in the Kelvin UI.\n\n    \n\n    Then click on the **Delete** icon on the relevant Connection row to change it running status.\n\n    \n\n    Follow the instructions to confirm your delete action.\n\n    \n\n=== \"From Connection Details\"\n\n    Go to **Connections** in the Kelvin UI and click on the Connection to view its details.\n\n    \n\n    Then click on the hamburger menu at the top of the page and select **Delete Connection** to delete it.\n\n    \n\n    Follow the instructions to confirm your delete action.\n\n    \n\n</div>",
+  "summary": "You can delete a Connection in two ways.",
+  "source": "core-docs/docs/platform-administration/how-to/connect/connections-delete.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "connection",
+    "delete",
+    "deploy",
+    "operations"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

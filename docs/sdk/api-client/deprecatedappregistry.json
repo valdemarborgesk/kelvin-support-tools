@@ -1,0 +1,39 @@
+{
+  "id": "sdk/api-client/client.api.deprecated-app-registry/deprecatedappregistry",
+  "title": "DeprecatedAppRegistry",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DeprecatedAppRegistry\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### create_legacy_app(data: Optional[Union[requests.LegacyAppCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.LegacyAppCreate\n\nCreate a new App or App Version in the App Registry. A new version will be automatically appended if the App already exists.\n\n\n### list_legacy_app_registry_apps(type: Optional[Sequence[str]], search: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.LegacyAppItem], responses.LegacyAppRegistryAppsListPaginatedResponseCursor]\n\nReturns a list of Apps in the App Registry and its parameters. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### delete_legacy_app(app_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete all versions of an App in the App Registry. This cannot be undone once the API request has been submitted.\n\n\n### get_legacy_app_registry_app(app_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.LegacyAppRegistryAppGet\n\nRetrieve the parameters of an App in the App Registry.\n\n\n### update_legacy_app(app_name: str, data: Optional[Union[requests.LegacyAppUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.LegacyAppUpdate\n\nUpdate an existing App with a new 'title' and/or 'description'. Any parameters that are not provided will remain unchanged.\n\n\n### delete_legacy_app_version(app_name: str, app_version: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently one version of an App in the App Registry. All other versions of an App will remain unaffected. This cannot be undone once the API request has been submitted.\n\n\n### get_legacy_app_version(app_name: str, app_version: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.LegacyAppVersionGet\n\nRetrieve the parameters of a specific version of an App in the App Registry.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/deprecated_app_registry.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.deprecated_app_registry.create_legacy_app()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.deprecated_app_registry",
+    "item_type": "class",
+    "methods": [
+      "create_legacy_app",
+      "list_legacy_app_registry_apps",
+      "delete_legacy_app",
+      "get_legacy_app_registry_app",
+      "update_legacy_app",
+      "delete_legacy_app_version",
+      "get_legacy_app_version"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

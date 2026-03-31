@@ -1,0 +1,35 @@
+{
+  "id": "sdk/api-client/base.data-model/datamodel",
+  "title": "DataModel",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataModel\n\nInherits from: BaseModel\n\n\nModel base-class.\n\n\n## Methods\n\n\n### __init__() -> None\n\nInitialise model.\n\n\n### convert_datetime(value: Any, info: ValidationInfo) -> Any\n\nCorrect data-type for datetime values.\n\n\n### serialize_timestamps(value: Any, nxt: SerializerFunctionWrapHandler) -> Any\n",
+  "summary": "Model base-class.",
+  "source": "api/src/kelvin/api/base/data_model.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.data_model.__init__()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.data_model",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "convert_datetime",
+      "serialize_timestamps"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

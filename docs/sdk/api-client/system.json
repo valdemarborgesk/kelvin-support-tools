@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.manifest/system",
+  "title": "System",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# System\n\nInherits from: DataModelBase\n\n\nSystem object.\n\nParameters\n----------\n    health_check: Optional[HealthCheck]\n    resources: Optional[Resources]\n    privileged: Optional[StrictBool]\n    environment_vars: Optional[list[EnvironmentVar]]\n    ports: Optional[list[Port]]\n    volumes: Optional[list[Volume]]\n",
+  "summary": "System object.",
+  "source": "api/src/kelvin/api/client/model/manifest.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.manifest.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.manifest",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

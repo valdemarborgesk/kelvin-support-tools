@@ -1,0 +1,224 @@
+{
+  "id": "api/schemas/guardrail",
+  "title": "Guardrail",
+  "type": "schema",
+  "category": "api",
+  "content": "# Guardrail\n\n\n## Properties\n\n- **resource** (`string`): The Asset/Data Stream pair to which the Guardrail is applied. (example: `krn:ad:asset1/setpoint`).\n- **control_disabled** (`boolean`): Current status indicating whether this Guardrail is active or disabled.\n- **number** (`object`): \n- **updater** (`object`): \n- **created_at** (`string`): UTC time when the object was created, formatted in RFC 3339.\n- **created_by** (`string`): KRN of the user or process that created the object.\n- **updated_at** (`string`): UTC time when any keys were last updated, formatted in RFC 3339.\n- **updated_by** (`string`): KRN of the user or process that last updated any of the keys.",
+  "summary": "Object with properties: resource, control_disabled, number, updater, created_at",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.Guardrail",
+    "schema_type": "type",
+    "schema": {
+      "properties": {
+        "resource": {
+          "type": "string",
+          "description": "The Asset/Data Stream pair to which the Guardrail is applied. (example: `krn:ad:asset1/setpoint`).",
+          "format": "krn",
+          "example": "krn:ad:asset1/setpoint"
+        },
+        "control_disabled": {
+          "type": "boolean",
+          "description": "Current status indicating whether this Guardrail is active or disabled.",
+          "default": false
+        },
+        "number": {
+          "properties": {
+            "min": {
+              "type": "object"
+            },
+            "max": {
+              "type": "object"
+            },
+            "relative": {
+              "type": "object",
+              "description": "Allowable rate of increase/decrease of the Asset / Data Stream pair. ",
+              "properties": {
+                "increase": {
+                  "type": "object",
+                  "description": "Allowable rate of increase of the Asset / Data Stream pair. ",
+                  "properties": {
+                    "min": {
+                      "type": "object",
+                      "description": "Rate of change limit definition",
+                      "required": [
+                        "value"
+                      ],
+                      "properties": {
+                        "value": {
+                          "description": "The limiting rate of change value.",
+                          "type": "number"
+                        },
+                        "inclusive": {
+                          "description": "The defined limiting rate of change value is inclusive within the allowable range.",
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "type": {
+                          "$ref": "#/components/schemas/enum.GuardrailRelativeType"
+                        }
+                      }
+                    },
+                    "max": {
+                      "type": "object",
+                      "description": "Rate of change limit definition",
+                      "required": [
+                        "value"
+                      ],
+                      "properties": {
+                        "value": {
+                          "description": "The limiting rate of change value.",
+                          "type": "number"
+                        },
+                        "inclusive": {
+                          "description": "The defined limiting rate of change value is inclusive within the allowable range.",
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "type": {
+                          "$ref": "#/components/schemas/enum.GuardrailRelativeType"
+                        }
+                      }
+                    }
+                  }
+                },
+                "decrease": {
+                  "type": "object",
+                  "description": "Allowable rate of decrease of the Asset / Data Stream pair. ",
+                  "properties": {
+                    "min": {
+                      "type": "object",
+                      "description": "Rate of change limit definition",
+                      "required": [
+                        "value"
+                      ],
+                      "properties": {
+                        "value": {
+                          "description": "The limiting rate of change value.",
+                          "type": "number"
+                        },
+                        "inclusive": {
+                          "description": "The defined limiting rate of change value is inclusive within the allowable range.",
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "type": {
+                          "$ref": "#/components/schemas/enum.GuardrailRelativeType"
+                        }
+                      }
+                    },
+                    "max": {
+                      "type": "object",
+                      "description": "Rate of change limit definition",
+                      "required": [
+                        "value"
+                      ],
+                      "properties": {
+                        "value": {
+                          "description": "The limiting rate of change value.",
+                          "type": "number"
+                        },
+                        "inclusive": {
+                          "description": "The defined limiting rate of change value is inclusive within the allowable range.",
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "type": {
+                          "$ref": "#/components/schemas/enum.GuardrailRelativeType"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "updater": {
+          "properties": {
+            "number": {
+              "type": "object",
+              "description": "Limits for absolute minimum and maximum values.",
+              "properties": {
+                "min": {
+                  "type": "object",
+                  "required": [
+                    "source"
+                  ],
+                  "description": "Limiting value definitions.",
+                  "properties": {
+                    "source": {
+                      "description": "Asset / Data Stream pair used to determine the values for the minimum and maximum guardrail values.",
+                      "type": "string",
+                      "format": "krn"
+                    },
+                    "inclusive": {
+                      "description": "The Asset / Data Stream pair value is inclusive within the allowable range.",
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                },
+                "max": {
+                  "type": "object",
+                  "required": [
+                    "source"
+                  ],
+                  "description": "Limiting value definitions.",
+                  "properties": {
+                    "source": {
+                      "description": "Asset / Data Stream pair used to determine the values for the minimum and maximum guardrail values.",
+                      "type": "string",
+                      "format": "krn"
+                    },
+                    "inclusive": {
+                      "description": "The Asset / Data Stream pair value is inclusive within the allowable range.",
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "UTC time when the object was created, formatted in RFC 3339.",
+          "format": "date-time"
+        },
+        "created_by": {
+          "type": "string",
+          "description": "KRN of the user or process that created the object.",
+          "format": "krn",
+          "example": "krn:user:me@example.com"
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "UTC time when any keys were last updated, formatted in RFC 3339.",
+          "format": "date-time"
+        },
+        "updated_by": {
+          "type": "string",
+          "description": "KRN of the user or process that last updated any of the keys.",
+          "format": "krn",
+          "example": "krn:user:me@example.com"
+        }
+      },
+      "required": [
+        "resource"
+      ],
+      "type": "object"
+    },
+    "last_updated": "2026-02-04"
+  }
+}

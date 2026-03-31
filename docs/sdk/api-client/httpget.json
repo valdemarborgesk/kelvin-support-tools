@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.manifest/httpget",
+  "title": "HttpGet",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# HttpGet\n\nInherits from: DataModelBase\n\n\nHttpGet object.\n\nParameters\n----------\n    path: Optional[StrictStr]\n    port: StrictInt\n    scheme: Optional[enum.URIScheme]\n    http_headers: Optional[list[HttpHeader]]\n",
+  "summary": "HttpGet object.",
+  "source": "api/src/kelvin/api/client/model/manifest.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.manifest.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.manifest",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

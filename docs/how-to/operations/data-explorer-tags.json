@@ -1,0 +1,35 @@
+{
+  "id": "how-to/data-explorer-tags",
+  "title": "Tags in Data Explorer",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Tags in Data Explorer\n\n_On this page you will go through understanding how to create Tags and view them in activity lane in the Data Explorer._\n\n## Overview\n\nTags are a way for you to attach useful information and links to the Asset in Data Explorer at a defined time point or time range.\n\nInformation you can save with the time point / time range tag;\n\n* Tag name\n* Notes up to 256 characters long\n* Multiple Data Stream names\n* One Kelvin SmartApp™ name\n\nThis information can also be retrieve programmatically by Developers and Data Scientists if required, so this is a good method of tagging significant events for your records or for feedback to other teams.\n\n## Viewing Tags\n\nTags are show in identifiable colors in the bottom Lane (if enabled).\n\n    Clicking on a Tag pont or Tag range color, the Tag sidebar will automatically open up on the right hand side and the relevant tag information will be shown in a popup.\n\nTags are also viewable in a list by clicking on the tag icon in the top right hand corner. \n\nThis will open the right sidebar with all Tags that are within the current x-axis time range.\n\n    You can click on any tag to highlight it on the graph and to show full information recorded with the tag in a popup.\n\n## Adding Tags\n\nYou can add new tags in two ways;\n\n1. Click on the Tag icon in the top left corner and then click on the **Add Data Tag** button or\n2. By clicking on the plus icon in the tags lane.\n\n    You can not add tags if you are in Multiple Asset view.\n\nAnd you can then add your own information and then click **Add Data Tag**.\n\nItem | Options | Description\n--- | --- | ---\nType of Tag | Period | You can select a From and To date/time for this new Tag\n  | Point | You can select an exact time point for this new Tag\nPeriod Range | Date /  Time | Either a point or from/to time range to select for the Tag\nTag | Custom options | Select an existing Tag Name or create a new tag name (link to add a new tag at the bottom of the list)\nNote |  | A note about the Tag event up to 256 characters long\nData Stream | All existing Data Stream names | Select one or multiple Data Streams that are related to this Tag event.\nApplication | All existing Kelvin SmartApps™ names | Select one Kelvin SmartApp™ that is related to this Tag event.\n\n## Edit Tags\n\nTo edit a Tag event, open the Tag list on the right hand sidebar and click on a Tag event.\n\nIn the popup click on the edit pencil icon.\n\nUpdate the information and click **Save**.\n\n## Delete Tags\n\nTo delete a Tag event, open the Tag list on the right hand sidebar and click on a Tag event.\n\nIn the popup click on the edit pencil icon.\n\nClick the **Delete** button.\n\n    There is no confirmation warning. The Tag is immediately and permanently deleted, so ensure this action before pressing the button.\n\n## Hide Activity Lane\n\nTag activity lane can be turned on or off from the visualization settings in the right hand sidebar.",
+  "summary": "_On this page you will go through understanding how to create Tags and view them in activity lane in the Data Explorer._",
+  "source": "core-docs/docs/operations-tools/data-explorer-page/how-to/data-explorer-tags.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "create",
+    "data",
+    "explorer",
+    "operations",
+    "smartapp",
+    "tags"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "Click on the Tag icon in the top left corner and then click on the Add Data Tag button or"
+      },
+      {
+        "step": 2,
+        "instruction": "By clicking on the plus icon in the tags lane."
+      }
+    ],
+    "step_count": 2,
+    "last_updated": "2026-02-04"
+  }
+}

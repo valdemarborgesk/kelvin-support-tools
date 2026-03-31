@@ -1,0 +1,33 @@
+{
+  "id": "api/schemas/way",
+  "title": "Way",
+  "type": "schema",
+  "category": "api",
+  "content": "# Way\n\nThe direction and characteristics of the input/output. The `cc` suffix means that in accepts or sends Control Changes on the input or output respectively.\n\n## Enum Values\n\n- `output`\n- `input-cc`\n- `input-cc+output`\n- `input`\n- `output-cc`\n- `input+output-cc`",
+  "summary": "The direction and characteristics of the input/output. The `cc` suffix means that in accepts or sends Control Changes on the input or output respectively.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.Way",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "output",
+        "input-cc",
+        "input-cc+output",
+        "input",
+        "output-cc",
+        "input+output-cc"
+      ],
+      "description": "The direction and characteristics of the input/output. The `cc` suffix means that in accepts or sends Control Changes on the input or output respectively."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

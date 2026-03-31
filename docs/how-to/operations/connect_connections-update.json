@@ -1,0 +1,26 @@
+{
+  "id": "how-to/connect/connections-update",
+  "title": "Update a Connection",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Update a Connection\n\n## Change Version\n\nYou can upgrade the Application version of a Connection.\n\n    You can also rollback to a previous version if the current version has issues.\n\nGo to **Connections** in the Kelvin UI.\n\nYou can either click on the relevant upgrade icon;\n\nOr click on the Connection Name and click on the **Update Connection** button.\n\nSelect the new version you want to use.\n\nThe rest of the process is exactly the same when you first create a Connection.\n\n    If there are any new App Parameters or App Configurations in the new version, then the default values will be automatically applied to all Assets currently deployed to the Application.\n\n    These values can be changed during or after the upgrade is completed.\n\nFor documentation details for the rest of the steps, go to the relevant documentation page and start at **Step 3**.\n\n* [OPC-UA Connection](../connect/connect-to-data/opc-ua.md)\n* [Modbus Connection](../connect/connect-to-data/modbus.md)\n* [ROC Connection](../connect/connect-to-data/roc.md)\n* [CSV Publisher Connection](../connect/connect-to-data/csv-publisher.md)\n* Custom Connection - Refer to the developer's documentation for details\n\n## Update Configuration\n\nAfter deployment you can change the configuration settings that you originally set.\n\nGo to **Connections** in the Kelvin UI.\n\nClick on the Connection name.\n\nClick on the **Configuration** tab.\n\nYou can choose to edit in the UI (if available), in YAML or JSON format.\n\nWhen ready, click on the Apply** and Redeploy** button\n\n## Update Deployment\n\nAfter deployment you can change the deployment settings that you originally set.\n\nGo to **Connections** in the Kelvin UI.\n\nClick on the Connection name.\n\nClick on the **System** tab.\n\nHere you can adjust the values, such as the environment variables, as require and then click on the **Redploy** button.\n\n## Update Connection IO\n\nAfter deployment you can change the IO Mappings that you originally set.\n\n    You can also add or delete Assets from the IO Maps.\n\nGo to **Connections** in the Kelvin UI.\n\nClick on the Connection name.\n\nClick on the **Connection IO** tab.\n\nTo edit, click on the **Edit IO Map** button.\n\nYou will then see the list of Assets that you can edit, add or delete.\n\nWhen ready click the **Save** button.",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/connect/connections-update.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "configure",
+    "connection",
+    "create",
+    "deploy",
+    "operations",
+    "update"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

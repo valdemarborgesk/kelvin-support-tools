@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.responses/controlchangeget",
+  "title": "ControlChangeGet",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ControlChangeGet\n\nInherits from: DataModelBase\n\n\nControlChangeGet object.\n\nParameters\n----------\n    created: Optional[datetime]\n    created_by: Optional[StrictStr]\n    created_type: Optional[StrictStr]\n    id: UUID\n    trace_id: Optional[StrictStr]\n    last_message: Optional[StrictStr]\n    last_state: Optional[enum.ControlChangeState]\n    retries: Optional[StrictInt]\n    timeout: Optional[StrictInt]\n    expiration_date: Optional[datetime]\n    from_: Optional[type_1.ControlChangeFrom]\n    reported: Optional[type_1.ControlChangeReported]\n    payload: Optional[Union[StrictInt, StrictFloat, StrictStr, StrictBool, dict[str, Any]]]\n    resource: KRN\n    status_log: Optional[list[ControlChangeGetStatus]]\n    timestamp: Optional[datetime]\n    updated: Optional[datetime]\n",
+  "summary": "ControlChangeGet object.",
+  "source": "api/src/kelvin/api/client/model/responses.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.responses.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.responses",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

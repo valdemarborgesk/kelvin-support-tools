@@ -1,0 +1,57 @@
+{
+  "id": "api/schemas/unit",
+  "title": "Unit",
+  "type": "schema",
+  "category": "api",
+  "content": "# Unit\n\n\n## Properties\n\n- **created** (`string`): UTC time when the Unit was first created, formatted in RFC 3339.\n- **name** (`string`): Unique identifier `name` of the Unit.\n- **symbol** (`string`): A brief and precise character or set of characters that symbolize a specific measurement of the Unit.\n- **title** (`string`): Display name (`title`) of the Unit.\n- **updated** (`string`): UTC time when any Unit keys were last updated, formatted in RFC 3339.",
+  "summary": "Object with properties: created, name, symbol, title, updated",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.Unit",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-06-26T18:22:18.582724Z",
+          "description": "UTC time when the Unit was first created, formatted in RFC 3339."
+        },
+        "name": {
+          "type": "string",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "example": "degree_fahrenheit",
+          "maxLength": 64,
+          "description": "Unique identifier `name` of the Unit."
+        },
+        "symbol": {
+          "type": "string",
+          "example": "°F",
+          "maxLength": 16,
+          "description": "A brief and precise character or set of characters that symbolize a specific measurement of the Unit."
+        },
+        "title": {
+          "type": "string",
+          "example": "Degree Fahrenheit",
+          "maxLength": 64,
+          "description": "Display name (`title`) of the Unit."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when any Unit keys were last updated, formatted in RFC 3339."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

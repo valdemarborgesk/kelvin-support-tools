@@ -1,0 +1,33 @@
+{
+  "id": "api/schemas/customactionfailurereason",
+  "title": "CustomActionFailureReason",
+  "type": "schema",
+  "category": "api",
+  "content": "# CustomActionFailureReason\n\nThe error type of an action, if any.\n\n* `none`: No error. The same as empty, used when the action is not completed or completed successfully.\n* `reported_failed`: The action was reported as failed by the executor.\n* `expired`: The action was not delivered to an executor before the expiration date.\n* `lost`: The action was delivered to the executor, but the executor restarted without reporting the status.\n* `executor_gone`: The action was delivered to the executor, but the executor is no longer available and the expiration date was reached.\n* `other`: Other error.\n\n## Enum Values\n\n- `none`\n- `other`\n- `reported_failed`\n- `expired`\n- `lost`\n- `executor_gone`",
+  "summary": "The error type of an action, if any.\n\n* `none`: No error. The same as empty, used when the action is not completed or completed successfully.\n* `reported_failed`: The action was reported as failed by the executor.\n* `expired`: The action was not delivered to an executor before the expiration date.\n* `lost`: The action was delivered to the executor, but the executor restarted without reporting the status.\n* `executor_gone`: The action was delivered to the executor, but the executor is no longer available and the expiration date was reached.\n* `other`: Other error.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.CustomActionFailureReason",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "description": "The error type of an action, if any.\n\n* `none`: No error. The same as empty, used when the action is not completed or completed successfully.\n* `reported_failed`: The action was reported as failed by the executor.\n* `expired`: The action was not delivered to an executor before the expiration date.\n* `lost`: The action was delivered to the executor, but the executor restarted without reporting the status.\n* `executor_gone`: The action was delivered to the executor, but the executor is no longer available and the expiration date was reached.\n* `other`: Other error.",
+      "enum": [
+        "none",
+        "other",
+        "reported_failed",
+        "expired",
+        "lost",
+        "executor_gone"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

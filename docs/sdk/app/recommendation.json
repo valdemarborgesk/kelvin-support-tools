@@ -1,0 +1,33 @@
+{
+  "id": "sdk/app/message.msg-builders/recommendation",
+  "title": "Recommendation",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Recommendation\n\n\nRecommendation Builder. Use this helper class to build a Kelvin Recommendation.\n\nArgs:\n    resource (KRNAsset): The kelvin asset resource targeted by the recommendation\n    type (str): the type of the recommendation, chose one from the available on the kelvin platform (eg generic,\n        speed_inc, speed_dec, ...)\n    expiration_date (datetime | timedelta): The absolute time in the future when the recommendation expires. Provide\n        either a absolute datetime or a timedelta from now\n    description (str): An optional description for the recommendation\n    confidence (int): Optional confidence of the recommendation (from 1 to 4)\n    control_changes (List[ControlChanges]): the list of ControlChanges associated with the recommendation\n    metadata: (Dict[str, Any]): Optional metadata for the recommendation\n    auto_accepted (bool): Sets the Recommendation as auto accepted. Default is False\n    evidences (List[Evidence]): List of evidences associated with the recommendation\n    custom_identifier (str): Optional custom identifier for the recommendation\n    actions (List[CustomAction]): List of custom actions associated with the recommendation\n    trace_id (str): Optional trace ID for the recommendation\n\n\n## Methods\n\n\n### to_message() -> RecommendationMsg\n",
+  "summary": "Recommendation Builder. Use this helper class to build a Kelvin Recommendation.",
+  "source": "app/src/kelvin/message/msg_builders.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import Recommendation\n\n# Usage example\napp = Recommendation()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.msg_builders",
+    "item_type": "class",
+    "methods": [
+      "to_message"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

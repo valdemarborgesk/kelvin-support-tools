@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/recommendationacceptupdate",
+  "title": "RecommendationAcceptUpdate",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# RecommendationAcceptUpdate\n\nInherits from: DataModelBase\n\n\nRecommendationAcceptUpdate object.\n\nParameters\n----------\n    confidence: Optional[StrictInt]\n    message: Optional[StrictStr]\n",
+  "summary": "RecommendationAcceptUpdate object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

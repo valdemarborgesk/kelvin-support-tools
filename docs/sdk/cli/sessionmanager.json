@@ -1,0 +1,49 @@
+{
+  "id": "sdk/cli/sdk.lib.session.session-manager/sessionmanager",
+  "title": "SessionManager",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# SessionManager\n\n\n## Methods\n\n\n### __init__() -> None\n\n\n### reset_session(full_reset: bool, ignore_destructive_warning: bool) -> OperationResponse\n\nLogs off the client all currently stored sessions.\n\n\n### reset_session_tokens(url: Optional[str]) -> None\n\nReset stored tokens for the specified url.\n\n\n### logout_from_url(url: Optional[str]) -> None\n\nLogout from the specified url.\n\n\n### full_reset(ignore_destructive_warning: bool) -> OperationResponse\n\nReset all configurations & cache used by Kelvin SDK.\n\n\n### browser_login(url: str) -> OperationResponse\n\n\n### login_with_stored_credentials(url: str) -> bool\n\nLogs the user into the provided url using stored credentials.\n\n\n### login_on_url(url: str, username: Optional[str], password: Optional[str], totp: Optional[str], client_id: Optional[str], client_secret: Optional[str], reset: bool) -> OperationResponse\n\nLogs the user into the provided url.\n\n\n### login_client_on_current_url(verbose: bool) -> Client\n\nLogin process\n\n\n### check_token_expiration(url: str, tokens: TokenCredentials) -> TokenCredentials\n\nCheck if the token is expired and refresh if needed.\n\n\n### authentication_token(full: bool, margin: float) -> OperationResponse\n\nObtain an authentication authentication_token from the API.\n\n\n### get_global_ksdk_configuration() -> KelvinSDKGlobalConfiguration\n\nAttempt to retrieve the KelvinSDKGlobalConfiguration from specified file path.\n\n\n### get_documentation_link_for_current_url() -> Optional[str]\n\nRetrieve, if existent, the complete url to the documentation page.\n\n\n### get_kelvin_system_information_for_display() -> str\n\nDisplay system information as well as, if existent, the current session's url.\n\n\n### get_kelvin_system_information() -> dict\n\nReport the entire configuration set currently in use by Kelvin SDK.\n\n\n### get_docker_current_url() -> str\n\n\n### get_current_session_metadata() -> CompanyMetadata\n\nReturns the current session company metadata\n\n\n### refresh_metadata(url: str) -> SyncMetadata\n\nRefresh metadata on request.\n\n\n### setup_logger(verbose: bool, colored_logs: bool) -> Any\n\nSets up the logger based on the verbose flag.\n\n\n### global_configuration_list(should_display: bool) -> OperationResponse\n\nList all available configurations for the Kelvin-SDK\n\n\n### global_configuration_set(configuration: str, value: str) -> OperationResponse\n\nSet the specified configuration on the platform system.\n\n\n### global_configuration_unset(configuration: str) -> OperationResponse\n\nUnset the specified configuration from the platform system\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/session/session_manager.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.session.session_manager",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "reset_session",
+      "reset_session_tokens",
+      "logout_from_url",
+      "full_reset",
+      "browser_login",
+      "login_with_stored_credentials",
+      "login_on_url",
+      "login_client_on_current_url",
+      "check_token_expiration",
+      "authentication_token",
+      "get_global_ksdk_configuration",
+      "get_documentation_link_for_current_url",
+      "get_kelvin_system_information_for_display",
+      "get_kelvin_system_information",
+      "get_docker_current_url",
+      "get_current_session_metadata",
+      "refresh_metadata",
+      "setup_logger",
+      "global_configuration_list",
+      "global_configuration_set",
+      "global_configuration_unset"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

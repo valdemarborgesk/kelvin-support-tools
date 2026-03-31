@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.responses/orchestrationclustersnodesgetsysteminfo",
+  "title": "OrchestrationClustersNodesGetSystemInfo",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# OrchestrationClustersNodesGetSystemInfo\n\nInherits from: DataModelBase\n\n\nOrchestrationClustersNodesGetSystemInfo object.\n\nParameters\n----------\n    architecture: Optional[StrictStr]\n    boot_id: Optional[StrictStr]\n    container_runtime_version: Optional[StrictStr]\n    host_name: Optional[StrictStr]\n    kernel_version: Optional[StrictStr]\n    kube_proxy_version: Optional[StrictStr]\n    kubelet_version: Optional[StrictStr]\n    machine_id: Optional[StrictStr]\n    operating_system: Optional[StrictStr]\n    os_image: Optional[StrictStr]\n    system_uuid: Optional[StrictStr]\n",
+  "summary": "OrchestrationClustersNodesGetSystemInfo object.",
+  "source": "api/src/kelvin/api/client/model/responses.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.responses.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.responses",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

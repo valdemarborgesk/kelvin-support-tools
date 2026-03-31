@@ -1,0 +1,33 @@
+{
+  "id": "api/schemas/kelvintimestampanomaly",
+  "title": "KelvinTimestampAnomaly",
+  "type": "schema",
+  "category": "api",
+  "content": "# KelvinTimestampAnomaly\n\n\n## Properties\n\n- **enabled** (`boolean`): Define if the timestamp anomaly algorithm is enabled.",
+  "summary": "Object with properties: enabled",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.KelvinTimestampAnomaly",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "required": [
+        "enabled"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Define if the timestamp anomaly algorithm is enabled."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

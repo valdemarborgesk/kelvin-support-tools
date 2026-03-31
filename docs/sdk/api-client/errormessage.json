@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.responses/errormessage",
+  "title": "ErrorMessage",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ErrorMessage\n\nInherits from: DataModelBase\n\n\nErrorMessage object.\n\nParameters\n----------\n    error_code: Optional[StrictInt]\n    http_status_code: Optional[StrictInt]\n    message: Optional[list[StrictStr]]\n    type: Optional[enum.ErrorLegacyType]\n",
+  "summary": "ErrorMessage object.",
+  "source": "api/src/kelvin/api/client/model/responses.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.responses.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.responses",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

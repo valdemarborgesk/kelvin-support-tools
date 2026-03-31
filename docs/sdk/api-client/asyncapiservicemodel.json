@@ -1,0 +1,34 @@
+{
+  "id": "sdk/api-client/base.api-service-model/asyncapiservicemodel",
+  "title": "AsyncApiServiceModel",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AsyncApiServiceModel\n\nInherits from: BaseModel\n\n\nAPI Service Model base-class.\n\n\n## Methods\n\n\n### async scan(client: Optional[AsyncBaseClient], path: str, api_response: Any, flatten: bool, method: str, data: Any) -> AsyncIterator[Any]\n\nIterate pages.\n\n\n### async fetch(client: Optional[AsyncBaseClient], path: str, api_response: Any, method: str, data: Any) -> Sequence[Any]\n\nFetch all data.\n",
+  "summary": "API Service Model base-class.",
+  "source": "api/src/kelvin/api/base/api_service_model.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.api_service_model.scan()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.api_service_model",
+    "item_type": "class",
+    "methods": [
+      "scan",
+      "fetch"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

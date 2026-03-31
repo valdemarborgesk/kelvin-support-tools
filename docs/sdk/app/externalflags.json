@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/config.external/externalflags",
+  "title": "ExternalFlags",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ExternalFlags\n\nInherits from: ConfigBaseModel\n",
+  "summary": "",
+  "source": "app/src/kelvin/config/external.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import ExternalFlags\n\n# Usage example\napp = ExternalFlags()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "config.external",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

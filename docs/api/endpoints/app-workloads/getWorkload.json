@@ -1,0 +1,1078 @@
+{
+  "id": "api/endpoints/app-workloads/getWorkload",
+  "title": "Get Workload",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Get Workload\n\nRetrieve the parameters of a Workload.\n\n## Endpoint\n\n`GET /apps/workloads/{workload_name}/get`",
+  "summary": "Get Workload",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X GET \\\n  'https://api.kelvininc.com/api/v4/apps/workloads/{workload_name}/get' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.app_workloads.getWorkload()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/app-workloads"
+  ],
+  "tags": [
+    "app-workloads",
+    "api",
+    "get"
+  ],
+  "metadata": {
+    "path": "/apps/workloads/{workload_name}/get",
+    "method": "GET",
+    "operation_id": "getWorkload",
+    "tag": "App Workloads",
+    "permission": "kelvin.permission.workload.read",
+    "parameters": [
+      {
+        "name": "workload_name",
+        "in": "path",
+        "required": true,
+        "description": "Unique identifier `name` of the Workload.",
+        "type": "string"
+      }
+    ],
+    "request_body": null,
+    "responses": {
+      "200": {
+        "description": "OK",
+        "schema": {
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "app_name": {
+              "type": "string"
+            },
+            "app_version": {
+              "type": "string"
+            },
+            "app_type": {
+              "type": "string",
+              "enum": [
+                "app",
+                "importer",
+                "exporter",
+                "docker",
+                "task"
+              ],
+              "description": "The type of application.\n\n- `app`: An App that allows mapping inputs and outputs to data\nstreams, sending control changes, recommendations, and data tags.\n- `importer`: Connects to an external system to import data into the\nplatform as well as receive control changes to act on the external\nsystem.\n- `exporter`: Connects to the platform to export data to an external\nsystem.\n- `docker`: An external application that does not connect to the\nplatform's data streams.\n- `task`: An application type used internally by the Tasks feature."
+            },
+            "cluster_name": {
+              "type": "string"
+            },
+            "node_name": {
+              "type": "string"
+            },
+            "download_status": {
+              "type": "string",
+              "description": "Status of downloading Workload to the Edge System.",
+              "enum": [
+                "pending",
+                "scheduled",
+                "processing",
+                "downloading",
+                "ready",
+                "failed"
+              ]
+            },
+            "download_error": {
+              "type": "string",
+              "description": "Simple description of the error in case the image download failed."
+            },
+            "status": {
+              "type": "object",
+              "description": "Realtime information about the Workload as seen from the Cloud.",
+              "properties": {
+                "last_seen": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "UTC time when the Workload was last seen by the Cloud, formatted in RFC 3339."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Descriptive, human-readable string for `state`."
+                },
+                "state": {
+                  "type": "string",
+                  "enum": [
+                    "pending_deploy",
+                    "pending_update",
+                    "pending_start",
+                    "pending_stop",
+                    "pending_apply",
+                    "deploying",
+                    "running",
+                    "stopping",
+                    "stopped",
+                    "failed",
+                    "starting",
+                    "applying",
+                    "received",
+                    "downloading",
+                    "ready",
+                    "unreachable",
+                    "staged"
+                  ]
+                },
+                "warnings": {
+                  "type": "array",
+                  "description": "All warnings received for any Workload operations.",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "runtime": {
+              "type": "object",
+              "properties": {
+                "custom_actions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "type"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "The type of the custom action."
+                      },
+                      "way": {
+                        "$ref": "#/components/schemas/enum.CAWay"
+                      }
+                    }
+                  }
+                },
+                "resources": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "resource": {
+                        "type": "string",
+                        "format": "krn"
+                      },
+                      "parameters": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "$ref": "#/components/schemas/type.PropertyValue"
+                        }
+                      },
+                      "datastreams": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/type.WorkloadModifiableRuntimeResourceDatastream"
+                            },
+                            {
+                              "type": "object",
+                              "properties": {
+                                "guardrail": {
+                                  "type": "object",
+                                  "properties": {
+                                    "control_disabled": {
+                                      "type": "boolean",
+                                      "default": false
+                                    },
+                                    "number": {
+                                      "$ref": "#/components/schemas/type.GuardrailNumberConfig"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "data_quality": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "$ref": "#/components/schemas/type.AppDataQuality"
+                        }
+                      },
+                      "properties": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "$ref": "#/components/schemas/type.PropertyValue"
+                        }
+                      }
+                    }
+                  }
+                },
+                "configuration": {
+                  "type": "object"
+                }
+              }
+            },
+            "system": {
+              "type": "object",
+              "properties": {
+                "health_check": {
+                  "type": "object",
+                  "title": "Health Check",
+                  "properties": {
+                    "liveness_probe": {
+                      "type": "object",
+                      "title": "Liveness Probe",
+                      "description": "Checks if the container is running. Failing the probe restarts the container.",
+                      "properties": {
+                        "initial_delay_seconds": {
+                          "type": "integer",
+                          "title": "Initial Delay (s)",
+                          "description": "Seconds to wait before starting probes.",
+                          "default": 1,
+                          "minimum": 0,
+                          "maximum": 2147483647
+                        },
+                        "period_seconds": {
+                          "type": "integer",
+                          "title": "Probe Interval (s)",
+                          "description": "Frequency of probe execution.",
+                          "default": 10,
+                          "minimum": 1,
+                          "maximum": 2147483647
+                        },
+                        "timeout_seconds": {
+                          "type": "integer",
+                          "title": "Timeout (s)",
+                          "description": "Seconds before the probe times out.",
+                          "default": 1,
+                          "minimum": 1,
+                          "maximum": 2147483647
+                        },
+                        "failure_threshold": {
+                          "type": "integer",
+                          "title": "Failure Threshold",
+                          "description": "Failures before restarting the container.",
+                          "default": 3,
+                          "minimum": 1,
+                          "maximum": 2147483647
+                        },
+                        "type": {
+                          "$ref": "#/components/schemas/enum.LivenessProbeType"
+                        },
+                        "http_get": {
+                          "type": "object",
+                          "title": "HTTP GET Probe",
+                          "description": "Performs an HTTP GET request to check health.",
+                          "required": [
+                            "port"
+                          ],
+                          "properties": {
+                            "path": {
+                              "type": "string",
+                              "title": "Path",
+                              "description": "HTTP path to access."
+                            },
+                            "port": {
+                              "type": "integer",
+                              "title": "Port",
+                              "description": "Port for the HTTP server.",
+                              "minimum": 1,
+                              "maximum": 65535
+                            },
+                            "scheme": {
+                              "$ref": "#/components/schemas/enum.URIScheme"
+                            },
+                            "http_headers": {
+                              "type": "array",
+                              "title": "HTTP Headers",
+                              "description": "Custom headers for the request.",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "title": "Header Name",
+                                    "format": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "title": "Header Value",
+                                    "format": "^[\\x20-\\x7E]*$"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "tcp_socket": {
+                          "type": "object",
+                          "title": "TCP Socket Probe",
+                          "description": "Checks if a TCP port is open.",
+                          "required": [
+                            "port"
+                          ],
+                          "properties": {
+                            "port": {
+                              "type": "integer",
+                              "title": "Port",
+                              "description": "TCP port to check.",
+                              "minimum": 1,
+                              "maximum": 65535
+                            }
+                          }
+                        },
+                        "exec": {
+                          "type": "object",
+                          "title": "Exec Probe",
+                          "description": "Runs a command inside the container to check health.",
+                          "required": [
+                            "command"
+                          ],
+                          "properties": {
+                            "command": {
+                              "type": "array",
+                              "title": "Command",
+                              "description": "Command to execute. Exit code 0 is healthy.",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "resources": {
+                  "type": "object",
+                  "title": "Resource Configuration",
+                  "properties": {
+                    "requests": {
+                      "type": "object",
+                      "title": "Resource Requests",
+                      "properties": {
+                        "cpu": {
+                          "type": "string",
+                          "title": "CPU Request",
+                          "description": "Minimum CPU required.",
+                          "format": "^([0-9]+m|[0-9]+(\\.[0-9]+)?|[0-9]+)$"
+                        },
+                        "memory": {
+                          "type": "string",
+                          "title": "Memory Request",
+                          "description": "Minimum memory required.",
+                          "format": "^([0-9]+(\\.[0-9]+)?(Ei|Pi|Ti|Gi|Mi|Ki|E|P|T|G|M|K)?|[0-9]+)$"
+                        }
+                      }
+                    },
+                    "limits": {
+                      "type": "object",
+                      "properties": {
+                        "cpu": {
+                          "type": "string",
+                          "title": "CPU Limit",
+                          "description": "Maximum CPU allowed.",
+                          "format": "^([0-9]+m|[0-9]+(\\.[0-9]+)?|[0-9]+)$"
+                        },
+                        "memory": {
+                          "type": "string",
+                          "title": "Memory Limit",
+                          "description": "Maximum memory allowed.",
+                          "format": "^([0-9]+(\\.[0-9]+)?(Ei|Pi|Ti|Gi|Mi|Ki|E|P|T|G|M|K)?|[0-9]+)$"
+                        }
+                      }
+                    }
+                  }
+                },
+                "privileged": {
+                  "type": "boolean",
+                  "description": "Run the container in privileged mode.",
+                  "default": false
+                },
+                "environment_vars": {
+                  "type": "array",
+                  "title": "Environment Variables",
+                  "description": "List of environment variables.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "title": "Variable Name",
+                        "description": "Name of the environment variable.",
+                        "format": "^[A-Za-z_][A-Za-z0-9_]*$"
+                      },
+                      "value": {
+                        "type": "string",
+                        "title": "Variable Value",
+                        "description": "Value of the environment variable."
+                      }
+                    }
+                  }
+                },
+                "ports": {
+                  "type": "array",
+                  "title": "Container Ports",
+                  "description": "List of ports exposed by the container.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "title": "Port Name",
+                        "description": "Name identifier for the port.",
+                        "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$"
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "Type of port to expose.",
+                        "enum": [
+                          "host",
+                          "service"
+                        ]
+                      },
+                      "host": {
+                        "type": "object",
+                        "title": "Host Configuration",
+                        "required": [
+                          "port"
+                        ],
+                        "properties": {
+                          "port": {
+                            "type": "integer",
+                            "title": "Host Port",
+                            "description": "Port on the host machine.",
+                            "minimum": 1,
+                            "maximum": 65535
+                          }
+                        }
+                      },
+                      "service": {
+                        "type": "object",
+                        "title": "Service Configuration",
+                        "required": [
+                          "port"
+                        ],
+                        "properties": {
+                          "port": {
+                            "type": "integer",
+                            "title": "Service Port",
+                            "description": "Port exposed by the service.",
+                            "minimum": 1,
+                            "maximum": 65535
+                          },
+                          "container_port": {
+                            "type": "integer",
+                            "title": "Container Port",
+                            "description": "Port exposed by the container.",
+                            "minimum": 1,
+                            "maximum": 65535
+                          },
+                          "exposed": {
+                            "type": "boolean",
+                            "title": "Exposed",
+                            "description": "Expose the port outside the cluster.",
+                            "default": false
+                          },
+                          "exposed_port": {
+                            "type": "integer",
+                            "title": "Exposed Port",
+                            "description": "Port exposed outside the cluster.",
+                            "minimum": 30001,
+                            "maximum": 32767
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "volumes": {
+                  "type": "array",
+                  "title": "Volumes",
+                  "description": "List of volumes mounted by the container.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "title": "Volume Name",
+                        "description": "Name identifier for the volume.",
+                        "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$"
+                      },
+                      "target": {
+                        "type": "string",
+                        "title": "Mount Path",
+                        "description": "Path where the volume is mounted."
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "Type of volume to use.",
+                        "enum": [
+                          "persistent",
+                          "host",
+                          "text"
+                        ]
+                      },
+                      "text": {
+                        "type": "object",
+                        "title": "Text Volume",
+                        "required": [
+                          "data"
+                        ],
+                        "properties": {
+                          "data": {
+                            "type": "string",
+                            "title": "Data",
+                            "description": "Text content of the volume."
+                          },
+                          "base64": {
+                            "type": "boolean",
+                            "title": "Base64 Encoded",
+                            "description": "Data is base64 encoded.",
+                            "default": false
+                          },
+                          "encoding": {
+                            "$ref": "#/components/schemas/enum.VolumeEncoding"
+                          }
+                        }
+                      },
+                      "host": {
+                        "type": "object",
+                        "title": "Host Volume",
+                        "required": [
+                          "source"
+                        ],
+                        "properties": {
+                          "source": {
+                            "type": "string",
+                            "title": "Source Path",
+                            "description": "Path on the host machine."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "staged": {
+              "type": "object",
+              "properties": {
+                "ready": {
+                  "type": "boolean",
+                  "description": "Staged workload ready to be applied."
+                },
+                "app_version": {
+                  "type": "string",
+                  "format": "semver",
+                  "description": "Version Number of the Kelvin App used for the Staged Workload."
+                },
+                "deployment_type": {
+                  "type": "string",
+                  "enum": [
+                    "standard",
+                    "staged+instant-apply",
+                    "staged-only"
+                  ],
+                  "description": "Specifies the method for deploying a workload on the platform.\n\n- `standard`: The default deployment method. The workload is\nautomatically created and started.\n- `staged+instant-apply`: Similar to `standard`, but if the workload\nexists with a different app image, the new image is downloaded before\nstopping the existing workload. This minimizes application downtime.\n- `staged-only`: Prepares the workload by downloading the necessary\nimages, but does not create or start the workload. The workload is only\nstarted upon explicit user request (see `/workloads/apply`)."
+                },
+                "status": {
+                  "type": "object",
+                  "description": "Realtime information about the Staged Workload as seen from the Cloud.",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "Descriptive, human-readable string for `state`."
+                    },
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "pending_deploy",
+                        "pending_update",
+                        "pending_start",
+                        "pending_stop",
+                        "pending_apply",
+                        "deploying",
+                        "running",
+                        "stopping",
+                        "stopped",
+                        "failed",
+                        "starting",
+                        "applying",
+                        "received",
+                        "downloading",
+                        "ready",
+                        "unreachable",
+                        "staged"
+                      ]
+                    },
+                    "warnings": {
+                      "type": "array",
+                      "description": "All warnings received for any Staged Workload operations.",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "runtime": {
+                  "type": "object",
+                  "properties": {
+                    "custom_actions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "type"
+                        ],
+                        "properties": {
+                          "type": {
+                            "type": "string",
+                            "description": "The type of the custom action."
+                          },
+                          "way": {
+                            "$ref": "#/components/schemas/enum.CAWay"
+                          }
+                        }
+                      }
+                    },
+                    "resources": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "resource": {
+                            "type": "string",
+                            "format": "krn"
+                          },
+                          "parameters": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "$ref": "#/components/schemas/type.PropertyValue"
+                            }
+                          },
+                          "datastreams": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "allOf": [
+                                {
+                                  "$ref": "#/components/schemas/type.WorkloadModifiableRuntimeResourceDatastream"
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "guardrail": {
+                                      "type": "object",
+                                      "properties": {
+                                        "control_disabled": {
+                                          "type": "boolean",
+                                          "default": false
+                                        },
+                                        "number": {
+                                          "$ref": "#/components/schemas/type.GuardrailNumberConfig"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "data_quality": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "$ref": "#/components/schemas/type.AppDataQuality"
+                            }
+                          },
+                          "properties": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "$ref": "#/components/schemas/type.PropertyValue"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "configuration": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "system": {
+                  "type": "object",
+                  "properties": {
+                    "health_check": {
+                      "type": "object",
+                      "title": "Health Check",
+                      "properties": {
+                        "liveness_probe": {
+                          "type": "object",
+                          "title": "Liveness Probe",
+                          "description": "Checks if the container is running. Failing the probe restarts the container.",
+                          "properties": {
+                            "initial_delay_seconds": {
+                              "type": "integer",
+                              "title": "Initial Delay (s)",
+                              "description": "Seconds to wait before starting probes.",
+                              "default": 1,
+                              "minimum": 0,
+                              "maximum": 2147483647
+                            },
+                            "period_seconds": {
+                              "type": "integer",
+                              "title": "Probe Interval (s)",
+                              "description": "Frequency of probe execution.",
+                              "default": 10,
+                              "minimum": 1,
+                              "maximum": 2147483647
+                            },
+                            "timeout_seconds": {
+                              "type": "integer",
+                              "title": "Timeout (s)",
+                              "description": "Seconds before the probe times out.",
+                              "default": 1,
+                              "minimum": 1,
+                              "maximum": 2147483647
+                            },
+                            "failure_threshold": {
+                              "type": "integer",
+                              "title": "Failure Threshold",
+                              "description": "Failures before restarting the container.",
+                              "default": 3,
+                              "minimum": 1,
+                              "maximum": 2147483647
+                            },
+                            "type": {
+                              "$ref": "#/components/schemas/enum.LivenessProbeType"
+                            },
+                            "http_get": {
+                              "type": "object",
+                              "title": "HTTP GET Probe",
+                              "description": "Performs an HTTP GET request to check health.",
+                              "required": [
+                                "port"
+                              ],
+                              "properties": {
+                                "path": {
+                                  "type": "string",
+                                  "title": "Path",
+                                  "description": "HTTP path to access."
+                                },
+                                "port": {
+                                  "type": "integer",
+                                  "title": "Port",
+                                  "description": "Port for the HTTP server.",
+                                  "minimum": 1,
+                                  "maximum": 65535
+                                },
+                                "scheme": {
+                                  "$ref": "#/components/schemas/enum.URIScheme"
+                                },
+                                "http_headers": {
+                                  "type": "array",
+                                  "title": "HTTP Headers",
+                                  "description": "Custom headers for the request.",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "name": {
+                                        "type": "string",
+                                        "title": "Header Name",
+                                        "format": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"
+                                      },
+                                      "value": {
+                                        "type": "string",
+                                        "title": "Header Value",
+                                        "format": "^[\\x20-\\x7E]*$"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            },
+                            "tcp_socket": {
+                              "type": "object",
+                              "title": "TCP Socket Probe",
+                              "description": "Checks if a TCP port is open.",
+                              "required": [
+                                "port"
+                              ],
+                              "properties": {
+                                "port": {
+                                  "type": "integer",
+                                  "title": "Port",
+                                  "description": "TCP port to check.",
+                                  "minimum": 1,
+                                  "maximum": 65535
+                                }
+                              }
+                            },
+                            "exec": {
+                              "type": "object",
+                              "title": "Exec Probe",
+                              "description": "Runs a command inside the container to check health.",
+                              "required": [
+                                "command"
+                              ],
+                              "properties": {
+                                "command": {
+                                  "type": "array",
+                                  "title": "Command",
+                                  "description": "Command to execute. Exit code 0 is healthy.",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "resources": {
+                      "type": "object",
+                      "title": "Resource Configuration",
+                      "properties": {
+                        "requests": {
+                          "type": "object",
+                          "title": "Resource Requests",
+                          "properties": {
+                            "cpu": {
+                              "type": "string",
+                              "title": "CPU Request",
+                              "description": "Minimum CPU required.",
+                              "format": "^([0-9]+m|[0-9]+(\\.[0-9]+)?|[0-9]+)$"
+                            },
+                            "memory": {
+                              "type": "string",
+                              "title": "Memory Request",
+                              "description": "Minimum memory required.",
+                              "format": "^([0-9]+(\\.[0-9]+)?(Ei|Pi|Ti|Gi|Mi|Ki|E|P|T|G|M|K)?|[0-9]+)$"
+                            }
+                          }
+                        },
+                        "limits": {
+                          "type": "object",
+                          "properties": {
+                            "cpu": {
+                              "type": "string",
+                              "title": "CPU Limit",
+                              "description": "Maximum CPU allowed.",
+                              "format": "^([0-9]+m|[0-9]+(\\.[0-9]+)?|[0-9]+)$"
+                            },
+                            "memory": {
+                              "type": "string",
+                              "title": "Memory Limit",
+                              "description": "Maximum memory allowed.",
+                              "format": "^([0-9]+(\\.[0-9]+)?(Ei|Pi|Ti|Gi|Mi|Ki|E|P|T|G|M|K)?|[0-9]+)$"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "privileged": {
+                      "type": "boolean",
+                      "description": "Run the container in privileged mode.",
+                      "default": false
+                    },
+                    "environment_vars": {
+                      "type": "array",
+                      "title": "Environment Variables",
+                      "description": "List of environment variables.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "title": "Variable Name",
+                            "description": "Name of the environment variable.",
+                            "format": "^[A-Za-z_][A-Za-z0-9_]*$"
+                          },
+                          "value": {
+                            "type": "string",
+                            "title": "Variable Value",
+                            "description": "Value of the environment variable."
+                          }
+                        }
+                      }
+                    },
+                    "ports": {
+                      "type": "array",
+                      "title": "Container Ports",
+                      "description": "List of ports exposed by the container.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "title": "Port Name",
+                            "description": "Name identifier for the port.",
+                            "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$"
+                          },
+                          "type": {
+                            "$ref": "#/components/schemas/enum.PortType"
+                          },
+                          "host": {
+                            "type": "object",
+                            "title": "Host Configuration",
+                            "required": [
+                              "port"
+                            ],
+                            "properties": {
+                              "port": {
+                                "type": "integer",
+                                "title": "Host Port",
+                                "description": "Port on the host machine.",
+                                "minimum": 1,
+                                "maximum": 65535
+                              }
+                            }
+                          },
+                          "service": {
+                            "type": "object",
+                            "title": "Service Configuration",
+                            "required": [
+                              "port"
+                            ],
+                            "properties": {
+                              "port": {
+                                "type": "integer",
+                                "title": "Service Port",
+                                "description": "Port exposed by the service.",
+                                "minimum": 1,
+                                "maximum": 65535
+                              },
+                              "container_port": {
+                                "type": "integer",
+                                "title": "Container Port",
+                                "description": "Port exposed by the container.",
+                                "minimum": 1,
+                                "maximum": 65535
+                              },
+                              "exposed": {
+                                "type": "boolean",
+                                "title": "Exposed",
+                                "description": "Expose the port outside the cluster.",
+                                "default": false
+                              },
+                              "exposed_port": {
+                                "type": "integer",
+                                "title": "Exposed Port",
+                                "description": "Port exposed outside the cluster.",
+                                "minimum": 30001,
+                                "maximum": 32767
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "volumes": {
+                      "type": "array",
+                      "title": "Volumes",
+                      "description": "List of volumes mounted by the container.",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "title": "Volume Name",
+                            "description": "Name identifier for the volume.",
+                            "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$"
+                          },
+                          "target": {
+                            "type": "string",
+                            "title": "Mount Path",
+                            "description": "Path where the volume is mounted."
+                          },
+                          "type": {
+                            "$ref": "#/components/schemas/enum.VolumeType"
+                          },
+                          "text": {
+                            "type": "object",
+                            "title": "Text Volume",
+                            "required": [
+                              "data"
+                            ],
+                            "properties": {
+                              "data": {
+                                "type": "string",
+                                "title": "Data",
+                                "description": "Text content of the volume."
+                              },
+                              "base64": {
+                                "type": "boolean",
+                                "title": "Base64 Encoded",
+                                "description": "Data is base64 encoded.",
+                                "default": false
+                              },
+                              "encoding": {
+                                "$ref": "#/components/schemas/enum.VolumeEncoding"
+                              }
+                            }
+                          },
+                          "host": {
+                            "type": "object",
+                            "title": "Host Volume",
+                            "required": [
+                              "source"
+                            ],
+                            "properties": {
+                              "source": {
+                                "type": "string",
+                                "title": "Source Path",
+                                "description": "Path on the host machine."
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "created_at": {
+              "type": "string",
+              "description": "UTC time when the object was created, formatted in RFC 3339.",
+              "format": "date-time"
+            },
+            "created_by": {
+              "type": "string",
+              "description": "KRN of the user or process that created the object.",
+              "format": "krn",
+              "example": "krn:user:me@example.com"
+            },
+            "updated_at": {
+              "type": "string",
+              "description": "UTC time when any keys were last updated, formatted in RFC 3339.",
+              "format": "date-time"
+            },
+            "updated_by": {
+              "type": "string",
+              "description": "KRN of the user or process that last updated any of the keys.",
+              "format": "krn",
+              "example": "krn:user:me@example.com"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

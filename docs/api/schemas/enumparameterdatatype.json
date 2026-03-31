@@ -1,0 +1,30 @@
+{
+  "id": "api/schemas/parameterdatatype",
+  "title": "ParameterDataType",
+  "type": "schema",
+  "category": "api",
+  "content": "# ParameterDataType\n\nThe data type of the parameter. It can be `string`, `number`, or `boolean`.\n\n## Enum Values\n\n- `string`\n- `number`\n- `boolean`",
+  "summary": "The data type of the parameter. It can be `string`, `number`, or `boolean`.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.ParameterDataType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "string",
+        "number",
+        "boolean"
+      ],
+      "description": "The data type of the parameter. It can be `string`, `number`, or `boolean`."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

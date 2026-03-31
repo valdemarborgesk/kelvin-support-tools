@@ -1,0 +1,24 @@
+{
+  "id": "how-to/parameters/smartapp-details-tab-parameters-schedule-create",
+  "title": "Create Schedule",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Create Schedule\n\nSelect the Asset or Assets you want to set a scheduled parameter change.\n\nChange the parameters that you want to update.\n\nClick the down arrow at the right hand side of the **Apply** button and click on **Schedule** option.\n\nChoose a Scheduling Option. For this example we will choose **Change and Revert**\n\n    **Change Once** will change the parameters at the scheduled time and then mark the schedule completed.\n\n    **Change and Revert** will change the parameters at the scheduled time and then change them again to a second value at a second scheduled time. Then the schedule will be marked completed. You will see the options of what value to put in the second value later in this page.\n\nSelect the date and time for the change and the revert.\n\n    The revert time must be a date/time that occurs after the change date/time.\n\nThe **Select One Type** option only appears if you have selected **Change and Revert** option above. This will define what parameter values to put into the Assets during the revert stage of the Scheduled Parameter change event.\n\n| Type | Description |\n| --- | --- |\n| Last Defined Values | The original parameter values of each Asset will be written to the parameter at the revert date/time |\n| User Specified Values | You can select new parameter values for each Parameter that has been changed. All Assets will receive the same Parameter value at the revert date/time. |\n| Application Defined Values | The default values of each App Parameter value will be written to the parameter at the revert date/time |\n\nFor this example we will select **User Specified Values** and put in our revert values for each parameter.\n\n    Only parameters that were changed will be show here for a revert value. Any parameters that were not changed will not be shown here. For example `GAS FLOW RATE MIN THRESHOLD` does not appear as you did not request an initial value change.\n\nOptionally you can add a note for future reference about this scheduled change.\n\nThen click **Schedule to Apply**.\n\nYou will then see your schedule appear under the **Schedules** tab.",
+  "summary": "Select the Asset or Assets you want to set a scheduled parameter change. Change the parameters that you want to update. Click the down arrow at the right hand side of the Apply button and click on Schedule option.",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/parameters/smartapp-details-tab-parameters-schedule-create.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "configure",
+    "create",
+    "operations",
+    "schedule"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

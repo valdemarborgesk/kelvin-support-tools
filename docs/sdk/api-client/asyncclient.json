@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.client/asyncclient",
+  "title": "AsyncClient",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AsyncClient\n\nInherits from: AsyncBaseClient\n\n\nKelvin API Async Client.\n\nParameters\n----------\npassword : :obj:`str`, optional\n    Password for obtaining access token\ntotp : :obj:`str`, optional\n    Time-based one-time password\nverbose : :obj:`bool`, optional\n    Log requests/responses\n",
+  "summary": "Kelvin API Async Client.",
+  "source": "api/src/kelvin/api/client/client.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.client.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.client",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "id": "api/schemas/customactiontransitions",
+  "title": "CustomActionTransitions",
+  "type": "schema",
+  "category": "api",
+  "content": "# CustomActionTransitions\n\n\n## Properties\n\n- **status_logs** (`array`): The transitions array contains a list of entries that describe the action state transitions.",
+  "summary": "Object with properties: status_logs",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.CustomActionTransitions",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "status_logs": {
+          "type": "array",
+          "description": "The transitions array contains a list of entries that describe the action state transitions.",
+          "items": {
+            "properties": {
+              "state": {
+                "type": "string",
+                "description": "The state of an action.",
+                "enum": [
+                  "pending",
+                  "ready",
+                  "in_progress",
+                  "completed",
+                  "cancelled",
+                  "failed"
+                ]
+              },
+              "failure_reason": {
+                "type": "string",
+                "description": "The error type of an action, if any.\n\n* `none`: No error. The same as empty, used when the action is not completed or completed successfully.\n* `reported_failed`: The action was reported as failed by the executor.\n* `expired`: The action was not delivered to an executor before the expiration date.\n* `lost`: The action was delivered to the executor, but the executor restarted without reporting the status.\n* `executor_gone`: The action was delivered to the executor, but the executor is no longer available and the expiration date was reached.\n* `other`: Other error.",
+                "enum": [
+                  "none",
+                  "other",
+                  "reported_failed",
+                  "expired",
+                  "lost",
+                  "executor_gone"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "description": "A message associated with the state transition."
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "source": {
+                "type": "string",
+                "format": "krn"
+              }
+            },
+            "required": [
+              "state",
+              "timestamp",
+              "source"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.models.apps.ksdk-app-configuration/volumehost",
+  "title": "VolumeHost",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# VolumeHost\n\nInherits from: KSDKModel\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/apps/ksdk_app_configuration.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.apps.ksdk_app_configuration",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

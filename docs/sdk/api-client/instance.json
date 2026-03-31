@@ -1,0 +1,41 @@
+{
+  "id": "sdk/api-client/client.api.instance/instance",
+  "title": "Instance",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Instance\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### list_instance_audit_logs(action: Optional[Sequence[str]], user_id: Optional[Sequence[str]], namespace: Optional[Sequence[str]], identifier: Optional[Sequence[str]], username: Optional[Sequence[str]], request_id: Optional[Sequence[str]], search: Optional[Sequence[str]], from_date_time: Optional[datetime], to_date_time: Optional[datetime], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.InstanceAuditLogGetItem], responses.InstanceAuditLogsListPaginatedResponseCursor]\n\nList Audit Log **Permission Required:** `kelvin.permission.audit_log.read`.\n\n\n### get_instance_audit_log(audit_logger_id: int, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.InstanceAuditLogGet\n\nGet Audit Log\n\n\n### get_instance_settings_kelvin_cluster(_dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.InstanceSettingsKelvinClusterGet\n\nRetrieve the Cluster Instance Settings.\n\n\n### update_instance_settings_kelvin_cluster(data: Optional[Union[requests.InstanceSettingsKelvinClusterUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.InstanceSettingsKelvinClusterUpdate\n\nUpdates an existing Kelvin Cluster Instance Settings with any new values passed through the body parameters. All body parameters are optional and if not provided will remain unchanged.\n\n\n### list_instance_settings(names: Optional[Sequence[str]], search: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.InstanceSettings], responses.InstanceSettingsListPaginatedResponseCursor]\n\nList Instance Settings\n\n\n### delete_instance_setting(setting_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete an existing Instance Setting. This cannot be undone once the API request has been submitted.\n\n\n### get_instance_settings(setting_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.InstanceSettingsGet\n\nRetrieve the parameters of an Instance Setting.\n\n\n### update_instance_settings(setting_name: str, data: Optional[Union[requests.InstanceSettingsUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.InstanceSettingsUpdate\n\nUpdate an existing Instance Settings. Any parameters that are not provided will remain unchanged.\n\n\n### get_instance_status(_dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.InstanceStatusGet\n\nRetrieve the Health Status of all services on the Instance\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/instance.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.instance.list_instance_audit_logs()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.instance",
+    "item_type": "class",
+    "methods": [
+      "list_instance_audit_logs",
+      "get_instance_audit_log",
+      "get_instance_settings_kelvin_cluster",
+      "update_instance_settings_kelvin_cluster",
+      "list_instance_settings",
+      "delete_instance_setting",
+      "get_instance_settings",
+      "update_instance_settings",
+      "get_instance_status"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

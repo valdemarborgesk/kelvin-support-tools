@@ -1,0 +1,30 @@
+{
+  "id": "sdk/cli/sdk.lib.models.generic/ksdkmodel",
+  "title": "KSDKModel",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KSDKModel\n\nInherits from: BaseModel\n\n\nExtends Pydantic BaseModel with a few additional functionalities.\n\n\n## Methods\n\n\n### to_file(path: KPath, sort_keys: bool) -> Any\n\nAuxiliary method to output the contents of the current model into a file\n\n\n### from_yaml(path: KPath) -> Self\n\nCreate a model instance from a yaml file.\n\n\n### output_schema(output_file_path: KPath) -> bool\n\nOutput the current model's schema to the specified file.\n",
+  "summary": "Extends Pydantic BaseModel with a few additional functionalities.",
+  "source": "cli/src/kelvin/sdk/lib/models/generic.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.generic",
+    "item_type": "class",
+    "methods": [
+      "to_file",
+      "from_yaml",
+      "output_schema"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

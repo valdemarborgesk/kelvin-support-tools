@@ -1,0 +1,31 @@
+{
+  "id": "api/schemas/assetinsightsstate",
+  "title": "AssetInsightsState",
+  "type": "schema",
+  "category": "api",
+  "content": "# AssetInsightsState\n\nCurrent status (`state`) of the Asset.\n\n## Enum Values\n\n- `online`\n- `offline`\n- `unknown`",
+  "summary": "Current status (`state`) of the Asset.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.AssetInsightsState",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "example": "offline",
+      "enum": [
+        "online",
+        "offline",
+        "unknown"
+      ],
+      "description": "Current status (`state`) of the Asset."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

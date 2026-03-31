@@ -1,0 +1,154 @@
+{
+  "id": "api/schemas/livenessprobe",
+  "title": "LivenessProbe",
+  "type": "schema",
+  "category": "api",
+  "content": "# LivenessProbe\n\nChecks if the container is running. Failing the probe restarts the container.\n\n\n## Properties\n\n- **initial_delay_seconds** (`integer`): Seconds to wait before starting probes.\n- **period_seconds** (`integer`): Frequency of probe execution.\n- **timeout_seconds** (`integer`): Seconds before the probe times out.\n- **failure_threshold** (`integer`): Failures before restarting the container.\n- **type** (`string`): Method to perform the health check.\n- **http_get** (`object`): Performs an HTTP GET request to check health.\n- **tcp_socket** (`object`): Checks if a TCP port is open.\n- **exec** (`object`): Runs a command inside the container to check health.",
+  "summary": "Checks if the container is running. Failing the probe restarts the container.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "manifest",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "manifest.LivenessProbe",
+    "schema_type": "manifest",
+    "schema": {
+      "type": "object",
+      "title": "Liveness Probe",
+      "description": "Checks if the container is running. Failing the probe restarts the container.",
+      "properties": {
+        "initial_delay_seconds": {
+          "type": "integer",
+          "title": "Initial Delay (s)",
+          "description": "Seconds to wait before starting probes.",
+          "default": 1,
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "period_seconds": {
+          "type": "integer",
+          "title": "Probe Interval (s)",
+          "description": "Frequency of probe execution.",
+          "default": 10,
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "timeout_seconds": {
+          "type": "integer",
+          "title": "Timeout (s)",
+          "description": "Seconds before the probe times out.",
+          "default": 1,
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "failure_threshold": {
+          "type": "integer",
+          "title": "Failure Threshold",
+          "description": "Failures before restarting the container.",
+          "default": 3,
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "type": {
+          "type": "string",
+          "description": "Method to perform the health check.",
+          "enum": [
+            "http_get",
+            "tcp_socket",
+            "exec"
+          ]
+        },
+        "http_get": {
+          "type": "object",
+          "title": "HTTP GET Probe",
+          "description": "Performs an HTTP GET request to check health.",
+          "required": [
+            "port"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "title": "Path",
+              "description": "HTTP path to access."
+            },
+            "port": {
+              "type": "integer",
+              "title": "Port",
+              "description": "Port for the HTTP server.",
+              "minimum": 1,
+              "maximum": 65535
+            },
+            "scheme": {
+              "type": "string",
+              "description": "Protocol to use.",
+              "enum": [
+                "http",
+                "https"
+              ]
+            },
+            "http_headers": {
+              "type": "array",
+              "title": "HTTP Headers",
+              "description": "Custom headers for the request.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "title": "Header Name",
+                    "format": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"
+                  },
+                  "value": {
+                    "type": "string",
+                    "title": "Header Value",
+                    "format": "^[\\x20-\\x7E]*$"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tcp_socket": {
+          "type": "object",
+          "title": "TCP Socket Probe",
+          "description": "Checks if a TCP port is open.",
+          "required": [
+            "port"
+          ],
+          "properties": {
+            "port": {
+              "type": "integer",
+              "title": "Port",
+              "description": "TCP port to check.",
+              "minimum": 1,
+              "maximum": 65535
+            }
+          }
+        },
+        "exec": {
+          "type": "object",
+          "title": "Exec Probe",
+          "description": "Runs a command inside the container to check health.",
+          "required": [
+            "command"
+          ],
+          "properties": {
+            "command": {
+              "type": "array",
+              "title": "Command",
+              "description": "Command to execute. Exit code 0 is healthy.",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

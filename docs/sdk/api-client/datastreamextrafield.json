@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/datastreamextrafield",
+  "title": "DatastreamExtraField",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DatastreamExtraField\n\nInherits from: DataModelBase\n\n\nDatastreamExtraField object.\n\nParameters\n----------\n    computation: Optional[DatastreamExtraFieldComputation]\n    datastream_name: Optional[StrictStr]\n    name: Optional[StrictStr]\n    filters: Optional[list[AssetInsightsFilter]]\n",
+  "summary": "DatastreamExtraField object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

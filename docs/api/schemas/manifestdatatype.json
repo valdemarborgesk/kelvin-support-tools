@@ -1,0 +1,25 @@
+{
+  "id": "api/schemas/datatype",
+  "title": "DataType",
+  "type": "schema",
+  "category": "api",
+  "content": "# DataType\n\nPrimitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects.\n",
+  "summary": "Primitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "manifest",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "manifest.DataType",
+    "schema_type": "manifest",
+    "schema": {
+      "type": "string",
+      "description": "Primitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

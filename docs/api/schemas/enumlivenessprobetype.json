@@ -1,0 +1,30 @@
+{
+  "id": "api/schemas/livenessprobetype",
+  "title": "LivenessProbeType",
+  "type": "schema",
+  "category": "api",
+  "content": "# LivenessProbeType\n\nMethod to perform the health check.\n\n## Enum Values\n\n- `http_get`\n- `tcp_socket`\n- `exec`",
+  "summary": "Method to perform the health check.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.LivenessProbeType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "description": "Method to perform the health check.",
+      "enum": [
+        "http_get",
+        "tcp_socket",
+        "exec"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

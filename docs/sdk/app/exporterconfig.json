@@ -1,0 +1,33 @@
+{
+  "id": "sdk/app/config.exporter/exporterconfig",
+  "title": "ExporterConfig",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ExporterConfig\n\nInherits from: AppBaseConfig\n\n\n## Methods\n\n\n### to_manifest(read_schemas: bool, workdir: Path) -> AppManifest\n",
+  "summary": "",
+  "source": "app/src/kelvin/config/exporter.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import ExporterConfig\n\n# Usage example\napp = ExporterConfig()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "config.exporter",
+    "item_type": "class",
+    "methods": [
+      "to_manifest"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

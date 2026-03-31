@@ -1,0 +1,33 @@
+{
+  "id": "how-to/advanced/set-cpu-and-memory-limits",
+  "title": "Set Cpu And Memory Limits",
+  "type": "how_to",
+  "category": "development",
+  "content": "## Set CPU and Memory Limits\nThe amount of CPU and memory reserved for each app can be individually tailored to suit the app's requirements. Complex Kelvin SmartApps™ will require more and simpler ones will require less.\n\nBy managing these resources manually, you can maximize how many Kelvin SmartApps™ can run on your existing cluster hardware.\n\nYou can define the CPU and memory resources for Kelvin SmartApps™ in the `app.yaml` file. Here is an example of the settings:\n\n```yaml title=\"app.yaml Example\" linenums=\"1\"\nspec_version: 5.0.0\n\n  ...\n\ndefaults:\n  system:\n    resources:\n      limits:\n        cpu: 100m\n        memory: 512Mi\n      requests:\n        cpu: 100m\n        memory: 512Mi\n```\n\nAnd here's the definition of the settings:\n\n* **Limits:** This is a maximum resource limit enforced by the cluster. Kelvin SmartApps™ will not be allowed to use more than the limit set.\n\n* **Requests:** This is the minimum resources that is allocated to Kelvin SmartApps™. This is reserved for Kelvin SmartApps™ and can not be used by other Kelvin SmartApps™. If there are extra resources available, Kelvin SmartApps™ can use more than the requested resources as long as it does not exceed the Limits.\n\n    For example you set the memory allocation for Kelvin SmartApps™ requests at 250 MB and Limits at 1 GB. The cluster will reserve the 250MB exclusively to Kelvin SmartApps™. If Kelvin SmartApps™ needs more memory and it is available, the Cluster will expand the memory available up to a maximum of 1GB.\n\nThe **reserved** CPU and memory allocations might differ from the **actual** CPU and memory usage. \"Reserved\" signifies that these resources are allocated within the cluster and aren't available to other Kelvin SmartApps™.\n\n  Within any cluster, the total **reserved** resources cannot exceed the physically available resources. If Kelvin SmartApps™ deployment fails, it might be due to insufficient resources to reserve the necessary amount for the app.\n\n  While you might see sufficient resources available based on current usage, remember that this represents the actual usage, not the cumulative reserved resources.\n\n### Resource Definitions\n#### CPU\nCPU is allocated in absolute quantities only. 1.0 CPU is equivalent to one hyperthread on an Intel core processor. There are two different ways that you can write the allocation. For example 1/10 of one hyperthread is:\n\n* 0.1\n* 100m\n\n    The absolute minimum you can allocate is 1m or 0.001.\n\n#### Memory\nYou can allocate memory as either an integer in bytes or in multiples of G, M, k or Gi, Mi, Ki. When defining in the app.yaml do not write the \"B\" for bytes. For example the number below is approximately the same;\n\n* 128974848\n* 129e6\n* 129M\n* 123Mi\n\n    What is the difference between M and Mi ?\n\n    One M is defined as 1000^2 (1,000,000) whereas one Mi is defined as 1024^2 (1,048,576).\n\n### Resource Allocation Troubleshooting\n\n| Problem                                                                                                                 | Possible Solutions                                                                                                                                                                                                                                                                               |\n| ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| CPU for Kelvin SmartApps™ is very high, what happens if it reaches the limit ?                                            | Kelvin SmartApps™ will continue to run but the CPU will be throttled to the maximum limit of the CPU.                                                                                                                                                                                              |\n| The memory is very high, what happens if it reaches the limit ?                                                         | Kelvin SmartApps™ will be stopped and restarted. **You may lose data.** To avoid this raise the Limit of the memory for Kelvin SmartApps™. Add extra physical memory to the cluster computer if required.                                                         |\n| I don't know the default settings for the app resource allocation.                                                      | There are no default settings for resource allocation. If you don't define anything in the `app.yaml` Kelvin SmartApps™ does not have limits or requests.                                                                                                                                          |\n| Do I need to set a limit ? Is it ok to just set the requests ?                                                          | Yes. The limits will automatically be the full resources of the computer. **If there is a memory leak or a bug you may overwhelm the system. It is strongly advised that you always set a limit**.                                                                   |\n| Can I set the app resource allocation settings without redeploying ?                                                    | No. You will need to redeploy Kelvin SmartApps™ after changing the configuration settings.                                                                                                                                                                                                         |",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/advanced/set-cpu-and-memory-limits.md",
+  "code_examples": [
+    {
+      "language": "yaml",
+      "code": "spec_version: 5.0.0\n\n  ...\n\ndefaults:\n  system:\n    resources:\n      limits:\n        cpu: 100m\n        memory: 512Mi\n      requests:\n        cpu: 100m\n        memory: 512Mi",
+      "title": "app.yaml Example"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "configure",
+    "cpu",
+    "deploy",
+    "development",
+    "limits",
+    "memory",
+    "set",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

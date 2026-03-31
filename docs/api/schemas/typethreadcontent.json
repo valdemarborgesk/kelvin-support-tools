@@ -1,0 +1,103 @@
+{
+  "id": "api/schemas/threadcontent",
+  "title": "ThreadContent",
+  "type": "schema",
+  "category": "api",
+  "content": "# ThreadContent\n\n\n## Properties\n\n- **attachments** (`array`): \n- **mentions** (`array`): \n- **replies** (`array`): \n- **text** (`string`): ",
+  "summary": "Object with properties: attachments, mentions, replies, text",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.ThreadContent",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "attachments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "extension": {
+                "type": "string"
+              },
+              "filename": {
+                "type": "string"
+              },
+              "size": {
+                "type": "integer"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "mentions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "replies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "object",
+                "properties": {
+                  "attachments": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/type.ThreadAttachment"
+                    }
+                  },
+                  "mentions": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "replies": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/type.ThreadReply"
+                    }
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                }
+              },
+              "created": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "id": {
+                "type": "string"
+              },
+              "updated": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "user_id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

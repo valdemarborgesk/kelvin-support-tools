@@ -1,0 +1,61 @@
+{
+  "id": "api/schemas/rolepolicycondition",
+  "title": "RolePolicyCondition",
+  "type": "schema",
+  "category": "api",
+  "content": "# RolePolicyCondition\n\n\n## Properties\n\n- **match** (`object`): ",
+  "summary": "Object with properties: match",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.RolePolicyCondition",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "required": [
+        "match"
+      ],
+      "properties": {
+        "match": {
+          "type": "object",
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/type.RoleConditionExpr"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "all": {
+                  "$ref": "#/components/schemas/type.RoleConditionExprList"
+                }
+              },
+              "required": [
+                "all"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "any": {
+                  "$ref": "#/components/schemas/type.RoleConditionExprList"
+                }
+              },
+              "required": [
+                "any"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

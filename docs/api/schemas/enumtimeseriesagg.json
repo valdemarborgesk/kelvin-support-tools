@@ -1,0 +1,43 @@
+{
+  "id": "api/schemas/timeseriesagg",
+  "title": "TimeseriesAgg",
+  "type": "schema",
+  "category": "api",
+  "content": "# TimeseriesAgg\n\nPerforms mathematical calculations on the Time Series values and returns the calculated results only. Depending on enumerator used `time_bucket` may also be required.\n\n## Enum Values\n\n- `none`\n- `count`\n- `distinct`\n- `integral`\n- `mean`\n- `median`\n- `mode`\n- `spread`\n- `stddev`\n- `sum`\n- `max`\n- `min`\n- `first`\n- `last`",
+  "summary": "Performs mathematical calculations on the Time Series values and returns the calculated results only. Depending on enumerator used `time_bucket` may also be required.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.TimeseriesAgg",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "example": "mean",
+      "default": "none",
+      "enum": [
+        "none",
+        "count",
+        "distinct",
+        "integral",
+        "mean",
+        "median",
+        "mode",
+        "spread",
+        "stddev",
+        "sum",
+        "max",
+        "min",
+        "first",
+        "last"
+      ],
+      "description": "Performs mathematical calculations on the Time Series values and returns the calculated results only. Depending on enumerator used `time_bucket` may also be required."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

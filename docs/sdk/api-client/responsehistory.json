@@ -1,0 +1,37 @@
+{
+  "id": "sdk/api-client/base.http-tools.history/responsehistory",
+  "title": "ResponseHistory",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ResponseHistory\n\n\nA history of HTTP responses.\n\nThis class provides methods to retrieve information about the responses\nstored in the history, such as status codes, successful responses, and error\nresponses.\n\n\n## Methods\n\n\n### get_status_codes() -> list[int]\n\nGet a list of all status codes from stored responses.\n\n\n### get_successful_responses() -> list[httpx.Response]\n\nGet all successful responses (status codes 2xx).\n\n\n### get_error_responses() -> list[httpx.Response]\n\nGet all error responses (status codes 4xx and 5xx).\n\n\n### filter_by_status_code(status_code: int) -> list[httpx.Response]\n\nFilter responses by a specific status code.\n\n\n### filter_by_url_pattern(pattern: str) -> list[httpx.Response]\n\nFilter responses by URL pattern.\n",
+  "summary": "A history of HTTP responses.",
+  "source": "api/src/kelvin/api/base/http_tools/history.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.http_tools.history.get_status_codes()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.http_tools.history",
+    "item_type": "class",
+    "methods": [
+      "get_status_codes",
+      "get_successful_responses",
+      "get_error_responses",
+      "filter_by_status_code",
+      "filter_by_url_pattern"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

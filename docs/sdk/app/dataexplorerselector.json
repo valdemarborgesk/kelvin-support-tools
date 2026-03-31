@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.evidences/dataexplorerselector",
+  "title": "DataExplorerSelector",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataExplorerSelector\n\nInherits from: BaseModel\n\n\nData selector to define specific resources and aggregations.\n\nAttributes:\n    resource (KRNAssetDataStream | KRNAssetDataStreamDataQuality | KRNAssetDataQuality): The resource to select.\n    agg (Optional[AggregationTypes]): The aggregation type to apply.\n    time_bucket (Optional[str]): The time bucket of the aggregation.\n",
+  "summary": "Data selector to define specific resources and aggregations.",
+  "source": "app/src/kelvin/message/evidences.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import DataExplorerSelector\n\n# Usage example\napp = DataExplorerSelector()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.evidences",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

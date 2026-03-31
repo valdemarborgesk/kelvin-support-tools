@@ -1,0 +1,24 @@
+{
+  "id": "how-to/deploy/deploy-workloads-delete",
+  "title": "Delete a Workload",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Delete a Workload\n\nThis option allows you to delete (undeploy) the Workload.\n\n    This action is permanent and can not be undone. You will need to deploy a new workload with all the right settings.\n\n<div class=\"result\" markdown>\n\n=== \"Running Workload\"\n\n    \n        This will also undeploy any staged versions of the workload as well.\n\n    To start, go to **Applications** and select any Application\n\n    Click on the **Delete Workload** icon { width=20 height=20 }.\n\n    \n\n    Type **PERMANENTLY DELETE** to confirm deletion.\n\n    \n\n=== \"Staged Workload\"\n\n    To start, go to **Applications** and select any Application and click on the **Workloads** tab.\n\n    \n\n    Then expand the line to see the staged workload and click on the delete button to delete the staged workload.\n\n    \n        This will not affect the Workload that is currently running.",
+  "summary": "This option allows you to delete (undeploy) the Workload.",
+  "source": "core-docs/docs/developer-tools/how-to/deploy/deploy-workloads-delete.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "delete",
+    "deploy",
+    "development",
+    "workload"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

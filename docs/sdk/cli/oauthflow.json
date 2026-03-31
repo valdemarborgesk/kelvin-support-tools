@@ -1,0 +1,34 @@
+{
+  "id": "sdk/cli/sdk.lib.auth.oauth-flow/oauthflow",
+  "title": "OAuthFlow",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# OAuthFlow\n\n\n## Methods\n\n\n### __init__(base_url: str) -> Any\n\n\n### start_browser_authentication(open_browser_window: bool) -> Dict\n\nStart the OAuth authentication flow.\n\n\n### authenticate_with_password(username: str, password: str, totp: Optional[str]) -> Dict\n\nAuthenticate using Resource Owner Password Credentials Grant.\n\n\n### authenticate_with_client_credentials(client_id: str, client_secret: str) -> Dict\n\nAuthenticate using Client Credentials Grant.\n\n\n### refresh_tokens(refresh_token: str) -> Dict\n\nRefresh tokens using the refresh token.\n\n\n### logout(refresh_token: str) -> None\n\nLogout by clearing stored credentials.\n\n\n### get_user_info(access_token: str) -> Dict\n\nGet user information using an access token. This validates the token and returns user details if the token is valid.\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/auth/oauth_flow.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.auth.oauth_flow",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "start_browser_authentication",
+      "authenticate_with_password",
+      "authenticate_with_client_credentials",
+      "refresh_tokens",
+      "logout",
+      "get_user_info"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

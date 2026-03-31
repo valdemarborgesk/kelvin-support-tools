@@ -1,0 +1,161 @@
+{
+  "id": "api/endpoints/timeseries/getTimeseriesLast",
+  "title": "Get Last Time Series Data",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Get Last Time Series Data\n\nReturns a list of Time Series objects and its latest value. The list returned must be filtered by one or more `resources` and optionally on `fields`. This list is not pageable.\n\n## Endpoint\n\n`POST /timeseries/last/get`",
+  "summary": "Get Last Time Series Data",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/timeseries/last/get' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.timeseries.getTimeseriesLast()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/timeseries"
+  ],
+  "tags": [
+    "timeseries",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/timeseries/last/get",
+    "method": "POST",
+    "operation_id": "getTimeseriesLast",
+    "tag": "Timeseries",
+    "permission": "kelvin.permission.storage.read",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "selectors": {
+            "type": "array",
+            "description": "Array specifying resources and their optional field element names to filter the returned list.",
+            "items": {
+              "type": "object",
+              "required": [
+                "resource"
+              ],
+              "properties": {
+                "fields": {
+                  "type": "array",
+                  "description": "A filter on the list based on the `field` element names. Blank array will return all data field element names and associated values.",
+                  "items": {
+                    "type": "string",
+                    "format": "^[a-z]+([A-Z][a-z0-9]+)*$",
+                    "example": "value"
+                  }
+                },
+                "resource": {
+                  "type": "string",
+                  "format": "krn",
+                  "example": "krn:ad:asset1/data_stream1",
+                  "minLength": 1,
+                  "maxLength": 256,
+                  "description": "Specifies the resource (Asset / Data Stream pair) from which field/values are returned."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "schema": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "created": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2023-06-26T18:22:18.582724Z",
+                "description": "UTC time when the `last_value` values were first created, formatted in RFC 3339."
+              },
+              "data_type": {
+                "type": "string",
+                "description": "Primitive data type of the `last_value` values."
+              },
+              "fields": {
+                "type": "array",
+                "example": [
+                  "value"
+                ],
+                "description": "Data `field` element name of each value in `last_value`.",
+                "items": {
+                  "type": "string",
+                  "format": "^[a-z]+([A-Z][a-z0-9]+)*$",
+                  "example": "value"
+                }
+              },
+              "last_timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2023-11-10T09:55:08.627924Z",
+                "description": "UTC time when the time series data was last accessed, formatted in RFC 3339."
+              },
+              "last_value": {
+                "description": "Value represented in one of these formats.",
+                "oneOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "object"
+                  }
+                ]
+              },
+              "resource": {
+                "type": "string",
+                "format": "krn",
+                "example": "krn:ad:asset/data_stream",
+                "maxLength": 256,
+                "description": "Asset / Data Stream associated with `last_value`."
+              },
+              "source": {
+                "type": "string",
+                "format": "krn",
+                "example": "krn:wlappv:cluster1/app1/1.2.0",
+                "maxLength": 256,
+                "description": "Specifies the user or workload source for `last_value`."
+              },
+              "updated": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2023-11-10T09:55:09.31857Z",
+                "description": "UTC time when the time series data was last updated, formatted in RFC 3339."
+              }
+            },
+            "type": "object"
+          }
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

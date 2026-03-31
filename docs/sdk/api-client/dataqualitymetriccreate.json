@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/dataqualitymetriccreate",
+  "title": "DataQualityMetricCreate",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataQualityMetricCreate\n\nInherits from: DataModelBase\n\n\nDataQualityMetricCreate object.\n\nParameters\n----------\n    name: StrictStr\n    title: StrictStr\n    data_type_name: enum.DataType\n    description: Optional[StrictStr]\n",
+  "summary": "DataQualityMetricCreate object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

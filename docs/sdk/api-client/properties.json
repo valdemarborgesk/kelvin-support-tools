@@ -1,0 +1,41 @@
+{
+  "id": "sdk/api-client/client.api.properties/properties",
+  "title": "Properties",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Properties\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### create_property(data: Optional[Union[requests.PropertyCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.PropertyCreate\n\nCreate a new Property Definition\n\n\n### list_properties(search: Optional[Sequence[str]], primitive_type: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.PropertyDefinition], responses.PropertiesListPaginatedResponseCursor]\n\nReturns a list of Property Definitions. The Properties can be optionally filtered and sorted on the server before being returned.\n\n\n### get_property_unique_values(data: Optional[Union[requests.PropertyUniqueValuesGet, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.PropertyUniqueValuesGet\n\nFetch the unique values for each property.\n\n\n### delete_property(property_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete an existing Property. This cannot be undone once the API request has been submitted.\n\n\n### get_property(property_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.PropertyGet\n\nRetrieve a Property Definition.\n\n\n### delete_property_values(property_name: str, data: Optional[Union[requests.PropertyValuesDelete, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete existing property Values. This cannot be undone once the API request has been submitted. **Permission Required:** `kelvin.permission.property.delete`.\n\n\n### get_property_values(property_name: str, resource_type: Optional[Sequence[str]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.PropertyValuesGet\n\nFetch property values belonging to a particular property definition.\n\n\n### property_range_get(property_name: str, pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.RangeGetPropertyValues, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.PropertyValueHistory], responses.RangeGetPropertyPaginatedResponseCursor]\n\nFetch the value history for a property given a time range.\n\n\n### update_property_values(property_name: str, data: Optional[Union[requests.PropertyValuesUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nCreate or update Property Values.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/properties.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.properties.create_property()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.properties",
+    "item_type": "class",
+    "methods": [
+      "create_property",
+      "list_properties",
+      "get_property_unique_values",
+      "delete_property",
+      "get_property",
+      "delete_property_values",
+      "get_property_values",
+      "property_range_get",
+      "update_property_values"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

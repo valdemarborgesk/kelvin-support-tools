@@ -1,0 +1,24 @@
+{
+  "id": "how-to/assets/recommendation-action",
+  "title": "Action a Recommendation",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Action a Recommendation\n\n## Overview\n\nWhen you click on **View More** button (or **See More** in the Data Explorer popup) you will see the Recommendation where you will see the detailed information and possible actions.\n\nHow the Recommendation is displayed will depend on whether you view from the Assets table or the Assets details page.\n\n    If you see a **Details** link instead of a **View More** button, this means there are no pending Recommendations for that Asset and no actions are available.\n\n## Actions\n\n### Inline Recommendation\n\nThe action buttons are placed in the top line of the inline Recommendation.\n\n#### Accept\n\nTo accept, click on the **Accept** button.\n\nWhen you click on the Accept button, a popup will appear asking on your confidence level of the Recommendation.\n\nGive your answer and click the **Submit** button.\n\n    This is important feedback for the developers to use in assessing the accuracy of the Kelvin SmartApp™'s algorithms.\n\nAll actions in the Recommendation will be immediately implemented.\n\n    For Control Changes, accepting the Recommendation **ONLY** initiates the Control Change action.\n\n    This does **NOT GUARANTEE** that the data values will be updated. It will depend on the connectivity to the actual Asset.\n\n    You can come back to this Recommendation to see if the Control Changes are executed successfully.\n\n#### Reject\n\nIf you disagree with the Recommendation and want to cancel it, click on the **Reject** button.\n\nWhen you click on the Reject button, a popup will appear asking for your feedback on why you have rejected this Recommendation.\n\nAfter you have entered your information, click the **Submit** button.\n\n    This is important feedback for the developers to use for improving the Kelvin SmartApp™'s algorithms.\n\n### Popup Recommendation\n\nThe action buttons are placed at the bottom right corner of the popup window.\n\n#### Accept\n\nTo accept, click on the **Accept** button.\n\nWhen you click on the Accept button, a popup will appear asking on your confidence level of the Recommendation.\n\nGive your answer and click the **Submit** button.\n\n    This is important feedback for the developers to use in assessing the accuracy of the Kelvin SmartApp™'s algorithms.\n\nAll actions in the Recommendation will be immediately implemented.\n\n    For Control Changes, accepting the Recommendation **ONLY** initiates the Control Change action.\n\n    This does **NOT GUARANTEE** that the data values will be updated. It will depend on the connectivity to the actual Asset.\n\n    You can come back to this Recommendation to see if the Control Changes are executed successfully.\n\n#### Reject\n\nIf you disagree with the Recommendation and want to cancel it, click on the **Reject** button.\n\nWhen you click on the Reject button, a popup will appear asking for your feedback on why you have rejected this Recommendation.\n\nAfter you have entered your information, click the **Submit** button.\n\n    This is important feedback for the developers to use for improving the Kelvin SmartApp™'s algorithms.",
+  "summary": "",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/assets/recommendation-action.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "action",
+    "cli",
+    "operations",
+    "recommendation",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

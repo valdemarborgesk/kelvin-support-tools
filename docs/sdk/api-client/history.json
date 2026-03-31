@@ -1,0 +1,38 @@
+{
+  "id": "sdk/api-client/base.http-tools.history/history",
+  "title": "History",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# History\n\n\nA deque-based class for storing and managing T objects.\n\nThis class provides a fixed-size deque that stores HTTP responses from API calls,\nallowing users to inspect the history of requests and responses.\n\nAttributes:\n    maxlen (int): Maximum number of responses to store. Defaults to 100.\n    _history (deque): Internal deque storing T objects.\n\nExamples:\n    >>> history = ResponseHistory(maxlen=50)\n    >>> history.append(response)\n    >>> latest = history.latest()\n    >>> all_responses = list(history)\n\n\n## Methods\n\n\n### __init__(maxlen: int) -> None\n\nInitialize the ResponseHistory.\n\n\n### append(response: T) -> None\n\n\n### async async_append(response: T) -> None\n\n\n### clear() -> None\n\nClear all responses from the history.\n\n\n### latest() -> Optional[T]\n\nGet the most recent response from the history.\n\n\n### oldest() -> Optional[T]\n\nGet the oldest response from the history.\n",
+  "summary": "A deque-based class for storing and managing T objects.",
+  "source": "api/src/kelvin/api/base/http_tools/history.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.http_tools.history.__init__()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.http_tools.history",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "append",
+      "async_append",
+      "clear",
+      "latest",
+      "oldest"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

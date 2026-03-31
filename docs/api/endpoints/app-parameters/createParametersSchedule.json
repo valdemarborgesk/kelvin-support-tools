@@ -1,0 +1,328 @@
+{
+  "id": "api/endpoints/app-parameters/createParametersSchedule",
+  "title": "Create Parameters Schedule",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Create Parameters Schedule\n\nCreate a new schedule to apply parameters to an application.\n\nSchedules are sets of application parameter values that are applied to a\ngroup of assets at a given time.\n\nOptionally, those values can be reverted to the desired value. When doing\nso, parameter values are defined for each asset individually, and the\nassets and parameters must match the original schedule. For example, if 2\nparameters were changed for 2 assets and a revert operation is requested,\nthen the revert parameters must have 2 assets and 2 parameters for each\nasset.\n\nThe schedule must be created in the future and, if a revert operation is\nrequested, the revert date must be after the scheduled date.\n\nUpon creation, the current values of the parameters are stored in the\n`original_resource_parameters` field.\n\n## Endpoint\n\n`POST /apps/parameters/schedules/create`",
+  "summary": "Create Parameters Schedule",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/apps/parameters/schedules/create' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.app_parameters.createParametersSchedule()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/app-parameters"
+  ],
+  "tags": [
+    "app-parameters",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/apps/parameters/schedules/create",
+    "method": "POST",
+    "operation_id": "createParametersSchedule",
+    "tag": "App Parameters",
+    "permission": "kelvin.permission.parameter.update",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "properties": {
+          "app_name": {
+            "type": "string",
+            "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+            "description": "Application key `name` to associate with Assets (resources) to perform the required actions."
+          },
+          "app_version": {
+            "type": "string",
+            "format": "Major.Minor.Patch",
+            "description": "Version of Application."
+          },
+          "scheduled_for": {
+            "type": "string",
+            "format": "date-time",
+            "description": "UTC date and time when the new parameters are to be applied, formatted in RFC 3339."
+          },
+          "resources": {
+            "type": "array",
+            "minItems": 1,
+            "description": "List of assets for which the parameters to be updated at the scheduled time. (example `krn:asset:bp_16`)",
+            "example": [
+              "krn:asset:bp_16"
+            ],
+            "items": {
+              "type": "string",
+              "format": "krn"
+            }
+          },
+          "parameters": {
+            "type": "object",
+            "description": "List of parameter names and their associated values.",
+            "additionalProperties": {
+              "allOf": [
+                {
+                  "$ref": "#/components/schemas/type.ParameterValue"
+                }
+              ]
+            }
+          },
+          "comment": {
+            "type": "string",
+            "description": "Additional comments associated with the scheduled parameter change"
+          },
+          "revert": {
+            "type": "object",
+            "description": "Revert parameters configuration at a schedule time after the initial parameter change is implemented.",
+            "required": [
+              "scheduled_for",
+              "resource_parameters"
+            ],
+            "properties": {
+              "scheduled_for": {
+                "type": "string",
+                "format": "date-time",
+                "description": "UTC date and time when the original or alternative parameters are to be applied, formatted in RFC 3339. This must be a time after the original change schedule in the key `scheduled_for` in the root of this json data package."
+              },
+              "resource_parameters": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "resource",
+                    "parameters"
+                  ],
+                  "properties": {
+                    "resource": {
+                      "type": "string",
+                      "format": "krn",
+                      "description": "The target Asset to which the parameters are to be applied."
+                    },
+                    "parameters": {
+                      "type": "object",
+                      "description": "List of parameter names and their associated values.",
+                      "additionalProperties": {
+                        "allOf": [
+                          {
+                            "$ref": "#/components/schemas/type.ParameterValue"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "app_name",
+          "app_version",
+          "scheduled_for",
+          "parameters",
+          "resources"
+        ],
+        "type": "object"
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Schedule created",
+        "schema": {
+          "properties": {
+            "app_name": {
+              "type": "string",
+              "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+              "description": "Application key `name` to associate with Assets (resources) to perform the required actions."
+            },
+            "app_version": {
+              "type": "string",
+              "format": "Major.Minor.Patch",
+              "description": "Version of Application."
+            },
+            "scheduled_for": {
+              "type": "string",
+              "format": "date-time",
+              "description": "UTC date and time when the new parameters are to be applied, formatted in RFC 3339."
+            },
+            "resources": {
+              "type": "array",
+              "minItems": 1,
+              "description": "List of assets for which the parameters to be updated at the scheduled time. (example `krn:asset:bp_16`)",
+              "example": [
+                "krn:asset:bp_16"
+              ],
+              "items": {
+                "type": "string",
+                "format": "krn"
+              }
+            },
+            "parameters": {
+              "type": "object",
+              "description": "List of parameter names and their associated values.",
+              "additionalProperties": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/type.ParameterValue"
+                  }
+                ]
+              }
+            },
+            "comment": {
+              "type": "string",
+              "description": "Additional comments associated with the scheduled parameter change"
+            },
+            "revert": {
+              "type": "object",
+              "description": "Revert parameters configuration at a schedule time after the initial parameter change is implemented.",
+              "required": [
+                "scheduled_for",
+                "resource_parameters"
+              ],
+              "properties": {
+                "scheduled_for": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "UTC date and time when the original or alternative parameters are to be applied, formatted in RFC 3339. This must be a time after the original change schedule in the key `scheduled_for` in the root of this json data package."
+                },
+                "resource_parameters": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "resource",
+                      "parameters"
+                    ],
+                    "properties": {
+                      "resource": {
+                        "type": "string",
+                        "format": "krn",
+                        "description": "The target Asset to which the parameters are to be applied."
+                      },
+                      "parameters": {
+                        "type": "object",
+                        "description": "List of parameter names and their associated values.",
+                        "additionalProperties": {
+                          "allOf": [
+                            {
+                              "$ref": "#/components/schemas/type.ParameterValue"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "description": "Unique ID of this parameter schedule"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "scheduled",
+                "scheduled-revert",
+                "completed",
+                "error"
+              ]
+            },
+            "original_resource_parameters": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "resource",
+                  "parameters"
+                ],
+                "properties": {
+                  "resource": {
+                    "type": "string",
+                    "format": "krn",
+                    "description": "The target Asset to which the parameters are to be applied."
+                  },
+                  "parameters": {
+                    "type": "object",
+                    "description": "List of parameter names and their associated values.",
+                    "additionalProperties": {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/type.ParameterValue"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "error_msg": {
+              "type": "string",
+              "description": "Error message if the schedule fails to be implemented."
+            },
+            "created_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "UTC date and time when the parameter schedule is first created, formatted in RFC 3339."
+            },
+            "created_by": {
+              "type": "string",
+              "format": "krn",
+              "description": "The user or process that initiated the creation of this parameter scheduled."
+            },
+            "applied_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "UTC date and time when the new parameters are actually applied, formatted in RFC 3339."
+            },
+            "applied_by": {
+              "type": "string",
+              "format": "krn",
+              "description": "The user or process that initiated the apply parameters command of this parameter scheduled."
+            },
+            "reverted_at": {
+              "type": "string",
+              "format": "date-time",
+              "description": "UTC date and time when the new revert parameters are actually applied, formatted in RFC 3339."
+            },
+            "reverted_by": {
+              "type": "string",
+              "format": "krn",
+              "description": "The user or process that initiated the revert parameters command of this parameter scheduled."
+            }
+          },
+          "required": [
+            "app_name",
+            "app_version",
+            "scheduled_for",
+            "parameters",
+            "resources",
+            "id",
+            "state",
+            "created_at",
+            "created_by"
+          ],
+          "type": "object"
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "409": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

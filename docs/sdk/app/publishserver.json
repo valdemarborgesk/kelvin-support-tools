@@ -1,0 +1,46 @@
+{
+  "id": "sdk/app/publisher.server/publishserver",
+  "title": "PublishServer",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# PublishServer\n\n\n## Methods\n\n\n### __init__(conf: AppConfigObj, generator: DataGenerator, replay: bool) -> None\n\n\n### update_param(asset: str, param: str, value: Union[bool, float, str]) -> None\n\nSets an asset parameter. Empty asset (\"\") to change app default\n\n\n### add_extra_assets(assets_extra: List[AssetsEntry]) -> None\n\n\n### bridge_app_yaml_to_runtime(bridge: AppBridge) -> RuntimeManifest\n\n\n### kelvin_app_yaml_to_runtime(kelvin: AppKelvin, allowed_assets: List[AssetsEntry] | None) -> RuntimeManifest\n\n\n### runtime_from_app_manifest() -> RuntimeManifest\n\n\n### build_config_message() -> RuntimeManifest\n\n\n### async start_server() -> None\n\n\n### async new_client(reader: StreamReader, writer: StreamWriter) -> None\n\n\n### async handle_read(reader: StreamReader) -> None\n\n\n### async handle_write(writer: StreamWriter, queue: Queue[Message]) -> None\n\n\n### async handle_generator(generator: DataGenerator) -> None\n\n\n### async publish_unsafe(msg: Message) -> None\n\nPublish the message as is, do not validate it against the app configuration\n\n\n### async publish_data(data: MessageData) -> bool\n",
+  "summary": "",
+  "source": "app/src/kelvin/publisher/server.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import PublishServer\n\n# Usage example\napp = PublishServer()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "publisher.server",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "update_param",
+      "add_extra_assets",
+      "bridge_app_yaml_to_runtime",
+      "kelvin_app_yaml_to_runtime",
+      "runtime_from_app_manifest",
+      "build_config_message",
+      "start_server",
+      "new_client",
+      "handle_read",
+      "handle_write",
+      "handle_generator",
+      "publish_unsafe",
+      "publish_data"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

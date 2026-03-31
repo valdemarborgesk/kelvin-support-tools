@@ -1,0 +1,29 @@
+{
+  "id": "how-to/cluster/manage-clusters/clusters-dashboard",
+  "title": "Clusters Dashboard",
+  "type": "how_to",
+  "category": "operations",
+  "content": "## Overview\n\nThe Cluster dashboard gives you information about the Cluster and its Node and the Workloads that are running on it.\n\n## Workloads Overview\n\nWhen you first look at a Cluster in Kelvin UI you will see the workloads running on any Worker Node in the Cluster.\n\n    Workloads are Kelvin SmartApps™, Docker Apps and Connectors that you have deployed to the Cluster.\n\nFrom this screen you can do the following actions;\n\n* Start / Stop a workload\n* Download workload information as a CSV file\n* Create and Download an image for offline deployment\n* Update a Workload's version\n* Delete a workload\n\n## Services\n\nUnder the Services tab, you will see a list of all ports that are open on any Node in the Cluster.\n\n    Under the Address column it will give you the full IP address and port number that is open to accepting incoming connections.\n\n## Nodes\n\nUnder the Nodes tab you can see a full list of all Nodes in the Cluster.\n\nYou can also click a Node name to see full details about the Node.\n\n    You can read the full documentation in the [Nodes section here](../manage-nodes/nodes-dashboard.md).\n\n## Configuration\n\nConfiguration has a few features;\n\n### Configuring Cluster Logs\n\n#### Enable Forwarding\n\nThis will enable the logs to be forwarded and saved in the Kelvin Platform.\n\nThese logs can then be seen in the Application Logs online.\n\n    If you disable this, then no logs will be sent to the Kelvin Platform from this Cluster and no logs will be seen in the Applications running on this Cluster.\n\n    An alert will show in the Application Logs if this setting is off.\n\n#### Offline Retention\n\nWhen the cluster is offline, the Clusters will continue to collect and buffer the log data and transmit it to the Kelvin when it reconnects.\n\nYou can set the size of buffer for recording logs while the cluster is offline or not connected to the Kelvin.\n\n    Be careful when changing this setting as this will delete all current logs that are currently in the buffer waiting to be loaded to the Kelvin.\n\n### Configuring Cluster Telemetry\n\n#### Enable Forwarding/Alerts\n\nThis will enable the telemetry logs and alerts to be forwarded and saved in the Kelvin Platform.\n\nThese logs can then be seen in the Application Telemetry online.\n\n    If you disable this, then no logs will be sent to the Kelvin Platform from this Cluster and no logs will be seen in the Applications running on this Cluster.\n\n    An alert will show in the Application Telemetry if this setting is off.\n\n#### Offline Retention\n\nWhen the cluster is offline, the Clusters will continue to collect and buffer the telemetry data and transmit it to the Kelvin when it reconnects.\n\nYou can adjust the settings for the telemetry buffer size and recording interval while the cluster is not connected to the Kelvin.\n\n    Be careful when changing this setting as this will delete all current logs that are currently in the buffer waiting to be loaded to the Kelvin.\n\n### Auto Update\n\nYou can set or disable the auto update feature and the frequency to check for updates.\n\n    Remember to click save after changing any settings otherwise you will lose those changes.\n\n### Kelvin Edge Services\n\n    This feature is available for **DOCKER CLUSTERS ONLY**.\n\nYou can choose which Kelvin services will be deployed and run on the Docker Cluster.\n\n### General Information\n\n#### Software Versions\n\nHere you can see the software versions on the node for Kubernetes and Kelvin core services.\n\n  You also can see the provision script used to initially setup the Edge device.\n\n#### Provision Scripts\n\nHere is the original provision script with the service account for setting up this Cluster on the remote computer.\n\nThere is also a command for downloading the provision script only.\n\n    This is useful in cases for you to quickly bootstrap a system without cloning any repositories.",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/cluster/manage-clusters/clusters-dashboard.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "clusters",
+    "configure",
+    "create",
+    "dashboard",
+    "deploy",
+    "docker",
+    "monitor",
+    "operations",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

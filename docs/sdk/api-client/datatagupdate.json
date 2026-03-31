@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/datatagupdate",
+  "title": "DataTagUpdate",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataTagUpdate\n\nInherits from: DataModelBase\n\n\nDataTagUpdate object.\n\nParameters\n----------\n    start_date: Optional[datetime]\n    end_date: Optional[datetime]\n    tag_name: Optional[StrictStr]\n    resource: Optional[KRN]\n    description: Optional[StrictStr]\n    contexts: Optional[list[KRN]]\n",
+  "summary": "DataTagUpdate object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

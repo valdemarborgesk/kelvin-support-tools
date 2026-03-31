@@ -1,0 +1,48 @@
+{
+  "id": "api/schemas/customdataquality",
+  "title": "CustomDataQuality",
+  "type": "schema",
+  "category": "api",
+  "content": "# CustomDataQuality\n\n\n## Properties\n\n- **name** (`string`): The name of the data quality.\n- **data_type** (`string`): Primitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects.\n- **datastreams** (`array`): \n- **way** (`string`): The direction of the data quality. If `output`, the app computes and produces the data quality value. If `input`, the app receives the data quality value.",
+  "summary": "Object with properties: name, data_type, datastreams, way",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "manifest",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "manifest.CustomDataQuality",
+    "schema_type": "manifest",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the data quality."
+        },
+        "data_type": {
+          "type": "string",
+          "description": "Primitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects."
+        },
+        "datastreams": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "way": {
+          "type": "string",
+          "enum": [
+            "output",
+            "input"
+          ],
+          "description": "The direction of the data quality. If `output`, the app computes and produces the data quality value. If `input`, the app receives the data quality value."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "id": "api/endpoints/deprecated-workload/updateLegacyWorkloadConfiguration",
+  "title": "Update Workload Configuration",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Update Workload Configuration\n\nUpdate the configuration of a Workload.\n\n\n\n**`WARNING!!`: Sending an empty configuration object will remove all configurations**\n\n## Endpoint\n\n`POST /workloads/{workload_name}/configurations/update`",
+  "summary": "Update Workload Configuration",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/workloads/{workload_name}/configurations/update' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.deprecated_workload.updateLegacyWorkloadConfiguration()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/deprecated-workload"
+  ],
+  "tags": [
+    "deprecated-workload",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/workloads/{workload_name}/configurations/update",
+    "method": "POST",
+    "operation_id": "updateLegacyWorkloadConfiguration",
+    "tag": "(Deprecated) Workload",
+    "permission": "kelvin.permission.workload.update",
+    "parameters": [
+      {
+        "name": "workload_name",
+        "in": "path",
+        "required": true,
+        "description": "Unique identifier `name` of the Workload.",
+        "type": "string"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "configuration": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "configuration": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      },
+      "409": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      },
+      "501": {
+        "description": "The operation is not implemented."
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

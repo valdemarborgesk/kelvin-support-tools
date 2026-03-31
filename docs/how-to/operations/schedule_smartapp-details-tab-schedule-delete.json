@@ -1,0 +1,25 @@
+{
+  "id": "how-to/schedule/smartapp-details-tab-schedule-delete",
+  "title": "Delete a Schedule",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Delete a Schedule\n\nTo create a new schedule in Kelvin UI, click on the **Applications** menu item in the left hand sidebar, select a Kelvin SmartApp™ then click on the **Schedules** tab.\n\nFind the wanted schedule and click on the **Delete** button.",
+  "summary": "To create a new schedule in Kelvin UI, click on the Applications menu item in the left hand sidebar, select a Kelvin SmartApp™ then click on the Schedules tab. Find the wanted schedule and click on the Delete button.",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/schedule/smartapp-details-tab-schedule-delete.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "create",
+    "delete",
+    "operations",
+    "schedule",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/datastreamunitupdate",
+  "title": "DataStreamUnitUpdate",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataStreamUnitUpdate\n\nInherits from: DataModelBase\n\n\nDataStreamUnitUpdate object.\n\nParameters\n----------\n    symbol: Optional[StrictStr]\n    title: Optional[StrictStr]\n",
+  "summary": "DataStreamUnitUpdate object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

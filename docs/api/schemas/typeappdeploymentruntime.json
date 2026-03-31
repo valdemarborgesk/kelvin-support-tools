@@ -1,0 +1,79 @@
+{
+  "id": "api/schemas/appdeploymentruntime",
+  "title": "AppDeploymentRuntime",
+  "type": "schema",
+  "category": "api",
+  "content": "# AppDeploymentRuntime\n\n\n## Properties\n\n- **resources** (`array`): \n- **configuration** (`object`): ",
+  "summary": "Object with properties: resources, configuration",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.AppDeploymentRuntime",
+    "schema_type": "type",
+    "schema": {
+      "properties": {
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "resource": {
+                "type": "string",
+                "format": "krn"
+              },
+              "parameters": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/type.PropertyValue"
+                }
+              },
+              "datastreams": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "map_to": {
+                      "type": "string"
+                    },
+                    "configuration": {
+                      "type": "object"
+                    },
+                    "remote": {
+                      "type": "boolean"
+                    },
+                    "way": {
+                      "$ref": "#/components/schemas/enum.Way"
+                    },
+                    "storage": {
+                      "$ref": "#/components/schemas/enum.Storage"
+                    },
+                    "dynamic_io_type_name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "data_quality": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/type.AppDataQuality"
+                }
+              }
+            }
+          }
+        },
+        "configuration": {
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "last_updated": "2026-02-04"
+  }
+}

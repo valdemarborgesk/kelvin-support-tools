@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.evidences/markdown",
+  "title": "Markdown",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Markdown\n\nInherits from: Evidence\n\n\nEvidence representing a block of markdown content.\n\nAttributes:\n    title (Optional[str]): The title of the markdown content, displayed as a heading or label.\n    markdown (str): The markdown-formatted text content to be rendered.\n\nNotes:\n    - The `markdown` attribute should contain valid markdown syntax to ensure correct rendering.\n",
+  "summary": "Evidence representing a block of markdown content.",
+  "source": "app/src/kelvin/message/evidences.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import Markdown\n\n# Usage example\napp = Markdown()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.evidences",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

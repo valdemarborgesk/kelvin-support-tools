@@ -1,0 +1,37 @@
+{
+  "id": "sdk/api-client/client.api.filestorage/filestorage",
+  "title": "Filestorage",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Filestorage\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### list_files(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], data: Optional[Union[requests.FilesList, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.FileStorage], responses.FilesListPaginatedCursor]\n\nList the files currently present in the filestorage\n\n\n### upload_file(file: str, metadata: Optional[Dict[str, Any]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.FileUpload\n\nUpload a file\n\n\n### delete_file(file_id: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDeletes the requested file from filestorage\n\n\n### download_file(file_id: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Iterator[bytes]\n\nDownloads the requested file\n\n\n### get_file(file_id: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.FileGet\n\nFetches the information for a specific file\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/filestorage.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.filestorage.list_files()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.filestorage",
+    "item_type": "class",
+    "methods": [
+      "list_files",
+      "upload_file",
+      "delete_file",
+      "download_file",
+      "get_file"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

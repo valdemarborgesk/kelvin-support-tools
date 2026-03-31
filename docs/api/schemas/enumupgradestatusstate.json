@@ -1,0 +1,31 @@
+{
+  "id": "api/schemas/upgradestatusstate",
+  "title": "UpgradeStatusState",
+  "type": "schema",
+  "category": "api",
+  "content": "# UpgradeStatusState\n\nCurrent state of the upgrade process.\n\n## Enum Values\n\n- `idle`\n- `downloading`\n- `ready`",
+  "summary": "Current state of the upgrade process.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.UpgradeStatusState",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "idle",
+        "downloading",
+        "ready"
+      ],
+      "example": "downloading",
+      "description": "Current state of the upgrade process."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

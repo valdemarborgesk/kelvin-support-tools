@@ -1,0 +1,24 @@
+{
+  "id": "concepts/core/custom-action",
+  "title": "Custom Action",
+  "type": "concept",
+  "category": "core",
+  "content": "# Custom Action\n\n## Overview\n\nCustom Actions are used to enable communication between two Kelvin SmartApps™, whether on the same cluster or across different clusters.\n\nThey allow developers to create a dedicated Kelvin SmartApp™ to perform specific tasks that are commonly needed by other Kelvin SmartApps™.\n\n    For example, you can create a Kelvin SmartApp™ to send emails or perform specific conversion calculations before saving data to the Kelvin Platform.\n\n    The tasks that can be performed are flexible and depend on the developer’s objectives.\n\n[Video content]\n\nOther Kelvin SmartApps™ can then send data to this Kelvin SmartApp™ for processing.\n\nThis approach allows you to centralize common tasks or isolate sensitive information, such as email login credentials, within a single Kelvin SmartApp™.\n\n## Structure\n\nCustom Actions require two different types of Applications (Kelvin SmartApps™) to be properly setup;\n\n* **Publisher Application**: Any Kelvin SmartApp™ that packages and sends the custom action either directly or via a Recommendation\n* **Consumer Application (Executor)**: A specific Kelvin SmartApp™ that will receive the custom action and performs predefined actions on the payload data\n\n    For each Type declared in any Publisher App, only **ONE** Consumer App (Executor) can be deployed on the Kelvin Platform to receive that Type.\n\nCustom Actions are sent from a Publisher to a Consumer Application.\n\nIt can also be packaged into a Recommendation for approval by Operations before the Custom Action is sent to the Consumer App (Executor).\n\n    This functionality will work even when there is no internet connectivity as long as the two Applications are on the same Cluster network.\n\nCustom Actions has a robust fault tolerant protocol to ensure all custom actions are traceable and will report failures back to the sending Application.",
+  "summary": "",
+  "source": "core-docs/docs/overview/concepts/custom-action.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "action",
+    "application",
+    "asset",
+    "cluster",
+    "control",
+    "core",
+    "custom"
+  ],
+  "metadata": {
+    "section": "overview/concepts",
+    "last_updated": "2026-02-04"
+  }
+}

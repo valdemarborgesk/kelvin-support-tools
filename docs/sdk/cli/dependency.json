@@ -1,0 +1,30 @@
+{
+  "id": "sdk/cli/sdk.lib.models.generic/dependency",
+  "title": "Dependency",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Dependency\n\n\n## Methods\n\n\n### __init__(dependency: str) -> None\n\n\n### is_ksos_core_component() -> bool\n\n\n### pretty_name() -> str\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/generic.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.generic",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "is_ksos_core_component",
+      "pretty_name"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "sdk/cli/sdk.lib.models.factories.project.factory/projectfactory",
+  "title": "ProjectFactory",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ProjectFactory\n\n\nThe factory class for creating projects\n\n\n## Methods\n\n\n### create_project(project_creation_parameters: ProjectCreationParametersObject) -> ProjectBase\n\nFactory command to create the project instance\n",
+  "summary": "The factory class for creating projects",
+  "source": "cli/src/kelvin/sdk/lib/models/factories/project/factory.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.factories.project.factory",
+    "item_type": "class",
+    "methods": [
+      "create_project"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

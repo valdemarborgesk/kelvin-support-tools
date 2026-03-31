@@ -1,0 +1,31 @@
+{
+  "id": "sdk/cli/sdk.lib.models.factories.project.project/projectbase",
+  "title": "ProjectBase",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ProjectBase\n\nInherits from: ProjectMixin, abc.ABC\n\n\nProject representation\nContains the structure to create the app file tree and templates based on the AppType and AppFlavour\n\n\n## Methods\n\n\n### get_flavour() -> ApplicationFlavour\n\n\n### get_flavour_class() -> Type[ProjectFileTree]\n\n\n### create_dirs_and_files() -> None\n\nCreates the directory tree and the files for each one\n\n\n### get_template_parameters() -> Dict\n\nDict used to fill the templates\n",
+  "summary": "Project representation Contains the structure to create the app file tree and templates based on the AppType and AppFlavour",
+  "source": "cli/src/kelvin/sdk/lib/models/factories/project/project.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.factories.project.project",
+    "item_type": "class",
+    "methods": [
+      "get_flavour",
+      "get_flavour_class",
+      "create_dirs_and_files",
+      "get_template_parameters"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

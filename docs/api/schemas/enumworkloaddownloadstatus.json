@@ -1,0 +1,33 @@
+{
+  "id": "api/schemas/workloaddownloadstatus",
+  "title": "WorkloadDownloadStatus",
+  "type": "schema",
+  "category": "api",
+  "content": "# WorkloadDownloadStatus\n\nStatus of downloading Workload to the Edge System.\n\n## Enum Values\n\n- `pending`\n- `scheduled`\n- `processing`\n- `downloading`\n- `ready`\n- `failed`",
+  "summary": "Status of downloading Workload to the Edge System.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.WorkloadDownloadStatus",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "description": "Status of downloading Workload to the Edge System.",
+      "enum": [
+        "pending",
+        "scheduled",
+        "processing",
+        "downloading",
+        "ready",
+        "failed"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

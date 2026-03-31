@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.type/timeseriesdata",
+  "title": "TimeseriesData",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# TimeseriesData\n\nInherits from: DataModelBase\n\n\nTimeseriesData object.\n\nParameters\n----------\n    created: Optional[datetime]\n    data_type: Optional[StrictStr]\n    fields: Optional[list[StrictStr]]\n    last_timestamp: Optional[datetime]\n    last_value: Optional[Union[StrictInt, StrictFloat, StrictStr, StrictBool, dict[str, Any]]]\n    resource: Optional[KRN]\n    source: Optional[KRN]\n    updated: Optional[datetime]\n",
+  "summary": "TimeseriesData object.",
+  "source": "api/src/kelvin/api/client/model/type.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.type.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.type",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

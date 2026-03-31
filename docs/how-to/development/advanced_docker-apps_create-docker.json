@@ -1,0 +1,124 @@
+{
+  "id": "how-to/advanced/docker-apps/create-docker",
+  "title": "Create Docker",
+  "type": "how_to",
+  "category": "development",
+  "content": "## Create a Docker App\n\nA Docker App is a standard docker container and is created and developed like any normal container for docker and Kuberenetes.\n\n    You can build for both x86\\_64 and arm64 devices.\n\n```bash title=\"create default application\" linenums=\"1\"\n$ kelvin app create --app-type docker <EXPORT_NAME>\n```\n\nThis will give a response similar to this;\n\n```bash title=\"command output\" linenums=\"1\"\n[kelvin.sdk][2025-09-02 04:22:27][I] Refreshing metadata..\n[kelvin.sdk][2025-09-02 04:22:27][I] Creating new application \"demodocker\"\n[kelvin.sdk][2025-09-02 04:22:27][R] Successfully created new application: \"demodocker\".\n[kelvin.sdk][2025-09-02 04:22:27][I] Kelvin code samples are available at: https://github.com/kelvininc/app-samples\n```\n\nThis will automatically create an Import Application bootstrap within a new directory and populated with some default files and configurations.\n\n## Folder Structure\n\nYou can now open the folder in your favorite IDE or editor and start to modify the files to create your Import Application.\n\n```bash title=\"default folder structure\" linenums=\"1\"\n$ cd demodocker\n$ tree ./\n├── .dockerignore\n├── Dockerfile\n├── app.yaml\n└── ui_schemas\n    ├── configuration.json\n```\n\nFor this example we will get ready for deploying a stock Node Red Server to the edge which can then be accessed on the local LAN network at port 1880 in any modern browser.\n\n<div class=\"result\" markdown>\n\n=== \"app.yaml\"\n\n    The `app.yaml` is the main configuration file that holds both Kelvin SmartApps™ definition as well as the deployment/runtime configuration. \n    \n    For our example it would look like this;\n\n    ```yaml title=\"app.yaml Example\" linenums=\"1\"\n    spec_version: 5.0.0\n    type: docker\n\n    name: nodered-server\n    title: Node Red Server\n    description: A local Node Red Server running at the edge.\n    version: 1.0.0\n\n    flags:\n      enable_runtime_update:\n        configuration: false\n\n    ui_schemas:\n        configuration: \"ui_schemas/configuration.json\"\n\n    defaults:\n      system:\n        ports:\n          - name: http\n            type: host\n            host:\n              port: 1880\n        privileged: false\n        volumes:\n          - name: data\n            target: /data\n            type: persistent\n      configuration:\n        ip-range: 0.0.0.0\n        port: 1880\n    ```\n\n    It is composed by the following sections:\n\n    - The `spec_version` section is automatically injected and specifies Kelvin SmartApps™ JSON Schema(_latest_) version which both defines and validates the `app.yaml` structure.\n\n        ```yaml title=\"app.yaml Example\" linenums=\"1\"\n        spec_version: 5.0.0\n        ```\n\n    - The `type` section defines the type for the application.\n\n        * `app`: A Smart App that allows mapping inputs and outputs to data streams, sending control changes, recommendations, and data tags.\n        * `docker`: An docker application that does not connect to the platform's data streams.\n        * `importer`: Connects to an external system to import data into the platform as well as receive control changes to act on the external system.\n        * `exporter`: Connects to the platform to export data to an external system.\n\n        ```yaml title=\"app.yaml Example\" linenums=\"1\"\n        type: docker\n        ```\n\n    - The `info` section holds Docker App's basic information required to make itself uploadable to _Kelvin's App Registry_.\n    \n        ```yaml title=\"app.yaml Example\" linenums=\"1\"\n        description: Local Node Red Server Demo\n        name: local-node-red-server-demo\n        title: Local Node Red Server Demo\n        version: 1.0.0\n        ```\n\n        The `name` is the Docker App's unique identifier.\n\n        The `title` and `description` will appear in App Registry on the Kelvin UI once the Docker App is uploaded.\n\n                    The `version` should be bumped every time Docker App gets an update, and before it gets uploaded to the App Registry.\n\n            The upload will be rejected if there is the version already exists on the Kelvin Platform.\n\n    - The `flags` section is where you are able to set some of the application capabilities.\n\n        ```yaml title=\"app.yaml Example\" linenums=\"1\"\n        flags:\n          enable_runtime_update:\n\n            # enables configuration updates at runtime\n            configuration: false \n        ```\n\n    - The `ui_schemas` section is where the Docker App configuration is defined for the Kelvin UI.\n\n        The actual information is kept in a `json` file in the ui_schemas folder of the project. The file location is defined in the `app.yaml` file like this;\n\n        ```yaml title=\"app.yaml Example\" linenums=\"1\"\n        ui_schemas:\n          configuration: \"ui_schemas/configuration.json\"\n        ```\n\n        The json file will come with default blank schemas when first created.\n\n                    `configuration.json` information is optional, and if not provided, the Kelvin UI will display the configuration settings in a raw JSON or YAML file format without verifying the structure or content before applying them to the Kelvin SmartApp™.\n\n        ```json title=\"Default ui_schemas/configuration.json\" linenums=\"1\"\n        {\n            \"type\": \"object\",\n            \"properties\": {},\n            \"required\": []\n        }\n        ```\n\n        An example of a App Configurations JSON file filled in would look something like this;\n\n        ```json title=\"Sample ui_schemas/configuration.json\" linenums=\"1\"\n        {\n            \"type\": \"object\",\n            \"properties\": {\n                \"closed_loop\": {\n                    \"type\": \"boolean\",\n                    \"title\": \"Closed Loop\"\n                },\n                \"speed_decrease_set_point\": {\n                    \"type\": \"number\",\n                    \"title\": \"Speed Decrease SetPoint\",\n                    \"minimum\": 1000,\n                    \"maximum\": 3000\n                },\n                \"temperature_max_threshold\": {\n                    \"type\": \"number\",\n                    \"title\": \"Temperature Max Threshold\",\n                    \"minimum\": 50,\n                    \"maximum\": 100\n                }\n            },\n            \"required\": [\n                \"closed_loop\",\n                \"speed_decrease_set_point\",\n                \"temperature_max_threshold\"\n            ]\n        }\n        ```\n\n    - The `defaults/system` section is **[optional]** and can be used to set different system requirements/constraints within the Docker App's running environment. i.e. Resources, Environment Variables, Volumes, Ports, etc:\n\n        ```yaml title=\"app.yaml Example\" linenums=\"1\"\n        defaults:\n          system:\n            ports: []\n            resources: {}\n            environment_vars: []\n            volumes: []\n            privileged: Boolean\n        ```\n\n    - The `defaults\\system\\ports` is where you can define ports to open on the container to the local network:\n\n        ```yaml title=\"app.yaml Example\" linenums=\"1\"\n        defaults:\n          system:\n            ports:\n              - name: http\n                type: host\n                host:\n                    port: 1880\n\n              - name: opcua\n                type: service # Exposed as a service for other containers\n                service:\n                  port: 48010\n                  exposed_port: 30120\n        ```\n\n    - The `defaults\\system\\resources` is where you want to limit resources a container can use. This defines the reserved (`requests`) and `limits` the resources allocated to the Docker App:\n\n        ```yaml title=\"app.yaml Example\" linenums=\"1\"\n        defaults:\n          system:\n            resources:\n              requests:   # Reserved\n                cpu: 100m\n                memory: 256Mi\n              limits:     # Limits\n                cpu: 200m\n                memory: 512Mi\n        ```\n\n    - The `defaults\\system\\environment_vars` is used to define Environment Variables available within the Docker App container. i.e.:\n        \n        ```yaml title=\"app.yaml Example\" linenums=\"1\"\n        defaults:\n          system:\n            environment_vars:\n              - name: KELVIN_GW_MODE\n                value: SOCKETS\n        ```\n\n                    `KELVIN_GW_MODE` is an Environment Variable that is **[required]** by Kelvin's platform. Others can optionally be added.\n\n    - The `defaults\\system\\volumes` is to share and persist data generated by Kelvin SmartApps™ or used by it in a specific place. They act like a shared folder between the Docker App and the host. Kelvin supports directory volumes, such as folders or serial ports, persistent, and file/test volumes:\n\n        ```yaml title=\"app.yaml Example\" linenums=\"1\"\n        defaults:\n          system:\n            volumes:\n              # Folder Volume\n              - name: serial-rs232\n                target: /dev/rs232 # Container path\n                type: host\n                host:\n                  source: /dev/ttyS0 # Host path\n\n              # Persistent Volume\n              - name: extremedb\n                target: /extremedb/data\n                type: persistent\n\n              # File/Text Volume\n              - name: model-parameters\n                target: /opt/kelvin/data/parameters.bin\n                type: text # Renders data into a file\n                text:\n                  base64: true\n                  encoding: utf-8\n                  data: |-\n                      SGVsbG8gUHJvZHVjdCBHdWlsZCwgZnJvbSB0aGUgRW5naW5lZXJpbmcgR3VpbGQhCg==\n        ```\n\n    - The `defaults\\system\\privileged` is **[optional]** and used to grant extended privileges to Kelvin SmartApps™, allowing it to access any devices on the host, such as a Serial device:\n\n        ```yaml title=\"app.yaml Example\" linenums=\"1\"\n        defaults:\n          system:\n            privileged: false\n        ```\n\n    - The `defaults\\configuration` are the default global Docker App configuration values.\n\n                    Operations will have the option to change these at runtime from the Kelvin UI.\n\n        ```yaml title=\"app.yaml Example\" linenums=\"1\"\n        defaults:\n          configuration:\n            broker-ip: edge-mqtt-broker\n            broker-port: 1883\n        ```\n\n=== \"Dockerfile\"\n  \n    The `Dockerfile` is a script used to define the instructions and configuration for building a Docker image. It specifies the base image, installation of software, file copying, and other setup tasks needed to create a reproducible and isolated environment for running Kelvin SmartApps™ in Docker containers.\n\n    For example if you wanted to create a basic Node Red Server for deployment to the edge, your `Dockerfile` can look something like this;\n\n    ```Dockerfile title=\"Dockerfile Example\" linenums=\"1\"\n    FROM nodered/node-red\n    ```\n\n</div>",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/advanced/docker-apps/create-docker.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "$ kelvin app create --app-type docker <EXPORT_NAME>",
+      "title": "create default application"
+    },
+    {
+      "language": "bash",
+      "code": "[kelvin.sdk][2025-09-02 04:22:27][I] Refreshing metadata..\n[kelvin.sdk][2025-09-02 04:22:27][I] Creating new application \"demodocker\"\n[kelvin.sdk][2025-09-02 04:22:27][R] Successfully created new application: \"demodocker\".\n[kelvin.sdk][2025-09-02 04:22:27][I] Kelvin code samples are available at: https://github.com/kelvininc/app-samples",
+      "title": "command output"
+    },
+    {
+      "language": "bash",
+      "code": "$ cd demodocker\n$ tree ./\n├── .dockerignore\n├── Dockerfile\n├── app.yaml\n└── ui_schemas\n    ├── configuration.json",
+      "title": "default folder structure"
+    },
+    {
+      "language": "yaml",
+      "code": "spec_version: 5.0.0\n    type: docker\n\n    name: nodered-server\n    title: Node Red Server\n    description: A local Node Red Server running at the edge.\n    version: 1.0.0\n\n    flags:\n      enable_runtime_update:\n        configuration: false\n\n    ui_schemas:\n        configuration: \"ui_schemas/configuration.json\"\n\n    defaults:\n      system:\n        ports:\n          - name: http\n            type: host\n            host:\n              port: 1880\n        privileged: false\n        volumes:\n          - name: data\n            target: /data\n            type: persistent\n      configuration:\n        ip-range: 0.0.0.0\n        port: 1880",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "yaml",
+      "code": "spec_version: 5.0.0",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "yaml",
+      "code": "type: docker",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "yaml",
+      "code": "description: Local Node Red Server Demo\n        name: local-node-red-server-demo\n        title: Local Node Red Server Demo\n        version: 1.0.0",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "yaml",
+      "code": "flags:\n          enable_runtime_update:\n\n            # enables configuration updates at runtime\n            configuration: false",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "yaml",
+      "code": "ui_schemas:\n          configuration: \"ui_schemas/configuration.json\"",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n            \"type\": \"object\",\n            \"properties\": {},\n            \"required\": []\n        }",
+      "title": "Default ui_schemas/configuration.json"
+    },
+    {
+      "language": "json",
+      "code": "{\n            \"type\": \"object\",\n            \"properties\": {\n                \"closed_loop\": {\n                    \"type\": \"boolean\",\n                    \"title\": \"Closed Loop\"\n                },\n                \"speed_decrease_set_point\": {\n                    \"type\": \"number\",\n                    \"title\": \"Speed Decrease SetPoint\",\n                    \"minimum\": 1000,\n                    \"maximum\": 3000\n                },\n                \"temperature_max_threshold\": {\n                    \"type\": \"number\",\n                    \"title\": \"Temperature Max Threshold\",\n                    \"minimum\": 50,\n                    \"maximum\": 100\n                }\n            },\n            \"required\": [\n                \"closed_loop\",\n                \"speed_decrease_set_point\",\n                \"temperature_max_threshold\"\n            ]\n        }",
+      "title": "Sample ui_schemas/configuration.json"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n          system:\n            ports: []\n            resources: {}\n            environment_vars: []\n            volumes: []\n            privileged: Boolean",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n          system:\n            ports:\n              - name: http\n                type: host\n                host:\n                    port: 1880\n\n              - name: opcua\n                type: service # Exposed as a service for other containers\n                service:\n                  port: 48010\n                  exposed_port: 30120",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n          system:\n            resources:\n              requests:   # Reserved\n                cpu: 100m\n                memory: 256Mi\n              limits:     # Limits\n                cpu: 200m\n                memory: 512Mi",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n          system:\n            environment_vars:\n              - name: KELVIN_GW_MODE\n                value: SOCKETS",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n          system:\n            volumes:\n              # Folder Volume\n              - name: serial-rs232\n                target: /dev/rs232 # Container path\n                type: host\n                host:\n                  source: /dev/ttyS0 # Host path\n\n              # Persistent Volume\n              - name: extremedb\n                target: /extremedb/data\n                type: persistent\n\n              # File/Text Volume\n              - name: model-parameters\n                target: /opt/kelvin/data/parameters.bin\n                type: text # Renders data into a file\n                text:\n                  base64: true\n                  encoding: utf-8\n                  data: |-\n                      SGVsbG8gUHJvZHVjdCBHdWlsZCwgZnJvbSB0aGUgRW5naW5lZXJpbmcgR3VpbGQhCg==",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n          system:\n            privileged: false",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n          configuration:\n            broker-ip: edge-mqtt-broker\n            broker-port: 1883",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "Dockerfile",
+      "code": "FROM nodered/node-red",
+      "title": "Dockerfile Example"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "cli",
+    "configure",
+    "create",
+    "deploy",
+    "development",
+    "docker",
+    "sdk",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.type/assetstatus",
+  "title": "AssetStatus",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AssetStatus\n\nInherits from: DataModelBase\n\n\nAssetStatus object.\n\nParameters\n----------\n    data: Optional[list[SimpleAsset]]\n",
+  "summary": "AssetStatus object.",
+  "source": "api/src/kelvin/api/client/model/type.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.type.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.type",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

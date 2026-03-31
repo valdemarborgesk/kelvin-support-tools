@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.enum/porttype",
+  "title": "PortType",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# PortType\n\nInherits from: Enum\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/model/enum.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.enum.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.enum",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

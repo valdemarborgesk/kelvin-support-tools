@@ -1,0 +1,185 @@
+{
+  "id": "api/endpoints/data-quality/DataQualityStatistics",
+  "title": "Data Quality Statistics",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Data Quality Statistics\n\nRetrieve data quality statistics regarding the 'kelvin_data_quality_score' metric.\n\n## Endpoint\n\n`POST /data-quality/statistics`",
+  "summary": "Data Quality Statistics",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/data-quality/statistics' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.data_quality.DataQualityStatistics()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/data-quality"
+  ],
+  "tags": [
+    "data-quality",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/data-quality/statistics",
+    "method": "POST",
+    "operation_id": "DataQualityStatistics",
+    "tag": "Data Quality",
+    "permission": "kelvin.permission.data-quality.read",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "required": [
+          "start_time",
+          "end_time",
+          "threshold"
+        ],
+        "properties": {
+          "asset_names": {
+            "type": "array",
+            "description": "An array of Asset names to filter the statistics on. If not empty, 'asset_type_names' content will be ignored.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "asset_type_names": {
+            "type": "array",
+            "description": "An array of Asset Type names to filter the statistics.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "start_time": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-12-01T00:00:00Z",
+            "description": "The start timestamp for the statistics, formatted in RFC 3339."
+          },
+          "end_time": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-12-31T23:59:59Z",
+            "description": "The end timestamp for the statistics, formatted in RFC 3339."
+          },
+          "threshold": {
+            "type": "number",
+            "description": "The threshold for the `kelvin_data_quality_score` metric to consider a data point as good quality."
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "good_data_percentage": {
+              "type": "number",
+              "format": "float",
+              "description": "The percentage of assets that have a `kelvin_data_quality_score` greater than or equal to the specified threshold on the last inserted timestamp.",
+              "example": 92.5
+            },
+            "good_data_count": {
+              "type": "integer",
+              "description": "The count of assets that have a `kelvin_data_quality_score` greater than or equal to the specified threshold on the last inserted timestamp.",
+              "example": 185
+            },
+            "good_data_over_time": {
+              "type": "array",
+              "description": "The time series data showing the percentage of assets with good data quality over time.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "payload": {
+                    "description": "Value represented in one of these formats.",
+                    "oneOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "type": "object"
+                      }
+                    ]
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-11-13T12:00:00Z",
+                    "description": "UTC time when the `payload` values were saved, formatted in RFC 3339."
+                  }
+                }
+              }
+            },
+            "bad_data_percentage": {
+              "type": "number",
+              "format": "float",
+              "description": "The percentage of assets that have a `kelvin_data_quality_score` less than the specified threshold on the last inserted timestamp.",
+              "example": 7.5
+            },
+            "bad_data_count": {
+              "type": "integer",
+              "description": "The count of assets that have a `kelvin_data_quality_score` less than the specified threshold on the last inserted timestamp.",
+              "example": 15
+            },
+            "bad_data_over_time": {
+              "type": "array",
+              "description": "The time series data showing the percentage of assets with bad data quality over time.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "payload": {
+                    "description": "Value represented in one of these formats.",
+                    "oneOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "type": "object"
+                      }
+                    ]
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-11-13T12:00:00Z",
+                    "description": "UTC time when the `payload` values were saved, formatted in RFC 3339."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

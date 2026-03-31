@@ -1,0 +1,32 @@
+{
+  "id": "api/schemas/apptype",
+  "title": "AppType",
+  "type": "schema",
+  "category": "api",
+  "content": "# AppType\n\nThe type of application.\n\n- `app`: An App that allows mapping inputs and outputs to data\nstreams, sending control changes, recommendations, and data tags.\n- `importer`: Connects to an external system to import data into the\nplatform as well as receive control changes to act on the external\nsystem.\n- `exporter`: Connects to the platform to export data to an external\nsystem.\n- `docker`: An external application that does not connect to the\nplatform's data streams.\n- `task`: An application type used internally by the Tasks feature.\n\n## Enum Values\n\n- `app`\n- `importer`\n- `exporter`\n- `docker`\n- `task`",
+  "summary": "The type of application.\n\n- `app`: An App that allows mapping inputs and outputs to data\nstreams, sending control changes, recommendations, and data tags.\n- `importer`: Connects to an external system to import data into the\nplatform as well as receive control changes to act on the external\nsystem.\n- `exporter`: Connects to the platform to export data to an external\nsystem.\n- `docker`: An external application that does not connect to the\nplatform's data streams.\n- `task`: An application type used internally by the Tasks feature.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.AppType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "app",
+        "importer",
+        "exporter",
+        "docker",
+        "task"
+      ],
+      "description": "The type of application.\n\n- `app`: An App that allows mapping inputs and outputs to data\nstreams, sending control changes, recommendations, and data tags.\n- `importer`: Connects to an external system to import data into the\nplatform as well as receive control changes to act on the external\nsystem.\n- `exporter`: Connects to the platform to export data to an external\nsystem.\n- `docker`: An external application that does not connect to the\nplatform's data streams.\n- `task`: An application type used internally by the Tasks feature."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

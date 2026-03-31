@@ -1,0 +1,22 @@
+{
+  "id": "concepts/data/data-quality",
+  "title": "Untitled",
+  "type": "concept",
+  "category": "data",
+  "content": "## Overview\n\nData Streams can have automated validation checks enabled to monitor the quality of the data being received from the Asset.\n\nThese data quality validations are done at the edge in real time and any Application can subscribe to the results.\n\n    The results are also saved to the Kelvin Cloud and will become available in future releases of Kelvin.\n\nThere are many types of data quality validation algorithms available to detect issues and maintain the integrity and reliability of data within the Kelvin Platform.\n\n## Data Quality Registration\n\nData Quality first needs to be registered.\n\nOnce registered, the selected data quality applications will monitor the data coming from the Asset/Data Stream pairs and output the results.\n\n    Some Data Quality Applications will output regular reports, like Edge Data Availability, and others will only output reports when a problem is detected, like Outlier Detection.\n\n## Data Quality Inputs\n\nApplications can subscribe selected Data Streams to run specific Data Quality validations.\n\n    You can subscribe to Asset/Data Streams for Data Quality validations which are not registered, but you will not receive any outputs as they are not being processed.\n\nThey can then see the validation's results in real time and react to any data quality issues. The type of reaction depends on the developer's requirements, for example sending emails or slack messages.\n\nThere are a number of inbuilt Data Quality validation options available.\n\n| Validation | Description | Configurable Parameters |\n| --- | --- | --- |\n| kelvin_timestamp_anomaly | Detects anomalies or irregularities in the timestamp sequence | None |\n| kelvin_duplicate_detection | Detects duplicate values within a defined window size | window_size (default: 5) |\n| kelvin_out_of_range_detection | Validates whether values fall within an expected range | min_threshold, max_threshold |\n| kelvin_outlier_detection | Uses statistical methods to detect outliers over a moving window | model, threshold (default: 3), window_size (default: 10) |\n| kelvin_data_availability | Ensures expected number of messages are received in a given time window | window_expected_number_msgs, window_time_interval_unit (second, minute, hour, day) |\n\nAll the validations are also saved in the Cloud and historical data will be accessible through the Kelvin UI in future releases.\n\n##  Data Quality Outputs\n\nIt is also possible to create your own custom Data Quality Applications that will process and validate incoming Data Streams and then produce data quality information that can be used by other Applications.\n\nThe other Applications will connect to the custom validations through the Data Quality `input` key in the app.yaml and not directly to the Application doing the validation calculations.\n\nAll the validations are also saved in the Cloud and historical data will be accessible through the Kelvin UI in future releases.",
+  "summary": "",
+  "source": "core-docs/docs/overview/concepts/data-quality.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "application",
+    "asset",
+    "control",
+    "data",
+    "untitled"
+  ],
+  "metadata": {
+    "section": "overview/concepts",
+    "last_updated": "2026-02-04"
+  }
+}

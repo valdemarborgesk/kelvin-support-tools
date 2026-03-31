@@ -1,0 +1,30 @@
+{
+  "id": "api/schemas/datastreamtype",
+  "title": "DataStreamType",
+  "type": "schema",
+  "category": "api",
+  "content": "# DataStreamType\n\nSpecifies the technique used for generating data in the Data Stream.\n\n## Enum Values\n\n- `computed`\n- `measurement`\n- `set_point`",
+  "summary": "Specifies the technique used for generating data in the Data Stream.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.DataStreamType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "computed",
+        "measurement",
+        "set_point"
+      ],
+      "description": "Specifies the technique used for generating data in the Data Stream."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

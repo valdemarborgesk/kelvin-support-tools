@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.responses/orchestrationclusterscreateitem",
+  "title": "OrchestrationClustersCreateItem",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# OrchestrationClustersCreateItem\n\nInherits from: DataModelBase\n\n\nOrchestrationClustersCreateItem object.\n\nParameters\n----------\n    created: Optional[datetime]\n    last_seen: Optional[datetime]\n    name: Optional[StrictStr]\n    ready: Optional[StrictBool]\n    kelvin_version: Optional[StrictStr]\n    container_version: Optional[StrictStr]\n    ha_mode: Optional[StrictBool]\n    ha_mode_warning: Optional[StrictStr]\n    status: Optional[enum.OrchestrationClusterStatus]\n    title: Optional[StrictStr]\n    type: Optional[enum.ClusterType]\n    updated: Optional[datetime]\n",
+  "summary": "OrchestrationClustersCreateItem object.",
+  "source": "api/src/kelvin/api/client/model/responses.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.responses.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.responses",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

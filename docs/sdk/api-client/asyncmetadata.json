@@ -1,0 +1,34 @@
+{
+  "id": "sdk/api-client/base.http-client.metadata/asyncmetadata",
+  "title": "AsyncMetadata",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AsyncMetadata\n\nInherits from: Metadata\n\n\n## Methods\n\n\n### __init__(client: httpx.AsyncClient) -> None\n\n\n### async fetch() -> None\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/base/http_client/metadata.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.http_client.metadata.__init__()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.http_client.metadata",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "fetch"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

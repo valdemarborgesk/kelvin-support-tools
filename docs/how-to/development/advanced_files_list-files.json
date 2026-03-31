@@ -1,0 +1,47 @@
+{
+  "id": "how-to/advanced/files/list-files",
+  "title": "List Files",
+  "type": "how_to",
+  "category": "development",
+  "content": "In this example we will get the list of all CSV files stored on the Kelvin Platform.\n\n    There are also options to filter the response for on `source` and on the exact `filename`.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin API\"\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/filestorage/list?pagination_type=cursor&page_size=20&direction=asc\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n    \"search\": [\n        \"csv\"\n    ]\n    }'\n    ```\n\n    The response will look like this;\n\n    ```json title=\"API cURL Example Response\" linenums=\"1\"\n    {\n      \"pagination\": {\n        \"next_page\": \"W3siS2V5IjoiaWQiLCJWYWx1ZSI6IjlmZmQxNjU3LThhMjEtNDQzNS04MTY1LTQwYjcwNmU2ZTlhNyJ9XQ==\",\n        \"previous_page\": null\n      },\n      \"data\": [\n        {\n          \"file_id\": \"0107549c-2069-4824-bc4f-30c7bc94172e\",\n          \"file_name\": \"publisher-example (7).csv\",\n          \"file_size\": 603,\n          \"checksum\": \"7de7ebb64b70a2b89c6b25c9eb0e23372c8f902390a8448cc1aeb3da70e4a7e8\",\n          \"created\": \"2025-03-06T16:20:59.416391Z\",\n          \"source\": \"krn:user:ricardo.goncalves@kelvininc.com\",\n          \"metadata\": {}\n        },\n        {\n          \"file_id\": \"0adecb9e-1a50-4459-946d-cb73fc7efe98\",\n          \"file_name\": \"publisher-example.csv\",\n          \"file_size\": 603,\n          \"checksum\": \"7de7ebb64b70a2b89c6b25c9eb0e23372c8f902390a8448cc1aeb3da70e4a7e8\",\n          \"created\": \"2025-03-12T10:31:55.190712Z\",\n          \"source\": \"krn:user:daniel.carvalho@kelvininc.com\",\n          \"metadata\": {\n            \"allowPlayback\": true\n          }\n        }\n      ]\n    }\n    ```\n\n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # List Files in Forestorage\n    response = client.filestorage.list_files(data={\n        'search': ['csv']\n        })\n\n    print(response)\n    ```\n\n    You will see the output like this;\n\n    ```yaml title=\"API Client (Python) Example Response\" linenums=\"1\"\n    data=[FileStorage(file_id='0107549c-2069-4824-bc4f-30c7bc94172e', file_name='publisher-example.csv', file_size=603, checksum='7de7ebb64b70a2b89c6b25c9eb0e23372c8f902390a8448cc1aeb3da70e4a7e8', source='krn:user:demo@kelvin.ai', created=datetime.datetime(2024, 3, 6, 16, 20, 59, 416391, tzinfo=datetime.timezone.utc), metadata={}), FileStorage(file_id='0adecb9e-1a50-4459-946d-cb73fc7efe98', file_name='streaming_data.csv', file_size=603, checksum='7de7ebb64b70a2b89c6b25c9eb0e23372c8f902390a8448cc1aeb3da70e4a7e8', source='krn:user:demo@kelvin.ai', created=datetime.datetime(2024, 3, 12, 10, 31, 55, 190712, tzinfo=datetime.timezone.utc), metadata={'allowPlayback': True})] pagination=PaginationCursor(next_page=None, previous_page=None)\n    ```\n\n</div>",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/advanced/files/list-files.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/filestorage/list?pagination_type=cursor&page_size=20&direction=asc\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n    \"search\": [\n        \"csv\"\n    ]\n    }'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n      \"pagination\": {\n        \"next_page\": \"W3siS2V5IjoiaWQiLCJWYWx1ZSI6IjlmZmQxNjU3LThhMjEtNDQzNS04MTY1LTQwYjcwNmU2ZTlhNyJ9XQ==\",\n        \"previous_page\": null\n      },\n      \"data\": [\n        {\n          \"file_id\": \"0107549c-2069-4824-bc4f-30c7bc94172e\",\n          \"file_name\": \"publisher-example (7).csv\",\n          \"file_size\": 603,\n          \"checksum\": \"7de7ebb64b70a2b89c6b25c9eb0e23372c8f902390a8448cc1aeb3da70e4a7e8\",\n          \"created\": \"2025-03-06T16:20:59.416391Z\",\n          \"source\": \"krn:user:ricardo.goncalves@kelvininc.com\",\n          \"metadata\": {}\n        },\n        {\n          \"file_id\": \"0adecb9e-1a50-4459-946d-cb73fc7efe98\",\n          \"file_name\": \"publisher-example.csv\",\n          \"file_size\": 603,\n          \"checksum\": \"7de7ebb64b70a2b89c6b25c9eb0e23372c8f902390a8448cc1aeb3da70e4a7e8\",\n          \"created\": \"2025-03-12T10:31:55.190712Z\",\n          \"source\": \"krn:user:daniel.carvalho@kelvininc.com\",\n          \"metadata\": {\n            \"allowPlayback\": true\n          }\n        }\n      ]\n    }",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # List Files in Forestorage\n    response = client.filestorage.list_files(data={\n        'search': ['csv']\n        })\n\n    print(response)",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "yaml",
+      "code": "data=[FileStorage(file_id='0107549c-2069-4824-bc4f-30c7bc94172e', file_name='publisher-example.csv', file_size=603, checksum='7de7ebb64b70a2b89c6b25c9eb0e23372c8f902390a8448cc1aeb3da70e4a7e8', source='krn:user:demo@kelvin.ai', created=datetime.datetime(2024, 3, 6, 16, 20, 59, 416391, tzinfo=datetime.timezone.utc), metadata={}), FileStorage(file_id='0adecb9e-1a50-4459-946d-cb73fc7efe98', file_name='streaming_data.csv', file_size=603, checksum='7de7ebb64b70a2b89c6b25c9eb0e23372c8f902390a8448cc1aeb3da70e4a7e8', source='krn:user:demo@kelvin.ai', created=datetime.datetime(2024, 3, 12, 10, 31, 55, 190712, tzinfo=datetime.timezone.utc), metadata={'allowPlayback': True})] pagination=PaginationCursor(next_page=None, previous_page=None)",
+      "title": "API Client (Python) Example Response"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "api",
+    "cli",
+    "create",
+    "development",
+    "files",
+    "list",
+    "sdk"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

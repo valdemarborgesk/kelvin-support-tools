@@ -1,0 +1,32 @@
+{
+  "id": "api/schemas/workloadnameslist",
+  "title": "WorkloadNamesList",
+  "type": "schema",
+  "category": "api",
+  "content": "# WorkloadNamesList\n\n\n## Properties\n\n- **workload_names** (`array`): ",
+  "summary": "Object with properties: workload_names",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.WorkloadNamesList",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "workload_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

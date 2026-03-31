@@ -1,0 +1,28 @@
+{
+  "id": "sdk/cli/sdk.lib.models.operation/operationresponse",
+  "title": "OperationResponse",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# OperationResponse\n\nInherits from: KSDKModel\n\n\n## Methods\n\n\n### print() -> None\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/operation.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.operation",
+    "item_type": "class",
+    "methods": [
+      "print"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

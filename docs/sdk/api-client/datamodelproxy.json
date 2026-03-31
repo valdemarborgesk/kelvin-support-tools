@@ -1,0 +1,34 @@
+{
+  "id": "sdk/api-client/client.client/datamodelproxy",
+  "title": "DataModelProxy",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataModelProxy\n\n\nProxy client to data models.\n\n\n## Methods\n\n\n### __init__(model: type[T], client: Client) -> None\n\nInitialise resource adaptor.\n\n\n### new() -> T\n\nNew instance.\n",
+  "summary": "Proxy client to data models.",
+  "source": "api/src/kelvin/api/client/client.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.client.__init__()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.client",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "new"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

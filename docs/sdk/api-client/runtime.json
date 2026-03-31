@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/runtime",
+  "title": "Runtime",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Runtime\n\nInherits from: AppDeploymentRuntime\n\n\nRuntime object.\n\nParameters\n----------\n    custom_actions: Optional[list[manifest.CustomAction]]\n",
+  "summary": "Runtime object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

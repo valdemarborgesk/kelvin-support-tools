@@ -1,0 +1,29 @@
+{
+  "id": "sdk/cli/krn.krn/krndatastream",
+  "title": "KRNDatastream",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KRNDatastream\n\nInherits from: KRN\n\n\n## Methods\n\n\n### __init__(datastream: str) -> None\n\n\n### from_krn(ns_id: str, ns_string: str) -> Self\n",
+  "summary": "",
+  "source": "cli/src/kelvin/krn/krn.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "krn.krn",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "from_krn"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

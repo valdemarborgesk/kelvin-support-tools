@@ -1,0 +1,24 @@
+{
+  "id": "how-to/monitor/connection-telemetry",
+  "title": "View Connection Telemetry",
+  "type": "how_to",
+  "category": "development",
+  "content": "# View Connection Telemetry\n\nYou can see the telemetry of a workload for any Application in the Kelvin UI.\n\nClick on **Connections** menu.\n\nClick on the Connection to view its details.\n\nand then click on the **Telemetry** tab.\n\nHere you can view all the telemetry information.\n\n* Memory Usage, Requests and Limits\n* CPU Usage, Requests and Limits\n* Network Usage, Received and Transmitted\n* Storage IO\n* IOPS and Throughput",
+  "summary": "You can see the telemetry of a workload for any Application in the Kelvin UI. Click on Connections menu. Click on the Connection to view its details. and then click on the Telemetry tab. Here you can view all the telemetry information.",
+  "source": "core-docs/docs/developer-tools/how-to/monitor/connection-telemetry.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "connection",
+    "development",
+    "telemetry",
+    "view"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

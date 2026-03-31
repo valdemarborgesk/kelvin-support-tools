@@ -1,0 +1,32 @@
+{
+  "id": "api/schemas/parametermap",
+  "title": "ParameterMap",
+  "type": "schema",
+  "category": "api",
+  "content": "# ParameterMap\n\nList of parameter names and their associated values.\n",
+  "summary": "List of parameter names and their associated values.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.ParameterMap",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "description": "List of parameter names and their associated values.",
+      "additionalProperties": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/type.ParameterValue"
+          }
+        ]
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "sdk/cli/sdk.lib.models.generic/osinfo",
+  "title": "OSInfo",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# OSInfo\n\n\n## Methods\n\n\n### temp_dir(self_or_cls: Any) -> Optional[str]\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/generic.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.generic",
+    "item_type": "class",
+    "methods": [
+      "temp_dir"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.type/instancesettings",
+  "title": "InstanceSettings",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# InstanceSettings\n\nInherits from: DataModelBase\n\n\nInstanceSettings object.\n\nParameters\n----------\n    created: Optional[datetime]\n    name: Optional[StrictStr]\n    payload: Optional[dict[str, Any]]\n    updated: Optional[datetime]\n",
+  "summary": "InstanceSettings object.",
+  "source": "api/src/kelvin/api/client/model/type.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.type.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.type",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

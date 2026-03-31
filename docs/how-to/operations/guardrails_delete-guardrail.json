@@ -1,0 +1,31 @@
+{
+  "id": "how-to/guardrails/delete-guardrail",
+  "title": "Delete Guardrail",
+  "type": "how_to",
+  "category": "operations",
+  "content": "When not required anymore you can delete any Guardrails.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin UI\"\n\n    In this brief demo you can see the basic method;\n\n    <iframe\n    src=\"https://demo.arcade.software/OU9fWgLyrWDl4D7fwHdr?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true\"\n    title=\"Kelvin Core | Operations\"\n    frameborder=\"0\"\n    loading=\"lazy\"\n    webkitallowfullscreen\n    mozallowfullscreen\n    allowfullscreen\n    allow=\"clipboard-write\"\n    style=\"width: 100%; height: 400px; border: none;\">\n    </iframe>\n\n    To start, click on **Guardrails** in the Contextualization section of the left side bar, find the Guardrail you want to delete and click on the delete icon on that row.\n\n    \n\n    In the popup you will confirm your action by typing **PERMANENTLY DELETE** in the text box and clicking on the **Delete** button.\n\n    \n\n    Congratulations, you have delete an Asset / Data Stream pair Guardrail.\n\n=== \"Kelvin API\"\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X 'POST' \\\n    'https://<url.kelvin.ai>/api/v4/guardrails/krn%3Aad%3Apress_line_05%2Foil_flow_rate/delete' \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H 'accept: */*' \\\n    -d ''\n    ```\n\n    You will get a 200 response if successful.\n\n=== \"Kelvin API Client (Python)\"\n\n    Currently this is not possible in the Kelvin Python API client.\n\n</div>",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/guardrails/delete-guardrail.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X 'POST' \\\n    'https://<url.kelvin.ai>/api/v4/guardrails/krn%3Aad%3Apress_line_05%2Foil_flow_rate/delete' \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H 'accept: */*' \\\n    -d ''",
+      "title": "API cURL Example"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "api",
+    "cli",
+    "delete",
+    "guardrail",
+    "operations",
+    "sdk"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

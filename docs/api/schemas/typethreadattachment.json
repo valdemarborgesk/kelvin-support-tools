@@ -1,0 +1,38 @@
+{
+  "id": "api/schemas/threadattachment",
+  "title": "ThreadAttachment",
+  "type": "schema",
+  "category": "api",
+  "content": "# ThreadAttachment\n\n\n## Properties\n\n- **extension** (`string`): \n- **filename** (`string`): \n- **size** (`integer`): \n- **url** (`string`): ",
+  "summary": "Object with properties: extension, filename, size, url",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.ThreadAttachment",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "extension": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

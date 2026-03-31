@@ -1,0 +1,59 @@
+{
+  "id": "api/schemas/parameter",
+  "title": "Parameter",
+  "type": "schema",
+  "category": "api",
+  "content": "# Parameter\n\n\n## Properties\n\n- **name** (`string`): The name of the parameter.\n- **title** (`string`): Human-readable name of the parameter.\n- **data_type** (`string`): The data type of the parameter. It can be `string`, `number`, or `boolean`.\n- **default** (`any`): ",
+  "summary": "Object with properties: name, title, data_type, default",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "manifest",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "manifest.Parameter",
+    "schema_type": "manifest",
+    "schema": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the parameter."
+        },
+        "title": {
+          "type": "string",
+          "description": "Human-readable name of the parameter."
+        },
+        "data_type": {
+          "type": "string",
+          "enum": [
+            "string",
+            "number",
+            "boolean"
+          ],
+          "description": "The data type of the parameter. It can be `string`, `number`, or `boolean`."
+        },
+        "default": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "boolean"
+            }
+          ]
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

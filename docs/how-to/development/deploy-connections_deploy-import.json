@@ -1,0 +1,30 @@
+{
+  "id": "how-to/deploy-connections/deploy-import",
+  "title": "Deploy Import Connection",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Deploy Import Connection\n\nDeploy Import Connections are covered in detail in the Platform Administration section of the Kelvin Documentation.\n\nClick on the relevant link to read full details of each type of Connection.\n\n* [Deploy OPC UA](../../../platform-administration/how-to/connect/connect-to-data/opc-ua.md)\n* [Deploy Modbus](../../../platform-administration/how-to/connect/connect-to-data/modbus.md)\n* [Deploy ROC](../../../platform-administration/how-to/connect/connect-to-data/roc.md)\n* [Deploy CSV Publisher](../../../platform-administration/how-to/connect/connect-to-data/csv-publisher.md)\n* [Deploy Custom Connector](../../../platform-administration/how-to/connect/connect-to-data/custom.md)",
+  "summary": "Deploy Import Connections are covered in detail in the Platform Administration section of the Kelvin Documentation. Click on the relevant link to read full details of each type of Connection. * Deploy OPC UA",
+  "source": "core-docs/docs/developer-tools/how-to/deploy-connections/deploy-import.md",
+  "code_examples": [],
+  "related": [
+    "how-to/csv-publisher",
+    "how-to/roc",
+    "how-to/custom",
+    "how-to/opc-ua",
+    "how-to/modbus"
+  ],
+  "tags": [
+    "cli",
+    "connection",
+    "deploy",
+    "development",
+    "import"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

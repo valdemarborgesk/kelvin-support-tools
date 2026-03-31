@@ -1,0 +1,129 @@
+{
+  "id": "api/schemas/recommendationcontrolchange",
+  "title": "RecommendationControlChange",
+  "type": "schema",
+  "category": "api",
+  "content": "# RecommendationControlChange\n\n\n## Properties\n\n- **control_change_id** (`string`): Unique identifier id for the Control Change request. This will only be returned when the Recommendation state is `accepted` or `auto_accepted` where the actions have been created and an id registered on the Server.\n- **trace_id** (`string`): \n- **expiration_date** (`string`): UTC time when any the Control Change initiated will expire and the `status` automatically marked as `failed`, formatted in RFC 3339.\n- **payload** (`any`): Value represented in one of these formats.\n- **resource** (`string`): The asset / data stream pair that this Control Change will be applied to.\n- **retries** (`integer`): Number of retry attempts to write the Control Change to the Bridge until a `processed` acknowledgment is received from the Bridge. If number of attempts exceeds `retries` then the Control Change Manager updates the Control Change key `state` with the value `failed`.\n- **timeout** (`integer`): Time in seconds the Control Change Manager will wait after sending the Control Change for the Bridge to send a `processed` acknowledgement reply before retry sending the Control Change.\n- **from** (`object`): Information about the current `resource` data when the the Control Change `payload` is created.\n- **status** (`string`): \n- **status_message** (`string`): If something goes wrong while applying the action, this field will contain the error message.",
+  "summary": "Object with properties: control_change_id, trace_id, expiration_date, payload, resource",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.RecommendationControlChange",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "required": [
+        "resource",
+        "payload"
+      ],
+      "properties": {
+        "control_change_id": {
+          "type": "string",
+          "format": "uuid",
+          "example": "0002bc79-b42f-461b-95d6-cf0a28ba87aa",
+          "description": "Unique identifier id for the Control Change request. This will only be returned when the Recommendation state is `accepted` or `auto_accepted` where the actions have been created and an id registered on the Server."
+        },
+        "trace_id": {
+          "type": "string",
+          "example": "app-trace-123",
+          "maxLength": 256
+        },
+        "expiration_date": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when any the Control Change initiated will expire and the `status` automatically marked as `failed`, formatted in RFC 3339."
+        },
+        "payload": {
+          "description": "Value represented in one of these formats.",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "resource": {
+          "type": "string",
+          "format": "krn",
+          "example": "krn:ad:bp_16/motor_speed_setpoint",
+          "minLength": 1,
+          "maxLength": 256,
+          "description": "The asset / data stream pair that this Control Change will be applied to."
+        },
+        "retries": {
+          "type": "integer",
+          "default": 0,
+          "example": 3,
+          "description": "Number of retry attempts to write the Control Change to the Bridge until a `processed` acknowledgment is received from the Bridge. If number of attempts exceeds `retries` then the Control Change Manager updates the Control Change key `state` with the value `failed`."
+        },
+        "timeout": {
+          "type": "integer",
+          "default": 300,
+          "example": 600,
+          "description": "Time in seconds the Control Change Manager will wait after sending the Control Change for the Bridge to send a `processed` acknowledgement reply before retry sending the Control Change."
+        },
+        "from": {
+          "type": "object",
+          "description": "Information about the current `resource` data when the the Control Change `payload` is created.",
+          "required": [
+            "value",
+            "timestamp"
+          ],
+          "properties": {
+            "value": {
+              "description": "Value represented in one of these formats.",
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "object"
+                }
+              ]
+            },
+            "timestamp": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-12-18T18:22:18.582724Z",
+              "description": "UTC time when the current `value` is recorded in the Control Change object, formatted in RFC 3339."
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "none",
+            "dispatched",
+            "dispatch_error"
+          ]
+        },
+        "status_message": {
+          "type": "string",
+          "description": "If something goes wrong while applying the action, this field will contain the error message."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

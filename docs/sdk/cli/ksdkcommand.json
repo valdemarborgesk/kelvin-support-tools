@@ -1,0 +1,31 @@
+{
+  "id": "sdk/cli/sdk.lib.utils.click-utils/ksdkcommand",
+  "title": "KSDKCommand",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KSDKCommand\n\nInherits from: click.Command\n\n\n## Methods\n\n\n### get_verbose_option(_: Context) -> Option\n\n\n### get_params(ctx: Context) -> List\n\n\n### parse_args(ctx: Any, args: Any) -> list\n\n\n### invoke(ctx: Any) -> Any\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/utils/click_utils.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.utils.click_utils",
+    "item_type": "class",
+    "methods": [
+      "get_verbose_option",
+      "get_params",
+      "parse_args",
+      "invoke"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

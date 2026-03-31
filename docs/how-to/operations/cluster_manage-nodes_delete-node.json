@@ -1,0 +1,38 @@
+{
+  "id": "how-to/cluster/manage-nodes/delete-node",
+  "title": "Delete Node",
+  "type": "how_to",
+  "category": "operations",
+  "content": "## Nodes (Horizontal Scale Cluster)\n\nAt any time you can horizontally scale your Cluster by adding or deleting Nodes.\n\n    This can be done at any time while the Cluster is running and will not affect any Workloads currently running on the Cluster.\n\n### Delete Node from Cluster (Scale Down)\n\nWorker Nodes from a k3s cluster can be deleted at any time. All workloads and running processes will be transferred to other nodes automatically.\n\n    You only need to do this if you have chosen the Main Node in the Cluster to be k3s installation by Kelvin. If you manage your own Kubernetes cluster, then follow your providers instructions and Kelvin will automatically adjust the system to remove the deleted node.\n\nTo perform this action you need to have access to the Main Node. You can find full instructions on how to delete your selected node by going to Orchestration, selecting your cluster and node, click on the Info tab and click **Delete Node**.\n\nYou will get the instructions what to type into the command line of your Main Node in the Cluster.\n\nGo to your Main Node and type in the following;\n\n```bash title=\"Kelvin SDK Command Line Example\" linenums=\"1\"\nkelvin-provision nodes remove --name {Worker Node Name}\n```\n\nYou will then see the following response and a final question \n\n```bash title=\"Kelvin SDK Command Line Output\" linenums=\"1\"\nConnecting to Cluster API...[OK]\nReading cluster config...[OK]\nTest cluster connection..[OK]\n\nWARNING: This action is irreversible.\n\nUse the arrow keys to navigate: ↓ ↑ → ←\n? Are you sure you want to continue?:\n    Yes\n  → No\n```\n\nSelect **Yes** and press **enter**. You will then get confirmation on whether the Worker Node has been successfully deleted.",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/cluster/manage-nodes/delete-node.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "kelvin-provision nodes remove --name {Worker Node Name}",
+      "title": "Kelvin SDK Command Line Example"
+    },
+    {
+      "language": "bash",
+      "code": "Connecting to Cluster API...[OK]\nReading cluster config...[OK]\nTest cluster connection..[OK]\n\nWARNING: This action is irreversible.\n\nUse the arrow keys to navigate: ↓ ↑ → ←\n? Are you sure you want to continue?:\n    Yes\n  → No",
+      "title": "Kelvin SDK Command Line Output"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "api",
+    "cli",
+    "configure",
+    "delete",
+    "node",
+    "operations",
+    "sdk",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

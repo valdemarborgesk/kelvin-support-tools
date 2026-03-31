@@ -1,0 +1,34 @@
+{
+  "id": "sdk/app/message.msg-builders/controlchange",
+  "title": "ControlChange",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ControlChange\n\n\nControl change builder\nUse this helper class to build a Kelvin Control change.\n\nArgs:\n    resource (KRN): The kelvin resource targeted by the control change, represented by a KRN (usually\n        KRNAssetDataStream)\n    expiration_date (datetime | timedelta): The absolute time in the future when the Control Change expires. Provide\n        either a absolute datetime or a timedelta from now\n    payload (bool, int, float, str): The desired target value for the control change\n    retries (int): Optional number of retries\n    timeout (int): Optional timeout time (for retries)\n    control_change_id (UUID): Optional UUID to set an specific ID for the control change\n    from_value (ValuePoint): Optional initial value for the control change\n    trace_id (str): Optional trace ID for the control change\n\n\n## Methods\n\n\n### to_message() -> ControlChangeMsg\n\n\n### from_message(msg: ControlChangeMsg) -> ControlChange\n",
+  "summary": "Control change builder Use this helper class to build a Kelvin Control change.",
+  "source": "app/src/kelvin/message/msg_builders.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import ControlChange\n\n# Usage example\napp = ControlChange()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.msg_builders",
+    "item_type": "class",
+    "methods": [
+      "to_message",
+      "from_message"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

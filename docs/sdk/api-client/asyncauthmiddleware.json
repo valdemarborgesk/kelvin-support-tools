@@ -1,0 +1,34 @@
+{
+  "id": "sdk/api-client/base.http-client.auth/asyncauthmiddleware",
+  "title": "AsyncAuthMiddleware",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AsyncAuthMiddleware\n\nInherits from: httpx.Auth\n\n\nImplements httpx auth.\n\n\n## Methods\n\n\n### __init__(conn: AsyncAuthConnection) -> None\n\n\n### async async_auth_flow(request: httpx.Request) -> AsyncGenerator[httpx.Request, httpx.Response]\n",
+  "summary": "Implements httpx auth.",
+  "source": "api/src/kelvin/api/base/http_client/auth.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.http_client.auth.__init__()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.http_client.auth",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "async_auth_flow"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

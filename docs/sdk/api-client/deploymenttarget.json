@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.manifest/deploymenttarget",
+  "title": "DeploymentTarget",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DeploymentTarget\n\nInherits from: DataModelBase\n\n\nDeploymentTarget object.\n\nParameters\n----------\n    type: Optional[enum.DeploymentTargetType]\n    cluster: Optional[Cluster]\n",
+  "summary": "DeploymentTarget object.",
+  "source": "api/src/kelvin/api/client/model/manifest.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.manifest.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.manifest",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/base.error/loginerror",
+  "title": "LoginError",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# LoginError\n\nInherits from: AuthenticationError\n\n\nLogin exception\n",
+  "summary": "Login exception",
+  "source": "api/src/kelvin/api/base/error.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.error.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.error",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "id": "api/schemas/networkingitem",
+  "title": "NetworkingItem",
+  "type": "schema",
+  "category": "api",
+  "content": "# NetworkingItem\n\n\n## Properties\n\n- **addresses** (`array`): Array of ports exposed by the Service.\n- **name** (`string`): Unique identifier `name` of the Service.\n- **protocol** (`string`): Protocol used by the Service.",
+  "summary": "Object with properties: addresses, name, protocol",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.NetworkingItem",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "addresses": {
+          "type": "array",
+          "description": "Array of ports exposed by the Service.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "address": {
+                "type": "string",
+                "example": "172.0.0.2",
+                "description": "IPV4 address to reach the Service."
+              },
+              "interface": {
+                "type": "string",
+                "example": "eth0",
+                "description": "Interface responsible for hosting the Service."
+              },
+              "port": {
+                "type": "integer",
+                "example": 8080,
+                "minimum": 1,
+                "maximum": 65535,
+                "description": "Port designated for accessing the Service."
+              }
+            }
+          }
+        },
+        "name": {
+          "type": "string",
+          "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+          "example": "http-service",
+          "description": "Unique identifier `name` of the Service."
+        },
+        "protocol": {
+          "type": "string",
+          "enum": [
+            "TCP",
+            "UDP"
+          ],
+          "example": "TCP",
+          "description": "Protocol used by the Service."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

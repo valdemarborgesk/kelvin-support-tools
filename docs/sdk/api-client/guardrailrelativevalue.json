@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.type/guardrailrelativevalue",
+  "title": "GuardrailRelativeValue",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# GuardrailRelativeValue\n\nInherits from: DataModelBase\n\n\nGuardrailRelativeValue object.\n\nParameters\n----------\n    value: StrictFloat\n    inclusive: Optional[StrictBool]\n    type: Optional[enum.GuardrailRelativeType]\n",
+  "summary": "GuardrailRelativeValue object.",
+  "source": "api/src/kelvin/api/client/model/type.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.type.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.type",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

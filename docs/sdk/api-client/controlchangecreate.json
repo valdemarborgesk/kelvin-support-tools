@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/controlchangecreate",
+  "title": "ControlChangeCreate",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ControlChangeCreate\n\nInherits from: DataModelBase\n\n\nControlChangeCreate object.\n\nParameters\n----------\n    expiration_date: datetime\n    from_: Optional[type_1.ControlChangeFrom]\n    payload: Union[StrictInt, StrictFloat, StrictStr, StrictBool, dict[str, Any]]\n    trace_id: Optional[StrictStr]\n    resource: KRN\n    retries: Optional[StrictInt]\n    timeout: Optional[StrictInt]\n",
+  "summary": "ControlChangeCreate object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

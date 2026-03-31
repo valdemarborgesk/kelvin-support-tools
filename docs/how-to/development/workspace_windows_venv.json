@@ -1,0 +1,30 @@
+{
+  "id": "how-to/workspace/windows/venv",
+  "title": "Venv",
+  "type": "how_to",
+  "category": "development",
+  "content": "<p style=\"text-align: center;\">\n  <a href=\"../vscode-setup/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">⬅</span>\n    Setup Visual Studio Code\n  </a>\n</p>\n\n## Introduction\n\nA Python virtual environment is an isolated workspace for projects, allowing you to install dependencies separately for each project without conflicts. This ensures that each project’s required packages won’t interfere with others.\n\n## Create new Python Virtual Environment\n\n### Video Tutorial\n\nYou can watch this video tutorial or read the full step-by step written tutorial below.\n\n<iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/jiTt1YDDZV8?si=LvhBeerbQGyhywGd\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\n### Written Tutorial\n\nTo create a virtual environment in Windows, open Visual Studio Code.\n\nIn virtual Studio Code we will create and open a new Folder. First click on **File**, then **Open Folder**.\n\nSelect your project location and create a new folder, then click **Select Folder**.\n\nConfirm that you trust the authors of any code in the folder.\n\nYou can create a new Python Virtual Environment in two ways, depending on your preference;\n\n<div class=\"result\" markdown>\n\n=== \"Using Visual Studio Code\"\n\n    Then click on **File**, then **New File**.\n\n    \n\n    Now click on Python File.\n\n    \n\n    Your Visual Studio Code has now changed to the Python environment. You can see at the bottom the Python version that we installed on to the computer.\n\n    \n\n    Now to create a new Python Virtual Environment, click on the the Python version **3.12.7 64-bit**, then click on **+ Create Virtual Environment**.\n\n    \n\n    Click on **Venv** as the environment type.\n\n    \n\n    Click on the Python you want to virtualize.\n\n    \n\n    The virtual environment will then be created in your folder. You will see a new `.venv` folder appear and the name of the environment has changed.\n\n    \n\n=== \"Using Terminal\"\n\n    Now click on **Terminal** menu, then click on **New Terminal**.\n\n    \n\n    In the terminal window, type the following\n\n    ```bash title=\"New Virtual Environment\" linenums=\"1\"\n    python -m venv your-env-name\n    ```\n\n    For the demo, we called the environment `demo-environment`.\n\n    \n\n    You will see a new folder created called `demo-environment`.\n\n    A popup will also appear asking if you want to change to use this virtual environment. Click **yes**.\n\n    \n\n    The virtual environment will then be created in your folder. You will see a new `demo-environment` folder appear and the name of the environment has changed.\n\n    \n\n</div>\n\nCongratulations, you have created your first project and linked it to a virtual environment.\n\nNow any `pip install` you do will only be installed on this Virtual Environment and this project.\n\nWhen you create a new Python virtual environment, it makes a copy of the base Python installation within that environment. This new environment is isolated, so any changes or package installations you make in other virtual environments won’t affect it.\n\n<p style=\"text-align: center;\">\n  <a href=\"../vscode-setup/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">⬅</span>\n    Setup Visual Studio Code\n  </a>\n</p>",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/workspace/windows/venv.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "python -m venv your-env-name",
+      "title": "New Virtual Environment"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "cli",
+    "create",
+    "development",
+    "sdk",
+    "venv"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

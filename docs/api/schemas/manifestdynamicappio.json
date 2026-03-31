@@ -1,0 +1,57 @@
+{
+  "id": "api/schemas/dynamicappio",
+  "title": "DynamicAppIO",
+  "type": "schema",
+  "category": "api",
+  "content": "# DynamicAppIO\n\n\n## Properties\n\n- **type_name** (`string`): Dynamic I/O type name.\n- **data_types** (`array`): List of data types that the dynamic I/O type can have. If empty, any data type is allowed.\n- **ownership** (`string`): \n- **type** (`string`): ",
+  "summary": "Object with properties: type_name, data_types, ownership, type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "manifest",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "manifest.DynamicAppIO",
+    "schema_type": "manifest",
+    "schema": {
+      "type": "object",
+      "required": [
+        "type_name"
+      ],
+      "properties": {
+        "type_name": {
+          "type": "string",
+          "description": "Dynamic I/O type name."
+        },
+        "data_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Primitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects."
+          },
+          "description": "List of data types that the dynamic I/O type can have. If empty, any data type is allowed."
+        },
+        "ownership": {
+          "type": "string",
+          "enum": [
+            "both",
+            "owned",
+            "remote"
+          ]
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "both",
+            "data",
+            "control"
+          ]
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

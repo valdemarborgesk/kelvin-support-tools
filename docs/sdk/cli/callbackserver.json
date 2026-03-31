@@ -1,0 +1,32 @@
+{
+  "id": "sdk/cli/sdk.lib.auth.callback-server/callbackserver",
+  "title": "CallbackServer",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# CallbackServer\n\n\nLocal HTTP server for handling OAuth callbacks\n\n\n## Methods\n\n\n### __init__(port: int) -> Any\n\nInitialize the callback server.\n\n\n### get_callback_url() -> str\n\nGet the callback URL for the OAuth flow.\n\n\n### start() -> None\n\nStart the callback server.\n\n\n### wait_for_callback(timeout: float) -> CallbackResult\n\nWait for the OAuth callback.\n\n\n### stop() -> None\n\nStop the callback server\n",
+  "summary": "Local HTTP server for handling OAuth callbacks",
+  "source": "cli/src/kelvin/sdk/lib/auth/callback_server.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.auth.callback_server",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "get_callback_url",
+      "start",
+      "wait_for_callback",
+      "stop"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

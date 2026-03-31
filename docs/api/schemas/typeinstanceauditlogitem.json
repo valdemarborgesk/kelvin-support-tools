@@ -1,0 +1,83 @@
+{
+  "id": "api/schemas/instanceauditlogitem",
+  "title": "InstanceAuditLogItem",
+  "type": "schema",
+  "category": "api",
+  "content": "# InstanceAuditLogItem\n\n\n## Properties\n\n- **action** (`string`): Type of action performed over the platform resource.\n- **created** (`string`): UTC time when the Audit Log was first created, formatted in RFC 3339.\n- **id** (`integer`): Unique ID of the Audit Log entry.\n- **identifier** (`string`): The platform resource that generated the audit log.\n- **meta** (`object`): Contextual information about the action. For example, updating a resource you probably see information about the previous state (FROM key) and the current state (TO key) of the resource.\n- **namespace** (`string`): In which service the audit log was created.\n- **request_id** (`string`): Deprecated. Not being used.\n- **user_id** (`string`): User ID that initiated the action.\n- **username** (`string`): Username used to create the action.",
+  "summary": "Object with properties: action, created, id, identifier, meta",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.InstanceAuditLogItem",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "example": "BATCH-UPDATE-NODE",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "Type of action performed over the platform resource."
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-06-26T18:22:18.582724Z",
+          "description": "UTC time when the Audit Log was first created, formatted in RFC 3339."
+        },
+        "id": {
+          "type": "integer",
+          "example": 4739892,
+          "description": "Unique ID of the Audit Log entry."
+        },
+        "identifier": {
+          "type": "string",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "example": "application_name",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "The platform resource that generated the audit log."
+        },
+        "meta": {
+          "type": "object",
+          "properties": {},
+          "description": "Contextual information about the action. For example, updating a resource you probably see information about the previous state (FROM key) and the current state (TO key) of the resource."
+        },
+        "namespace": {
+          "type": "string",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "example": "api-workload",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "In which service the audit log was created."
+        },
+        "request_id": {
+          "type": "string",
+          "description": "Deprecated. Not being used."
+        },
+        "user_id": {
+          "type": "string",
+          "format": "uuid",
+          "example": "0002bc79-b42f-461b-95d6-cf0a28ba87aa",
+          "description": "User ID that initiated the action."
+        },
+        "username": {
+          "type": "string",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "example": "service-account-node-client-aws-cluster",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "Username used to create the action."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

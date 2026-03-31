@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.exceptions/invalidapplicationconfiguration",
+  "title": "InvalidApplicationConfiguration",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# InvalidApplicationConfiguration\n\nInherits from: KSDKException\n\n\nRaised when the provided application configuration is not valid.\n",
+  "summary": "Raised when the provided application configuration is not valid.",
+  "source": "cli/src/kelvin/sdk/lib/exceptions.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.exceptions",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

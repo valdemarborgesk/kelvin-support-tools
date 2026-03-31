@@ -1,0 +1,28 @@
+{
+  "id": "sdk/cli/sdk.lib.models.ksdk-global-configuration/dockermetadataentry",
+  "title": "DockerMetadataEntry",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DockerMetadataEntry\n\nInherits from: GenericMetadataEntry\n\n\n## Methods\n\n\n### full_docker_registry_url() -> str\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/ksdk_global_configuration.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.ksdk_global_configuration",
+    "item_type": "class",
+    "methods": [
+      "full_docker_registry_url"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

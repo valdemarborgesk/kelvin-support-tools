@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/application.api-client/unavailableapiclienterror",
+  "title": "UnavailableApiClientError",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# UnavailableApiClientError\n\nInherits from: Exception\n\n\nRaised when attempting to use an unavailable API client.\n",
+  "summary": "Raised when attempting to use an unavailable API client.",
+  "source": "app/src/kelvin/application/api_client.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import UnavailableApiClientError\n\n# Usage example\napp = UnavailableApiClientError()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "application.api_client",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

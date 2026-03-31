@@ -1,0 +1,32 @@
+{
+  "id": "api/schemas/assetinsightsagg",
+  "title": "AssetInsightsAgg",
+  "type": "schema",
+  "category": "api",
+  "content": "# AssetInsightsAgg\n\nPerform mathematical calculations on a group of data defined by the 'starttime' and 'endtime' keys. For text data, the option available is `count`.\n\n## Enum Values\n\n- `count`\n- `mean`\n- `sum`\n- `max`\n- `min`",
+  "summary": "Perform mathematical calculations on a group of data defined by the 'starttime' and 'endtime' keys. For text data, the option available is `count`.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.AssetInsightsAgg",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "count",
+        "mean",
+        "sum",
+        "max",
+        "min"
+      ],
+      "description": "Perform mathematical calculations on a group of data defined by the 'starttime' and 'endtime' keys. For text data, the option available is `count`."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

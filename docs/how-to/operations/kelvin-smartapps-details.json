@@ -1,0 +1,28 @@
+{
+  "id": "how-to/kelvin-smartapps-details",
+  "title": "Applications Details Page",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Applications Details Page\n\nWhen you click on a Application card you will see an overview of the Application.\n\n    Depending on the `type` of the Application, the options and information available in the details page will vary.\n\n    Jump to the [Application Tabs](#application-tabs) below for more details.\n\n## Applications Status & Details\n\nAt the top you have an overview about the Application, like the latest version available for Application and when it was last updated and the current status.\n\nThe information available will depend on the `type` of Application.\n\n<div class=\"result\" markdown>\n\n=== \"App Type\"\n\n    There are four Application `type`.\n\n    * Kelvin SmartApp™\n    * Docker App\n    * Import\n    * Export\n\n    Jump to the [Application Tabs](#application-tabs) below for more details.\n\n    \n\n=== \"Status\"\n\n    You can quickly see the status of all your Assets and whether any Assets are currently not being processed by the Application.\n\n    \n\n=== \"Assets\"\n\n            This is only available for the Application `type` Kelvin SmartApp™.\n\n    Summary of how many Assets are being processed by the Kelvin SmartApp™.\n\n    \n\n=== \"Latest Version & Update\"\n\n    See when each Assets had its last data update applied and a summary of the latest for all Assets.\n\n    \n\n=== \"Data Explorer\"\n\n            This is only available for the Application `type` Kelvin SmartApp™.\n\n    Data Explorer is setup so that you can see or quickly switch between all your Assets for the Kelvin SmartApp™.\n\n    To go to this specialized Data Explorer, either click on the asset name to immediately open that asset in Data Explorer or click on Data Explorer at the top right hand corner and then select the Assets you want to view.\n\n    \n\n    Or you can select the Assets tab, find the Asset in the list that you want to view, then click on graph icon { width=20 height=20 }.\n\n    \n\n    Or to open a multi-Asset Data Explorer page, select the wanted Assets (maximum 4) and click on **Compare in Data Explorer** button.\n\n    \n        You can also change to a multi-asset Explorer page when viewing a single Asset on the page through the Data Source options.\n\n    \n\n</div>\n\n## Application Tabs\n\nDepending on the `type` of the application, you will have a range of tab options available.\n\n    The `type` is set by the developer.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin SmartApps™\"\n\n    These are Applications designed with the Kelvin SDK development tools and are referred as Kelvin SmartApps™.\n    \n    There are a number of tabs available.\n\n    \n\n=== \"Docker Apps\"\n\n    These are applications that the Developers have designed using any development architecture outside of the Kelvin Platform.\n    \n    Without the tight integration to Kelvin, Docker Apps have limited tabs.\n\n    \n\n</div>",
+  "summary": "When you click on a Application card you will see an overview of the Application.",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/kelvin-smartapps-details.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "applications",
+    "cli",
+    "details",
+    "docker",
+    "operations",
+    "page",
+    "sdk",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

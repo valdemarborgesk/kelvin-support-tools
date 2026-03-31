@@ -1,0 +1,29 @@
+{
+  "id": "sdk/cli/sdk.lib.models.ksdk-docker/dockerimage",
+  "title": "DockerImage",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DockerImage\n\nInherits from: KSDKModel\n\n\n## Methods\n\n\n### readable_created_date() -> str\n\n\n### get_docker_image_object(raw_image_object: dict) -> DockerImage\n\nFrom a raw image object provided by the Docker API, yield a valid DockerImage Object for better data handling.\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/ksdk_docker.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.ksdk_docker",
+    "item_type": "class",
+    "methods": [
+      "readable_created_date",
+      "get_docker_image_object"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

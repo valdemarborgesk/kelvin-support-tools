@@ -1,0 +1,34 @@
+{
+  "id": "api/schemas/propertytype",
+  "title": "PropertyType",
+  "type": "schema",
+  "category": "api",
+  "content": "# PropertyType\n\n## Enum Values\n\n- `boolean`\n- `number`\n- `string`\n- `timestamp`\n- `list[boolean]`\n- `list[number]`\n- `list[string]`\n- `list[timestamp]`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.PropertyType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "boolean",
+        "number",
+        "string",
+        "timestamp",
+        "list[boolean]",
+        "list[number]",
+        "list[string]",
+        "list[timestamp]"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

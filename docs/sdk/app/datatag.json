@@ -1,0 +1,33 @@
+{
+  "id": "sdk/app/message.msg-builders/datatag",
+  "title": "DataTag",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataTag\n\nInherits from: MessageBuilder\n\n\nData Tag.\n\nArgs:\n   start_date (datetime): The start date of the data tag.\n   tag_name (str): The name of the data tag.\n   resource (KRNAsset): The asset resource associated with the data tag.\n   end_date (Optional[datetime]): The end date of the data tag. If not specified, the data tag is\n   considered one point in time, the start_date.\n   contexts (Optional[List[KRN]]): The list of contexts associated with the data tag.\n   description (Optional[str]): The description of the data tag. Truncated to 256 characters.\n\n\n## Methods\n\n\n### to_message() -> DataTagMsg\n",
+  "summary": "Data Tag.",
+  "source": "app/src/kelvin/message/msg_builders.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import DataTag\n\n# Usage example\napp = DataTag()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.msg_builders",
+    "item_type": "class",
+    "methods": [
+      "to_message"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

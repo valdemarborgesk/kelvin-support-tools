@@ -1,0 +1,146 @@
+{
+  "id": "api/endpoints/datastreams/createBulkDataStream",
+  "title": "Create Bulk Data Stream",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Create Bulk Data Stream\n\nCreate a list of new Data Streams.\n\n## Endpoint\n\n`POST /datastreams/bulk/create`",
+  "summary": "Create Bulk Data Stream",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/datastreams/bulk/create' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.datastreams.createBulkDataStream()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/datastreams"
+  ],
+  "tags": [
+    "datastreams",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/datastreams/bulk/create",
+    "method": "POST",
+    "operation_id": "createBulkDataStream",
+    "tag": "Datastreams",
+    "permission": "kelvin.permission.datastreams.create",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "required": [
+          "datastreams"
+        ],
+        "type": "object",
+        "properties": {
+          "datastreams": {
+            "type": "array",
+            "minItems": 1,
+            "description": "Array of objects, each object in the array represents a new Datastream.",
+            "items": {
+              "required": [
+                "name",
+                "data_type_name",
+                "title",
+                "type"
+              ],
+              "type": "object",
+              "properties": {
+                "description": {
+                  "type": "string",
+                  "example": "The rate at which gas flows from the reservoir to the surface.",
+                  "minLength": 1,
+                  "maxLength": 200,
+                  "description": "Detailed description of the new Data Stream."
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 64,
+                  "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                  "example": "gas_flow_rate",
+                  "description": "Unique identifier `name` for the new Data Stream. Can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+                },
+                "data_type_name": {
+                  "type": "string",
+                  "enum": [
+                    "boolean",
+                    "number",
+                    "object",
+                    "string"
+                  ]
+                },
+                "semantic_type_name": {
+                  "type": "string",
+                  "example": "volume_flow_rate",
+                  "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                  "minLength": 1,
+                  "maxLength": 64,
+                  "description": "Unique identifier `name` of the Semantic Type that describes the nature, purpose or origin of the data."
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Gas Flow Rate",
+                  "minLength": 1,
+                  "maxLength": 64,
+                  "description": "Display name (`title`) of the Data Stream."
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "computed",
+                    "measurement",
+                    "set_point"
+                  ],
+                  "description": "Specifies the technique used for generating data in the Data Stream."
+                },
+                "unit_name": {
+                  "type": "string",
+                  "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                  "example": "litre_per_second",
+                  "minLength": 1,
+                  "maxLength": 64,
+                  "description": "Unique identifier `name` of the Units that describes the type or category of data represented by each unit."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Datastreams created successfully"
+      },
+      "207": {
+        "description": ""
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "403": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      },
+      "409": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

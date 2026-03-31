@@ -1,0 +1,168 @@
+{
+  "id": "api/schemas/dataqualityconfigurations",
+  "title": "DataQualityConfigurations",
+  "type": "schema",
+  "category": "api",
+  "content": "# DataQualityConfigurations\n\nThe Data Quality configurations applied to the Asset Data Stream pair.\n\n\n## Properties\n\n- **kelvin_timestamp_anomaly** (`object`): \n- **kelvin_stale_detection** (`object`): \n- **kelvin_out_of_range_detection** (`object`): \n- **kelvin_outlier_detection** (`object`): \n- **kelvin_data_availability** (`object`): ",
+  "summary": "The Data Quality configurations applied to the Asset Data Stream pair.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.DataQualityConfigurations",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "description": "The Data Quality configurations applied to the Asset Data Stream pair.",
+      "properties": {
+        "kelvin_timestamp_anomaly": {
+          "type": "object",
+          "required": [
+            "enabled"
+          ],
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Define if the timestamp anomaly algorithm is enabled."
+            }
+          }
+        },
+        "kelvin_stale_detection": {
+          "type": "object",
+          "required": [
+            "enabled"
+          ],
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Define if the stale detection algorithm is enabled."
+            },
+            "configuration": {
+              "type": "object",
+              "description": "The configuration for the stale detection algorithm.",
+              "properties": {
+                "window_interval": {
+                  "type": "integer",
+                  "description": "The size of the window to check for stale data."
+                },
+                "window_interval_unit": {
+                  "type": "string",
+                  "enum": [
+                    "sec",
+                    "min",
+                    "hour",
+                    "day"
+                  ],
+                  "description": "The unit of time for the window interval. This is used in data availability and stale detection checks to define the time period over which data is expected."
+                }
+              }
+            }
+          }
+        },
+        "kelvin_out_of_range_detection": {
+          "type": "object",
+          "required": [
+            "enabled"
+          ],
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Define if the out of range detection algorithm is enabled."
+            },
+            "configuration": {
+              "type": "object",
+              "description": "The configuration for the out of range detection algorithm.",
+              "properties": {
+                "min_threshold": {
+                  "type": "number",
+                  "description": "The minimum threshold for the out of range detection."
+                },
+                "max_threshold": {
+                  "type": "number",
+                  "description": "The maximum threshold for the out of range detection."
+                }
+              }
+            }
+          }
+        },
+        "kelvin_outlier_detection": {
+          "type": "object",
+          "required": [
+            "enabled"
+          ],
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Define if the outlier detection algorithm is enabled."
+            },
+            "configuration": {
+              "type": "object",
+              "description": "The configuration for the outlier detection algorithm.",
+              "properties": {
+                "model": {
+                  "type": "string",
+                  "enum": [
+                    "z_score"
+                  ],
+                  "description": "The model to use for outlier detection. This is used in the outlier detection algorithm to determine how to identify outliers in the data."
+                },
+                "z_score": {
+                  "type": "object",
+                  "description": "The configuration for the z-score outlier detection model.",
+                  "properties": {
+                    "threshold": {
+                      "type": "number",
+                      "description": "The threshold for outlier detection."
+                    },
+                    "window_size": {
+                      "type": "integer",
+                      "description": "The size of the window to check for outliers."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "kelvin_data_availability": {
+          "type": "object",
+          "required": [
+            "enabled"
+          ],
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Define if the data availability algorithm is enabled."
+            },
+            "configuration": {
+              "type": "object",
+              "description": "The configuration for the data availability algorithm.",
+              "properties": {
+                "window_expected_number_msgs": {
+                  "type": "integer",
+                  "description": "The expected number of messages."
+                },
+                "window_interval_unit": {
+                  "type": "string",
+                  "enum": [
+                    "sec",
+                    "min",
+                    "hour",
+                    "day"
+                  ],
+                  "description": "The unit of time for the window interval. This is used in data availability and stale detection checks to define the time period over which data is expected."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/datastreamslist",
+  "title": "DataStreamsList",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataStreamsList\n\nInherits from: DataModelBase\n\n\nDataStreamsList object.\n\nParameters\n----------\n    data_type_names: Optional[list[DataTypeName]]\n    names: Optional[list[NameModel2]]\n    types: Optional[list[enum.DataStreamType]]\n    search: Optional[list[SearchItem]]\n    semantic_type_names: Optional[list[SemanticTypeName]]\n    unit_names: Optional[list[UnitName]]\n",
+  "summary": "DataStreamsList object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

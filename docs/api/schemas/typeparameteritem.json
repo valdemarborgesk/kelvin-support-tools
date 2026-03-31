@@ -1,0 +1,54 @@
+{
+  "id": "api/schemas/parameteritem",
+  "title": "ParameterItem",
+  "type": "schema",
+  "category": "api",
+  "content": "# ParameterItem\n\n\n## Properties\n\n- **name** (`string`): Parameter name\n- **value** (`any`): \n- **comment** (`string`): Comment regarding the parameter change action",
+  "summary": "Object with properties: name, value, comment",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.ParameterItem",
+    "schema_type": "type",
+    "schema": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Parameter name"
+        },
+        "value": {
+          "oneOf": [
+            {
+              "type": "number",
+              "description": "Parameter value as number"
+            },
+            {
+              "type": "string",
+              "description": "Parameter value as string"
+            },
+            {
+              "type": "boolean",
+              "description": "Parameter value as boolean"
+            }
+          ]
+        },
+        "comment": {
+          "type": "string",
+          "description": "Comment regarding the parameter change action"
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "type": "object"
+    },
+    "last_updated": "2026-02-04"
+  }
+}

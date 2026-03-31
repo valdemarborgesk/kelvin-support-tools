@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.evidences/iframe",
+  "title": "IFrame",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# IFrame\n\nInherits from: Evidence\n\n\nEvidence representing embedded iframe content, typically used to display external webpages or media as evidence.\n\nAttributes:\n    title (Optional[str]): The title of the iframe content.\n    url (AnyHttpUrl): The URL of the external content to be displayed within the iframe.\n\nNotes:\n    - The `url` must be a valid HTTP or HTTPS URL for secure embedding.\n",
+  "summary": "Evidence representing embedded iframe content, typically used to display external webpages or media as evidence.",
+  "source": "app/src/kelvin/message/evidences.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import IFrame\n\n# Usage example\napp = IFrame()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.evidences",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

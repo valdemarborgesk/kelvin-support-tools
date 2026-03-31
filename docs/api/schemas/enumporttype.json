@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/porttype",
+  "title": "PortType",
+  "type": "schema",
+  "category": "api",
+  "content": "# PortType\n\nType of port to expose.\n\n## Enum Values\n\n- `host`\n- `service`",
+  "summary": "Type of port to expose.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.PortType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "description": "Type of port to expose.",
+      "enum": [
+        "host",
+        "service"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "how-to/assets/smartapp-details-tab-assets-add-asset",
+  "title": "Smartapp Details Tab Assets Add Asset",
+  "type": "how_to",
+  "category": "operations",
+  "content": "## Adding Assets to Your Application\n\nAssets can be added to your Applications without requiring any knowledge about the infrastructure or Application variables.\n\nThis is ideal for Operations.\n\n    For power users like Developers or Platform Administrators you can add Asset to your Applications through the Workload tab where all deployment options are available.\n\nTo start go to the Application details page and click on the Assets tab.\n\nThen click on the **Add Assets** button.\n\n## Step 1 - Select Version\n\nIn step 1 select the version of the Application you want the Assets to use.\n\nWhen ready click **Next** button.\n\n## Step 2 - Select Assets\n\nIn step 2 select the Assets you want to add.\n\n    If any Assets have missing requirements such as no associated Data Streams that are required for the Application, then an alert will appear between the filters and the Asset list.\n\n    You can also filter the list to only see the Assets which have missing requirements.\n\n    \n\nWhen ready click **Next** button.\n\n## Step 3 - App Parameters\n\nIn step 3 you have the option to immediately add custom values to the App Parameters.\n\n    This is optional and the default values are automatically filled in when deployed.\n\n    When you add the Asset the default App Parameter values are saved with the Asset.\n\n    Future changes of the default values will not affect any Assets that have already been added using the previous default values.\n\nIf you are adding many Assets, you can download the App Parameter list to you computer and edit them in Google Sheets or Microsoft Excel.\n\nThis allows you to easily do many changes in a familiar environment.\n\nWhen ready, upload the modified CSV file and it will be populated into the table.\n\nWhen satisfied with the App Parameter values, click the **Add** button.\n\n    This will be deployed to the default cluster.\n\nThe Assets will now be deployed to the Application and started automatically.\n\n    You have now successfully deployed Assets to an Application !",
+  "summary": "",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/assets/smartapp-details-tab-assets-add-asset.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "add",
+    "asset",
+    "assets",
+    "cli",
+    "deploy",
+    "details",
+    "operations",
+    "smartapp",
+    "tab"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

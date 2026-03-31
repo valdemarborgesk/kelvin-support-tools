@@ -1,0 +1,22 @@
+{
+  "id": "concepts/core/kelvinai",
+  "title": "Kelvin AI?",
+  "type": "concept",
+  "category": "core",
+  "content": "# Kelvin AI?\n\nKelvin AI is your smart assistant built to streamline your workflow on the Kelvin Platform.\n\nIt speeds up user interaction with the Kelvin UI, helping you complete tasks faster, find and sort information efficiently, and understand your data with less effort.\n\n    Kelvin uses specialized agents to enhance response accuracy and reduce common hallucination issues found in typical LLM architectures.\n\n[Video content]\n\n## Is Kelvin AI Secure ?\n\nKelvin AI is built on a flexible infrastructure to meet your privacy and compliance requirements.\n\nYou can choose the right setup for your organization’s security needs.\n\n### High Security\n\nFor maximum data control, you can run an in-house LLM on your own servers.\n\nThis keeps all data and insights fully within your environment.\n\n### Low Maintenance Security\n\nYou can connect Kelvin AI to your preferred cloud LLM provider such as OpenAI, Claude, or Mistral.\n\n    Kelvin AI is connected to your LLM account, ensuring that you always maintain control over your data and usage.\n\nThis gives you access to the latest AI models with minimal maintenance.",
+  "summary": "Kelvin AI is your smart assistant built to streamline your workflow on the Kelvin Platform. It speeds up user interaction with the Kelvin UI, helping you complete tasks faster, find and sort information efficiently, and understand your data with less effort.",
+  "source": "core-docs/docs/overview/concepts/kelvinai.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "ai?",
+    "asset",
+    "control",
+    "core",
+    "kelvin"
+  ],
+  "metadata": {
+    "section": "overview/concepts",
+    "last_updated": "2026-02-04"
+  }
+}

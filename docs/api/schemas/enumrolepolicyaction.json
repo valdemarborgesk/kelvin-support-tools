@@ -1,0 +1,33 @@
+{
+  "id": "api/schemas/rolepolicyaction",
+  "title": "RolePolicyAction",
+  "type": "schema",
+  "category": "api",
+  "content": "# RolePolicyAction\n\nThe actions that are allowed on the resource.\n\n## Enum Values\n\n- `*`\n- `create`\n- `read`\n- `update`\n- `delete`",
+  "summary": "The actions that are allowed on the resource.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.RolePolicyAction",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "*",
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "example": "read",
+      "description": "The actions that are allowed on the resource."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

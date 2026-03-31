@@ -1,0 +1,33 @@
+{
+  "id": "sdk/api-client/base.error/responseerror",
+  "title": "ResponseError",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ResponseError\n\nInherits from: ClientError\n\n\nResponse error.\n\n\n## Methods\n\n\n### __init__(message: str, response: Response) -> None\n\nInitialise error.\n",
+  "summary": "Response error.",
+  "source": "api/src/kelvin/api/base/error.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.error.__init__()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.error",
+    "item_type": "class",
+    "methods": [
+      "__init__"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "api/schemas/errorlegacytype",
+  "title": "ErrorLegacyType",
+  "type": "schema",
+  "category": "api",
+  "content": "# ErrorLegacyType\n\nThe type of error that has occurred, e.g. `system`.\n\n## Enum Values\n\n- `system`",
+  "summary": "The type of error that has occurred, e.g. `system`.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.ErrorLegacyType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "description": "The type of error that has occurred, e.g. `system`.",
+      "enum": [
+        "system"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

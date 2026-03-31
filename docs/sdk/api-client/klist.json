@@ -1,0 +1,33 @@
+{
+  "id": "sdk/api-client/base.data-model/klist",
+  "title": "KList",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KList\n\n\nRepresents a list of objects of DataModel type.\n\nThis class extends the built-in List class and provides additional functionality.\n\nMethods:\n    to_df(): Converts the list to a pandas DataFrame.\n\n\n## Methods\n\n\n### to_df() -> pd.DataFrame\n\nConvert a list of Pydantic models into a single, wide pandas DataFrame, preserving all fields (strings, bools, lists, numbers, datetimes, etc.), exploding `resource` via parse_resource(), and flattening any dict columns.\n",
+  "summary": "Represents a list of objects of DataModel type.",
+  "source": "api/src/kelvin/api/base/data_model.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.data_model.to_df()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.data_model",
+    "item_type": "class",
+    "methods": [
+      "to_df"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

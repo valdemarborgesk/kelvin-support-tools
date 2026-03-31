@@ -1,0 +1,28 @@
+{
+  "id": "how-to/manage-recommendations/recommendation-view",
+  "title": "View Recommendations",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# View Recommendations\n\nRecommendations are generated from Kelvin SmartApp™ or from third party sources using the Kelvin API endpoint and will either be automatically accepted and implemented or wait for the Operations Engineers decision on the actions to take.\n\nRecommendations can be accessed and controlled from many locations.\n\nYou can see how to view Recommendations from the different areas of the Kelvin UI\n\n* [Assets Menu](../../../assets-page/how-to/manage-recommendations/asset-details-recommendation-view.md#assets-menu)\n* [Applications Menu](../../../kelvin-smartapps-page/how-to/assets/smartapps-details-tab-assets-recommendation-view.md#applications-menu)\n* [Data Explorer Recommendation Lane](#data-explorer-lane)\n\n## Data Explorer Lane\n\nEvery Recommendation performed is shown in the activity lane in the Data Explorer. This allows you to quickly and visually see the effects of individual Recommendation on your Data Streams.\n\n| Icon | Meaning |\n| --- | --- |\n|  | Recommendation Accepted |\n|  | Recommendation Waiting for User Action |\n|  | Recommendation Rejected |\n|  | Recommendation Expired (The Operations did not accept or reject the Recommendation within the alloted timeframe) |\n|  | Multiple Recommendations in this timeframe, click icon to see more details of individual Recommendations |\n\n    If the X-axis scale is too small to show individual Recommendation times, then they will be grouped together and the icon will be a white circle with a number above indicating how many Recommendations are registered at that point in time.\n\n    Click on the white circle and the graph will automatically zoom to that location in time and show the individual Recommendations like below.\n\n#### Info Popup\n\nIf you put your mouse over any Recommendation point in the time frame, a popup will display detailed information about the that Recommendation.\n\n#### Hide Activity Lane\n\nRecommendation activity lanes can be turned on or off from the visualization settings in the right hand sidebar.",
+  "summary": "Recommendations are generated from Kelvin SmartApp™ or from third party sources using the Kelvin API endpoint and will either be automatically accepted and implemented or wait for the Operations Engineers decision on the actions to take.",
+  "source": "core-docs/docs/operations-tools/data-explorer-page/how-to/manage-recommendations/recommendation-view.md",
+  "code_examples": [],
+  "related": [
+    "how-to/smartapps-details-tab-assets-recommendation-view",
+    "how-to/asset-details-recommendation-view"
+  ],
+  "tags": [
+    "api",
+    "cli",
+    "operations",
+    "recommendations",
+    "smartapp",
+    "view"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

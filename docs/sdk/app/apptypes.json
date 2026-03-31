@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/config.common/apptypes",
+  "title": "AppTypes",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AppTypes\n\nInherits from: str, Enum\n",
+  "summary": "",
+  "source": "app/src/kelvin/config/common.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import AppTypes\n\n# Usage example\napp = AppTypes()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "config.common",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

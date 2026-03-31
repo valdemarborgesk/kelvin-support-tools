@@ -1,0 +1,27 @@
+{
+  "id": "how-to/monitor-kelvin-smartapp",
+  "title": "Monitor Kelvin SmartApp™",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Monitor Kelvin SmartApp™\n\n<p style=\"text-align: center;\">\n  <a href=\"../deploy-kelvin-smartapp/\" class=\"md-button md-button--primary\">\n    ← Deploy SmartApp\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-left: 0.4em;\">⑥</span>\n  </a>\n</p>\n\nNow that your Kelvin SmartApp™ has been successfully deployed, it’s time to see it in action. We’ll guide you through how to visualize the recommendations and data, as well as provide troubleshooting with logs and telemetry of your Kelvin SmartApp™.\n\n## Visualize SmartApp Recommendations\n\nTo visualize the recommendations made by your Kelvin SmartApp™, go the the Kelvin SmartApp™ details.\n\nAnd click on the Assets tab.\n\nThe **Last Recommendation** column shows you the latest Recommendation for each Asset:\n\nYou can see the recommendation in the Asset list.\n\nThere is also a **View More** button to the right of the recommendation which you can see the details of the recommendation.\n\n## Visualize SmartApp Inputs and Outputs\n\nAnother important aspect of seeing your app in action is to visualize the data that your SmartApp is processing. \n\nFor that task, you can use the **Data Explorer**, a powerful tool that allows you to plot timeseries data and also visualize the control changes published by your Kelvin SmartApp™.\n\nTo do this, go to the **Assets** tab \n\nAnd click on **Data Explorer** button at the top or a **Data Explorer Icon** { width=20 height=20 } on the Asset row you want to visualize the data.\n\nThis will open **Data Explorer** with the asset automatically selected. \n\n    If you do not see any data, click on the Data Streams tab on the right hand side and select the data streams that we can connected in the Inputs/Outputs during the Deployment phase earlier.\n\nTo understand more about the Data Explorer page\n\n    **Congratulations!** You've successfully visualized the data processed by your Kelvin SmartApp™ using Data Explorer.\n\n## Troubleshoot: Visualize SmartApp Logs\n\nKelvin SmartApps™ logs are automatically uploaded to the Kelvin Cloud. \n\nTo see the app logs, click on the **Workload** tab and then on the wanted workload name.\n\nThe **Logs** tab is automatically selected and will show you the logs.\n\n    **Congratulations!** You've successfully visualized the logs of your Kelvin SmartApp™.\n\n## Troubleshoot: Visualize SmartApp Telemetry\n\nAnother aspect of monitoring your Kelvin SmartApp™ is to monitor telemetry data.\n\nKelvin SmartApps™ automatically uploads information related with **CPU**, **Memory** and **Network** usage. These metrics can be used to assess the performance of your app and to debug any issues.\n\nTo see the app logs, click on the **Workload** tab and then on the wanted workload name.\n\nThen click on the **Telemetry** tab which will show you the telemetry for the workload.\n\n    **Congratulations!** You've successfully visualized the telemetry of your Kelvin SmartApp™ using Grafana.\n\n## All done!\n\nCongratulations! You've successfully created, uploaded and deployed your first Kelvin SmartApp™. You are now ready to start exploring other topics within Kelvin.\n\n<p style=\"text-align: center;\">\n  <a href=\"../deploy-kelvin-smartapp/\" class=\"md-button md-button--primary\">\n    ← Deploy SmartApp\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-left: 0.4em;\">⑥</span>\n  </a>\n</p>",
+  "summary": "<p style=\"text-align: center;\"> <a href=\"../deploy-kelvin-smartapp/\" class=\"md-button md-button--primary\"> ← Deploy SmartApp <span style=\"font-size: 1.5em; vertical-align: middle; margin-left: 0.4em;\">⑥</span>",
+  "source": "core-docs/docs/developer-tools/quick-start/how-to/monitor-kelvin-smartapp.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "create",
+    "deploy",
+    "development",
+    "kelvin",
+    "monitor",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

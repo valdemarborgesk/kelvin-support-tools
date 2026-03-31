@@ -1,0 +1,46 @@
+{
+  "id": "how-to/cluster/manage-clusters/set-default-cluster",
+  "title": "Set Default Cluster",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Set Default Cluster\n\nFor each Kelvin Instance you can set one default cluster.\n\n    The default cluster will be used when adding Assets to any Kelvin SmartApp™.\n\n    Documentation on Adding Assets in the Kelvin UI can be found in the [Operations Tools here](../../../../operations-tools/kelvin-smartapps-page/how-to/assets/smartapp-details-tab-assets-add-asset.md).\n\nField                | Description\n---------------------|------------------------------------------\ncluster                 | The `name` of the default Cluster for Kelvin SmartApps™ deployment. The ., _ and - characters are also allowed to separate words instead of a space but not at the beginning or end).\nmax_resources                | The maximum number of Assets that can be assigned to each Workload. When the max number is reached, a new workload will be automatically deployed for Kelvin SmartApps™ and the new Assets.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin UI\"\n\n    This can not be set in the Kelvin UI.\n\n=== \"Kelvin API\"\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/instance/settings/app-manager-planner-rules/update\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n    \"payload\": {\n      \"cluster\": \"aws-cluster\",\n      \"max_resources\": 1\n      }\n    }'\n    ```\n\n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Set or Update the Default Cluster in an Instance\n    response = client.instance.update_instance_settings_app_manager_planner_rules(data={\n      \"payload\": {\n        \"cluster\": \"aws-cluster\",\n        \"max_resources\": 16\n      }\n    })\n\n    print(f'Updated planner rules with default cluster {response.payload.cluster} with a maximum resource limit of {response.payload.max_resources}')\n    ```\n\n    You will receive an output like this;\n\n    ```bash title=\"API Client (Python) Example Response\" linenums=\"1\"\n    Updated planner rules with default cluster aws-cluster with a maximum resource limit of 16\n    ```\n\n</div>",
+  "summary": "For each Kelvin Instance you can set one default cluster.",
+  "source": "core-docs/docs/platform-administration/how-to/cluster/manage-clusters/set-default-cluster.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/instance/settings/app-manager-planner-rules/update\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n    \"payload\": {\n      \"cluster\": \"aws-cluster\",\n      \"max_resources\": 1\n      }\n    }'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Set or Update the Default Cluster in an Instance\n    response = client.instance.update_instance_settings_app_manager_planner_rules(data={\n      \"payload\": {\n        \"cluster\": \"aws-cluster\",\n        \"max_resources\": 16\n      }\n    })\n\n    print(f'Updated planner rules with default cluster {response.payload.cluster} with a maximum resource limit of {response.payload.max_resources}')",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "bash",
+      "code": "Updated planner rules with default cluster aws-cluster with a maximum resource limit of 16",
+      "title": "API Client (Python) Example Response"
+    }
+  ],
+  "related": [
+    "how-to/smartapp-details-tab-assets-add-asset"
+  ],
+  "tags": [
+    "api",
+    "cli",
+    "cluster",
+    "default",
+    "deploy",
+    "operations",
+    "sdk",
+    "set",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

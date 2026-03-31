@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/publisher.server/messagedata",
+  "title": "MessageData",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# MessageData\n",
+  "summary": "",
+  "source": "app/src/kelvin/publisher/server.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import MessageData\n\n# Usage example\napp = MessageData()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "publisher.server",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

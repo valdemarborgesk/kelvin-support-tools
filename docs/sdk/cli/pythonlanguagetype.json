@@ -1,0 +1,31 @@
+{
+  "id": "sdk/cli/sdk.lib.models.apps.common/pythonlanguagetype",
+  "title": "PythonLanguageType",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# PythonLanguageType\n\nInherits from: KSDKModel\n\n\n## Methods\n\n\n### app_file_system_name() -> str\n\n\n### get_flavour() -> Optional[ApplicationFlavour]\n\n\n### requirements_file_path(app_dir_path: KPath) -> Optional[KPath]\n\nWhen provided with an application dir, yield the complete requirements.txt absolute file path\n\n\n### requirements_available(app_dir_path: KPath) -> Tuple[bool, Optional[KPath]]\n\nIndicates whether requirements are available within the requirements.txt file\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/apps/common.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.apps.common",
+    "item_type": "class",
+    "methods": [
+      "app_file_system_name",
+      "get_flavour",
+      "requirements_file_path",
+      "requirements_available"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

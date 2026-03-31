@@ -1,0 +1,29 @@
+{
+  "id": "sdk/cli/sdk.lib.models.ksdk-global-configuration/componentsmetadataentry",
+  "title": "ComponentsMetadataEntry",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ComponentsMetadataEntry\n\nInherits from: GenericMetadataEntry\n\n\n## Methods\n\n\n### get_runner_docker_image_for_lang(reduced_size: bool, app_lang: Optional[ApplicationLanguage]) -> str\n\n\n### get_builder_docker_image_for_lang(app_lang: Optional[ApplicationLanguage]) -> str\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/ksdk_global_configuration.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.ksdk_global_configuration",
+    "item_type": "class",
+    "methods": [
+      "get_runner_docker_image_for_lang",
+      "get_builder_docker_image_for_lang"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

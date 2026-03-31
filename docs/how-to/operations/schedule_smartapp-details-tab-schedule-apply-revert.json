@@ -1,0 +1,25 @@
+{
+  "id": "how-to/schedule/smartapp-details-tab-schedule-apply-revert",
+  "title": "Apply / Revert a Schedule",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Apply / Revert a Schedule\n\nTo immediately apply the scheduled changes and ignore the scheduled time, click on the **Applications** menu item in the left hand sidebar, select the targeted Kelvin SmartApp™ then click on the **Scheduless** tab.\n\nFind the wanted schedule and click on the **Apply Now** button.",
+  "summary": "To immediately apply the scheduled changes and ignore the scheduled time, click on the Applications menu item in the left hand sidebar, select the targeted Kelvin SmartApp™ then click on the Scheduless tab.",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/schedule/smartapp-details-tab-schedule-apply-revert.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "apply",
+    "cli",
+    "operations",
+    "revert",
+    "schedule",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

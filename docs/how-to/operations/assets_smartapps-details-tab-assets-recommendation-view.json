@@ -1,0 +1,28 @@
+{
+  "id": "how-to/assets/smartapps-details-tab-assets-recommendation-view",
+  "title": "View Recommendations",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# View Recommendations\n\nRecommendations are generated from Kelvin SmartApp™ or from third party sources using the Kelvin API endpoint and will either be automatically accepted and implemented or wait for the Operations Engineers decision on the actions to take.\n\nRecommendations can be accessed and controlled from many locations.\n\nYou can see how to view Recommendations from the different areas of the Kelvin UI\n\n* [Assets Menu](../../../assets-page/how-to/manage-recommendations/asset-details-recommendation-view.md#assets-menu)\n* [Applications Menu](#applications-menu)\n* [Data Explorer Recommendation Lane](../../../data-explorer-page/how-to/manage-recommendations/recommendation-view.md#data-explorer-lane)\n\n## Applications Menu\n\nRecommendations current status and actions for each Asset can be seen in the Asset list in a column.\n\n    The default Asset-centric table does not show Recommendations in the column.\n\n    You can read the documentation on how to show [Recommendation column here](./smartapp-details-tab-assets-columns.md).\n\nIn the recommendations column you will see two types of options;\n\nOption | UI | Description\n--- | --- | ---\n**View More** Button |  | This means that there is a pending Recommendation. Clicking will show a popup where you can accept/reject the pending Recommendation.\n**Details** Link | {height=25} | This means that there are NO pending Recommendations. Clicking will show a popup with the last Recommendation details.",
+  "summary": "Recommendations are generated from Kelvin SmartApp™ or from third party sources using the Kelvin API endpoint and will either be automatically accepted and implemented or wait for the Operations Engineers decision on the actions to take.",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/assets/smartapps-details-tab-assets-recommendation-view.md",
+  "code_examples": [],
+  "related": [
+    "how-to/recommendation-view",
+    "how-to/asset-details-recommendation-view"
+  ],
+  "tags": [
+    "api",
+    "cli",
+    "operations",
+    "recommendations",
+    "smartapp",
+    "view"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

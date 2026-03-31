@@ -1,0 +1,36 @@
+{
+  "id": "sdk/api-client/base.http-client.auth/asyncauthconnection",
+  "title": "AsyncAuthConnection",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AsyncAuthConnection\n\nInherits from: AuthConnection\n\n\n## Methods\n\n\n### __init__(metadata: AsyncMetadata, client_id: str, username: typing.Optional[str], password: typing.Optional[str], totp: typing.Optional[int], client_secret: typing.Optional[str], auth_code: typing.Optional[str], user_access_token: typing.Optional[str]) -> None\n\n\n### async logout() -> None\n\n\n### async login() -> None\n\n\n### async get_access_token() -> str\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/base/http_client/auth.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.http_client.auth.__init__()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.http_client.auth",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "logout",
+      "login",
+      "get_access_token"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

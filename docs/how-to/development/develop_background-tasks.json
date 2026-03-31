@@ -1,0 +1,35 @@
+{
+  "id": "how-to/develop/background-tasks",
+  "title": "Background Tasks",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Background Tasks\n\nBackground and scheduled tasks run independently from the main execution path.\n\nThey execute in separate threads or event loop slots, preventing them from blocking the main workflow.\n\nThis keeps the application responsive while background operations run safely.\n\n## Tasks\n\nTasks are functions executed in the background when the application connects.\n\n    If you create an infinite loop, then you can keep the background task running indefinitely.\n\n```python title=\"Background Tasks Python Example\" linenums=\"1\"\nfrom kelvin.application import KelvinApp\nimport asyncio\n\napp = KelvinApp()\n\n@app.task\nasync def background_task():\n    \"\"\"Runs once when the app starts\"\"\"\n    print(\"Task started\")\n    # Perform initialization or one-time operations\n\n@app.task\nasync def continuous_task():\n    \"\"\"Runs continuously in the background\"\"\"\n    while True:\n        print(\"Processing...\")\n        await asyncio.sleep(10)\n\n# Can also register functions directly\nasync def another_task():\n    print(\"Another task\")\n\napp.task(another_task, name=\"my_task\")\n\napp.run()\n```\n\n## Timers\n\nTimers run functions at fixed intervals.\n\n```python title=\"Background Timers Python Example\" linenums=\"1\"\nfrom kelvin.application import KelvinApp\n\napp = KelvinApp()\n\n@app.timer(interval=30)  # seconds\nasync def periodic_check():\n    \"\"\"Runs every 30 seconds\"\"\"\n    print(\"Periodic check executed\")\n\n@app.timer(interval=60)\nasync def publish_metrics():\n    \"\"\"Runs every 60 seconds\"\"\"\n    # Publish periodic metrics\n    await app.publish(...)\n\n# Register timers directly\ndef sync_timer():\n    print(\"Sync timer\")\n\napp.timer(sync_timer, interval=10, name=\"sync_timer\")\n\napp.run()\n```",
+  "summary": "Background and scheduled tasks run independently from the main execution path. They execute in separate threads or event loop slots, preventing them from blocking the main workflow. This keeps the application responsive while background operations...",
+  "source": "core-docs/docs/developer-tools/how-to/develop/background-tasks.md",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import KelvinApp\nimport asyncio\n\napp = KelvinApp()\n\n@app.task\nasync def background_task():\n    \"\"\"Runs once when the app starts\"\"\"\n    print(\"Task started\")\n    # Perform initialization or one-time operations\n\n@app.task\nasync def continuous_task():\n    \"\"\"Runs continuously in the background\"\"\"\n    while True:\n        print(\"Processing...\")\n        await asyncio.sleep(10)\n\n# Can also register functions directly\nasync def another_task():\n    print(\"Another task\")\n\napp.task(another_task, name=\"my_task\")\n\napp.run()",
+      "title": "Background Tasks Python Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.application import KelvinApp\n\napp = KelvinApp()\n\n@app.timer(interval=30)  # seconds\nasync def periodic_check():\n    \"\"\"Runs every 30 seconds\"\"\"\n    print(\"Periodic check executed\")\n\n@app.timer(interval=60)\nasync def publish_metrics():\n    \"\"\"Runs every 60 seconds\"\"\"\n    # Publish periodic metrics\n    await app.publish(...)\n\n# Register timers directly\ndef sync_timer():\n    print(\"Sync timer\")\n\napp.timer(sync_timer, interval=10, name=\"sync_timer\")\n\napp.run()",
+      "title": "Background Timers Python Example"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "background",
+    "create",
+    "development",
+    "sdk",
+    "tasks"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

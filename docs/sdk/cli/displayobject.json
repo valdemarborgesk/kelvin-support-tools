@@ -1,0 +1,30 @@
+{
+  "id": "sdk/cli/sdk.lib.utils.display-utils/displayobject",
+  "title": "DisplayObject",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DisplayObject\n\n\n## Methods\n\n\n### __init__(raw_data: Any, tabulated_data: str) -> Any\n\n\n### parse_entry(entry: Any) -> List\n\n\n### parsed_data() -> List[dict]\n\nThe DisplayObject is usually associated with a model info. Treat the 'parsed data' as the dict representation of that model. No need to process the data if its already in its dict format.\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/utils/display_utils.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.utils.display_utils",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "parse_entry",
+      "parsed_data"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

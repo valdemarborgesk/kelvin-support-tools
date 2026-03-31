@@ -1,0 +1,164 @@
+{
+  "id": "api/schemas/guardrailrelativeconfig",
+  "title": "GuardrailRelativeConfig",
+  "type": "schema",
+  "category": "api",
+  "content": "# GuardrailRelativeConfig\n\n\n## Properties\n\n- **relative** (`object`): Allowable rate of increase/decrease of the Asset / Data Stream pair. ",
+  "summary": "Object with properties: relative",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.GuardrailRelativeConfig",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "relative": {
+          "type": "object",
+          "description": "Allowable rate of increase/decrease of the Asset / Data Stream pair. ",
+          "properties": {
+            "increase": {
+              "type": "object",
+              "description": "Allowable rate of increase of the Asset / Data Stream pair. ",
+              "properties": {
+                "min": {
+                  "type": "object",
+                  "description": "Rate of change limit definition",
+                  "required": [
+                    "value"
+                  ],
+                  "properties": {
+                    "value": {
+                      "description": "The limiting rate of change value.",
+                      "type": "number"
+                    },
+                    "inclusive": {
+                      "description": "The defined limiting rate of change value is inclusive within the allowable range.",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "Limiting rate of change value is an absolute value or a percentage of the current value before the control change.",
+                      "enum": [
+                        "value",
+                        "percentage"
+                      ],
+                      "x-enum-varnames": [
+                        "VALUE",
+                        "PERCENTAGE"
+                      ]
+                    }
+                  }
+                },
+                "max": {
+                  "type": "object",
+                  "description": "Rate of change limit definition",
+                  "required": [
+                    "value"
+                  ],
+                  "properties": {
+                    "value": {
+                      "description": "The limiting rate of change value.",
+                      "type": "number"
+                    },
+                    "inclusive": {
+                      "description": "The defined limiting rate of change value is inclusive within the allowable range.",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "Limiting rate of change value is an absolute value or a percentage of the current value before the control change.",
+                      "enum": [
+                        "value",
+                        "percentage"
+                      ],
+                      "x-enum-varnames": [
+                        "VALUE",
+                        "PERCENTAGE"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "decrease": {
+              "type": "object",
+              "description": "Allowable rate of decrease of the Asset / Data Stream pair. ",
+              "properties": {
+                "min": {
+                  "type": "object",
+                  "description": "Rate of change limit definition",
+                  "required": [
+                    "value"
+                  ],
+                  "properties": {
+                    "value": {
+                      "description": "The limiting rate of change value.",
+                      "type": "number"
+                    },
+                    "inclusive": {
+                      "description": "The defined limiting rate of change value is inclusive within the allowable range.",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "Limiting rate of change value is an absolute value or a percentage of the current value before the control change.",
+                      "enum": [
+                        "value",
+                        "percentage"
+                      ],
+                      "x-enum-varnames": [
+                        "VALUE",
+                        "PERCENTAGE"
+                      ]
+                    }
+                  }
+                },
+                "max": {
+                  "type": "object",
+                  "description": "Rate of change limit definition",
+                  "required": [
+                    "value"
+                  ],
+                  "properties": {
+                    "value": {
+                      "description": "The limiting rate of change value.",
+                      "type": "number"
+                    },
+                    "inclusive": {
+                      "description": "The defined limiting rate of change value is inclusive within the allowable range.",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "Limiting rate of change value is an absolute value or a percentage of the current value before the control change.",
+                      "enum": [
+                        "value",
+                        "percentage"
+                      ],
+                      "x-enum-varnames": [
+                        "VALUE",
+                        "PERCENTAGE"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

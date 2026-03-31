@@ -1,0 +1,29 @@
+{
+  "id": "sdk/cli/sdk.lib.models.generic/genericobject",
+  "title": "GenericObject",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# GenericObject\n\n\nA simple generic object used to wrap-up dictionaries into a class.\nUses reflection to set data dynamically.\n\n\n## Methods\n\n\n### __init__(data: Mapping) -> Any\n\n\n### to_dict() -> dict\n",
+  "summary": "A simple generic object used to wrap-up dictionaries into a class. Uses reflection to set data dynamically.",
+  "source": "cli/src/kelvin/sdk/lib/models/generic.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.generic",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "to_dict"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/clustertype",
+  "title": "ClusterType",
+  "type": "schema",
+  "category": "api",
+  "content": "# ClusterType\n\n## Enum Values\n\n- `k3s`\n- `kubernetes`\n- `docker`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.ClusterType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "k3s",
+        "kubernetes",
+        "docker"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

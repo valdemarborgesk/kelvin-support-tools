@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.exceptions/kdockerexception",
+  "title": "KDockerException",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KDockerException\n\nInherits from: KSDKException\n\n\nRaised when there is an issue with Docker.\n",
+  "summary": "Raised when there is an issue with Docker.",
+  "source": "cli/src/kelvin/sdk/lib/exceptions.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.exceptions",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "id": "how-to/develop/consume/data-quality-messages",
+  "title": "Data Quality Data",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Data Quality Data\n\n## Data Quality Data Messages\n\nData Streams can have automated validation checks enabled to monitor the quality of the data being received from the Asset.\n\nYou can read all about [Data Quality concept here](../../../../overview/concepts/data-quality.md) and the `app.yaml` [settings here](../create.md#data_quality).\n\n### `app.yaml` setup\n\n    You will need to first enable the Data Quality monitoring.\n\n    It is recommended this is done from the Kelvin UI, though you can also use the Kelvin API or Kelvin API Client (Python)\n\n    If you monitor Data Quality outputs from Data Streams that have not been enabled, you will not receive any outputs.\n\nFor Data Quality information the `app.yaml` only needs to have the Data Streams declared in the data quality section.\n\n```yaml title=\"app.yaml Example\" linenums=\"1\"\n\n...\n\n# ------------------------------------------------------------------------------\n# Data Streams Definitions\n# ------------------------------------------------------------------------------\ndata_streams:\n  inputs: []\n  outputs: []\n\n# ------------------------------------------------------------------------------\n# Data Quality Definitions\n# ------------------------------------------------------------------------------\ndata_quality:\n  inputs:\n    - name: kelvin_data_availability\n      data_type: number\n      data_streams:\n        - casing_pressure\n        - fluid_over_pump\n        - gas_flow_rate\n        - speed\n        - temperature\n        - torque\n        - tubing_pressure\n        - water_flow_rate\n    - name: kelvin_outlier_detection\n      data_type: number\n      data_streams:\n        - casing_pressure\n        - fluid_over_pump\n        - gas_flow_rate\n        - speed\n        - temperature\n        - torque\n        - tubing_pressure\n        - water_flow_rate\n\n...\n\n```\n\nOnce you have connected to the wanted Data Stream validations you can monitor the output of the Data Quality validations in real time.\n\n### Stream Decorators (Preferred)\n\nThe preferred and simplest method for consuming incoming control change messages is to create a Stream Decorator function and add a filter for Data Quality.\n\n    You can filter by assets or datastreams to react only to specific incoming messages.\n\n```python title=\"Stream Decorator Example\" linenums=\"1\"\nfrom kelvin.application import KelvinApp, filters\nfrom kelvin.message import AssetDataMessage\n\napp = KelvinApp()\n\n@app.stream()\nasync def handle(msg: AssetDataMessage):\n    if filters.is_data_quality_message(msg):\n        print(f\"Data Quality: {msg.payload}\")\n\napp.run()\n```\n\n### Asynchronous Consumption\n\nThe Kelvin SmartApp™ can use asynchronous programming (`asyncio`) to connect to the Kelvin message bus and continuously listen for new data as it is emitted from assets or data streams.\n\nBy using `async for` loops with asynchronous generators (`AsyncGenerator`), the app reacts to each incoming message instantly without blocking other operations. This allows real-time processing of Data Quality messages as soon as they are published by the Data Quality Application.\n\nBy using the `stream_filter` method we filter to only process Data Quality messages `is_data_quality_message`).\n\n```python title=\"main.py Example\" linenums=\"1\"\nimport asyncio\nfrom typing import AsyncGenerator\nfrom datetime import timedelta\n\nfrom kelvin.application import KelvinApp, filters\nfrom kelvin.message import Number\n\nasync def main() -> None:\n\n    app = KelvinApp()\n    await app.connect()\n\n    data_quality_stream: AsyncGenerator[Number, None] = app.stream_filter(filters.is_data_quality_message)                     \n\n    # Wait & Read new Data Quality Messages\n    async for data_quality_msg in data_quality_stream:\n\n        print(f\"\\nReceived Data Quality Message: {data_quality_msg}\")\n\nif __name__ == \"__main__\":\n    asyncio.run(main())\n```\n\nWhen deployed and running, if you look at the logs of the workload, you will see this output;\n\n```bash title=\"main.py Example\" linenums=\"1\"\n2025-10-14T06:00:00.002169184Z Received PCP02 | Asset: type=KMessageTypeData('data', 'pt=number') resource=KRNAssetDataStreamDataQuality(asset='pcp_02', data_stream='speed', data_quality='kelvin_data_availability') id=UUID('3d5b1084-193c-4c7e-a079-287c1c622a32') trace_id=None source=KRNAssetDataStream(asset='pcp_02', data_stream='speed') timestamp=datetime.datetime(2025, 10, 14, 6, 0, tzinfo=TzInfo(UTC)) payload=20\n2025-10-14T06:04:59.004776951Z Received PCP02 | Asset: type=KMessageTypeData('data', 'pt=number') resource=KRNAssetDataStreamDataQuality(asset='pcp_02', data_stream='gas_flow_rate', data_quality='kelvin_data_availability') id=UUID('4ba13bcd-2bb5-4f00-9611-45f82a1e1852') trace_id=None source=KRNAssetDataStream(asset='pcp_02', data_stream='gas_flow_rate') timestamp=datetime.datetime(2025, 10, 14, 6, 5, tzinfo=TzInfo(UTC)) payload=66\n```\n\nHere you can see that the Data Stream `speed` has an availability of 20% and `gas_flow_rate` availability of 66%.\n\n## Get Specific Values\n\nYou can retrieve Data Quality values or aggregated information in Python with the API endpoint `/asset-insights/get` using the Kelvin API Client (Python).\n\n### Get Latest Value\n\n    Click here to see a full list of all the `data_quality_name` options.\n\n    This does not include any custom Data Quality validation Applications on your Kelvin Platform. Check with your developer for details.\n\n```python title=\"Get Latest Data Quality Value\" linenums=\"1\"\nfrom kelvin.api.client import Client\n\n# Login\nclient = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\nclient.login(password=\"<your_password>\")\n\n# Get the latest Data Quality Score for Asset PCP #03\nresponse = client.asset_insights.get_asset_insights(data={\n  \"asset_names\": [\n    \"pcp_03\"\n  ],\n  \"extra_fields\": {\n    \"data_qualities\": [\n      {\n        \"data_quality_name\": \"kelvin_data_quality_score\",\n        \"name\": \"quality_score\"\n      }\n    ]\n  }\n})\n\nprint(f\"The Data Quality Score is {response[0].extra_fields['quality_score']} and was last recorded on {response[0].last_seen.strftime('%d %b %Y %H:%M:%S')}\")\n```\n\nThe output will look like this\n\n```bash title=\"Get Latest Data Quality Value Output\" linenums=\"1\"\nThe Data Quality Score is 96 and was last recorded on 17 Oct 2025 07:17:26\n```\n\nThe `response` variable will hold all the data like this;\n\n```bash title=\"Get Latest Data Quality Value Output\" linenums=\"1\"\n[AssetInsightsItem(asset_type_name='pcp', asset_type_title='PCP', extra_fields={'data-quality-kelvin-timestamp-anomaly': 95}, last_seen=datetime.datetime(2025, 10, 17, 7, 6, 26, 978233, tzinfo=TzInfo(0)), name='pcp_03', pinned=False, state='online', title='PCP #03')]\n```\n\n### Get Aggregation Over Time\n\nYou can also get Data Quality information in an aggregated format.\n\n    This helps save bandwidth if you do not need to download all values over a time range.\n\n    [Click here](../../export/download-timeseries.md#download-aggregated-timeseries-data) to see a full list of aggregate options available.\n\n```python title=\"Get Data Quality Aggregation over Time\" linenums=\"1\"\nfrom kelvin.api.client import Client\n\n# Login\nclient = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\nclient.login(password=\"<your_password>\")\n\n# Get the latest Data Quality Score for Asset PCP #03\nresponse = client.asset_insights.get_asset_insights(data={\n  \"asset_names\": [\n    \"pcp_03\"\n  ],\n  \"extra_fields\": {\n    \"data_qualities\": [\n      {\n        \"computation\": {\n          \"agg\": \"mean\",\n          \"start_time\": \"2025-10-12T12:00:00Z\",\n          \"end_time\": \"2025-10-16T12:00:00Z\"\n        },\n        \"data_quality_name\": \"kelvin_data_quality_score\",\n        \"name\": \"quality_score_mean\"\n      }\n    ]\n  }\n})\n\nprint(f\"The average Data Quality Score over the last four days is {response[0].extra_fields['quality_score_mean']} %\")\n```\n\nThe output will look like this\n\n```bash title=\"Get Data Quality Aggregation over Time\" linenums=\"1\"\nThe average Data Quality Score over the last four days is 94.722 %\n```\n\nThe `response` variable will hold all the data like this;\n\n```bash title=\"Get Data Quality Aggregation over Time\" linenums=\"1\"\n[AssetInsightsItem(asset_type_name='pcp', asset_type_title='PCP', extra_fields={'quality_score_mean': 94.72222222222223}, last_seen=datetime.datetime(2025, 10, 17, 7, 33, 56, 966453, tzinfo=TzInfo(0)), name='pcp_03', pinned=False, state='online', title='PCP #03')]\n```",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/develop/consume/data-quality-messages.md",
+  "code_examples": [
+    {
+      "language": "yaml",
+      "code": "...\n\n# ------------------------------------------------------------------------------\n# Data Streams Definitions\n# ------------------------------------------------------------------------------\ndata_streams:\n  inputs: []\n  outputs: []\n\n# ------------------------------------------------------------------------------\n# Data Quality Definitions\n# ------------------------------------------------------------------------------\ndata_quality:\n  inputs:\n    - name: kelvin_data_availability\n      data_type: number\n      data_streams:\n        - casing_pressure\n        - fluid_over_pump\n        - gas_flow_rate\n        - speed\n        - temperature\n        - torque\n        - tubing_pressure\n        - water_flow_rate\n    - name: kelvin_outlier_detection\n      data_type: number\n      data_streams:\n        - casing_pressure\n        - fluid_over_pump\n        - gas_flow_rate\n        - speed\n        - temperature\n        - torque\n        - tubing_pressure\n        - water_flow_rate\n\n...",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.application import KelvinApp, filters\nfrom kelvin.message import AssetDataMessage\n\napp = KelvinApp()\n\n@app.stream()\nasync def handle(msg: AssetDataMessage):\n    if filters.is_data_quality_message(msg):\n        print(f\"Data Quality: {msg.payload}\")\n\napp.run()",
+      "title": "Stream Decorator Example"
+    },
+    {
+      "language": "python",
+      "code": "import asyncio\nfrom typing import AsyncGenerator\nfrom datetime import timedelta\n\nfrom kelvin.application import KelvinApp, filters\nfrom kelvin.message import Number\n\nasync def main() -> None:\n\n    app = KelvinApp()\n    await app.connect()\n\n    data_quality_stream: AsyncGenerator[Number, None] = app.stream_filter(filters.is_data_quality_message)                     \n\n    # Wait & Read new Data Quality Messages\n    async for data_quality_msg in data_quality_stream:\n\n        print(f\"\\nReceived Data Quality Message: {data_quality_msg}\")\n\nif __name__ == \"__main__\":\n    asyncio.run(main())",
+      "title": "main.py Example"
+    },
+    {
+      "language": "bash",
+      "code": "2025-10-14T06:00:00.002169184Z Received PCP02 | Asset: type=KMessageTypeData('data', 'pt=number') resource=KRNAssetDataStreamDataQuality(asset='pcp_02', data_stream='speed', data_quality='kelvin_data_availability') id=UUID('3d5b1084-193c-4c7e-a079-287c1c622a32') trace_id=None source=KRNAssetDataStream(asset='pcp_02', data_stream='speed') timestamp=datetime.datetime(2025, 10, 14, 6, 0, tzinfo=TzInfo(UTC)) payload=20\n2025-10-14T06:04:59.004776951Z Received PCP02 | Asset: type=KMessageTypeData('data', 'pt=number') resource=KRNAssetDataStreamDataQuality(asset='pcp_02', data_stream='gas_flow_rate', data_quality='kelvin_data_availability') id=UUID('4ba13bcd-2bb5-4f00-9611-45f82a1e1852') trace_id=None source=KRNAssetDataStream(asset='pcp_02', data_stream='gas_flow_rate') timestamp=datetime.datetime(2025, 10, 14, 6, 5, tzinfo=TzInfo(UTC)) payload=66",
+      "title": "main.py Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n# Login\nclient = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\nclient.login(password=\"<your_password>\")\n\n# Get the latest Data Quality Score for Asset PCP #03\nresponse = client.asset_insights.get_asset_insights(data={\n  \"asset_names\": [\n    \"pcp_03\"\n  ],\n  \"extra_fields\": {\n    \"data_qualities\": [\n      {\n        \"data_quality_name\": \"kelvin_data_quality_score\",\n        \"name\": \"quality_score\"\n      }\n    ]\n  }\n})\n\nprint(f\"The Data Quality Score is {response[0].extra_fields['quality_score']} and was last recorded on {response[0].last_seen.strftime('%d %b %Y %H:%M:%S')}\")",
+      "title": "Get Latest Data Quality Value"
+    },
+    {
+      "language": "bash",
+      "code": "The Data Quality Score is 96 and was last recorded on 17 Oct 2025 07:17:26",
+      "title": "Get Latest Data Quality Value Output"
+    },
+    {
+      "language": "bash",
+      "code": "[AssetInsightsItem(asset_type_name='pcp', asset_type_title='PCP', extra_fields={'data-quality-kelvin-timestamp-anomaly': 95}, last_seen=datetime.datetime(2025, 10, 17, 7, 6, 26, 978233, tzinfo=TzInfo(0)), name='pcp_03', pinned=False, state='online', title='PCP #03')]",
+      "title": "Get Latest Data Quality Value Output"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n# Login\nclient = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\nclient.login(password=\"<your_password>\")\n\n# Get the latest Data Quality Score for Asset PCP #03\nresponse = client.asset_insights.get_asset_insights(data={\n  \"asset_names\": [\n    \"pcp_03\"\n  ],\n  \"extra_fields\": {\n    \"data_qualities\": [\n      {\n        \"computation\": {\n          \"agg\": \"mean\",\n          \"start_time\": \"2025-10-12T12:00:00Z\",\n          \"end_time\": \"2025-10-16T12:00:00Z\"\n        },\n        \"data_quality_name\": \"kelvin_data_quality_score\",\n        \"name\": \"quality_score_mean\"\n      }\n    ]\n  }\n})\n\nprint(f\"The average Data Quality Score over the last four days is {response[0].extra_fields['quality_score_mean']} %\")",
+      "title": "Get Data Quality Aggregation over Time"
+    },
+    {
+      "language": "bash",
+      "code": "The average Data Quality Score over the last four days is 94.722 %",
+      "title": "Get Data Quality Aggregation over Time"
+    },
+    {
+      "language": "bash",
+      "code": "[AssetInsightsItem(asset_type_name='pcp', asset_type_title='PCP', extra_fields={'quality_score_mean': 94.72222222222223}, last_seen=datetime.datetime(2025, 10, 17, 7, 33, 56, 966453, tzinfo=TzInfo(0)), name='pcp_03', pinned=False, state='online', title='PCP #03')]",
+      "title": "Get Data Quality Aggregation over Time"
+    }
+  ],
+  "related": [
+    "concepts/data-quality"
+  ],
+  "tags": [
+    "api",
+    "cli",
+    "create",
+    "data",
+    "deploy",
+    "development",
+    "monitor",
+    "quality",
+    "sdk",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

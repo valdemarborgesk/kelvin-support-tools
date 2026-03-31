@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/assetcreate",
+  "title": "AssetCreate",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AssetCreate\n\nInherits from: DataModelBase\n\n\nAssetCreate object.\n\nParameters\n----------\n    asset_type_name: StrictStr\n    name: StrictStr\n    properties: Optional[list[AssetPropertyCreate]]\n    title: StrictStr\n",
+  "summary": "AssetCreate object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

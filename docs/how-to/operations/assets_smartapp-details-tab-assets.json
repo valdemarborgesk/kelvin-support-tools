@@ -1,0 +1,27 @@
+{
+  "id": "how-to/assets/smartapp-details-tab-assets",
+  "title": "Smartapp Details Tab Assets",
+  "type": "how_to",
+  "category": "operations",
+  "content": "### Assets Tab\n\n    This tab is only available with the Application `type` Kelvin SmartApp™\n\nThe Asset table itself uses Kelvin's asset-centric table.\n\nIt incorporates many Kelvin features such as Recommendations and Control Changes so that you can monitor and make decisions about your Assets directly from here.\n\n<div class=\"result\" markdown>\n\n=== \"Sorting\"\n\n    You can sort the table rows simply by clicking on the header name. Clicking it will cancel the other sorts in other headers and each click will rotate between ascending, descending and no sorting.\n\n    \n\n=== \"Search\"\n\n    Quickly find the Assets you want to see with the dynamic search which filters the list as you type.\n\n    \n\n=== \"Row Height\"\n\n    You can choose the height of the row to fit as many rows as possible on the screen, or space them out for easier readability.\n\n    \n\n=== \"Pinned\"\n\n    You can keep important Assets pinned to the top of the page simply by clicking on the pin icon.\n\n    The pinned Assets will show on the top of every page.\n\n    \n\n=== \"Pages\"\n\n    You can also control your page management to be able to maximize the number of Assets you see on the screen or zoom in with larger spacing for small screens.\n\n    You can select how many Assets are shown per page or flip between pages through the page management bar;\n\n    \n\n=== \"Columns Management\"\n\n    You can also manage the table and column configurations;\n\n    \n\n    And you will see a full range of options to customize the table and columns to your requirements.\n\n    \n        \n    This is a powerful feature so we give a complete chapter below to explain all the options available.\n\n=== \"Download CSV\"\n\n    You can download the table contents to a CSV file.\n\n    This will download only the information that is displayed in the table with all filters and options applied.\n\n            It download all rows from all pages in the filter and options.\n\n    \n\n</div>",
+  "summary": "",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/assets/smartapp-details-tab-assets.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "assets",
+    "cli",
+    "configure",
+    "details",
+    "monitor",
+    "operations",
+    "smartapp",
+    "tab"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

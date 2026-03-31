@@ -1,0 +1,43 @@
+{
+  "id": "sdk/api-client/client.api.deprecated-workload/deprecatedworkload",
+  "title": "DeprecatedWorkload",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DeprecatedWorkload\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### apply_legacy_workload(data: Optional[Union[requests.LegacyWorkloadApply, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nInitiate final deploy action for the downloaded Workloads. Only valid for Workloads that were previously deployed with the keys `staged` set to true and `instantly_apply` set to false.\n\n\n### deploy_legacy_workload(data: Optional[Union[requests.LegacyWorkloadDeploy, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.LegacyWorkloadDeploy\n\nDeploy an App from the App Registry as a Workload to a Cluster/Node.\n\n\n### list_legacy_workloads(search: Optional[Sequence[str]], app_name: Optional[Sequence[str]], app_version: Optional[Sequence[str]], acp_name: Optional[Sequence[str]], cluster_name: Optional[Sequence[str]], node_name: Optional[Sequence[str]], workload_name: Optional[Sequence[str]], enabled: Optional[bool], asset_name: Optional[str], staged: Optional[bool], download_statuses: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.LegacyWorkloadItem], responses.LegacyWorkloadsListPaginatedResponseCursor]\n\nReturns a list of Workload objects. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### get_legacy_workload_configuration(workload_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.LegacyWorkloadConfigurationGet\n\nRetrieve the configuration of a Workload.\n\n\n### update_legacy_workload_configuration(workload_name: str, data: Optional[Union[requests.LegacyWorkloadConfigurationUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.LegacyWorkloadConfigurationUpdate\n\nUpdate the configuration of a Workload.\n\n\n### download_legacy_workload(workload_name: str, address: Optional[bool], _dry_run: bool, _client: Optional[SyncBaseClient]) -> str\n\nDownload the Workload package file for offline installation on the Edge System. The system automatically generates the file for download if the package is not already available.\n\n\n### get_legacy_workload(workload_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.LegacyWorkloadGet\n\nRetrieve the parameters of a Workload.\n\n\n### get_legacy_workload_logs(workload_name: str, tail_lines: Optional[int], since_time: Optional[datetime], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.LegacyWorkloadLogsGet\n\nGet Workload Logs\n\n\n### start_workload(workload_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nStart running the Workload.\n\n\n### stop_workload(workload_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nStop running the Workload.\n\n\n### undeploy_workload(workload_name: str, staged: Optional[bool], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nUndeploy Workload from the Edge System.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/deprecated_workload.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.deprecated_workload.apply_legacy_workload()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.deprecated_workload",
+    "item_type": "class",
+    "methods": [
+      "apply_legacy_workload",
+      "deploy_legacy_workload",
+      "list_legacy_workloads",
+      "get_legacy_workload_configuration",
+      "update_legacy_workload_configuration",
+      "download_legacy_workload",
+      "get_legacy_workload",
+      "get_legacy_workload_logs",
+      "start_workload",
+      "stop_workload",
+      "undeploy_workload"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

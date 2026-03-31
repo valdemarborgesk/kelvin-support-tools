@@ -1,0 +1,53 @@
+{
+  "id": "api/schemas/propertyvaluehistory",
+  "title": "PropertyValueHistory",
+  "type": "schema",
+  "category": "api",
+  "content": "# PropertyValueHistory\n\n\n## Properties\n\n- **property_name** (`string`): Unique identifier `name` of the Property.\n- **resource** (`string`): Resource to which the value belongs.\n- **timestamp** (`string`): UTC time for when the value was updated, formatted in RFC 3339.\n- **source** (`string`): Represents who triggered the value change.\n- **value** (`object`): Historical value at the given timestamp.",
+  "summary": "Object with properties: property_name, resource, timestamp, source, value",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.PropertyValueHistory",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "property_name": {
+          "type": "string",
+          "example": "region",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "maxLength": 64,
+          "description": "Unique identifier `name` of the Property."
+        },
+        "resource": {
+          "type": "string",
+          "example": "krn:asset:asset1",
+          "description": "Resource to which the value belongs."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2025-01-29T12:00:00.582724Z",
+          "description": "UTC time for when the value was updated, formatted in RFC 3339."
+        },
+        "source": {
+          "type": "string",
+          "example": "krn:user:user1",
+          "description": "Represents who triggered the value change."
+        },
+        "value": {
+          "type": "object",
+          "description": "Historical value at the given timestamp."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

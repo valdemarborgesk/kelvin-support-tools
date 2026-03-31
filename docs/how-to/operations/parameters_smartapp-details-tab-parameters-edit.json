@@ -1,0 +1,28 @@
+{
+  "id": "how-to/parameters/smartapp-details-tab-parameters-edit",
+  "title": "Edit App Parameter Values",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Edit App Parameter Values\n\nClick on the **App Parameters** tab, and you can see a list of Assets and the App Parameter options for Kelvin SmartApps™.\n\n    If you can not find an Asset that you know you have deployed, make sure you change Kelvin SmartApps™ version as it may have been deployed using a different version. Also check any advanced filters you may be using.\n\n## Edit Values\n\nTo update any of the App Parameter values, select one or more Assets.\n\n    If you only select one Asset, then the current App Parameter values will be shown in the Parameters section.\n\n    if you select more than one Asset, then no App Parameter values will be shown.\n\nChange any of the values in the App Parameter section and then click **Apply to Selected** or **Apply to All** to initiate the update. A confirmation will be displayed when the values have been sent to the edge.\n\n    Only App Parameters with new values will be written to the Assets. Any App Parameters left blank will retain their original values.\n\n## Schedule Updates\n\nWhen controlling your Assets with Kelvin SmartApps™, there are times when temporary parameter setting adjustments are necessary for optimal performance, such as during planned maintenance periods or planned production changes.\n\nKelvin's Scheduling feature automates this process, ensuring settings change as needed. You can also optionally add a \"revert to normal\" after a defined time period.\n\nThis allows you to \"set and forget\" parameter changes, leaving you to focus on the more critical aspects of running and maintaining your assets.\n\nYou can read the full [documentation on scheduling here](./smartapp-details-tab-parameters-schedule-create.md).",
+  "summary": "Click on the App Parameters tab, and you can see a list of Assets and the App Parameter options for Kelvin SmartApps™.",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/parameters/smartapp-details-tab-parameters-edit.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "app",
+    "cli",
+    "create",
+    "deploy",
+    "edit",
+    "operations",
+    "parameter",
+    "smartapp",
+    "values"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

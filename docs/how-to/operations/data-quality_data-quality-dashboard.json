@@ -1,0 +1,29 @@
+{
+  "id": "how-to/data-quality/data-quality-dashboard",
+  "title": "Data Quality Dashboard",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Data Quality Dashboard\n\n## Overview\n\n    To understand the concept of Data Quality, you can read a full description in the [Concept Overview page here](../../../overview/concepts/data-quality.md).\n\nThe Data Quality Dashboard displays results over a selected time period for all enabled data metrics.\n\nIt provides a clear visual overview so you can quickly identify issues in your asset data streams allowing faster detection and resolution of potential data problems.\n\nFive built-in metrics for Asset / Data Stream pairs can be enabled;\n\n    Developers can also create their own Data Metric Applications.\n\n* Data Availability\n* Outlier Detection\n* Range Validation\n* Duplication Detection\n* Timestamp Anomalies.\n\nThese checks report whether your data is accurate, consistent, and reliable.\n\n    To understand what each metric is monitoring, hover your mouse over the column header and a popup will appear with its details.\n\n    \n\n## Filter\n\nThere are three filters that can be applied to both the statistics and Asset list sections;\n\n| Filter | Description |\n|--------|--------------|\n| Asset Type | Select one or more Asset Types. This will select all Assets that are linked to the Asset Type |\n| Asset | Select one or more Assets |\n| Time | Choose the time range for the statistics.<p>*Options are 1 hour, 1 day, 3 days and 7 days and are based on the current time.* |\n\n## Statistics\n\nThe statistics shows the percentage of the good vs bad data on the Kelvin Platform and over time based on your filter conditions.\n\n## Asset List\n\nThe Asset list shows the Data Quality reports for each Asset.\n\n    If the Asset / Data Stream pair is not enabled for a particular Data Metric, then you will see the **N/A** symbol.\n\n### Data Quality Status\n\nThe Data Quality Status is calculated every 5 minutes based on all the metrics that are performed on each Asset.\n\nThis score is a percentage which is then compared to a cutoff point. Above the cutoff point means it is **Healthy Data** and below is **Bad Data**.\n\n    The default cutoff point for data quality is 85%, indicating healthy data. This value can be adjusted by Developers or Platform Administrators through the Kelvin API.\n\n### Data Quality Metrics\n\nEach Data Quality metric runs specific algorithms to check the quality of the Data and the results are recorded as a new Data Stream on the Kelvin Platform in a special category.\n\n    Each metric can produce a different output format, such as a percentage, a count of data readings, or another format.\n\n    You can read in the [Concept Overview here](../../../overview/concepts/data-quality.md#data-quality-inputs) a full description on the in-built Data Quality metrics.\n\n### Asset / Data Stream Details\n\nIf you click on the analytics icon { width=20 height=20 } for an Asset;\n\nYou can then select a Data Stream to view detailed metric results displayed on a timeseries graph.\n\n    In the Data Stream list on the left, if you click on the provided link, this will take you to the Clusters section and show you the logs for the specific Connection workload that is collecting the data from the Asset.\n\n    If you see a bad data tag, this is a compilation of any Data Quality metics in any Data Streams.\n\n    To find the actual alert location, you will need to scroll through the Data Streams on the left to find the Data Quality alert.\n\n### List Options\n\nThe list can be filtered and sorted to help you quickly locate assets of interest.\n\n    These actions do not affect the statistics displayed.\n\n#### Sort Order\n\nLike other table lists in the Kelvin UI you can sort the list on one column. Simply click on the column to choose ascending, descending or not sorted.\n\n#### Search\n\nYou can also filter and search the list for specific Assets.\n\n#### Row Spacing\n\nTo fit more or less rows on the screen you can choose the spacing of the rows.",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/data-quality/data-quality-dashboard.md",
+  "code_examples": [],
+  "related": [
+    "concepts/data-quality"
+  ],
+  "tags": [
+    "api",
+    "cli",
+    "create",
+    "dashboard",
+    "data",
+    "monitor",
+    "operations",
+    "quality"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

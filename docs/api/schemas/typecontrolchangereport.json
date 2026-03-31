@@ -1,0 +1,61 @@
+{
+  "id": "api/schemas/controlchangereport",
+  "title": "ControlChangeReport",
+  "type": "schema",
+  "category": "api",
+  "content": "# ControlChangeReport\n\n\n## Properties\n\n- **value** (`any`): Value represented in one of these formats.\n- **timestamp** (`string`): \n- **source** (`string`): Indicates who provided the value, the Bridge or the Control Change Manager",
+  "summary": "Object with properties: value, timestamp, source",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.ControlChangeReport",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "required": [
+        "value",
+        "timestamp",
+        "source"
+      ],
+      "properties": {
+        "value": {
+          "description": "Value represented in one of these formats.",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z"
+        },
+        "source": {
+          "description": "Indicates who provided the value, the Bridge or the Control Change Manager",
+          "type": "string",
+          "enum": [
+            "bridge",
+            "ccm"
+          ]
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "how-to/workspace/windows/docker",
+  "title": "Docker",
+  "type": "how_to",
+  "category": "development",
+  "content": "<p style=\"text-align: center;\">\n  <a href=\"../python/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">⬅</span>\n    Install Python\n  </a>\n  <a href=\"../vscode/\" class=\"md-button md-button--primary\">\n    Install Virtual Studio Code\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">➡</span>\n  </a>\n</p>\n\n## Introduction\n\nDocker is a tool that allows you to run applications in isolated environments called containers.\n\nContainers package up everything an application needs — os, code, libraries, and settings — making it easy to run consistently across different systems and even different OS's like Windows, MacOS or Linux.\n\nWith Docker, developers can quickly deploy, scale, and manage applications without worrying about setup differences or compatibility issues, making it popular for both development and production environments.\n\n## Install Docker\n\n### Video Tutorial\n\nYou can watch this video tutorial or read the full step-by step written tutorial below.\n\n<iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/A5YeoPbJAjI?si=wTJhKoJy7Ep1xOVK\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\n### Written Tutorial\n\nBefore you can install Docker, you will need to ensure that WSL 2 is installed and running on your Windows computer.\n\nTo do this click on the Start button and search for **features** and click on the **Turn Windows features on or off** option.\n\nThen scroll down to the bottom and find these two features and ensure they are checked;\n\n* Virtual Machine Platform\n* Windows Subsystem for Linux\n\nClick **OK**. If they were not checked when you opened, then you will see the relevant features being installed.\n\nIf new features were installed then click **Restart now**, or if they were already installed then just click **OK**.\n\nNow open a browser and go to the Docker website, click on **Products**, then click on **Docker Desktop**. Or [just follow this link](https://www.docker.com/products/docker-desktop/).\n\nDownload the windows version.\n\nRun the downloaded installation file.\n\nWhen the user account control popup appears, click on **Yes** to allow it to make changes to your OS.\n\nFirst you will be asked to confirm the configuration. You can keep the defaults and click the **OK** button.\n\nIt will then start the unpacking and installation process.\n\nWhen finished it will show an **Installation succeeded** message and ask you to **Close and log out**.\n\nClicking on it will log out. You can then login again.\n\nOnce you log back in, a popup will appear asking you accept the Docker Subscription Service Agreement. You can read the full terms then click the **Accept** button.\n\n    Ensure you conform to their commercial use terms, especially in regards to the company size and income. Docker is open source, but Docker Desktop is a proprietary application and is subject to a commercial license under certain circumstances. \n\n    It's a great development, so do support them and help how you can. It benefits everyone !\n\nYou will then be asked to complete the installation.\n\nYou can choose the recommended settings and click the **Finish** button.\n\nSome setup will now be automatically done by the Docker installation script.\n\nWhen the user account control popup appears, click on **Yes** to allow it to make changes to your OS.\n\nYou will then have a few minor questions to get you started.\n\nCongratulations ! You have successfully installed Docker.\n\n<p style=\"text-align: center;\">\n  <a href=\"../python/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">⬅</span>\n    Install Python\n  </a>\n  <a href=\"../vscode/\" class=\"md-button md-button--primary\">\n    Install Virtual Studio Code\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">➡</span>\n  </a>\n</p>",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/workspace/windows/docker.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "configure",
+    "deploy",
+    "development",
+    "docker",
+    "sdk"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

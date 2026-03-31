@@ -1,0 +1,27 @@
+{
+  "id": "how-to/introduction",
+  "title": "Introduction",
+  "type": "how_to",
+  "category": "development",
+  "content": "<p style=\"text-align: center;\">\n  <a href=\"../your-workspace/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">①</span>\n    Setup Your Workspace →\n  </a>\n</p>\n\n## Overview\n\nYou've come to the right place to start ! Follow this quick start guide and build your first Kelvin SmartApp™ during the next hour.\n\nBy the end of this quick start guide you will have achieved the following steps;\n\n## Quick Start Task\n\nThe Python program we will create and package as a Kelvin SmartApp™ will continuously monitor a temperature sensor (known as a Data Stream) on a motor (known as an Asset).\n\nIf the upper temperature threshold is breached, then the app will automatically generate a new **Control Change packaged into a Recommendation** that will have a new optimized motor speed setpoint to maintain a lower motor temperature.\n\nThen using the Kelvin UI, the Operations Team will be able to set the parameters of the Kelvin SmartApp™ to decide whether the recommendation is automatically accepted, where the control change will be immediately applied to the motor, or an approval has to be manually added to the recommendation before the control change is done.\n\n## The Technology\n\nThe **Kelvin SDK** is a Python-based software development kit designed to make it easier to create, test, and deploy Kelvin SmartApps™. These apps are purpose-built for optimizing the performance of assets, enabling you to develop solutions that can improve operational efficiency.\n\nA **Kelvin SmartApp™** is a custom Python application developed using the Kelvin SDK. It is designed to apply specific business logic, models and algorithms to optimize the performance of multiple assets. By delivering actionable recommendations and making control adjustments, a Kelvin SmartApp™ helps to enhance asset efficiency and performance.\n\n## Full Source Code\n\nYou can also get the full source code for this quick start guide at [Kelvin's Github App Samples](https://github.com/kelvininc/app-samples/tree/master/applications/event-detection){target=\"_blank\"}.\n\n<p style=\"text-align: center;\">\n  <a href=\"../your-workspace/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">①</span>\n    Setup Your Workspace →\n  </a>\n</p>",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/quick-start/how-to/introduction.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "create",
+    "deploy",
+    "development",
+    "introduction",
+    "monitor",
+    "sdk",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

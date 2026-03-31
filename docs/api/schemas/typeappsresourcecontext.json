@@ -1,0 +1,34 @@
+{
+  "id": "api/schemas/appsresourcecontext",
+  "title": "AppsResourceContext",
+  "type": "schema",
+  "category": "api",
+  "content": "# AppsResourceContext\n\n\n## Properties\n\n- **resource** (`string`): \n- **source** (`string`): ",
+  "summary": "Object with properties: resource, source",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.AppsResourceContext",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "resource": {
+          "type": "string",
+          "format": "krn"
+        },
+        "source": {
+          "type": "string",
+          "format": "krn"
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

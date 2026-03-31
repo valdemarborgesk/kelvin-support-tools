@@ -1,0 +1,30 @@
+{
+  "id": "how-to/develop-connections/test",
+  "title": "Test a Connector Application",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Test a Connector Application\n\nCurrently you can not test a Connector Application locally for Kelvin Platform compatibility.\n\nIt is possible to test your program to ensure it can connect and communicate with external sources by running the script normally.\n\n``` title=\"Testing Connection code\" linenums=\"1\"\npython <SCRIPT_NAME>\n```\n\nIf your Import or Export Connection Application uses specific Kelvin SDK features like Recommendations or Custom Actions, then you can also test locally first using the Kelvin test generator feature.\n\nYou can read more about the [test generator here](../develop/test/generator.md), or specific examples on [Custom Actions generator here](../develop/test/custom-actions.md).",
+  "summary": "Currently you can not test a Connector Application locally for Kelvin Platform compatibility. It is possible to test your program to ensure it can connect and communicate with external sources by running the script normally.",
+  "source": "core-docs/docs/developer-tools/how-to/develop-connections/test.md",
+  "code_examples": [
+    {
+      "language": "text",
+      "code": "python <SCRIPT_NAME>",
+      "title": "Testing Connection code"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "application",
+    "connector",
+    "development",
+    "sdk",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

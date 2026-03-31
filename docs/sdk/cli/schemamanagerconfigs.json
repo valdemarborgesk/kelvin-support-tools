@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.configs.schema-manager-configs/schemamanagerconfigs",
+  "title": "SchemaManagerConfigs",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# SchemaManagerConfigs\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/configs/schema_manager_configs.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.configs.schema_manager_configs",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

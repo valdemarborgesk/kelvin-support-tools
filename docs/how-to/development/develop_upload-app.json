@@ -1,0 +1,27 @@
+{
+  "id": "how-to/develop/upload-app",
+  "title": "Upload Kelvin SmartApp™ to Kelvin Platform",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Upload Kelvin SmartApp™ to Kelvin Platform\n\nOnce you have finished writing and testing your new Kelvin SmartApp™ Application, then you need to upload it to the App Registry on the Kelvin Platform.\n\nAfter uploading it, you will see it listed in the **Applications** section where you can then add Assets to it in the **Workloads** Tab.\n\n    When you upload, by default it will be placed in the Kelvin SmartApp™ group.\n\n    You can change this default location for all users by defining its group in the `category` key in the `app.yaml` file.\n\nTo upload you can follow the [Application Quick Start Guide for Upload](../../quick-start/how-to/upload-kelvin-smartapp.md).",
+  "summary": "Once you have finished writing and testing your new Kelvin SmartApp™ Application, then you need to upload it to the App Registry on the Kelvin Platform. After uploading it, you will see it listed in the Applications section where you can then add ...",
+  "source": "core-docs/docs/developer-tools/how-to/develop/upload-app.md",
+  "code_examples": [],
+  "related": [
+    "how-to/upload-kelvin-smartapp"
+  ],
+  "tags": [
+    "development",
+    "kelvin",
+    "platform",
+    "smartapp",
+    "test",
+    "upload"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

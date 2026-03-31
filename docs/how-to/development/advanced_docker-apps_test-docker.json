@@ -1,0 +1,25 @@
+{
+  "id": "how-to/advanced/docker-apps/test-docker",
+  "title": "Test Docker",
+  "type": "how_to",
+  "category": "development",
+  "content": "## Test Docker App\n\nDocker Apps communicate to the Kelvin Platform though a standard API endpoint or if you are programming Python you can use the Kelvin API Client (Python).\n\nAs such there is no special environment for testing Docker Apps. You can test your Docker App in the same way you test any normal docker container using the traditional `docker` commands.",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/advanced/docker-apps/test-docker.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "api",
+    "cli",
+    "development",
+    "docker",
+    "sdk",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

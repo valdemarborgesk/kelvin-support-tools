@@ -1,0 +1,45 @@
+{
+  "id": "sdk/api-client/client.api.orchestration/orchestration",
+  "title": "Orchestration",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Orchestration\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### create_orchestration_clusters(data: Optional[Union[requests.OrchestrationClustersCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.OrchestrationClustersCreate\n\nCreate a new Cluster. This only creates the Cloud registration, the actual installation still needs to be manually performed on the server/kubernetes cluster. The provision script to run locally on the server for `type` registered as `k3s` or on an existing kubernetes cluster for `type` registered as `kubernetes` will be in the key `provision_script ` in the 201 response body.\n\n\n### list_orchestration_clusters(names: Optional[Sequence[str]], search: Optional[Sequence[str]], type: Optional[Sequence[str]], ready: Optional[bool], status: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.OrchestrationClustersCreateItem], responses.OrchestrationClustersListPaginatedResponseCursor]\n\nReturns a list of Cluster objects. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### download_orchestration_cluster_provision_binary(arch: Optional[Literal[amd64, arm64, armv7]], type: Optional[Literal[kubernetes, docker]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> Iterator[bytes]\n\nDownload Cluster Provision Binary\n\n\n### delete_orchestration_clusters(cluster_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete an existing Cluster and its Nodes. This will also delete Workloads, Bridges and Services residing on the Cluster. This cannot be undone once the API request has been submitted.\n\n\n### apply_orchestration_clusters_edge_apps_version(cluster_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nInitiates available cluster upgrades; requires cluster to be online and ready.\n\n\n### update_orchestration_clusters_edge_apps_version_force(cluster_name: str, persist: Optional[bool], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nForce available updates to Cluster even if update setting is disabled. Optionally keep a force update action on standby if the Cluster is offline. This ensures the update is applied once the Cluster returns online.\n\n\n### get_orchestration_clusters(cluster_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.OrchestrationClustersGet\n\nRetrieve the parameters and status of a Cluster.\n\n\n### get_orchestration_clusters_manifests(cluster_name: str, version: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.OrchestrationClustersManifestsGet\n\nGet Cluster Manifests\n\n\n### list_orchestration_clusters_node(cluster_name: str, search: Optional[Sequence[str]], status: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.OrchestrationClustersNodesGetItem], responses.OrchestrationClustersNodeListPaginatedResponseCursor]\n\nReturns a list of Node objects in a Cluster. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### get_orchestration_clusters_nodes(cluster_name: str, node_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.OrchestrationClustersNodesGet\n\nRetrieve the parameters and status of a specific Node on a Cluster.\n\n\n### get_orchestration_clusters_provision(cluster_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> str\n\nGet Clusters Provision YAML Specifications\n\n\n### list_orchestration_clusters_service(cluster_name: str, search: Optional[Sequence[str]], workload_name: Optional[Sequence[str]], service_type: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.ServiceItem], responses.OrchestrationClustersServiceListPaginatedResponseCursor]\n\nReturns a list of Service objects in a Cluster. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### update_orchestration_clusters(cluster_name: str, data: Optional[Union[requests.OrchestrationClustersUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.OrchestrationClustersUpdate\n\nUpdate the configuration settings of the Cluster. Only key/values provided in the request body will be updated, all other settings will remain unchanged.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/orchestration.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.orchestration.create_orchestration_clusters()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.orchestration",
+    "item_type": "class",
+    "methods": [
+      "create_orchestration_clusters",
+      "list_orchestration_clusters",
+      "download_orchestration_cluster_provision_binary",
+      "delete_orchestration_clusters",
+      "apply_orchestration_clusters_edge_apps_version",
+      "update_orchestration_clusters_edge_apps_version_force",
+      "get_orchestration_clusters",
+      "get_orchestration_clusters_manifests",
+      "list_orchestration_clusters_node",
+      "get_orchestration_clusters_nodes",
+      "get_orchestration_clusters_provision",
+      "list_orchestration_clusters_service",
+      "update_orchestration_clusters"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

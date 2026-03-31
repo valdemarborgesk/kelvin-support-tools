@@ -1,0 +1,353 @@
+{
+  "id": "api/endpoints/data-quality/DataQualitySimulate",
+  "title": "Data Quality Simulate",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Data Quality Simulate\n\nSimulate the effect of data quality updates without making permanent changes.\n\n## Endpoint\n\n`POST /data-quality/simulate`",
+  "summary": "Data Quality Simulate",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/data-quality/simulate' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.data_quality.DataQualitySimulate()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/data-quality"
+  ],
+  "tags": [
+    "data-quality",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/data-quality/simulate",
+    "method": "POST",
+    "operation_id": "DataQualitySimulate",
+    "tag": "Data Quality",
+    "permission": "kelvin.permission.data-quality.read",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "resource": {
+            "type": "string",
+            "format": "krn",
+            "maxLength": 256,
+            "description": "The Asset/Data Stream pair to simulate the Data Quality configurations on. (example: `krn:ad:asset1/setpoint`)."
+          },
+          "configurations": {
+            "type": "object",
+            "description": "The Data Quality configurations.",
+            "properties": {
+              "kelvin_stale_detection": {
+                "type": "object",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Define if the stale detection algorithm is enabled."
+                  },
+                  "configuration": {
+                    "type": "object",
+                    "description": "The configuration for the stale detection algorithm.",
+                    "properties": {
+                      "window_interval": {
+                        "type": "integer",
+                        "description": "The size of the window to check for stale data."
+                      },
+                      "window_interval_unit": {
+                        "$ref": "#/components/schemas/enum.WindowIntervalUnit",
+                        "example": "min",
+                        "description": "The unit of time for the window interval."
+                      }
+                    }
+                  }
+                }
+              },
+              "kelvin_out_of_range_detection": {
+                "type": "object",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Define if the out of range detection algorithm is enabled."
+                  },
+                  "configuration": {
+                    "type": "object",
+                    "description": "The configuration for the out of range detection algorithm.",
+                    "properties": {
+                      "min_threshold": {
+                        "type": "number",
+                        "description": "The minimum threshold for the out of range detection."
+                      },
+                      "max_threshold": {
+                        "type": "number",
+                        "description": "The maximum threshold for the out of range detection."
+                      }
+                    }
+                  }
+                }
+              },
+              "kelvin_outlier_detection": {
+                "type": "object",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Define if the outlier detection algorithm is enabled."
+                  },
+                  "configuration": {
+                    "type": "object",
+                    "description": "The configuration for the outlier detection algorithm.",
+                    "properties": {
+                      "model": {
+                        "$ref": "#/components/schemas/enum.OutlierDetectionModel"
+                      },
+                      "z_score": {
+                        "type": "object",
+                        "description": "The configuration for the z-score outlier detection model.",
+                        "properties": {
+                          "threshold": {
+                            "type": "number",
+                            "description": "The threshold for outlier detection."
+                          },
+                          "window_size": {
+                            "type": "integer",
+                            "description": "The size of the window to check for outliers."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "kelvin_data_availability": {
+                "type": "object",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Define if the data availability algorithm is enabled."
+                  },
+                  "configuration": {
+                    "type": "object",
+                    "description": "The configuration for the data availability algorithm.",
+                    "properties": {
+                      "window_expected_number_msgs": {
+                        "type": "integer",
+                        "description": "The expected number of messages."
+                      },
+                      "window_interval_unit": {
+                        "$ref": "#/components/schemas/enum.WindowIntervalUnit",
+                        "example": "sec",
+                        "description": "The window interval unit for the data availability check."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "start_time": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-12-18T18:22:18.582724Z",
+            "description": "The start timestamp for the simulation, formatted in RFC 3339."
+          },
+          "end_time": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-12-19T18:22:18.582724Z",
+            "description": "The end timestamp for the simulation, formatted in RFC 3339."
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "timeseries_data": {
+              "type": "array",
+              "description": "The simulated timeseries data for the specified resource.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "payload": {
+                    "description": "Value represented in one of these formats.",
+                    "oneOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "type": "object"
+                      }
+                    ]
+                  },
+                  "resource": {
+                    "type": "string",
+                    "nullable": true,
+                    "format": "krn",
+                    "example": "krn:ad:asset1/data_stream1",
+                    "maxLength": 256,
+                    "description": "The `resource` (Asset / Data Stream pair) associated with the `payload`."
+                  },
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-11-13T12:00:00Z",
+                    "description": "UTC time when the `payload` values were saved, formatted in RFC 3339."
+                  }
+                }
+              }
+            },
+            "data_quality_data": {
+              "type": "object",
+              "description": "The simulated Data Quality data for the specified resource.",
+              "properties": {
+                "kelvin_stale_detection": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "payload": {
+                        "$ref": "#/components/schemas/type.Any",
+                        "description": "Raw value for `resource` at the specified `timestamp`."
+                      },
+                      "resource": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "krn",
+                        "example": "krn:ad:asset1/data_stream1",
+                        "maxLength": 256,
+                        "description": "The `resource` (Asset / Data Stream pair) associated with the `payload`."
+                      },
+                      "timestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-11-13T12:00:00Z",
+                        "description": "UTC time when the `payload` values were saved, formatted in RFC 3339."
+                      }
+                    }
+                  }
+                },
+                "kelvin_out_of_range_detection": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "payload": {
+                        "$ref": "#/components/schemas/type.Any",
+                        "description": "Raw value for `resource` at the specified `timestamp`."
+                      },
+                      "resource": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "krn",
+                        "example": "krn:ad:asset1/data_stream1",
+                        "maxLength": 256,
+                        "description": "The `resource` (Asset / Data Stream pair) associated with the `payload`."
+                      },
+                      "timestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-11-13T12:00:00Z",
+                        "description": "UTC time when the `payload` values were saved, formatted in RFC 3339."
+                      }
+                    }
+                  }
+                },
+                "kelvin_outlier_detection": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "payload": {
+                        "$ref": "#/components/schemas/type.Any",
+                        "description": "Raw value for `resource` at the specified `timestamp`."
+                      },
+                      "resource": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "krn",
+                        "example": "krn:ad:asset1/data_stream1",
+                        "maxLength": 256,
+                        "description": "The `resource` (Asset / Data Stream pair) associated with the `payload`."
+                      },
+                      "timestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-11-13T12:00:00Z",
+                        "description": "UTC time when the `payload` values were saved, formatted in RFC 3339."
+                      }
+                    }
+                  }
+                },
+                "kelvin_data_availability": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "payload": {
+                        "$ref": "#/components/schemas/type.Any",
+                        "description": "Raw value for `resource` at the specified `timestamp`."
+                      },
+                      "resource": {
+                        "type": "string",
+                        "nullable": true,
+                        "format": "krn",
+                        "example": "krn:ad:asset1/data_stream1",
+                        "maxLength": 256,
+                        "description": "The `resource` (Asset / Data Stream pair) associated with the `payload`."
+                      },
+                      "timestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2023-11-13T12:00:00Z",
+                        "description": "UTC time when the `payload` values were saved, formatted in RFC 3339."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

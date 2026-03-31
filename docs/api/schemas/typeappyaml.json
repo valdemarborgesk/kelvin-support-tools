@@ -1,0 +1,24 @@
+{
+  "id": "api/schemas/appyaml",
+  "title": "AppYaml",
+  "type": "schema",
+  "category": "api",
+  "content": "# AppYaml\n",
+  "summary": "Object type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.AppYaml",
+    "schema_type": "type",
+    "schema": {
+      "type": "object"
+    },
+    "last_updated": "2026-02-04"
+  }
+}

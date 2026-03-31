@@ -1,0 +1,26 @@
+{
+  "id": "how-to/user-management/keycloak/user-roles-and-permissions",
+  "title": "Define Role Permissions",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Define Role Permissions\n\n_On this page you will learn as an Administrator how to define Roles available in the Kelvin Cloud. These roles can be selected in Keycloak to give users access to certain areas of Kelvin._\n\nKelvin has created an extensive granular list of Roles so that you can fine tune exactly what users and groups can do in all areas of the Kelvin.\n\nWhen looking at the Kelvin API Reference or in the swagger file you will see the Roles permission required for each API request.\n\nAs with all standard authentication systems, groups are easy ways to define a collection of Roles that can be quickly assigned to users.\n\nWhen assigning Roles to a user, you can select one or more groups for the user. And if you need more granular control, you can also select individual Roles for the user to give them more access than normally allowed with the group.\n\n<div class=\"result\" markdown>\n\n=== \"Groups\"\n\n    To add a user to a group, go to [manage the user](manage-users.md#__tabbed_1_2) and click on the **Groups** tab.\n\n    Here you can see a full list of groups available and the groups the user is currently a member. Click on the relevant group name to Join or Leave.\n\n    \n        You can make your own groups with a custom set of Roles. Check out our [How To guide](./define-user-groups.md#__tabbed_1_1).\n\n    \n\n=== \"Roles\"\n\n    If the groups option does not give you enough granular control over the rights the user needs, then you can also assign individual Roles to a user. Go to [manage the user](manage-users.md#__tabbed_1_2) and click on the **Role Mappings** tab.\n\n    Here you can see a full list of Roles available and the groups the user is currently a member. Click on the relevant group name to Join or Leave.\n\n    \n\n</div>",
+  "summary": "_On this page you will learn as an Administrator how to define Roles available in the Kelvin Cloud. These roles can be selected in Keycloak to give users access to certain areas of Kelvin._ Kelvin has created an extensive granular list of Roles so...",
+  "source": "core-docs/docs/platform-administration/how-to/user-management/keycloak/user-roles-and-permissions.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "api",
+    "cli",
+    "create",
+    "define",
+    "operations",
+    "permissions",
+    "role"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

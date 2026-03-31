@@ -1,0 +1,33 @@
+{
+  "id": "sdk/app/message.evidences/dataexplorer",
+  "title": "DataExplorer",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataExplorer\n\nInherits from: Evidence\n\n\nEvidence for Data Explorer representation.\n\nAttributes:\n    title (str): The title of the data explorer.\n    start_time (datetime): The start time of the data exploration period.\n    end_time (datetime): The end time of the data exploration period.\n    selectors (list[DataExplorerSelector]): The data selectors.\n\n\n## Methods\n\n\n### serialize_timestamp(ts: datetime) -> str\n",
+  "summary": "Evidence for Data Explorer representation.",
+  "source": "app/src/kelvin/message/evidences.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import DataExplorer\n\n# Usage example\napp = DataExplorer()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.evidences",
+    "item_type": "class",
+    "methods": [
+      "serialize_timestamp"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

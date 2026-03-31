@@ -1,0 +1,33 @@
+{
+  "id": "api/schemas/controlchangestate",
+  "title": "ControlChangeState",
+  "type": "schema",
+  "category": "api",
+  "content": "# ControlChangeState\n\n## Enum Values\n\n- `pending`\n- `ready`\n- `sent`\n- `processed`\n- `applied`\n- `failed`\n- `rejected`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.ControlChangeState",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "ready",
+        "sent",
+        "processed",
+        "applied",
+        "failed",
+        "rejected"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

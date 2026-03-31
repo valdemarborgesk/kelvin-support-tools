@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.configs.general-configs/generalmessages",
+  "title": "GeneralMessages",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# GeneralMessages\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/configs/general_configs.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.configs.general_configs",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

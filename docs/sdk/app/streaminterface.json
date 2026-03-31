@@ -1,0 +1,36 @@
+{
+  "id": "sdk/app/application.stream/streaminterface",
+  "title": "StreamInterface",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# StreamInterface\n\nInherits from: ABC\n\n\nInterface for a connection to a Kelvin system. Provides raw read/write access.\n\n\n## Methods\n\n\n### async connect() -> None\n\n\n### async disconnect() -> None\n\nDisconnects from the Kelvin Stream\n\n\n### async read() -> Message\n\n\n### async write(msg: Message) -> bool\n",
+  "summary": "Interface for a connection to a Kelvin system. Provides raw read/write access.",
+  "source": "app/src/kelvin/application/stream.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import StreamInterface\n\n# Usage example\napp = StreamInterface()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "application.stream",
+    "item_type": "class",
+    "methods": [
+      "connect",
+      "disconnect",
+      "read",
+      "write"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

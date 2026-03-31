@@ -1,0 +1,141 @@
+{
+  "id": "how-to/develop-connections/create-export",
+  "title": "Create Export Application",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Create Export Application\n\nAn Export Application is designed to compile and transfer a block of data from the Kelvin Platform to a third party provider. Some common uses are to export to Amazon S3, Azure Data Lake Storage, or Databricks for ML analysis and training.\n\n    You can build for both x86\\_64 and arm64 devices.\n\n```bash title=\"create default application\" linenums=\"1\"\n$ kelvin app create --app-type exporter <EXPORT_NAME>\n```\n\nThis will give a response similar to this;\n\n```bash title=\"command output\" linenums=\"1\"\n[kelvin.sdk][2025-09-02 04:26:43][I] Refreshing metadata..\n[kelvin.sdk][2025-09-02 04:26:43][I] Creating new application \"demoexporter\"\n[kelvin.sdk][2025-09-02 04:26:43][R] Successfully created new application: \"demoexporter\".\n[kelvin.sdk][2025-09-02 04:26:43][I] Kelvin code samples are available at: https://github.com/kelvininc/app-samples\n```\n\nThis will automatically create an Export Application bootstrap within a new directory and populated with some default files and configurations.\n\n## Folder Structure\n\nYou can now open the folder in your favorite IDE or editor and start to modify the files to create your Export Application.\n\n```bash title=\"default folder structure\" linenums=\"1\"\n$ cd demoexporter\n$ tree ./\n├── .dockerignore\n├── Dockerfile\n├── app.yaml\n├── main.py\n├── requirements.txt\n└── ui_schemas\n    ├── configuration.json\n    └── io_default.json\n```\n\nBelow is a brief description of each file.\n\n### app.yaml\n\nThe `app.yaml` is the main configuration file that holds both Application definitions as well as the deployment/runtime configuration.\n\n    This file is used for the Export Application, Docker Apps, Imports (Connectors) and Exports.\n\n    On this page we are only focused on the Export options. \n\nIt is composed of the following sections:\n\n#### spec_version key\n\nThe `spec_version` key is automatically injected and specifies the Export Application [JSON Schema](https://apps.kelvininc.com/schemas/kelvin/4.12.0/app/app.json) (_latest_) version which both defines and validates the `app.yaml` structure.\n\n```yaml title=\"spec_version\" linenums=\"1\"\nspec_version: 5.0.0\n```\n\n#### type\n\nThis defines the type for the application.\n\n* `app`: A Smart App that allows mapping inputs and outputs to data streams, sending control changes, recommendations, and data tags.\n* `docker`: An docker application that does not connect to the platform's data streams.\n* `importer`: Connects to an external system to import data into the platform as well as receive control changes to act on the external system.\n* `exporter`: Connects to the platform to export data to an external system.\n\n```yaml title=\"application type\" linenums=\"1\"\ntype: exporter\n```\n\n#### info\n\nThe root section holds the Export Application basic information required to make itself uploadable to _Kelvin's App Registry_.\n\n```yaml title=\"application info\" linenums=\"1\"\nname: azure-data-lake-uploader\ntitle: Azure Data Lake Uploader\ndescription: Uploads timeseries data to Azure Data Lake Gen2\nversion: 1.0.0\n```\n\nThe `name` is the Export Application's unique identifier.\n\nThe `title` and `description` will appear on the Kelvin UI when creating a Connector once the Export Application is uploaded.\n\nThe `version` defines the version of this Export Application and is used in the Kelvin UI.\n\n    The `version` should be bumped every time the Export Application gets an update, and before it gets uploaded to the _App Registry_.\n\n#### flags\n\nThis is where you are able to set some of the Application's capabilities.\n\n```yaml title=\"application flags\" linenums=\"1\"\nflags:\n  enable_runtime_update:\n\n    # enables configuration updates at runtime\n    configuration: false \n```\n\n#### exporter_io\n\nThis is the main section that defines the types and function of the Data Streams that are allowed for this Export Application.\n\n```yaml title=\"example Exporter_io\" linenums=\"1\"\n# definition of which kind of datastreams are allowed to be deployed\nexporter_io:\n  - name: default\n    data_types:    # default: [number, string, boolean, object name]\n      - number\n      - string\n\n    control: true # the app allows control\n```\n\n#### ui_schemas\n\nThis is where the Export configuration are defined for the Kelvin UI.\n\nThe actual information is kept in a `json` file in the schemas folder of the project. The file location is defined in the `app.yaml` file like this;\n\n```yaml title=\"application ui schemas\" linenums=\"1\"\n# optional to generate UI schemas\nui_schemas:\n\n  # app configuration schema\n  configuration: \"ui_schemas/configuration.json\" # default: \"ui_schemas/configuration.json\"\n\n  # Exporter_io configuration schema\n  io_configuration:\n    default: \"ui_schemas/io_configuration/io_default.json\" # default: \"ui_schemas/io_default.json\"\n```\n\nBelow is some information on the content options in the `json` files.\n\n**configuration.json**\n\nThe configuration.json file will come with default blank schemas when first created.\n\n    `configuration.json` information is optional, and if not provided, the Kelvin UI will display the configuration settings in a raw JSON or YAML file format without verifying the structure or content before applying them to the Export Application.\n\n```json title=\"default ui_schemas/configuration.json\" linenums=\"1\"\n{\n    \"type\": \"object\",\n    \"properties\": {},\n    \"required\": []\n}\n```\n\nAn example of a Configurations file filled in would look something like this;\n\n```json title=\"sample ui_schemas/configuration.json\" linenums=\"1\"\n{\n    \"type\": \"object\",\n    \"properties\": {\n      \"upload_interval\": {\n        \"type\": \"number\",\n        \"default\": 60,\n        \"title\": \"Upload Interval\",\n        \"minimum\": 0\n      }\n    },\n    \"required\": [\"upload_interval\"]\n}\n```\n\nWhich will be displayed on the Kelvin UI like this:\n\n**io_default.json**\n\nThese are for the definition of any objects `data_types`.\n\nIf not defined they use the default `ui_schemas/io_default.json`.\n\n```json title=\"sample ui_schemas/io_default.json\" linenums=\"1\"\n{\n    \"type\": \"object\",\n    \"properties\": {\n      \"address\": {\n        \"type\": \"number\",\n        \"title\": \"Address\",\n        \"minimum\": 1,\n        \"maximum\": 49999\n      }\n    },\n    \"required\": [\"address\"]\n}\n```\n\n#### defaults\n\nThis section hold four main sections;\n\n    All items in the defaults section are optional.\n\n* `system` : Is used to set different system requirements/constraints within the Export Application running environment. i.e. Resources, Environment Variables, Volumes, Ports, etc.\n\n```yaml title=\"application defaults\" linenums=\"1\"\ndefaults:\n  system: {}\n  configuration: {}\n```\n\n**defaults/system section**\n\nThe `system` section is **[optional]**.\n\nThis is where developers can set the system settings that the Export Application needs to be able to function as intended.\n\nThis includes opening ports, setting environment variables, limited resource usage, attaching volumes and setting the privileged tag which gives extended privileges on the host system.\n\n```yaml title=\"application system defaults\" linenums=\"1\"\ndefaults:\n  system:\n    environment_vars: []\n    volumes: []\n```\n\n???+ note \"System Section Options\"\n\n    === \"resources\"\n\n        **resources section**\n\n        The `resources` defines the reserved (`requests`) and `limits` the resources allocated to the Export Application:\n\n        * **Limits**: This is a maximum resource limit enforced by the cluster. the Export Application will not be allowed to use more than the limit set.\n\n        * **Requests**: This is the minimum resources that is allocated to the Export Application. This is reserved for the Export Application and can not be used by other Applications. If there are extra resources available, the Export Application can use more than the requested resources as long as it does not exceed the Limits.\n\n        You can read the full [documentation about CPU and Memory](../advanced/set-cpu-and-memory-limits.md) resources in the Advanced section.\n\n        ```yaml title=\"application resource defaults\" linenums=\"1\"\n        defaults:\n          system:\n            resources:\n              requests:   # Reserved\n                cpu: 100m\n                memory: 256Mi\n            limits:     # Limits\n                cpu: 200m\n                memory: 512Mi\n        ```\n\n    === \"environment_vars\"\n\n        **environment_vars section**\n\n        The `environment_vars` is used to define Environment Variables available within the Export Application container. i.e.:\n            \n        ```yaml title=\"application environmental variable defaults\" linenums=\"1\"\n        defaults:\n        environment_vars:\n          - name: AZURE_ACCOUNT_NAME\n            value: <% secrets.azure-account-name %>\n          - name: AZURE_ACCOUNT_KEY\n            value: <% secrets.azure-account-key %>\n          - name: AZURE_STORAGE_CONTAINER\n            value: <% secrets.azure-storage-container %>\n        ```\n\n    === \"volumes\"\n\n        **volumes section**\n\n        Mounted `volumes` are **[optional]** and their main purpose is to share and persist data generated by the Export Application or used by it in a specific place. They act like a shared folder between the Export Application and the host. Kelvin supports directory volumes, such as folders or serial ports, persistent, and file/test volumes:\n\n        ```yaml title=\"application attached volume defaults\" linenums=\"1\"\n        defaults:\n          system:\n            volumes:\n              - name: data\n                target: data.db\n                type: persistent\n        ```\n\n    === \"ports\"\n\n        **ports section**\n\n        The `ports` is **[optional]** and used to define network port mappings. i.e.:\n\n        ```yaml title=\"application open ports defaults\" linenums=\"1\"\n        defaults:\n          system:\n            ports:\n              - name: http\n                type: host # Exposed on the host\n                host:\n                port: 80\n\n              - name: opcua\n                type: service # Exposed as a service for other containers\n                service:\n                port: 48010\n                exposed_port: 30120\n                exposed: true\n        ```\n\n    === \"privileged\"\n\n        **privileged key**\n\n        The `privileged` key is **[optional]** and used to grant extended privileges to the Export Application, allowing it to access any devices on the host, such as a Serial device:\n\n        ```yaml title=\"application privileged defaults\" linenums=\"1\"\n        defaults:\n          system:\n            privileged: true\n        ```\n\n**defaults/configuration**\n\nThese are the default global Export Application configuration values.\n\nConfigurations can also be optionally defined in the `ui_schemas` that provides a link to a JSON file containing all the information about how to display Configurations in the Kelvin UI.\n\n    Operations will have the option to change these at runtime from the Kelvin UI.\n\n```yaml title=\"application app configuration defaults\" linenums=\"1\"\ndefaults:\n  configuration:\n    upload_interval: 60\n```\n\n### Python\n\nThe `main.py` is used as the entry point of the Export Applications. When it runs, `main.py` is typically the first script that gets executed, and it usually contains the main logic or orchestrates the flow of the Export Applications. However, naming a file \"main.py\" is just a convention, and it's not mandatory. The name helps developers quickly identify where the primary logic of the Export Applications begins.\n\nThe code example generated upon `kelvin app create` should be deleted and replaced as this is designed for a Kelvin SmartApp™.\n\nHere is an example script that will compile the data from Kelvin Platform and export it to Azure Data Lake Gen2.\n\n```python title=\"example main.py\" linenums=\"1\"\nimport asyncio\nfrom datetime import datetime\n\nimport aiofiles\nimport aiofiles.os\nfrom kelvin.application import KelvinApp, filters\n\nfrom timeseries import TimeseriesDataStore\nfrom uploader import AzureDataLakeStorageUploader\n\nasync def upload(app: KelvinApp, data_store: TimeseriesDataStore, uploader: AzureDataLakeStorageUploader):\n\n    # Create export dir\n    await aiofiles.os.makedirs(\"export/\", exist_ok=True)\n\n    while True:\n        batch_size = app.app_configuration.get(\"batch_size\", 1000)\n        upload_interval = app.app_configuration.get(\"upload_interval\", 30)\n\n        # Create filename\n        export_file = f\"export/{datetime.now().isoformat()}.parquet\"\n\n        try:\n            # Export to parquet file\n            _, chunk_size = await data_store.export_parquet(file_path=export_file, limit=batch_size)\n\n            # Upload file if exists\n            if await aiofiles.os.path.exists(export_file):\n                await uploader.upload(file_path=export_file)\n\n                # We should only trim data store if upload was successfully\n                await data_store.trim(limit=batch_size)\n\n                # Skip sleep if batch_size was full\n                if chunk_size < batch_size:\n                    print(\"No more data to upload, waiting for next interval.\")\n                    await asyncio.sleep(upload_interval)\n                else:\n                    print(\"Chunk was full, continuing to process without sleeping.\")\n            else:\n                print(\"No data to upload at this time.\")\n                await asyncio.sleep(upload_interval)\n\n        except Exception as e:\n            print(f\"Error occurred during upload: {e}\")\n            await asyncio.sleep(upload_interval)\n        finally:\n            # Remove file if exists\n            if await aiofiles.os.path.exists(export_file):\n                await aiofiles.os.remove(export_file)\n\nasync def main() -> None:\n\n    # Configure the Azure Data Lake Uploader\n    uploader = AzureDataLakeStorageUploader()\n\n    # Configure the Timeseries Database\n    data_store = TimeseriesDataStore(\"data.db\")\n    await data_store.setup()\n\n    # Creating instance of Kelvin App Client\n    app = KelvinApp()\n\n    # Connect the App Client\n    await app.connect()\n\n    # Create task to continuously upload data\n    asyncio.create_task(upload(app=app, data_store=data_store, uploader=uploader))\n\n    # Subscribe to the asset data streams\n    async for msg in app.stream_filter(filters.is_asset_data_message):\n        # Insert msg to local data store\n        await data_store.insert(timestamp=msg.timestamp, asset=msg.resource.asset, datastream=msg.resource.data_stream, payload=msg.payload)\n\nif __name__ == \"__main__\":\n    asyncio.run(main())\n```\n\n### Supporting Files\n\n<div class=\"result\" markdown>\n\n=== \"requirements.txt\"\n\n    The `requirements.txt` file is used to list all the dependencies a _Python_ Application needs. It can be used to easily install all the required packages, ensuring the Export Applications runs correctly. \n\n=== \"Dockerfile\"\n  \n    The `Dockerfile` is a script used to define the instructions and configuration for building a Docker image. It specifies the base image, installation of software, file copying, and other setup tasks needed to create a reproducible and isolated environment for running the Export Applications in Docker containers.\n\n    ```Dockerfile title=\"default Dockerfile\" linenums=\"1\"\n    FROM python:3.10-slim\n\n    ENV PYTHONUNBUFFERED=1\n    WORKDIR /opt/kelvin/app\n    COPY . /opt/kelvin/app\n    RUN pip install -r requirements.txt\n\n    ENTRYPOINT python main.py\n    ```\n    \n            If `main.py` is not the intended entry point, it also needs to be replaced on the `Dockerfile`.\n\n=== \".dockerignore\"\n\n    Specifies which files and directories should be excluded when building the Export Applications Docker image. It helps reducing the build context, resulting in smaller, more efficient Docker image.\n\n</div>",
+  "summary": "An Export Application is designed to compile and transfer a block of data from the Kelvin Platform to a third party provider. Some common uses are to export to Amazon S3, Azure Data Lake Storage, or Databricks for ML analysis and training.",
+  "source": "core-docs/docs/developer-tools/how-to/develop-connections/create-export.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "$ kelvin app create --app-type exporter <EXPORT_NAME>",
+      "title": "create default application"
+    },
+    {
+      "language": "bash",
+      "code": "[kelvin.sdk][2025-09-02 04:26:43][I] Refreshing metadata..\n[kelvin.sdk][2025-09-02 04:26:43][I] Creating new application \"demoexporter\"\n[kelvin.sdk][2025-09-02 04:26:43][R] Successfully created new application: \"demoexporter\".\n[kelvin.sdk][2025-09-02 04:26:43][I] Kelvin code samples are available at: https://github.com/kelvininc/app-samples",
+      "title": "command output"
+    },
+    {
+      "language": "bash",
+      "code": "$ cd demoexporter\n$ tree ./\n├── .dockerignore\n├── Dockerfile\n├── app.yaml\n├── main.py\n├── requirements.txt\n└── ui_schemas\n    ├── configuration.json\n    └── io_default.json",
+      "title": "default folder structure"
+    },
+    {
+      "language": "yaml",
+      "code": "spec_version: 5.0.0",
+      "title": "spec_version"
+    },
+    {
+      "language": "yaml",
+      "code": "type: exporter",
+      "title": "application type"
+    },
+    {
+      "language": "yaml",
+      "code": "name: azure-data-lake-uploader\ntitle: Azure Data Lake Uploader\ndescription: Uploads timeseries data to Azure Data Lake Gen2\nversion: 1.0.0",
+      "title": "application info"
+    },
+    {
+      "language": "yaml",
+      "code": "flags:\n  enable_runtime_update:\n\n    # enables configuration updates at runtime\n    configuration: false",
+      "title": "application flags"
+    },
+    {
+      "language": "yaml",
+      "code": "# definition of which kind of datastreams are allowed to be deployed\nexporter_io:\n  - name: default\n    data_types:    # default: [number, string, boolean, object name]\n      - number\n      - string\n\n    control: true # the app allows control",
+      "title": "example Exporter_io"
+    },
+    {
+      "language": "yaml",
+      "code": "# optional to generate UI schemas\nui_schemas:\n\n  # app configuration schema\n  configuration: \"ui_schemas/configuration.json\" # default: \"ui_schemas/configuration.json\"\n\n  # Exporter_io configuration schema\n  io_configuration:\n    default: \"ui_schemas/io_configuration/io_default.json\" # default: \"ui_schemas/io_default.json\"",
+      "title": "application ui schemas"
+    },
+    {
+      "language": "json",
+      "code": "{\n    \"type\": \"object\",\n    \"properties\": {},\n    \"required\": []\n}",
+      "title": "default ui_schemas/configuration.json"
+    },
+    {
+      "language": "json",
+      "code": "{\n    \"type\": \"object\",\n    \"properties\": {\n      \"upload_interval\": {\n        \"type\": \"number\",\n        \"default\": 60,\n        \"title\": \"Upload Interval\",\n        \"minimum\": 0\n      }\n    },\n    \"required\": [\"upload_interval\"]\n}",
+      "title": "sample ui_schemas/configuration.json"
+    },
+    {
+      "language": "json",
+      "code": "{\n    \"type\": \"object\",\n    \"properties\": {\n      \"address\": {\n        \"type\": \"number\",\n        \"title\": \"Address\",\n        \"minimum\": 1,\n        \"maximum\": 49999\n      }\n    },\n    \"required\": [\"address\"]\n}",
+      "title": "sample ui_schemas/io_default.json"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n  system: {}\n  configuration: {}",
+      "title": "application defaults"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n  system:\n    environment_vars: []\n    volumes: []",
+      "title": "application system defaults"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n          system:\n            resources:\n              requests:   # Reserved\n                cpu: 100m\n                memory: 256Mi\n            limits:     # Limits\n                cpu: 200m\n                memory: 512Mi",
+      "title": "application resource defaults"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n        environment_vars:\n          - name: AZURE_ACCOUNT_NAME\n            value: <% secrets.azure-account-name %>\n          - name: AZURE_ACCOUNT_KEY\n            value: <% secrets.azure-account-key %>\n          - name: AZURE_STORAGE_CONTAINER\n            value: <% secrets.azure-storage-container %>",
+      "title": "application environmental variable defaults"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n          system:\n            volumes:\n              - name: data\n                target: data.db\n                type: persistent",
+      "title": "application attached volume defaults"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n          system:\n            ports:\n              - name: http\n                type: host # Exposed on the host\n                host:\n                port: 80\n\n              - name: opcua\n                type: service # Exposed as a service for other containers\n                service:\n                port: 48010\n                exposed_port: 30120\n                exposed: true",
+      "title": "application open ports defaults"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n          system:\n            privileged: true",
+      "title": "application privileged defaults"
+    },
+    {
+      "language": "yaml",
+      "code": "defaults:\n  configuration:\n    upload_interval: 60",
+      "title": "application app configuration defaults"
+    },
+    {
+      "language": "python",
+      "code": "import asyncio\nfrom datetime import datetime\n\nimport aiofiles\nimport aiofiles.os\nfrom kelvin.application import KelvinApp, filters\n\nfrom timeseries import TimeseriesDataStore\nfrom uploader import AzureDataLakeStorageUploader\n\n\nasync def upload(app: KelvinApp, data_store: TimeseriesDataStore, uploader: AzureDataLakeStorageUploader):\n\n    # Create export dir\n    await aiofiles.os.makedirs(\"export/\", exist_ok=True)\n\n    while True:\n        batch_size = app.app_configuration.get(\"batch_size\", 1000)\n        upload_interval = app.app_configuration.get(\"upload_interval\", 30)\n\n        # Create filename\n        export_file = f\"export/{datetime.now().isoformat()}.parquet\"\n\n        try:\n            # Export to parquet file\n            _, chunk_size = await data_store.export_parquet(file_path=export_file, limit=batch_size)\n\n            # Upload file if exists\n            if await aiofiles.os.path.exists(export_file):\n                await uploader.upload(file_path=export_file)\n\n                # We should only trim data store if upload was successfully\n                await data_store.trim(limit=batch_size)\n\n                # Skip sleep if batch_size was full\n                if chunk_size < batch_size:\n                    print(\"No more data to upload, waiting for next interval.\")\n                    await asyncio.sleep(upload_interval)\n                else:\n                    print(\"Chunk was full, continuing to process without sleeping.\")\n            else:\n                print(\"No data to upload at this time.\")\n                await asyncio.sleep(upload_interval)\n\n        except Exception as e:\n            print(f\"Error occurred during upload: {e}\")\n            await asyncio.sleep(upload_interval)\n        finally:\n            # Remove file if exists\n            if await aiofiles.os.path.exists(export_file):\n                await aiofiles.os.remove(export_file)\n\nasync def main() -> None:\n\n    # Configure the Azure Data Lake Uploader\n    uploader = AzureDataLakeStorageUploader()\n\n    # Configure the Timeseries Database\n    data_store = TimeseriesDataStore(\"data.db\")\n    await data_store.setup()\n\n    # Creating instance of Kelvin App Client\n    app = KelvinApp()\n\n    # Connect the App Client\n    await app.connect()\n\n    # Create task to continuously upload data\n    asyncio.create_task(upload(app=app, data_store=data_store, uploader=uploader))\n\n    # Subscribe to the asset data streams\n    async for msg in app.stream_filter(filters.is_asset_data_message):\n        # Insert msg to local data store\n        await data_store.insert(timestamp=msg.timestamp, asset=msg.resource.asset, datastream=msg.resource.data_stream, payload=msg.payload)\n\n\nif __name__ == \"__main__\":\n    asyncio.run(main())",
+      "title": "example main.py"
+    },
+    {
+      "language": "Dockerfile",
+      "code": "FROM python:3.10-slim\n\n    ENV PYTHONUNBUFFERED=1\n    WORKDIR /opt/kelvin/app\n    COPY . /opt/kelvin/app\n    RUN pip install -r requirements.txt\n\n    ENTRYPOINT python main.py",
+      "title": "default Dockerfile"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "application",
+    "cli",
+    "configure",
+    "create",
+    "deploy",
+    "development",
+    "docker",
+    "export",
+    "sdk",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

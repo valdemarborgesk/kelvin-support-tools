@@ -1,0 +1,24 @@
+{
+  "id": "how-to/admin-dashboard",
+  "title": "Administration Dashboard",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Administration Dashboard\n\n## Overview\n\nThere is an administration dashboard to see an overview of the Kelvin Platform and its current performance.\n\n    You can apply filters to see statistics only for information that matches the filter settings.\n\nTo see the dashboard, click on the **Dashboard** menu under Administration.\n\nYou will then see the Dashboard.\n\n    This is a fixed Dashboard and Administrators can not customize the contents.\n\n## Filter\n\nYou can use the filters to limit the statistics to only the information relevant to your selection.\n\nYou have four options available;\n\n* Time range\n* Select Asset Types to include\n* Select Applications to include\n* Select Assets with only certain Asset Statuses.\n\n    If you select multiple filters, the Kelvin Platform displays only the statistics that meet all selected criteria.\n\n## Available Statistics\n\nThe statistics are grouped into common themes.\n\n* Assets\n* Recommendations, Actions, Data Tags\n* Apps\n* Orchestration\n\n### Assets\n\nThis gives you the general Asset information.\n\n| Card Name | Description |\n| --- | --- |\n| No. of Assets | Total number of assets matching the current filter. |\n| % of Asset Type | Percentage of all or filtered Asset Types in the statistics that match the selected Asset Status and Application filters. |\n| % of All Assets | Percentage of filtered assets compared to all assets on the Kelvin Platform. |\n| No. of Assets over Time | Historical weekly count of assets matching the current filter. |\n| Asset Name | List of assets in the current filter. Click an asset to view its details in the Asset section. |\n\n### Recommendations, Actions, Data Tags\n\n| Card Name | Description |\n|------------|--------------|\n| No. of Recommendations | Displays the total number of recommendations that match the current filter. |\n| No. of Recommendation Over Time | Shows the trend of recommendations over time for assets matching the current filter. |\n| No. of Control Changes | Indicates the total number of control changes that match the current filter. |\n| No. of Control Changes Over Time | Plots control change activity over time for assets matching the current filter (currently no data). |\n| No. of Custom Actions | Displays the total count of custom actions that match the current filter. |\n| No. of Custom Actions Over Time | Shows custom action activity trends over time for assets matching the current filter (currently no data). |\n| No. of Data Tags | Displays the total number of data tags that match the current filter. |\n| No. of Data Tags Over Time | Shows the number of data tags over time for assets matching the current filter (currently no data). |\n\n### Apps\n\n| Card Name | Description |\n| --- | --- |\n| No. of Apps | Total number of apps matching the current filter. |\n| No. of Apps Over Time | Historical count of apps matching the current filter. |\n| App Deployments: Top 5 | Top 5 apps by number of deployments within the current filter. |\n| No. of App Versions | Total number of app versions matching the current filter. |\n| No. of App Versions Over Time | Historical count of app versions matching the current filter. |\n| App Versions: Top 5 | Top 5 apps by version count within the current filter. |\n| No. of Workloads | Total number of workloads matching the current filter. |\n| No. of Workloads Over Time | Historical count of workloads matching the current filter. |\n\n### Orchestration\n\n| Card Name | Description |\n| --- | --- |\n| No. of Clusters | Total number of clusters matching the current filter. |\n| No. of Clusters Over Time | Historical count of clusters matching the current filter. |\n| No. of Clusters by Kelvin Version | Distribution of clusters by Kelvin version within the current filter. |\n| No. of Data Streams | Total number of data streams matching the current filter. |\n| No. of Data Streams Over Time | Historical count of data streams matching the current filter. |",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/admin-dashboard.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "administration",
+    "cli",
+    "dashboard",
+    "deploy",
+    "operations"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "sdk/cli/sdk.lib.models.factories.project.project/projectfiletree",
+  "title": "ProjectFileTree",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ProjectFileTree\n\nInherits from: KSDKModel, abc.ABC\n\n\n## Methods\n\n\n### from_tree(app_root: KPath, project_type: ProjectType, kelvin_app_flavour: ApplicationFlavour, template_parameters: Dict, kelvin_app_lang: Optional[ApplicationLanguage]) -> ProjectFileTree\n\nClass method that must fill the Tree directories and respective files\n\n\n### get_tree_dict(app_root: KPath) -> Dict\n\nReturns a dictionary with the file tree associated with the class attributes\n\n\n### fundamental_dirs() -> List[Directory]\n\nA list of project's main directories\n\n\n### optional_dirs() -> List[Directory]\n\nA list of project's optional directories\n\n\n### get_extra_template_parameters() -> Dict\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/factories/project/project.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.factories.project.project",
+    "item_type": "class",
+    "methods": [
+      "from_tree",
+      "get_tree_dict",
+      "fundamental_dirs",
+      "optional_dirs",
+      "get_extra_template_parameters"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

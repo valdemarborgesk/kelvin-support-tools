@@ -1,0 +1,134 @@
+{
+  "id": "api/endpoints/asset/listAssetTypesAdvanced",
+  "title": "List Asset Types Advanced",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# List Asset Types Advanced\n\nReturns a list of Asset Types and its parameters. The Asset Types can be optionally filtered and sorted on the server before being returned.\n\n## Endpoint\n\n`POST /assets/types/list`",
+  "summary": "List Asset Types Advanced",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/assets/types/list' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.asset.listAssetTypesAdvanced()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/asset"
+  ],
+  "tags": [
+    "asset",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/assets/types/list",
+    "method": "POST",
+    "operation_id": "listAssetTypesAdvanced",
+    "tag": "Asset",
+    "permission": "kelvin.permission.asset_type.read",
+    "parameters": [
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": "sort_by",
+        "in": "query",
+        "required": false,
+        "description": "",
+        "type": "array"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "names": {
+            "type": "array",
+            "description": "A filter on the list based on the key `name`. The filter is on the full name only. All strings in the array are treated as `OR`. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+              "minLength": 1,
+              "maxLength": 64
+            },
+            "example": [
+              "pump",
+              "centrifugal_pump"
+            ]
+          },
+          "search": {
+            "type": "array",
+            "example": [
+              "pump",
+              "fan"
+            ],
+            "description": "Search and filter the Kelvin Asset Type list. Both the Display Name and the Name will be included in the search field criteria. This is given as an array, for example `[pump,fan]`. The search is case insensitive and will find partial matches as well. For example if a Kelvin Asset Type name is `centrifugal_pump`, then a match will be made if the search string is `pum` or `FUGaL`.",
+            "items": {
+              "type": "string",
+              "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK"
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

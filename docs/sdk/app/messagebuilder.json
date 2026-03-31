@@ -1,0 +1,34 @@
+{
+  "id": "sdk/app/message.msg-builders/messagebuilder",
+  "title": "MessageBuilder",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# MessageBuilder\n\n\n## Methods\n\n\n### to_message() -> TMessage\n\n\n### from_message(msg: TMessage) -> TBuilder\n",
+  "summary": "",
+  "source": "app/src/kelvin/message/msg_builders.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import MessageBuilder\n\n# Usage example\napp = MessageBuilder()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.msg_builders",
+    "item_type": "class",
+    "methods": [
+      "to_message",
+      "from_message"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "how-to/data-explorer-control-changes",
+  "title": "Control Changes in Data Explorer",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Control Changes in Data Explorer\n\n_On this page you will go through understanding the Control Change activity lane in the Data Explorer._\n\n## Overview\n\nControl Changes can be initiated through manual control updates or through Recommendations.\n\nEvery Control Change performed is shown in the activity lane in the Data Explorer. This allows you to quickly and visually see the effects of individual Control Changes on your Data Streams.\n\n| Icon | Meaning |\n| --- | --- |\n|  | Control Change applied successfully to the Asset |\n|  | Control Change currently being sent to Asset |\n|  | Control Change failed to write to Asset for one of the reasons; Timed Out trying or a Guardrail rule was breached. Reason for failure will be annotated and saved with the Control Change object |\n|  | Multiple Control Changes in this timeframe, click icon to see more details of individual Control Changes |\n\n    If the X-axis scale is too small to show individual control change times, then they will be grouped together and the icon will be a white circle with a number above indicating how many control changes are registered at that point in time.\n\n    Click on the white circle and the graph will automatically zoom to that location in time and show the individual control changes like below.\n\n## Info Popup\n\nIf you put your mouse over any Control Change point in the time frame, a popup will display detailed information about the that control change.\n\n    The reason for any Control Change failures will also appear here.\n\n## Hide Activity Lane\n\nControl Change activity lanes can be turned on or off from the visualization settings in the right hand sidebar.",
+  "summary": "_On this page you will go through understanding the Control Change activity lane in the Data Explorer._",
+  "source": "core-docs/docs/operations-tools/data-explorer-page/how-to/data-explorer-control-changes.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "changes",
+    "cli",
+    "control",
+    "data",
+    "explorer",
+    "operations"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "id": "how-to/develop/consume/control-changes-messages",
+  "title": "Control Changes",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Control Changes\n\n## Control Change Data Messages\n\nWhen control changes are initiated by any Application on the Kelvin Platform, they can be processed by any Application.\n\n## Stream Decorators (Preferred)\n\nThe preferred and simplest method for consuming incoming control change messages is to create a Stream Decorator function and add a filter for Control Changes.\n\n    You can filter by assets or datastreams to react only to specific incoming messages.\n\n```py title=\"Stream Decorators for Control Changes\" linenums=\"1\"\nfrom kelvin.application import KelvinApp\nfrom kelvin.message.typing import AssetDataMessage\n\napp = KelvinApp()\n\n@app.stream()\nasync def handle(msg: AssetDataMessage):\n    if app.msg_is_control_change(msg):\n        print(f\"Control change: {msg.payload}\")\n\napp.run()\n```\n\n## Callbacks\n\n**Event Callbacks** are functions that are triggered when a control change is initiated.\n\n### Video Tutorial\n\nYou can watch this **Event Callback** video tutorial which will show you how to program and test it on you local machine with the Kelvin test data generator Python script.\n\n    In the following chapters after the video tutorial you can see and copy all the scripts shown in the video tutorial.\n\n<iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/L_ZWngLzd0M?si=eXnTI9GHnRj1TKt_\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\n### Control Change Data Event\n\nWhen any new control change is initiated, a callback event is created.\n\n??? note \"Detailed Explanation of Parameters\"\n\n    **Response Parameters**\n\n    - **id**: UUID('db18aaaf-9a70-4c3e-babb-b7571867871f')  \n        - **Description**: A unique random generated UUID as the key `id` for the control change object.\n\n    - **type**: KMessageTypeData('data', 'pt=number')  \n        - **Options**: `number`, `boolean`, `string`  \n        - **Description**: The format of the data to expect.\n\n    - **trace_id**: UUID('db18aaaf-9a70-4c3e-babb-b7571867871f')\n\n    - **timestamp**: datetime.datetime(2024, 10, 28, 11, 51, 44, 601689, tzinfo=datetime.timezone(datetime.timedelta(seconds=25200), '+07'))  \n        - **Description**: The time of recording of the time series data in the local computer's timezone.\n\n    - **resource**: KRNAssetDataStream(asset='test-asset-1', data_stream='sa-rw-number')  \n        - **Description**: The Asset and Data Stream names associated with the control change.\n\n    - **payload**: The actual value in the declared `type` key format.\n\nThe full code is given here for the `main.py` script.\n\n    Click on the :fontawesome-solid-circle-plus:{ .code-descriptions } for details about the code\n\n```py title=\"main.py\" linenums=\"1\"\nfrom kelvin.application import KelvinApp # (1)!\nfrom kelvin.message.typing import AssetDataMessage # (2)!\n\nasync def on_control_change(msg: AssetDataMessage): # (3)!\n    # Get Asset and Value\n    asset = msg.resource.asset\n    value = msg.payload\n\n    print(\"Received Control Message: \", msg)\n    print(f\"Asset: {asset}, Value: {value}\")\n\napp.run()\n```\n\n1. The `KelvinApp` class is used to initlize and connect the Kelvin SmartApp™ to the Kelvin Platform.\n2. The `AssetDataMessage` is a class representing the structure and properties of the asset data messages which will be held in an instance called `msg`.\n3. The `on_control_change` callback function is triggered automatically whenever a new control change object is initiated to an Asset associated with the Kelvin SmartApp™. It serves as an event handler to process incoming control change data in real time, ensuring that relevant review, actions or data updates occur immediately upon receipt.\n\nWhen you run this Python script, the following output will be view in the terminal or logs;\n\n```bash title=\"Output from Program\" linenums=\"1\"\nReceived Control Message:  id=UUID('44ba34f7-6689-464f-9804-7bcc0e347f68') type=KMessageTypeData('data', 'pt=number') trace_id=None source=None timestamp=datetime.datetime(2024, 10, 28, 14, 29, 41, 553346, tzinfo=datetime.timezone(datetime.timedelta(seconds=25200), '+07')) resource=KRNAssetDataStream(asset='test-asset-1', data_stream='sa-cc-number') payload=20.0\n\nAsset: test-asset-1, Value: 20.0\n```\n\n## App to App\n\nControl Changes can be sent from one Kelvin SmartApp to another.\n\n    This can also operate even if the edge device does not have any Internet connection.\n\n    The only stipulation is that the Kelvin SmartApp™ that produces the control change object and the Kelvin SmartApp™ or Connector that consumes the control change object are hosted on the same Cluster and have local communications if they are hosted on different Nodes.\n\n### Producing App\n\nTo set this up, the `app.yaml` file of the Kelvin SmartApp™ that produces the control change object must be defined under the `control_change` key.\n\n```yaml title=\"app.yaml Example\" linenums=\"1\"\ncontrol_changes:\n  outputs:\n    - name: motor_speed_set_point\n      data_type: number\n```\n\nThen you can produce a Control Change to be sent to another Kelvin SmartApp™.\n\n    This is a simple Control Change example.\n\n    Read the [Control Change Produce](../produce/control-change-messages.md#examples) page to see all the types of Control Changes you are produce.\n\n```python title=\"Simple Control Change Python Example\" linenums=\"1\"\nfrom datetime import timedelta\n\nfrom kelvin.application import KelvinApp\nfrom kelvin.message import ControlChange\nfrom kelvin.krn import KRNAssetDataStream\n\n(...)\n\n# Create and Publish a Control Change\nawait app.publish(\n    ControlChange(\n        resource=KRNAssetDataStream(\"my-motor-asset\", \"motor_speed_set_point\"),\n        payload=1000,\n        expiration_date=timedelta(minutes=5)\n    )\n)\n```\n\n### Consuming App\n\nand the Kelvin SmartApp™ that consumes the control change object must define the input Data Stream with the `control_change` key.\n\n```yaml title=\"app.yaml Example\" linenums=\"1\"\ncontrol_changes:\n  inputs:\n    - name: motor_speed_set_point\n      data_type: number\n```\n\nThen you can consume a Control Change that has been sent by another Kelvin SmartApp™.\n\n```python title=\"Consume Control Change Python Example\" linenums=\"1\"\n\nasync def on_control_change(cc: AssetDataMessage) -> None:\n    \n    \"\"\"Callback when a Control Change is received.\"\"\"\n    print(\"Received Control Change: \", cc)\n\n```\n\nYou can also see the control change status with this code;\n\n```python title=\"Control Change Event Python Example\" linenums=\"1\"\nfrom kelvin.message import ControlChangeStatus\n\n(...)\n\nasync def on_control_status(cc_status: ControlChangeStatus) -> None:\n    \"\"\"Callback when a Control Status is received.\"\"\"\n    print(\"Received Control Status: \", cc_status)\n```\n\n    If the consumer is a Connector, then this key is automatically set using the Kelvin Connector setup process. It will automatically receive the control change object directly from the Kelvin SmartApp™ without requiring any connection to the Kelvin Cloud.\n\n## Data Generator for Local SmartApp Testing\n\nEasily test your SmartApp locally on your computer.\n\nComprehensive documentation is available for the **Generator Tool**. [Click here](../test/generator.md) to learn how to use this event callback script with the Test Generator on the \"Test a SmartApp\" ⟹ \"Generator\" page.",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/develop/consume/control-changes-messages.md",
+  "code_examples": [
+    {
+      "language": "py",
+      "code": "from kelvin.application import KelvinApp\nfrom kelvin.message.typing import AssetDataMessage\n\napp = KelvinApp()\n\n@app.stream()\nasync def handle(msg: AssetDataMessage):\n    if app.msg_is_control_change(msg):\n        print(f\"Control change: {msg.payload}\")\n\napp.run()",
+      "title": "Stream Decorators for Control Changes"
+    },
+    {
+      "language": "py",
+      "code": "from kelvin.application import KelvinApp # (1)!\nfrom kelvin.message.typing import AssetDataMessage # (2)!\n\nasync def on_control_change(msg: AssetDataMessage): # (3)!\n    # Get Asset and Value\n    asset = msg.resource.asset\n    value = msg.payload\n\n    print(\"Received Control Message: \", msg)\n    print(f\"Asset: {asset}, Value: {value}\")\n\napp.run()",
+      "title": "main.py"
+    },
+    {
+      "language": "bash",
+      "code": "Received Control Message:  id=UUID('44ba34f7-6689-464f-9804-7bcc0e347f68') type=KMessageTypeData('data', 'pt=number') trace_id=None source=None timestamp=datetime.datetime(2024, 10, 28, 14, 29, 41, 553346, tzinfo=datetime.timezone(datetime.timedelta(seconds=25200), '+07')) resource=KRNAssetDataStream(asset='test-asset-1', data_stream='sa-cc-number') payload=20.0\n\nAsset: test-asset-1, Value: 20.0",
+      "title": "Output from Program"
+    },
+    {
+      "language": "yaml",
+      "code": "control_changes:\n  outputs:\n    - name: motor_speed_set_point\n      data_type: number",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "python",
+      "code": "from datetime import timedelta\n\nfrom kelvin.application import KelvinApp\nfrom kelvin.message import ControlChange\nfrom kelvin.krn import KRNAssetDataStream\n\n(...)\n\n# Create and Publish a Control Change\nawait app.publish(\n    ControlChange(\n        resource=KRNAssetDataStream(\"my-motor-asset\", \"motor_speed_set_point\"),\n        payload=1000,\n        expiration_date=timedelta(minutes=5)\n    )\n)",
+      "title": "Simple Control Change Python Example"
+    },
+    {
+      "language": "yaml",
+      "code": "control_changes:\n  inputs:\n    - name: motor_speed_set_point\n      data_type: number",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "python",
+      "code": "async def on_control_change(cc: AssetDataMessage) -> None:\n    \n    \"\"\"Callback when a Control Change is received.\"\"\"\n    print(\"Received Control Change: \", cc)",
+      "title": "Consume Control Change Python Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.message import ControlChangeStatus\n\n(...)\n\nasync def on_control_status(cc_status: ControlChangeStatus) -> None:\n    \"\"\"Callback when a Control Status is received.\"\"\"\n    print(\"Received Control Status: \", cc_status)",
+      "title": "Control Change Event Python Example"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "changes",
+    "cli",
+    "control",
+    "create",
+    "development",
+    "monitor",
+    "sdk",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "The `KelvinApp` class is used to initlize and connect the Kelvin SmartApp™ to the Kelvin Platform."
+      },
+      {
+        "step": 2,
+        "instruction": "The `AssetDataMessage` is a class representing the structure and properties of the asset data messages which will be held in an instance called `msg`."
+      },
+      {
+        "step": 3,
+        "instruction": "The `on_control_change` callback function is triggered automatically whenever a new control change object is initiated to an Asset associated with the Kelvin SmartApp™. It serves as an event handler to process incoming control change data in real time, ensuring that relevant review, actions or data updates occur immediately upon receipt."
+      }
+    ],
+    "step_count": 3,
+    "last_updated": "2026-02-04"
+  }
+}

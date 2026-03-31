@@ -1,0 +1,26 @@
+{
+  "id": "how-to/schedule/smartapp-details-tab-schedule",
+  "title": "App Parameter Change Schedule",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# App Parameter Change Schedule\n\n## Overview\n\nWhen controlling your Assets with Kelvin SmartApps™, there are times when temporary parameter setting adjustments are necessary for optimal performance, such as during planned maintenance periods or planned production changes.\n\nKelvin's Scheduling feature automates this process, ensuring settings change as needed. You can also optionally add a \"revert to normal\" after a defined time period.\n\nThis allows you to \"set and forget\" parameter changes, leaving you to focus  on the more critical aspects of running and maintaining your assets.\n\nIn the **Applications** menu item in the left hand sidebar, select a required Kelvin SmartApp™ then click on the **Schedules** tab.\n\nThe overview itself has all the schedules for the selected Kelvin SmartApp™.\n\n    If you see an `information` icon next to the initial number, this means that each Asset has different values for that parameter. You can click on the icon to see the list of values for each Asset.\n\nEach schedule is listed as a block with the key information.\n\nThere is also the tags whether the scheduled update parameter has a revert option.",
+  "summary": "",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/schedule/smartapp-details-tab-schedule.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "app",
+    "change",
+    "cli",
+    "operations",
+    "parameter",
+    "schedule",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

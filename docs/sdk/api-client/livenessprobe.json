@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.manifest/livenessprobe",
+  "title": "LivenessProbe",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# LivenessProbe\n\nInherits from: DataModelBase\n\n\nLivenessProbe object.\n\nParameters\n----------\n    initial_delay_seconds: Optional[StrictInt]\n    period_seconds: Optional[StrictInt]\n    timeout_seconds: Optional[StrictInt]\n    failure_threshold: Optional[StrictInt]\n    type: Optional[enum.LivenessProbeType]\n    http_get: Optional[HttpGet]\n    tcp_socket: Optional[TcpSocket]\n    exec: Optional[Exec]\n",
+  "summary": "LivenessProbe object.",
+  "source": "api/src/kelvin/api/client/model/manifest.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.manifest.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.manifest",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

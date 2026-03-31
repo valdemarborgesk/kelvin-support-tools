@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.responses/roleitem",
+  "title": "RoleItem",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# RoleItem\n\nInherits from: DataModelBase\n\n\nRoleItem object.\n\nParameters\n----------\n    name: Optional[StrictStr]\n    title: Optional[StrictStr]\n    description: Optional[StrictStr]\n    policy_names: Optional[list[PolicyName]]\n    created: Optional[datetime]\n    updated: Optional[datetime]\n",
+  "summary": "RoleItem object.",
+  "source": "api/src/kelvin/api/client/model/responses.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.responses.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.responses",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

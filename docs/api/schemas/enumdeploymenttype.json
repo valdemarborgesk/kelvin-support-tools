@@ -1,0 +1,30 @@
+{
+  "id": "api/schemas/deploymenttype",
+  "title": "DeploymentType",
+  "type": "schema",
+  "category": "api",
+  "content": "# DeploymentType\n\nSpecifies the method for deploying a workload on the platform.\n\n- `standard`: The default deployment method. The workload is\nautomatically created and started.\n- `staged+instant-apply`: Similar to `standard`, but if the workload\nexists with a different app image, the new image is downloaded before\nstopping the existing workload. This minimizes application downtime.\n- `staged-only`: Prepares the workload by downloading the necessary\nimages, but does not create or start the workload. The workload is only\nstarted upon explicit user request (see `/workloads/apply`).\n\n## Enum Values\n\n- `standard`\n- `staged+instant-apply`\n- `staged-only`",
+  "summary": "Specifies the method for deploying a workload on the platform.\n\n- `standard`: The default deployment method. The workload is\nautomatically created and started.\n- `staged+instant-apply`: Similar to `standard`, but if the workload\nexists with a different app image, the new image is downloaded before\nstopping the existing workload. This minimizes application downtime.\n- `staged-only`: Prepares the workload by downloading the necessary\nimages, but does not create or start the workload. The workload is only\nstarted upon explicit user request (see `/workloads/apply`).",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.DeploymentType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "staged+instant-apply",
+        "staged-only"
+      ],
+      "description": "Specifies the method for deploying a workload on the platform.\n\n- `standard`: The default deployment method. The workload is\nautomatically created and started.\n- `staged+instant-apply`: Similar to `standard`, but if the workload\nexists with a different app image, the new image is downloaded before\nstopping the existing workload. This minimizes application downtime.\n- `staged-only`: Prepares the workload by downloading the necessary\nimages, but does not create or start the workload. The workload is only\nstarted upon explicit user request (see `/workloads/apply`)."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

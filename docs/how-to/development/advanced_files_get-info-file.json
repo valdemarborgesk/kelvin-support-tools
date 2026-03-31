@@ -1,0 +1,49 @@
+{
+  "id": "how-to/advanced/files/get-info-file",
+  "title": "Get Info File",
+  "type": "how_to",
+  "category": "development",
+  "content": "In this example we will retrieve the information about a file in storage on the Kelvin Platform.\n\n    You can only delete one file at a time. You need to use the `id` of the file which will be a UUID number. You can not use the filename.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin API\"\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"GET\" \\\n    \"https://<url.kelvin.ai>/api/v4/filestorage/ef636192-e7eb-4f15-82df-2880df880f65/get\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\"\n    ```\n\n    The response will look like this;\n\n    ```json title=\"API cURL Example Response\" linenums=\"1\"\n    {\n    \"file_id\": \"ef636192-e7eb-4f15-82df-2880df880f65\",\n    \"file_name\": \"test_data.csv\",\n    \"file_size\": 40,\n    \"checksum\": \"c9e7404f3c7f77dbb85e273deb48a4e95ed1fd373672fc3c2a6ef44bef2349b7\",\n    \"created\": \"2025-03-19T10:29:55.673471Z\",\n    \"source\": \"krn:user:demo@kelvin.ai\",\n    \"metadata\": {\n        \"customkey\": \"Custom metadata information\"\n    }\n    }\n    ```\n\n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Get Info on File in Filestorage\n    response = client.filestorage.get_file(\n        file_id='0107549c-2069-4824-bc4f-30c7bc94172e'\n    )\n\n    print(response)\n    ```\n\n    You will see the output like this;\n\n    ```json title=\"API Client (Python) Example Response\" linenums=\"1\"\n    file_id='fddbcc17-1393-4721-86ad-21ae1ec2f326' file_name='data.csv' file_size=1375 checksum='462a4133b03109ec4b20eaa002bea303dc7aef33045e963c3dc1860af8eb00bb' source='krn:user:ivo.fernandes@kelvininc.com' created=datetime.datetime(2024, 3, 22, 10, 13, 22, 592889, tzinfo=datetime.timezone.utc) metadata={'allowPlayback': True}\n    ```\n\n</div>",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/advanced/files/get-info-file.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"GET\" \\\n    \"https://<url.kelvin.ai>/api/v4/filestorage/ef636192-e7eb-4f15-82df-2880df880f65/get\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\"",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n    \"file_id\": \"ef636192-e7eb-4f15-82df-2880df880f65\",\n    \"file_name\": \"test_data.csv\",\n    \"file_size\": 40,\n    \"checksum\": \"c9e7404f3c7f77dbb85e273deb48a4e95ed1fd373672fc3c2a6ef44bef2349b7\",\n    \"created\": \"2025-03-19T10:29:55.673471Z\",\n    \"source\": \"krn:user:demo@kelvin.ai\",\n    \"metadata\": {\n        \"customkey\": \"Custom metadata information\"\n    }\n    }",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Get Info on File in Filestorage\n    response = client.filestorage.get_file(\n        file_id='0107549c-2069-4824-bc4f-30c7bc94172e'\n    )\n\n    print(response)",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "json",
+      "code": "file_id='fddbcc17-1393-4721-86ad-21ae1ec2f326' file_name='data.csv' file_size=1375 checksum='462a4133b03109ec4b20eaa002bea303dc7aef33045e963c3dc1860af8eb00bb' source='krn:user:ivo.fernandes@kelvininc.com' created=datetime.datetime(2024, 3, 22, 10, 13, 22, 592889, tzinfo=datetime.timezone.utc) metadata={'allowPlayback': True}",
+      "title": "API Client (Python) Example Response"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "api",
+    "cli",
+    "create",
+    "development",
+    "file",
+    "get",
+    "info",
+    "sdk",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

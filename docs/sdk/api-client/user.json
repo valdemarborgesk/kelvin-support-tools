@@ -1,0 +1,43 @@
+{
+  "id": "sdk/api-client/client.api.user/user",
+  "title": "User",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# User\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### list_users(username: Optional[Sequence[str]], email: Optional[Sequence[str]], name: Optional[Sequence[str]], search: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.UserItem], responses.UsersListPaginatedResponseCursor]\n\nReturns a list of Users and its parameters. The list can be optionally filtered and sorted on the server before being returned. **Permission Required:** `kelvin.permission.users.read`.\n\n\n### get_user_me(_dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.UserMeGet\n\nGet Current User\n\n\n### list_user_settings(names: Optional[Sequence[str]], search: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.UserSetting], responses.UserSettingsListPaginatedResponseCursor]\n\nReturns a list of User Settings and its parameters. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### delete_user_settings(setting_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete an existing User Setting. This cannot be undone once the API request has been submitted.\n\n\n### get_user_settings(setting_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.UserSettingsGet\n\nRetrieve the parameters of a User Setting.\n\n\n### update_user_settings(setting_name: str, data: Optional[Union[requests.UserSettingsUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.UserSettingsUpdate\n\nUpdates an existing User Setting  `payload` with any new values.\n\n\n### list_shared_settings(names: Optional[Sequence[str]], search: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.SharedSetting], responses.SharedSettingsListPaginatedResponseCursor]\n\nReturns a list of Shared Settings and its parameters. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### delete_shared_settings(setting_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete an existing Shared Setting. This cannot be undone once the API request has been submitted.\n\n\n### get_shared_settings(setting_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.SharedSettingsGet\n\nRetrieve the parameters of a Shared Setting.\n\n\n### update_shared_settings(setting_name: str, data: Optional[Union[requests.SharedSettingsUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.SharedSettingsUpdate\n\nUpdates an existing Shared Setting  `payload` with any new values.\n\n\n### get_user(user_id: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.UserGet\n\nRetrieve the parameters of a User.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/user.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.user.list_users()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.user",
+    "item_type": "class",
+    "methods": [
+      "list_users",
+      "get_user_me",
+      "list_user_settings",
+      "delete_user_settings",
+      "get_user_settings",
+      "update_user_settings",
+      "list_shared_settings",
+      "delete_shared_settings",
+      "get_shared_settings",
+      "update_shared_settings",
+      "get_user"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

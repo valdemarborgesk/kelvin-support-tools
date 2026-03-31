@@ -1,0 +1,33 @@
+{
+  "id": "how-to/develop/asset-properties",
+  "title": "Asset Properties",
+  "type": "how_to",
+  "category": "development",
+  "content": "You can learn more about [Asset Properties in the Overview ⟶ Concepts page](../../../overview/concepts/variables/asset-properties.md).\n\n## Creating Asset Properties\n\nAsset Properties are created dynamically when the Platform Administrator [creates the Assets](../../../platform-administration/how-to/asset/create-asset.md).\n\n## Get Asset Property\n\nTo access a single `Asset Property` value directly from an `assets` Dictionary Object embedded within `KelvinApp`:\n\n```python title=\"Get Asset Property Python Example\" linenums=\"1\"\nimport asyncio\n\nfrom kelvin.application import KelvinApp\n\nasync def main() -> None:\n    app = KelvinApp()\n    await app.connect()\n\n    (...)\n\n    # Get Asset Property\n    manufacturer = app.assets[\"my-motor-asset\"].properties[\"brand\"]\n```",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/develop/asset-properties.md",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "import asyncio\n\nfrom kelvin.application import KelvinApp\n\n\nasync def main() -> None:\n    app = KelvinApp()\n    await app.connect()\n\n    (...)\n\n    # Get Asset Property\n    manufacturer = app.assets[\"my-motor-asset\"].properties[\"brand\"]",
+      "title": "Get Asset Property Python Example"
+    }
+  ],
+  "related": [
+    "how-to/create-asset",
+    "concepts/asset-properties"
+  ],
+  "tags": [
+    "asset",
+    "create",
+    "development",
+    "properties",
+    "sdk"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

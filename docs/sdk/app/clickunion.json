@@ -1,0 +1,34 @@
+{
+  "id": "sdk/app/publisher.main/clickunion",
+  "title": "ClickUnion",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ClickUnion\n\nInherits from: click.ParamType\n\n\n## Methods\n\n\n### __init__(types: Any) -> None\n\n\n### convert(value: Any, param: Any, ctx: Any) -> Any\n",
+  "summary": "",
+  "source": "app/src/kelvin/publisher/main.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import ClickUnion\n\n# Usage example\napp = ClickUnion()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "publisher.main",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "convert"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

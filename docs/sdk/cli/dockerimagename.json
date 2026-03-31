@@ -1,0 +1,32 @@
+{
+  "id": "sdk/cli/sdk.lib.models.ksdk-docker/dockerimagename",
+  "title": "DockerImageName",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DockerImageName\n\nInherits from: KSDKModel\n\n\nDocker image name parser\n>>> image = DockerImageName.parse('alpha.kelvininc.com:5000/someapp:1.0.0@sha256:14bf...')\n>>> image\nDockerImageName(hostname='alpha.kelvininc.com:5000', name='someapp', tag='1.0.0', digest='sha256:14bf...')\n\n\n## Methods\n\n\n### parse(name: str) -> DockerImageName\n\n\n### name_with_version() -> str\n\n\n### repository_image_name() -> str\n\n\n### repository_image_name_without_version() -> str\n\n\n### container_name() -> str\n",
+  "summary": "Docker image name parser >>> image = DockerImageName.parse('alpha.kelvininc.com:5000/someapp:1.0.0@sha256:14bf...') >>> image DockerImageName(hostname='alpha.kelvininc.com:5000', name='someapp', tag='1.0.0', digest='sha256:14bf...')",
+  "source": "cli/src/kelvin/sdk/lib/models/ksdk_docker.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.ksdk_docker",
+    "item_type": "class",
+    "methods": [
+      "parse",
+      "name_with_version",
+      "repository_image_name",
+      "repository_image_name_without_version",
+      "container_name"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "how-to/assets/smartapp-details-tab-assets-remove-asset",
+  "title": "Smartapp Details Tab Assets Remove Asset",
+  "type": "how_to",
+  "category": "operations",
+  "content": "## Remove Assets from Your Application\n\nAssets can be removed from your Applications individually or in bulk.\n\n### Remove Individually\n\nTo start go to the Application details page and click on the Assets tab.\n\nFind the Asset you want to remove, then click on the **Remove** icon on the far right hand side in the same row as the Asset Name.\n\nA popup will appear to confirm the remove action. Type **PERMANENTLY DELETE** to confirm.\n\nThe Assets will now be removed from the Application.\n\n    You have now successfully deleted Assets from an Application !\n\n### Remove in Bulk\n\nTo start go to the Application details page and click on the Assets tab.\n\nUse the check boxes on the left side of each row in the Asset list to select all the Assets you want to remove.\n\nClick the **Remove** button.\n\nA popup will appear to confirm the remove action. Type **PERMANENTLY DELETE** to confirm.\n\nThe Assets will now be removed from the Application.\n\n    You have now successfully deleted Assets from an Application !",
+  "summary": "",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/assets/smartapp-details-tab-assets-remove-asset.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "asset",
+    "assets",
+    "cli",
+    "details",
+    "operations",
+    "remove",
+    "smartapp",
+    "tab"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

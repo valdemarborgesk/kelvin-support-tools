@@ -1,0 +1,287 @@
+{
+  "id": "api/schemas/legacyworkload",
+  "title": "LegacyWorkload",
+  "type": "schema",
+  "category": "api",
+  "content": "# LegacyWorkload\n\n\n## Properties\n\n- **acp_name** (`string`): [`Deprecated`] Unique identifier `name` of the Cluster.\n- **app_name** (`string`): Unique identifier `name` of the Kelvin App in the App Registry.\n- **app_version** (`string`): Version Number of the Kelvin App used for this Workload.\n- **cluster_name** (`string`): Unique identifier `name` of the Cluster.\n- **created** (`string`): UTC time when the Workload was first created, formatted in RFC 3339.\n- **download_status** (`string`): Status of downloading Workload to the Edge System.\n- **download_error** (`string`): Simple description of the error in case the image download failed.\n- **enabled** (`boolean`): If true, Workload `status` is set to `running` and will process I/O's. If false, Workload `status` is set to `stopped` but remains in Node on the Edge System.\n- **name** (`string`): Unique identifier `name` of the Workload.\n- **networking** (`array`): Array of services exposed by the workload.\n- **node_name** (`string`): Unique identifier `name` of the Node in the Cluster hosting the Workload.\n- **payload** (`object`): Internal Kelvin configuration information for deployment of the Workload.\n- **pre_download** (`boolean`): If true, deploy process is handled by Kelvin and all Workloads wil be downloaded to Edge System before deploy. If false, deploy process is handled by Kubernetes through default settings.\n- **status** (`object`): Realtime information about the Workload as seen from the Cloud.\n- **title** (`string`): Display name (`title`) of the Workload.\n- **updated** (`string`): UTC time when any Workload keys were last updated, formatted in RFC 3339.\n- **staged** (`object`): ",
+  "summary": "Object with properties: acp_name, app_name, app_version, cluster_name, created",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.LegacyWorkload",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "acp_name": {
+          "type": "string",
+          "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+          "example": "docs-demo-cluster-k3s",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "[`Deprecated`] Unique identifier `name` of the Cluster."
+        },
+        "app_name": {
+          "type": "string",
+          "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+          "example": "motor-speed-control",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "Unique identifier `name` of the Kelvin App in the App Registry."
+        },
+        "app_version": {
+          "type": "string",
+          "format": "Major.Minor.Patch",
+          "example": "1.2.0",
+          "description": "Version Number of the Kelvin App used for this Workload."
+        },
+        "cluster_name": {
+          "type": "string",
+          "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+          "example": "docs-demo-cluster-k3s",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "Unique identifier `name` of the Cluster."
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-12-26T18:22:18.582724Z",
+          "description": "UTC time when the Workload was first created, formatted in RFC 3339."
+        },
+        "download_status": {
+          "type": "string",
+          "description": "Status of downloading Workload to the Edge System.",
+          "enum": [
+            "pending",
+            "scheduled",
+            "processing",
+            "downloading",
+            "ready",
+            "failed"
+          ]
+        },
+        "download_error": {
+          "type": "string",
+          "example": "an error occurred while saving the image",
+          "description": "Simple description of the error in case the image download failed."
+        },
+        "enabled": {
+          "type": "boolean",
+          "example": true,
+          "description": "If true, Workload `status` is set to `running` and will process I/O's. If false, Workload `status` is set to `stopped` but remains in Node on the Edge System."
+        },
+        "name": {
+          "type": "string",
+          "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+          "example": "motor-speed-control-ubdhwnshdy67",
+          "minLength": 1,
+          "maxLength": 32,
+          "description": "Unique identifier `name` of the Workload."
+        },
+        "networking": {
+          "type": "array",
+          "description": "Array of services exposed by the workload.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "addresses": {
+                "type": "array",
+                "description": "Array of ports exposed by the Service.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "address": {
+                      "type": "string",
+                      "example": "172.0.0.2",
+                      "description": "IPV4 address to reach the Service."
+                    },
+                    "interface": {
+                      "type": "string",
+                      "example": "eth0",
+                      "description": "Interface responsible for hosting the Service."
+                    },
+                    "port": {
+                      "type": "integer",
+                      "example": 8080,
+                      "minimum": 1,
+                      "maximum": 65535,
+                      "description": "Port designated for accessing the Service."
+                    }
+                  }
+                }
+              },
+              "name": {
+                "type": "string",
+                "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+                "example": "http-service",
+                "description": "Unique identifier `name` of the Service."
+              },
+              "protocol": {
+                "type": "string",
+                "enum": [
+                  "TCP",
+                  "UDP"
+                ],
+                "example": "TCP",
+                "description": "Protocol used by the Service."
+              }
+            }
+          }
+        },
+        "node_name": {
+          "type": "string",
+          "format": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$",
+          "example": "docs-demo-node-01",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "Unique identifier `name` of the Node in the Cluster hosting the Workload."
+        },
+        "payload": {
+          "type": "object",
+          "properties": {},
+          "description": "Internal Kelvin configuration information for deployment of the Workload."
+        },
+        "pre_download": {
+          "type": "boolean",
+          "example": true,
+          "description": "If true, deploy process is handled by Kelvin and all Workloads wil be downloaded to Edge System before deploy. If false, deploy process is handled by Kubernetes through default settings."
+        },
+        "status": {
+          "type": "object",
+          "description": "Realtime information about the Workload as seen from the Cloud.",
+          "properties": {
+            "last_seen": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-12-18T18:22:18.582724Z",
+              "description": "UTC time when the Workload was last seen by the Cloud, formatted in RFC 3339."
+            },
+            "message": {
+              "type": "string",
+              "example": "Pending for deploy",
+              "description": "Descriptive, human-readable string for `state`."
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "pending_deploy",
+                "pending_update",
+                "pending_start",
+                "pending_stop",
+                "pending_apply",
+                "deploying",
+                "running",
+                "stopping",
+                "stopped",
+                "failed",
+                "starting",
+                "applying",
+                "received",
+                "downloading",
+                "ready",
+                "unreachable",
+                "staged"
+              ]
+            },
+            "warnings": {
+              "type": "array",
+              "example": [
+                "back-off 5m0s restarting failed container=motor-speed-control-sjfhksdfhks67",
+                "back-off 5m0s restarting failed container=gateway"
+              ],
+              "description": "All warnings received for any Workload operations.",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "title": {
+          "type": "string",
+          "example": "Motor Speed Control",
+          "minLength": 1,
+          "description": "Display name (`title`) of the Workload."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-12-18T18:22:18.582724Z",
+          "description": "UTC time when any Workload keys were last updated, formatted in RFC 3339."
+        },
+        "staged": {
+          "type": "object",
+          "properties": {
+            "ready": {
+              "type": "boolean",
+              "example": true,
+              "description": "Staged workload ready to be applied."
+            },
+            "app_version": {
+              "type": "string",
+              "format": "Major.Minor.Patch",
+              "example": "1.2.0",
+              "description": "Version Number of the Kelvin App used for the Staged Workload."
+            },
+            "payload": {
+              "type": "object",
+              "properties": {},
+              "description": "Internal Kelvin configuration information for deployment of the Staged Workload."
+            },
+            "instantly_apply": {
+              "type": "boolean",
+              "example": true,
+              "description": "Whether the staged workload should be instantly applied or not."
+            },
+            "status": {
+              "type": "object",
+              "description": "Realtime information about the Staged Workload as seen from the Cloud.",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Descriptive, human-readable string for `state`."
+                },
+                "state": {
+                  "type": "string",
+                  "enum": [
+                    "pending_deploy",
+                    "pending_update",
+                    "pending_start",
+                    "pending_stop",
+                    "pending_apply",
+                    "deploying",
+                    "running",
+                    "stopping",
+                    "stopped",
+                    "failed",
+                    "starting",
+                    "applying",
+                    "received",
+                    "downloading",
+                    "ready",
+                    "unreachable",
+                    "staged"
+                  ]
+                },
+                "warnings": {
+                  "type": "array",
+                  "description": "All warnings received for any Staged Workload operations.",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

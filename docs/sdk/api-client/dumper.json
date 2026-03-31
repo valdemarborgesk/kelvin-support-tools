@@ -1,0 +1,33 @@
+{
+  "id": "sdk/api-client/base.serialize/dumper",
+  "title": "Dumper",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Dumper\n\nInherits from: yaml.Dumper\n\n\nCustom YAML encoder.\n\n\n## Methods\n\n\n### represent_data(x: Any) -> Any\n\nReturn a YAML-serialisable representation.\n",
+  "summary": "Custom YAML encoder.",
+  "source": "api/src/kelvin/api/base/serialize.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.serialize.represent_data()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.serialize",
+    "item_type": "class",
+    "methods": [
+      "represent_data"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

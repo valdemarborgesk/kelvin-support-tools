@@ -1,0 +1,253 @@
+{
+  "id": "api/endpoints/custom-actions/createCustomAction",
+  "title": "Create Custom Action",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Create Custom Action\n\nCreate Custom Action\n\n## Endpoint\n\n`POST /custom-actions/create`",
+  "summary": "Create Custom Action",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/custom-actions/create' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.custom_actions.createCustomAction()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/custom-actions"
+  ],
+  "tags": [
+    "custom-actions",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/custom-actions/create",
+    "method": "POST",
+    "operation_id": "createCustomAction",
+    "tag": "Custom Actions",
+    "permission": "kelvin.permission.custom-actions.create",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "email",
+            "description": "The type of the action. This is used to identify the action in the system."
+          },
+          "type_title": {
+            "type": "string",
+            "example": "Web Hook",
+            "description": "The type name of the action."
+          },
+          "resource": {
+            "type": "string",
+            "example": "krn:asset:my-asset",
+            "description": "",
+            "format": "krn"
+          },
+          "title": {
+            "type": "string",
+            "example": "Diagnose Beam Pump GW-B12-037",
+            "description": "The title of the action. This is a short description of the action that will be displayed to the user."
+          },
+          "description": {
+            "type": "string",
+            "example": "Beam Pump GW-B12-037 needs to be diagnosed.",
+            "description": "The description of the action. This is a longer description of the action that will be displayed to the user."
+          },
+          "expiration_date": {
+            "type": "string",
+            "description": "The expiration date of the action. The action will be automatically cancelled if it is not completed by this date.",
+            "format": "date-time"
+          },
+          "payload": {
+            "type": "object",
+            "example": {
+              "id": "WO-2025-0412",
+              "priority": "high",
+              "description": "Diagnose Beam Pump GW-B12-037."
+            },
+            "description": "The payload is a JSON object that contains the necessary information for the executor to perform the action. The structure of the payload will depend on the action type."
+          },
+          "trace_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "resource",
+          "type",
+          "title",
+          "expiration_date"
+        ],
+        "type": "object"
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "OK",
+        "schema": {
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "timestamp": {
+              "type": "string",
+              "format": "date-time",
+              "description": "The timestamp of when the Custom Action was created. It may differ from 'created' when created on the edge."
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-12-18T18:22:18.582724Z",
+              "description": "UTC time when the Recommendation Type was created on the database, formatted in RFC 3339."
+            },
+            "created_by": {
+              "type": "string",
+              "format": "krn",
+              "example": "krn:user:email@kelvininc.com",
+              "description": "The user or process that initiated the creation of this custom action."
+            },
+            "updated": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-12-18T18:22:18.582724Z",
+              "description": "UTC time when any Recommendation Type keys were last updated, formatted in RFC 3339."
+            },
+            "updated_by": {
+              "type": "string",
+              "format": "krn",
+              "example": "krn:user:email@kelvininc.com",
+              "description": "The user or process that updated this custom action."
+            },
+            "type": {
+              "type": "string",
+              "example": "email",
+              "description": "The type of the action. This is used to identify the action in the system."
+            },
+            "type_title": {
+              "type": "string",
+              "example": "Web Hook",
+              "description": "The type name of the action."
+            },
+            "resource": {
+              "type": "string",
+              "example": "krn:asset:my-asset",
+              "description": "",
+              "format": "krn"
+            },
+            "title": {
+              "type": "string",
+              "example": "Diagnose Beam Pump GW-B12-037",
+              "description": "The title of the action. This is a short description of the action that will be displayed to the user."
+            },
+            "description": {
+              "type": "string",
+              "example": "Beam Pump GW-B12-037 needs to be diagnosed.",
+              "description": "The description of the action. This is a longer description of the action that will be displayed to the user."
+            },
+            "expiration_date": {
+              "type": "string",
+              "description": "The expiration date of the action. The action will be automatically cancelled if it is not completed by this date.",
+              "format": "date-time"
+            },
+            "payload": {
+              "type": "object",
+              "example": {
+                "id": "WO-2025-0412",
+                "priority": "high",
+                "description": "Diagnose Beam Pump GW-B12-037."
+              },
+              "description": "The payload is a JSON object that contains the necessary information for the executor to perform the action. The structure of the payload will depend on the action type."
+            },
+            "trace_id": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string",
+              "description": "The state of an action.",
+              "enum": [
+                "pending",
+                "ready",
+                "in_progress",
+                "completed",
+                "cancelled",
+                "failed"
+              ]
+            },
+            "failure_reason": {
+              "type": "string",
+              "description": "The error type of an action, if any.\n\n* `none`: No error. The same as empty, used when the action is not completed or completed successfully.\n* `reported_failed`: The action was reported as failed by the executor.\n* `expired`: The action was not delivered to an executor before the expiration date.\n* `lost`: The action was delivered to the executor, but the executor restarted without reporting the status.\n* `executor_gone`: The action was delivered to the executor, but the executor is no longer available and the expiration date was reached.\n* `other`: Other error.",
+              "enum": [
+                "none",
+                "other",
+                "reported_failed",
+                "expired",
+                "lost",
+                "executor_gone"
+              ]
+            },
+            "message": {
+              "type": "string",
+              "description": "A message associated with the state transition."
+            },
+            "status_logs": {
+              "type": "array",
+              "description": "The transitions array contains a list of entries that describe the action state transitions.",
+              "items": {
+                "properties": {
+                  "timestamp": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "source": {
+                    "type": "string",
+                    "format": "krn"
+                  }
+                },
+                "required": [
+                  "timestamp",
+                  "source"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": [
+            "id",
+            "created",
+            "created_by",
+            "updated",
+            "updated_by",
+            "resource",
+            "type",
+            "title",
+            "expiration_date",
+            "state"
+          ],
+          "type": "object"
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      },
+      "409": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

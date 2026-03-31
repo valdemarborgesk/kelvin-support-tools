@@ -1,0 +1,73 @@
+{
+  "id": "how-to/develop/test/simulator",
+  "title": "Testing with Simulator",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Testing with Simulator\n\nIn the Kelvin SDK there is a `kelvin-publisher` test tool to help you ingest data to the inputs and debug the outputs to test the performance of your Kelvin SmartApp™.\n\nIt is a CLI utility for exercising your application during development. It is not imported into your code and is used only as a standalone testing tool.\n\n    You must have installed the `kelvin-python-sdk[publisher]` library for this feature to work.\n\nThe Kelvin SDK simulator publisher tool is designed to allow testers to ingest messages from a random simulator for testing purposes. Here is the command:\n\n```bash title=\"Starting Test Tool\" linenums=\"1\"\nkelvin-publisher simulator\n```\n\n## Simulator Tool Overview\nThe simulator publisher tool supports a variety of options to customize its behavior. Below is a list of the available options:\n\n| Test Parameters                   | Required          | Description                                           | Note                                       |\n|-----------------------------|-------------------|-------------------------------------------------------|--------------------------------------------|\n| `--config TEXT`             | **optional**      | Path to the `app.yaml`                                | **Default**: Current directory             |\n| `--random` / `--counter`    | **optional**      | Random values / Incremental values                    | **Default**: Random values                 |\n| `--min FLOAT`               | **optional**      | Minimum value                                         | **Default**: 0                             |\n| `--max FLOAT`               | **optional**      | Maximum value                                         | **Default**: 100                           |\n| `--period FLOAT`            | **optional**      | Publishing period in seconds                          | **Default**: 5                             |\n| `--asset-count INTEGER`     | **optional**      | Number of Assets (test-asset-N)                       | **Default**: 1                             |\n| `--asset-parameter TEXT`    | **optional**      | Sets App Parameter                                  | Can be used multiple times                 |\n\n## Test your SmartApp\n    In order to show how to use the simulator, we will use it with the [Event Detection](https://github.com/kelvininc/app-samples/tree/master/event-detection) sample app.\n\n1. **Run the Simulator Test Tool:**\n\n    ```bash title=\"Starting Test Tool\" linenums=\"1\"\n    kelvin-publisher simulator --counter --min 50 --max 60 --period 1 --asset-parameter temperature_max_threshold=55 --asset-parameter speed_decrease_set_point=1050 --asset-parameter closed_loop=true\n    ```\n\n    and you should see the following output:\n\n    ```bash title=\"Test Tool Output\" linenums=\"1\"\n    Publisher started.\n    ```\n      \n2. **Open a NEW terminal window and run the SmartApp:**\n\n    ```bash title=\"Running Kelvin SmartApp™ Python Example\" linenums=\"1\"\n    python3 main.py\n    ```\n\n    and you should see the following output:\n\n    ```bash title=\"Kelvin SmartApp™ Python Example Output\" linenums=\"1\"\n    Received Motor Temperature | Asset: test-asset-1 | Value: 55.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 56.0\n\n    Published Motor Speed SetPoint Control Change: 1050\n\n    (...)\n    ```\n\n3. **Go to the Simulator Tool terminal and check the logs:**\n\n    ```bash title=\"Test Tool Output\" linenums=\"1\"\n    Publisher started.\n    Connected\n\n    (...)\n\n    Received Recommendation Message:\n    RecommendationMsg(id=UUID('e5cc136a-5ae1-4014-a106-6699b6423e62'), type=KMessageTypeRecommendation('recommendation', ''), trace_id=None, source=None, timestamp=datetime.datetime(2024, 8, 9, 18, 10, 40, 231994, tzinfo=datetime.timezone(datetime.timedelta(seconds=3600), 'WEST')), resource=KRNAsset(asset='test-asset-1'), payload=RecommendationPayload(source=None, resource=KRNAsset(asset='test-asset-1'), type='decrease_speed', description=None, confidence=None, expiration_date=None, actions=RecommendationActions(control_changes=[RecommendationControlChange(timeout=None, retries=None, expiration_date=datetime.datetime(2024, 8, 9, 18, 20, 40, 231843, tzinfo=datetime.timezone(datetime.timedelta(seconds=3600), 'WEST')), payload=1000.0, from_value=None, state=None, resource=KRNAssetDataStream(asset='test-asset-1', data_stream='motor_speed_set_point'), control_change_id=None)]), metadata={}, state=None))\n    (...)\n    ```",
+  "summary": "In the Kelvin SDK there is a kelvin-publisher test tool to help you ingest data to the inputs and debug the outputs to test the performance of your Kelvin SmartApp™. It is a CLI utility for exercising your application during development. It is not...",
+  "source": "core-docs/docs/developer-tools/how-to/develop/test/simulator.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "kelvin-publisher simulator",
+      "title": "Starting Test Tool"
+    },
+    {
+      "language": "bash",
+      "code": "kelvin-publisher simulator --counter --min 50 --max 60 --period 1 --asset-parameter temperature_max_threshold=55 --asset-parameter speed_decrease_set_point=1050 --asset-parameter closed_loop=true",
+      "title": "Starting Test Tool"
+    },
+    {
+      "language": "bash",
+      "code": "Publisher started.",
+      "title": "Test Tool Output"
+    },
+    {
+      "language": "bash",
+      "code": "python3 main.py",
+      "title": "Running Kelvin SmartApp™ Python Example"
+    },
+    {
+      "language": "bash",
+      "code": "Received Motor Temperature | Asset: test-asset-1 | Value: 55.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 56.0\n\n    Published Motor Speed SetPoint Control Change: 1050\n\n    (...)",
+      "title": "Kelvin SmartApp™ Python Example Output"
+    },
+    {
+      "language": "bash",
+      "code": "Publisher started.\n    Connected\n\n    (...)\n\n    Received Recommendation Message:\n    RecommendationMsg(id=UUID('e5cc136a-5ae1-4014-a106-6699b6423e62'), type=KMessageTypeRecommendation('recommendation', ''), trace_id=None, source=None, timestamp=datetime.datetime(2024, 8, 9, 18, 10, 40, 231994, tzinfo=datetime.timezone(datetime.timedelta(seconds=3600), 'WEST')), resource=KRNAsset(asset='test-asset-1'), payload=RecommendationPayload(source=None, resource=KRNAsset(asset='test-asset-1'), type='decrease_speed', description=None, confidence=None, expiration_date=None, actions=RecommendationActions(control_changes=[RecommendationControlChange(timeout=None, retries=None, expiration_date=datetime.datetime(2024, 8, 9, 18, 20, 40, 231843, tzinfo=datetime.timezone(datetime.timedelta(seconds=3600), 'WEST')), payload=1000.0, from_value=None, state=None, resource=KRNAssetDataStream(asset='test-asset-1', data_stream='motor_speed_set_point'), control_change_id=None)]), metadata={}, state=None))\n    (...)",
+      "title": "Test Tool Output"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "cli",
+    "configure",
+    "development",
+    "monitor",
+    "sdk",
+    "simulator",
+    "smartapp",
+    "test",
+    "testing",
+    "with"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "Run the Simulator Test Tool:"
+      },
+      {
+        "step": 2,
+        "instruction": "Open a NEW terminal window and run the SmartApp:"
+      },
+      {
+        "step": 3,
+        "instruction": "Go to the Simulator Tool terminal and check the logs:"
+      }
+    ],
+    "step_count": 3,
+    "last_updated": "2026-02-04"
+  }
+}

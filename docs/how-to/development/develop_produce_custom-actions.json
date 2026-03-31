@@ -1,0 +1,56 @@
+{
+  "id": "how-to/develop/produce/custom-actions",
+  "title": "Custom Actions",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Custom Actions\n\n## Produce Custom Action Messages\n\nYou can use Custom Actions to enable communication between two Applications on either the same cluster or across different clusters.\n\n    To understand the purpose of Custom Actions or view the overall structure of how they work, check out the [documentation in the overview page here](../../../../overview/concepts/custom-action.md).\n\n<iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/jMD7oIb6Vf4?si=OWBkhHJAC6yfMnSz\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\nTo ensure the Custom Action being sent is handled properly, the `app.yaml` outputs needs to be declared:\n\n    You can choose any name for the `type`.\n\n    This is how the Custom Action Manager chooses which Consumer Application (Executor) will receive the Custom Action object.\n\n```yaml title=\"app.yaml Example\" linenums=\"1\"\ncustom_actions:\n  outputs:\n    - type: custom-action-name\n```\n\nThe Custom Action Object in the `main.py` script supports the following attributes :\n\n| Attribute           | Required     | Default Value | Description                                                                          |\n|---------------------|--------------|---------------| -------------------------------------------------------------------------------------|\n| `resource`          | **required** |      N/A      | The KRNAsset that this Custom Action is meant for.                                   |\n| `type`              | **required** |      N/A      | The name of Custom Action.                                   |\n| `title`             | **required** |      N/A      | Title of the Custom Action                                      |\n| `description`      | **required** |      N/A      | Description details of the Custom Action                                     |\n| `expiration_date`   | **required** |      N/A      | Absolute datetime or a timedelta (from now) when the Control Change will expire.     |\n| `payload`           | **required** |      N/A      | The custom information of the Custom Action that will be required by the Consumer Application |\n| `trace_id`           | **optional** |      N/A      | A custom id for tracking the Custom Action status |\n\n## Example\n\nIn this example we will create a Producer Application that will;\n\n1. Package the email details into a Custom Action Object\n1. Send the Custom Action object directly to the Consumer Application (Executor) for processing.\n1. Package the Custom Action object in a Recommendation and publish the \"Recommendation with Custom Action\" to the Kelvin UI for approval. (Typically, you would choose either direct sending or publishing with a Recommendation—not both.)\n\nCheck out the [Consume Custom Actions documentation here](../consume/custom-actions.md) to see how to receive this Custom Action in a Consumer Application (Executor).\n\n**app.yaml**\n\n```yaml title=\"app.yaml Example\" linenums=\"1\"\nspec_version: 5.0.0\ntype: app            # Any app type can handle and/or publish custom actions.\n\nname: hello-app\ntitle: Hello App\ndescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit\nversion: 1.0.0\n\ncustom_actions:\n  outputs:\n    - type: email\n\n  ...\n```\n\n**Publisher Application**\n\n```python title=\"main.py Example\" linenums=\"1\"\nimport asyncio\nfrom datetime import timedelta, datetime\n\nfrom kelvin.application import KelvinApp\nfrom kelvin.krn import KRNAsset\nfrom kelvin.message import Recommendation, CustomAction\n\napp = KelvinApp()\n\n@app.timer(interval=10)\nasync def publish_data():\n\n    asset = KRNAsset(\"air-conditioner-1\")\n    \n    # Direct Custom Action\n    action = CustomAction(resource=asset,\n    type=\"email\",\n    title=\"Recommendation to reduce speed\",\n    description=\"It is recommended that the speed is reduced\",\n    expiration_date=datetime.now() + timedelta(hours=1),\n    payload={\n        \"recipient\": \"operations@example.com\",\n        \"subject\": \"Recommendation to reduce speed\",\n        \"body\": \"This is the email body\",\n    })\n    await app.publish(action)\n\n    # Or embedded the Custom Action into a Recommendation   \n    rec = Recommendation(resource=asset,\n    type=\"Reduce speed\",\n    actions=[action],\n    )\n    await app.publish(rec)\n\napp.run()\n```",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/develop/produce/custom-actions.md",
+  "code_examples": [
+    {
+      "language": "yaml",
+      "code": "custom_actions:\n  outputs:\n    - type: custom-action-name",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "yaml",
+      "code": "spec_version: 5.0.0\ntype: app            # Any app type can handle and/or publish custom actions.\n\nname: hello-app\ntitle: Hello App\ndescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit\nversion: 1.0.0\n\ncustom_actions:\n  outputs:\n    - type: email\n\n  ...",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "python",
+      "code": "import asyncio\nfrom datetime import timedelta, datetime\n\nfrom kelvin.application import KelvinApp\nfrom kelvin.krn import KRNAsset\nfrom kelvin.message import Recommendation, CustomAction\n\napp = KelvinApp()\n\n@app.timer(interval=10)\nasync def publish_data():\n\n    asset = KRNAsset(\"air-conditioner-1\")\n    \n    # Direct Custom Action\n    action = CustomAction(resource=asset,\n    type=\"email\",\n    title=\"Recommendation to reduce speed\",\n    description=\"It is recommended that the speed is reduced\",\n    expiration_date=datetime.now() + timedelta(hours=1),\n    payload={\n        \"recipient\": \"operations@example.com\",\n        \"subject\": \"Recommendation to reduce speed\",\n        \"body\": \"This is the email body\",\n    })\n    await app.publish(action)\n\n\n    # Or embedded the Custom Action into a Recommendation   \n    rec = Recommendation(resource=asset,\n    type=\"Reduce speed\",\n    actions=[action],\n    )\n    await app.publish(rec)\n\napp.run()",
+      "title": "main.py Example"
+    }
+  ],
+  "related": [
+    "concepts/custom-action"
+  ],
+  "tags": [
+    "actions",
+    "cli",
+    "create",
+    "custom",
+    "development",
+    "sdk"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "Package the email details into a Custom Action Object"
+      },
+      {
+        "step": 2,
+        "instruction": "Send the Custom Action object directly to the Consumer Application (Executor) for processing."
+      },
+      {
+        "step": 3,
+        "instruction": "Package the Custom Action object in a Recommendation and publish the \"Recommendation with Custom Action\" to the Kelvin UI for approval. (Typically, you would choose either direct sending or publishing with a Recommendation—not both.)"
+      }
+    ],
+    "step_count": 3,
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/datastreamcontextslist",
+  "title": "DataStreamContextsList",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataStreamContextsList\n\nInherits from: DataModelBase\n\n\nDataStreamContextsList object.\n\nParameters\n----------\n    datastream_names: Optional[list[DatastreamNameModel]]\n    resources: Optional[list[KRN]]\n    sources: Optional[list[KRN]]\n    writable: Optional[StrictBool]\n",
+  "summary": "DataStreamContextsList object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

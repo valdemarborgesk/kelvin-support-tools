@@ -1,0 +1,59 @@
+{
+  "id": "how-to/user-management/access-control/abac",
+  "title": "Attribute Based Access Control",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Attribute Based Access Control\n\nAttribute Based Access Control (ABAC) is the fine tuning layer of user access rights. This controls the access users have to specific data in the database.\n\n    ABAC can be broadly defined as the user access rights to perform actions on groups of data.\n\n    For example, users can be given read only access to all Asset names starting with the name `wells_*` and update access to Asset names staring with `wells_field01_*`.\n\nRoles are used within Groups to define the Policies (Permissions) assigned to each group.\n\n    Do not confuse this role with the roles in the Role Based Access Control (RBAC) which is managed by the authentication system, Keycloak or SSO.\n\nEach Role consists of one or more Policies (Permissions), where a Permission may represent a single action or encompass multiple actions through an expression.\n\n    Access is checked also with RBAC in the following order.\n\n    1. User's Group\n    1. Group's Role Based Access Control settings in permissions\n    1. Group's Attribute Based Access Control settings in policies\n\n    Only if a user has access to all three will access or action be granted.\n\n<div class=\"result\" markdown>\n\n=== \"Create Role\"\n\n    To start, click on **Roles & Permissions** in the Administration section of the left side bar and click on the **Add Role** button.\n\n    \n\n    You will see a popup appear.\n\n    \n\n    Now type a friendly Display Name.\n\n    \n        The name ID will be automatically created from the Display Name. You can change this if required.\n\n    \n\n    Then click the **Add** button.\n    \n    \n\n    Congratulations, you have created a new Role.\n\n    You will now be automatically taken to the Role to add Policies (Permissions).\n\n=== \"Add Policies (Permissions)\"\n\n    To add a Policy (Permission) to a Role, click on **Roles & Permissions** in the Administration section of the left side bar and then click on a Role that you wish to add or edit Policies.\n\n    \n\n    You will then see the Policy section of the selected Role.\n\n    \n\n    Click on the **Add Policy** button.\n\n    \n\n    Now type a friendly Display Name.\n\n    \n        The name ID will be automatically created from the Display Name. You can change this if required.\n\n    \n\n    Add a resource type\n\n    | Option | Description |\n    | --- | --- |\n    | Application | Create certain policies (permissions) for Kelvin SmartApps™ or Docker Apps |\n    | Asset | Create certain policies (permissions) for Assets |\n    | Data Stream | Create certain policies (permissions) for Data Streams |\n    | Parameter | Create certain policies (permissions) for Kelvin SmartApps™ or Docker Apps Parameters |\n\n    In this example we will create a Policy that will allow any actions (create, read, update, delete) for the Data Stream with the name `qamm-metric-00`. So in this case we will select Data Stream.\n\n    \n\n    Click next and then you can add the policy.\n\n    ```yaml title=\"YAML Policy to a Role Sample\" linenums=\"1\"\n    actions:\n      - '*'\n    condition:\n      match:\n        expr: R.attr.name == \"qamm-metric-00\"\n    ```\n\n    \n\n    When finished click on the **Add** button to add the Policy to the Role.\n\n    Congratulations, you have added a Policy to a Role.\n\n=== \"Policy Expressions\"\n\n    When creating a new Policy, the expressions section is very powerful and allows versatility in how to structure it.\n\n    There are three main expressions that are available;\n\n    Single boolean expression\n\n    ```yaml title=\"YAML Policy Expression Sample\" linenums=\"1\"\n    condition:\n    match:\n      expr: P.id.matches(\"^dev_.*\")\n    ```\n\n    all operator: all expressions must evaluate to true (logical AND)\n\n    ```yaml title=\"YAML Policy Expression Sample\" linenums=\"1\"\n    condition:\n    match:\n      all:\n      of:\n        - expr: R.attr.status == \"PENDING_APPROVAL\"\n        - expr: >\n          \"GB\" in R.attr.geographies\n        - expr: P.attr.geography == \"GB\"\n    ```\n\n    and any operator: only one of the expressions has to evaluate to true (logical OR)\n\n    ```yaml title=\"YAML Policy Expression Sample\" linenums=\"1\"\n    condition:\n    match:\n      any:\n      of:\n        - expr: R.attr.status == \"PENDING_APPROVAL\"\n        - expr: >\n          \"GB\" in R.attr.geographies\n        - expr: P.attr.geography == \"GB\"\n    ```\n\n    Let's create an expression that will limit the user to only be able to view or create Assets that are related to the Asset Type named `wells`.\n\n            You will need to ensure that you selected `Asset` as the resource type for this Policy.\n\n    ```yaml title=\"YAML Policy Expression Sample\" linenums=\"1\"\n    actions:\n      - read\n      - create\n    condition:\n      match:\n        any:\n          of:\n            - expr: R.attr.asset_type_name == \"wells\"\n    ```\n\n    For a second example, let's allow the user to be able to take any actions (create, read, update, delete) for the Data Stream with the name `speed-setpoint`.\n\n            You will need to ensure that you selected `Data Stream` as the resource type for this Policy.\n\n    ```yaml title=\"YAML Policy Expression Sample\" linenums=\"1\"\n    actions:\n      - '*'\n    condition:\n      match:\n        expr: R.attr.name == \"speed-setpoint\"\n    ```\n\n</div>",
+  "summary": "Attribute Based Access Control (ABAC) is the fine tuning layer of user access rights. This controls the access users have to specific data in the database.",
+  "source": "core-docs/docs/platform-administration/how-to/user-management/access-control/abac.md",
+  "code_examples": [
+    {
+      "language": "yaml",
+      "code": "actions:\n      - '*'\n    condition:\n      match:\n        expr: R.attr.name == \"qamm-metric-00\"",
+      "title": "YAML Policy to a Role Sample"
+    },
+    {
+      "language": "yaml",
+      "code": "condition:\n    match:\n      expr: P.id.matches(\"^dev_.*\")",
+      "title": "YAML Policy Expression Sample"
+    },
+    {
+      "language": "yaml",
+      "code": "condition:\n    match:\n      all:\n      of:\n        - expr: R.attr.status == \"PENDING_APPROVAL\"\n        - expr: >\n          \"GB\" in R.attr.geographies\n        - expr: P.attr.geography == \"GB\"",
+      "title": "YAML Policy Expression Sample"
+    },
+    {
+      "language": "yaml",
+      "code": "condition:\n    match:\n      any:\n      of:\n        - expr: R.attr.status == \"PENDING_APPROVAL\"\n        - expr: >\n          \"GB\" in R.attr.geographies\n        - expr: P.attr.geography == \"GB\"",
+      "title": "YAML Policy Expression Sample"
+    },
+    {
+      "language": "yaml",
+      "code": "actions:\n      - read\n      - create\n    condition:\n      match:\n        any:\n          of:\n            - expr: R.attr.asset_type_name == \"wells\"",
+      "title": "YAML Policy Expression Sample"
+    },
+    {
+      "language": "yaml",
+      "code": "actions:\n      - '*'\n    condition:\n      match:\n        expr: R.attr.name == \"speed-setpoint\"",
+      "title": "YAML Policy Expression Sample"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "access",
+    "attribute",
+    "based",
+    "cli",
+    "control",
+    "create",
+    "docker",
+    "operations",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

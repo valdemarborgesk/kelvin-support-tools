@@ -1,0 +1,30 @@
+{
+  "id": "sdk/cli/sdk.lib.models.factories.project.kelvin/projectdockerdefaultfiletree",
+  "title": "ProjectDockerDefaultFileTree",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ProjectDockerDefaultFileTree\n\nInherits from: ProjectFileTree\n\n\n## Methods\n\n\n### get_tree_dict(app_root: KPath) -> Dict\n\n\n### fundamental_dirs() -> List[Directory]\n\n\n### optional_dirs() -> List[Directory]\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/factories/project/kelvin.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.factories.project.kelvin",
+    "item_type": "class",
+    "methods": [
+      "get_tree_dict",
+      "fundamental_dirs",
+      "optional_dirs"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

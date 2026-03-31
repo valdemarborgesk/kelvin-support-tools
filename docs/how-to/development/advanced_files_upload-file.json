@@ -1,0 +1,48 @@
+{
+  "id": "how-to/advanced/files/upload-file",
+  "title": "Upload File",
+  "type": "how_to",
+  "category": "development",
+  "content": "In this example we will upload a CSV file to the stored on the Kelvin Platform and receive the confirmation.\n\n    There are also options to add custom metadata to help classify and filter file listings.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin API\"\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/filestorage/upload\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: multipart/form-data\" \\\n    -F 'file=@/home/ubuntu/test_data.csv;type=text/plain\" \\\n    -F 'metadata={\"customkey\": \"Custom metadata information\"}'\n    ```\n\n    The response will look like this;\n\n    ```json title=\"API cURL Example Response\" linenums=\"1\"\n    {\n    \"file_id\": \"66fce65f-d43f-4424-89b8-e1dd01f9193b\",\n    \"file_name\": \"test_data.csv\",\n    \"file_size\": 6,\n    \"checksum\": \"66a045b452102c59d840ec097d59d9467e13a3f34f6494e539ffd32c1bb35f18\",\n    \"created\": \"2025-03-19T10:29:55.673471Z\",\n    \"source\": \"krn:user:demo@kelvin.ai\",\n    \"metadata\": {\n        \"customkey\": \"Custom metadata information\"\n    }\n    }\n    ```\n\n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Upload file to filestore\n    response = client.filestorage.upload_file(\n        file='/home/ubuntu/model_weights.h5', \n        metadata={\"customkey\": \"Custom metadata information\"}\n    )\n\n    print(response)\n    ```\n\n    You will see the output like this;\n\n    ```json title=\"API Client (Python) Example Response\" linenums=\"1\"\n    file_id='d9a5a89b-7a72-4ff3-a7b6-eaefec4875ad' file_name='model_weights.h5' file_size=3066 checksum='1b342f992ac36da9018e84ba81623f3a862d351497bae2a129fe70df02e085ad' source='krn:user:demo@kelvin.ai' created=datetime.datetime(2024, 3, 24, 1, 51, 54, 699950, tzinfo=datetime.timezone.utc) metadata={\"customkey\": \"Custom metadata information\"}\n    ```\n\n</div>",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/advanced/files/upload-file.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/filestorage/upload\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: multipart/form-data\" \\\n    -F 'file=@/home/ubuntu/test_data.csv;type=text/plain\" \\\n    -F 'metadata={\"customkey\": \"Custom metadata information\"}'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n    \"file_id\": \"66fce65f-d43f-4424-89b8-e1dd01f9193b\",\n    \"file_name\": \"test_data.csv\",\n    \"file_size\": 6,\n    \"checksum\": \"66a045b452102c59d840ec097d59d9467e13a3f34f6494e539ffd32c1bb35f18\",\n    \"created\": \"2025-03-19T10:29:55.673471Z\",\n    \"source\": \"krn:user:demo@kelvin.ai\",\n    \"metadata\": {\n        \"customkey\": \"Custom metadata information\"\n    }\n    }",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Upload file to filestore\n    response = client.filestorage.upload_file(\n        file='/home/ubuntu/model_weights.h5', \n        metadata={\"customkey\": \"Custom metadata information\"}\n    )\n\n    print(response)",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "json",
+      "code": "file_id='d9a5a89b-7a72-4ff3-a7b6-eaefec4875ad' file_name='model_weights.h5' file_size=3066 checksum='1b342f992ac36da9018e84ba81623f3a862d351497bae2a129fe70df02e085ad' source='krn:user:demo@kelvin.ai' created=datetime.datetime(2024, 3, 24, 1, 51, 54, 699950, tzinfo=datetime.timezone.utc) metadata={\"customkey\": \"Custom metadata information\"}",
+      "title": "API Client (Python) Example Response"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "api",
+    "cli",
+    "create",
+    "development",
+    "file",
+    "sdk",
+    "test",
+    "upload"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

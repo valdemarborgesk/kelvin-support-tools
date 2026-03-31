@@ -1,0 +1,24 @@
+{
+  "id": "concepts/applications/overview",
+  "title": "App Registry",
+  "type": "concept",
+  "category": "applications",
+  "content": "Applications in the Kelvin platform allow you to create programming solutions for various tasks based on the application type chosen.\n\nYou can develop your applications using Python with the Kelvin SDK for seamless integration.\n\nIf you need an alternative programming language, a Docker container-based approach is available, which requires integration using the Kelvin API.\n\nApplication types available are:\n\n1. **Kelvin SmartApp™:** Create a Python program and take advantage of the Kelvin SDK for tight integration between your application and the Kelvin Platform.  \n2. **Docker Application:** Create this if you prefer not to use Python; ensure your application can be encapsulated in a Docker container, then integrate using the Kelvin API.  \n3. **Configure an Import Application:** to establish connections with your assets via industrial communication protocols as specified by your programming needs.  \n4. **Develop an Export Application:** To transfer your platform's data to external software like Databricks for tasks such as model training, ensuring compatibility with subsequent imports into Python or Docker applications.\n\n# App Registry\n\nThe App Registry on the Kelvin Platform holds all the Applications available.\n\nThe full list can be viewed in the Applications section on the Kelvin UI. This list is conveniently grouped by its type or under a custom group name nominated by the Developer/Administrator.",
+  "summary": "The App Registry on the Kelvin Platform holds all the Applications available. The full list can be viewed in the Applications section on the Kelvin UI.",
+  "source": "core-docs/docs/overview/concepts/applications.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "api",
+    "app",
+    "application",
+    "applications",
+    "asset",
+    "registry",
+    "sdk"
+  ],
+  "metadata": {
+    "section": "overview/concepts",
+    "last_updated": "2026-02-04"
+  }
+}

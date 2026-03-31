@@ -1,0 +1,51 @@
+{
+  "id": "api/schemas/appdataquality",
+  "title": "AppDataQuality",
+  "type": "schema",
+  "category": "api",
+  "content": "# AppDataQuality\n\n\n## Properties\n\n- **way** (`string`): The direction of the data quality. If `output`, the app computes and produces the data quality value. If `input`, the app receives the data quality value.\n- **datastreams** (`object`): \n- **configuration** (`object`): ",
+  "summary": "Object with properties: way, datastreams, configuration",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.AppDataQuality",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "way": {
+          "type": "string",
+          "enum": [
+            "output",
+            "input"
+          ],
+          "description": "The direction of the data quality. If `output`, the app computes and produces the data quality value. If `input`, the app receives the data quality value."
+        },
+        "datastreams": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "map_to": {
+                "type": "string"
+              },
+              "configuration": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "configuration": {
+          "type": "object"
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

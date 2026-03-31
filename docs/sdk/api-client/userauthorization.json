@@ -1,0 +1,47 @@
+{
+  "id": "sdk/api-client/client.api.user-authorization/userauthorization",
+  "title": "UserAuthorization",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# UserAuthorization\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### create_group(data: Optional[Union[requests.GroupCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.GroupCreate\n\nCreates a group\n\n\n### list_groups(search: Optional[Sequence[str]], names: Optional[Sequence[str]], role_names: Optional[Sequence[str]], sort_by: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.GroupItem], responses.GroupsListPaginatedResponseCursor]\n\nReturns a list of Groups and its parameters. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### delete_group(group_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDelete a group.\n\n\n### get_group(group_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.GroupGet\n\nRetrieve a Group.\n\n\n### update_group(group_name: str, data: Optional[Union[requests.GroupUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.GroupUpdate\n\nUpdate a group.\n\n\n### create_role(data: Optional[Union[requests.RoleCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.RoleCreate\n\nCreates a role\n\n\n### list_roles(search: Optional[Sequence[str]], names: Optional[Sequence[str]], group_names: Optional[Sequence[str]], sort_by: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.RoleItem], responses.RolesListPaginatedResponseCursor]\n\nReturns a list of Roles. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### delete_role(role_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDelete a role.\n\n\n### get_role(role_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.RoleGet\n\nRetrieve a Role.\n\n\n### create_role_policy(role_name: str, data: Optional[Union[requests.RolePolicyCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.RolePolicyCreate\n\nCreates a role policy\n\n\n### list_role_policies(role_name: str, search: Optional[Sequence[str]], names: Optional[Sequence[str]], resource_types: Optional[Sequence[str]], sort_by: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.RolePolicy], responses.RolePoliciesListPaginatedResponseCursor]\n\nReturns a list of policies for a role. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### delete_role_policy(role_name: str, policy_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDelete a role policy.\n\n\n### get_role_policy(role_name: str, policy_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.RolePolicyGet\n\nRetrieve a Role Policy.\n\n\n### update_role_policy(role_name: str, policy_name: str, data: Optional[Union[requests.RolePolicyUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.RolePolicyUpdate\n\nUpdate a role policy.\n\n\n### update_role(role_name: str, data: Optional[Union[requests.RoleUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.RoleUpdate\n\nUpdate a role.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/user_authorization.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.user_authorization.create_group()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.user_authorization",
+    "item_type": "class",
+    "methods": [
+      "create_group",
+      "list_groups",
+      "delete_group",
+      "get_group",
+      "update_group",
+      "create_role",
+      "list_roles",
+      "delete_role",
+      "get_role",
+      "create_role_policy",
+      "list_role_policies",
+      "delete_role_policy",
+      "get_role_policy",
+      "update_role_policy",
+      "update_role"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

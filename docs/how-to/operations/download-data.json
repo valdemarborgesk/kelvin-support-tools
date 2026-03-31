@@ -1,0 +1,23 @@
+{
+  "id": "how-to/download-data",
+  "title": "Download Data",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Download Data\n\n## \n\nYou can download the data according to the time range you currently are viewing.\n\n    This is be downloaded in a csv file format which can be opened by Google Sheets or Microsoft Excel.\n\nTo start, setup the time range of your Data Explorer viewer.\n\nThen click on the download icon { width=20 height=20 }.\n\nYou have four options.\n\n## Export Data\n\nThis will export all the Data Stream values for the selected Asset over the viewable time range.\n\n## Export Recommendations\n\nThis will export all the Recommendation information for the selected Asset over the viewable time range.\n\n## Export Control Changes\n\nThis will export all the Control Change information for the selected Asset over the viewable time range.\n\n## Export Tags\n\nThis will export all the Data Tag information for the selected Asset over the viewable time range.",
+  "summary": "",
+  "source": "core-docs/docs/operations-tools/data-explorer-page/how-to/download-data.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "data",
+    "download",
+    "operations"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

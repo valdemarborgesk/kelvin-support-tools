@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.responses/parametervaluehistorianitem",
+  "title": "ParameterValueHistorianItem",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ParameterValueHistorianItem\n\nInherits from: DataModelBase\n\n\nParameterValueHistorianItem object.\n\nParameters\n----------\n    app_name: Optional[StrictStr]\n    app_version: Optional[StrictStr]\n    comment: Optional[StrictStr]\n    created: Optional[datetime]\n    parameter_name: Optional[StrictStr]\n    resource: Optional[KRN]\n    source: Optional[KRN]\n    updated: Optional[datetime]\n    value: Optional[Union[StrictInt, StrictFloat, StrictStr, StrictBool, dict[str, Any]]]\n    invalidated: Optional[datetime]\n",
+  "summary": "ParameterValueHistorianItem object.",
+  "source": "api/src/kelvin/api/client/model/responses.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.responses.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.responses",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

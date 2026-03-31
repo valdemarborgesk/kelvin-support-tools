@@ -1,0 +1,33 @@
+{
+  "id": "sdk/api-client/client.api.asset-insights/assetinsights",
+  "title": "AssetInsights",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AssetInsights\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### get_asset_insights(page_size: Optional[int], page: Optional[int], data: Optional[Union[requests.AssetInsightsGet, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.AssetInsightsItem], responses.AssetInsightsGetPaginated]\n\nAdvanced Asset Insights collates Asset data and optional custom defined fields and returns a structured array of Asset related objects. Ideal for generating UI lists, it accommodates a range of search, filter, and optional data on Data Streams, Parameters, Control Changes, Recommendations, etc. related to the Asset.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/asset_insights.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.asset_insights.get_asset_insights()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.asset_insights",
+    "item_type": "class",
+    "methods": [
+      "get_asset_insights"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

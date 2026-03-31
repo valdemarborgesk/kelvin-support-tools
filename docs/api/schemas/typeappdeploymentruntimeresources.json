@@ -1,0 +1,76 @@
+{
+  "id": "api/schemas/appdeploymentruntimeresources",
+  "title": "AppDeploymentRuntimeResources",
+  "type": "schema",
+  "category": "api",
+  "content": "# AppDeploymentRuntimeResources\n\n\n## Properties\n\n- **resources** (`array`): ",
+  "summary": "Object with properties: resources",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.AppDeploymentRuntimeResources",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "resource": {
+                "type": "string",
+                "format": "krn"
+              },
+              "parameters": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/type.PropertyValue"
+                }
+              },
+              "datastreams": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "map_to": {
+                      "type": "string"
+                    },
+                    "configuration": {
+                      "type": "object"
+                    },
+                    "remote": {
+                      "type": "boolean"
+                    },
+                    "way": {
+                      "$ref": "#/components/schemas/enum.Way"
+                    },
+                    "storage": {
+                      "$ref": "#/components/schemas/enum.Storage"
+                    },
+                    "dynamic_io_type_name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "data_quality": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/type.AppDataQuality"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

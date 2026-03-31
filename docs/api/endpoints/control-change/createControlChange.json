@@ -1,0 +1,220 @@
+{
+  "id": "api/endpoints/control-change/createControlChange",
+  "title": "Create Control Change",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Create Control Change\n\nSend a new value to be written to an Asset / Data Stream pair. The Control Change Manager will automatically find which Cluster and Bridge to communicate the change to.\n\n## Endpoint\n\n`POST /control-changes/create`",
+  "summary": "Create Control Change",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/control-changes/create' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.control_change.createControlChange()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/control-change"
+  ],
+  "tags": [
+    "control-change",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/control-changes/create",
+    "method": "POST",
+    "operation_id": "createControlChange",
+    "tag": "Control Change",
+    "permission": "kelvin.permission.control_change.create",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "required": [
+          "resource",
+          "expiration_date",
+          "payload"
+        ],
+        "type": "object",
+        "properties": {
+          "expiration_date": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-12-18T18:22:18.582724Z",
+            "description": "UTC time when the Control Change will expire and the `status` automatically marked as `failed`, formatted in RFC 3339."
+          },
+          "from": {
+            "type": "object",
+            "description": "Information about the current `resource` data when the the Control Change `payload` is created.",
+            "required": [
+              "value",
+              "timestamp"
+            ],
+            "properties": {
+              "value": {
+                "description": "Value represented in one of these formats.",
+                "oneOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "object"
+                  }
+                ]
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2024-12-18T18:22:18.582724Z",
+                "description": "UTC time when the current `value` is recorded in the Control Change object, formatted in RFC 3339."
+              }
+            }
+          },
+          "payload": {
+            "description": "Value represented in one of these formats.",
+            "oneOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "trace_id": {
+            "type": "string"
+          },
+          "resource": {
+            "type": "string",
+            "format": "krn",
+            "example": "krn:ad:beam_pump_01/motor_speed_set_point",
+            "minLength": 1,
+            "maxLength": 256,
+            "description": "The asset / data stream pair that this Control Change will be applied to."
+          },
+          "retries": {
+            "type": "integer",
+            "example": 3,
+            "description": "How many times the Control Change Manager will try and send the same Control Change request to the Bridge before the change is tagged `failed` and no further attempts will be made. If the Bridge sends a `processed` acknowledgment, then the Control Change Manager will stop any further retries and wait for an `applied` response."
+          },
+          "timeout": {
+            "type": "integer",
+            "example": 150,
+            "description": "How long the Control Change Manager will wait in seconds for the Bridge to send a `processed` acknowledgement before a retry will be attempted. If the total number of retries has reach its `retries` limit, then the change is tagged `failed` and no further attempts will be made."
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Created",
+        "schema": {
+          "required": [
+            "id",
+            "trace_id"
+          ],
+          "type": "object",
+          "properties": {
+            "created_by": {
+              "type": "string",
+              "example": "krn:user:person@kelvin.ai",
+              "maxLength": 256,
+              "description": "Name of the process that created the Control Change. This could be a user, workload, application, etc."
+            },
+            "created_type": {
+              "type": "string",
+              "example": "recommendation",
+              "description": "Type of process that created the Control Change. This is inferred from `source`."
+            },
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "0002bc79-b42f-461b-95d6-cf0a28ba87aa",
+              "description": "A unique randomly generated UUID as the key `id` for the Control Change."
+            },
+            "last_state": {
+              "type": "string",
+              "enum": [
+                "pending",
+                "ready",
+                "sent",
+                "processed",
+                "applied",
+                "failed",
+                "rejected"
+              ]
+            },
+            "payload": {
+              "description": "Value represented in one of these formats.",
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "object"
+                }
+              ]
+            },
+            "resource": {
+              "type": "string",
+              "format": "krn",
+              "example": "krn:ad:beam_pump_01/motor_speed_set_point",
+              "minLength": 1,
+              "maxLength": 256,
+              "description": "The asset / data stream pair that this Control Change will be applied to."
+            },
+            "source": {
+              "type": "string",
+              "format": "krn",
+              "example": "krn:ad:beam_pump_01/motor_speed_set_point",
+              "maxLength": 256,
+              "description": "The process that created the Control Change request. This can be a user or an automated process like a workload, application, recommendation, etc."
+            },
+            "timestamp": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-12-18T18:22:18.582724Z",
+              "description": "UTC time when the log was created, formatted in RFC 3339."
+            },
+            "trace_id": {
+              "type": "string",
+              "format": "uuid",
+              "example": "0002bc79-b42f-461b-95d6-cf0a28ba87aa",
+              "description": "This is for internal purposes and is the same as the `id`."
+            }
+          }
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "how-to/connect/connections-control",
+  "title": "Start/Stop Connection",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Start/Stop Connection\n\nYou can start / stop a Connection.\n\n    This will not undeploy the workload from the edge system, so you can restart it at anytime without having to deploy the Workload again.\n\n<div class=\"result\" markdown>\n\n=== \"From Connection List\"\n\n    Go to **Connections** in the Kelvin UI.\n\n    \n\n    Then click on the Start / Stop button on the relevant Connection row to change it running status.\n\n            If the button is grayed out, then this usually means the workload status is `unavailable`.\n        \n        This problem will need to be resolved first before you can control the workload.\n\n    \n\n=== \"From Connection Details\"\n\n    Go to **Connections** in the Kelvin UI.\n\n    \n\n    Click on the Connection to view its details.\n\n    \n\n    Then click on the Start / Stop button at the top of the page to change it running status.\n\n            If the button is grayed out, then this usually means the workload status is `unavailable`.\n        \n        This problem will need to be resolved first before you can control the workload.\n\n    \n\n</div>",
+  "summary": "You can start / stop a Connection.",
+  "source": "core-docs/docs/platform-administration/how-to/connect/connections-control.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "connection",
+    "deploy",
+    "operations",
+    "start/stop"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

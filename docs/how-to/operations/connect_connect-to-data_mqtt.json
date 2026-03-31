@@ -1,0 +1,28 @@
+{
+  "id": "how-to/connect/connect-to-data/mqtt",
+  "title": "Add MQTT Connection - How To",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Add MQTT Connection - How To\n\nYou can add a MQTT Connection through the Kelvin UI.\n\n    Connections can be deployed to both x86_64 and ARM64 devices.\n\nTo start click on the **Connections** menu option from the left side bar menu.\n\nclick on the **Create Connection** button.\n\n**Step 1**\n\nSelect **Import Data and Control Setpoints** and click **Next**.\n\n**Step 2**\n\nSelect the MQTT Connector option, select a **Version** and click **Next**.\n\n**Step 3**\n\nType in a memorable name in the **Connection Display Name** text input. You can use any letters, numbers and special characters.\n\n    The **Connection Name** text input will be automatically converted and filled in as you type in the **Connection Display Name** section. The conversion ensures the **Connection Name** only contains lowercase alphanumeric characters and `.`, `_` or `-` characters.\n\nThen select which Cluster to deploy the new Connector to.\n\n    It is important that the asset is reachable from the selected Cluster.\n\n**Step 4**\n\nConfigure the MQTT connection to the asset.\n\n    You can choose to use the UI view, or work directly in YAML or JSON format.\n\n| Parameter             | Options                           | Description                                                                                                                                                      | Default | Mandatory |\n|-----------------------|-----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------:| :---: |\n| IP         | String (IP or url)   | Address of the MQTT Broker.                                                                       |         | Yes |\n| Port         | Number   | Port Number of the MQTT Broker (Usually 1883).                                                                         |         | Yes |\n\n**Step 5**\n\nSelect an Asset, Data Stream and fill in the connection and other optional values.\n\nFull descriptions of each column is giving below.\n\n    If you have many connection IO to fill in, you can save time with the download/upload csv file option in the top right hand corner of the popup.\n\n    Use Microsoft Excel or Google Sheets to fill in all the Connection IO details.\n\n    You can only upload one file. Multiple file uploads is not allowed and only the latest selected file will be used.\n\n__Option Descriptions__\n\n| Header             | Description                                                                                                                                                      | Example | Mandatory |\n|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|:---------:|\n| Asset | The Kelvin Asset name (must be lowercase alphanumeric with no spaces) | well-01 |  Yes  |\n| DataStream | The Kelvin Data Stream name (must be lowercase alphanumeric with no spaces) | water-flow  |  Yes  |\n| Storage | Location of the storage; \"none\", \"node\", \"node-and-cloud\" | node-and-cloud | No |\n| Topic | MQTT Topic of the data stream | beam01/casingpressure |  No  |\n\n**Complete the Connection**\n\nWhen everything is validated, then you can click on **Connect** button to deploy the Connection to the Cluster. It will start automatically, connect to the asset and start collecting data.",
+  "summary": "You can add a MQTT Connection through the Kelvin UI.",
+  "source": "core-docs/docs/platform-administration/how-to/connect/connect-to-data/mqtt.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "add",
+    "cli",
+    "configure",
+    "connection",
+    "create",
+    "deploy",
+    "mqtt",
+    "operations",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

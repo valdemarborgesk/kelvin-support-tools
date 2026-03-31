@@ -1,0 +1,25 @@
+{
+  "id": "how-to/monitor/workload-telemetry",
+  "title": "View Workload Telemetry",
+  "type": "how_to",
+  "category": "development",
+  "content": "# View Workload Telemetry\n\nYou can see the telemetry of a workload for any Application in the Kelvin UI.\n\nClick on **Applications**, select the Application card, then navigate to the Workload tab to view the list of workloads for that Application.\n\nThen click on a Workload name.\n\nThen click on the **Telemetry** tab.\n\nHere you can view all the telemetry information.\n\n* Memory Usage, Requests and Limits\n* CPU Usage, Requests and Limits\n* Network Usage, Received and Transmitted\n* Storage IO\n* IOPS and Throughput",
+  "summary": "You can see the telemetry of a workload for any Application in the Kelvin UI. Click on Applications, select the Application card, then navigate to the Workload tab to view the list of workloads for that Application.",
+  "source": "core-docs/docs/developer-tools/how-to/monitor/workload-telemetry.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "deploy",
+    "development",
+    "telemetry",
+    "view",
+    "workload"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

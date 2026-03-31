@@ -1,0 +1,42 @@
+{
+  "id": "how-to/asset/asset-type/delete-asset-type",
+  "title": "Delete Asset Type",
+  "type": "how_to",
+  "category": "operations",
+  "content": "**Reference:**\n\nField                | Description\n---------------------|------------------------------------------\nName (Name ID)                 | Unique name identifier. It must contain only lowercase alphanumeric characters. The characters `.`, `_` and `-` are allowed to separate words instead of a space BUT can not be at the beginning or end of the name.\nTitle (Display Name)                | The display name to show on the Kelvin UI. It can contain any characters, including spaces.\n\n## Delete Asset Type\n\n<div class=\"result\" markdown>\n\nDeleting an Asset Type is very simple. The only information you need is the actual `name` of the Asset Type.\n\n=== \"Kelvin UI\"\n\n    Asset Types can be managed from the Administration section of the UI.\n\n    \n        Do not get confused with the Asset management in the Operations section which is designed for the Production Engineers.\n\n    <iframe\n    src=\"https://demo.arcade.software/T3zSK9q3R3pj219i3sXJ?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true\"\n    title=\"Kelvin Core | Operations\"\n    frameborder=\"0\"\n    loading=\"lazy\"\n    webkitallowfullscreen\n    mozallowfullscreen\n    allowfullscreen\n    allow=\"clipboard-write\"\n    style=\"width: 100%; height: 400px; border: none;\">\n    </iframe>\n\n    To start, go to the **Assets** in the Administration section of the left side bar and then click on the Asset Types tab.\n\n    \n\n    To delete an Asset Type, click on the rubbish bin icon on the right hand side of of an Asset Type row;\n\n    \n\n    Then in the popup type **PERMANENTLY DELETE** to confirm the delete action.\n\n    You can also delete Asset Types in bulk by selecting the rows you want to delete and clicking on the **Delete** button.\n\n    \n\n=== \"Kelvin API\"\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/assets/types/doc_demo_asset_type/delete\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -d ''\n    ```\n\n    You will get a response similar to this;\n\n    ```bash title=\"API cURL Example Response\" linenums=\"1\"\n    <Response [200]>\n    ```\n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Delete Asset Type\n    response = client.asset.delete_asset_type(asset_type_name=\"doc_demo_asset_type\")\n\n    print(response)\n    ```\n\n    You will not receive a response;\n</div>",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/asset/asset-type/delete-asset-type.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/assets/types/doc_demo_asset_type/delete\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -d ''",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "bash",
+      "code": "<Response [200]>",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Delete Asset Type\n    response = client.asset.delete_asset_type(asset_type_name=\"doc_demo_asset_type\")\n\n    print(response)",
+      "title": "API Client (Python) Example"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "api",
+    "asset",
+    "cli",
+    "delete",
+    "operations",
+    "sdk",
+    "type"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

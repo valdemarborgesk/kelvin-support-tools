@@ -1,0 +1,34 @@
+{
+  "id": "sdk/api-client/base.http-client.retry/retrytransport",
+  "title": "RetryTransport",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# RetryTransport\n\nInherits from: httpx.HTTPTransport\n\n\n## Methods\n\n\n### __init__() -> None\n\n\n### handle_request(request: httpx.Request) -> httpx.Response\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/base/http_client/retry.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.http_client.retry.__init__()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.http_client.retry",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "handle_request"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

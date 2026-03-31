@@ -1,0 +1,35 @@
+{
+  "id": "api/schemas/strings",
+  "title": "Strings",
+  "type": "schema",
+  "category": "api",
+  "content": "# Strings\n\nValue represented as a string or an array of strings.\n",
+  "summary": "Value represented as a string or an array of strings.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.Strings",
+    "schema_type": "type",
+    "schema": {
+      "description": "Value represented as a string or an array of strings.",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

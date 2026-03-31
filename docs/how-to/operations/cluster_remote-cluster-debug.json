@@ -1,0 +1,45 @@
+{
+    "id": "how-to/operations/cluster_remote-cluster-debug",
+    "title": "Remote Cluster Debugging (Engineering Tool)",
+    "type": "how_to",
+    "category": "operations",
+    "content": "# Remote Cluster Debugging (Engineering Tool)\n\nThis guide describes how to use the `cluster-debug` tool to remotely inspect and debug customer k3s clusters via the Kelvin API — without SSH access.\n\n## How It Works\n\nThe Kelvin API exposes a shell execution endpoint routed through `api-orchestration`:\n\n```\nPOST /api/v1/orchestration/clusters/{cluster_name}/edge-apps/shell/exec\nBody: { \"command\": \"<shell command>\" }\n```\n\nThis sends the command to the `edge-updater` pod running on the customer cluster, which executes it as `sh -c <command>` and returns stdout/stderr. The `edge-updater` container has `kubectl` built in (same binary, symlinked), so any `kubectl` command works.\n\nSince k3s runs as root, a privileged pod with `hostPID: true` gives full root shell access to the underlying node.\n\n## Prerequisites\n\n- Python 3 with `requests` installed\n- A Kelvin API token (stored in OS keyring or passed via env var `KELVIN_TOKEN`)\n- The target cluster name (as registered in the platform, e.g. `mycluster`)\n\n## Tool Location\n\n```\nsupport-and-monitoring/tools/cluster-debug/cluster_debug.py\n```\n\n## Basic Usage\n\n### Run a kubectl command\n```bash\npython3 tools/cluster-debug/cluster_debug.py mycluster kubectl get pods -A\n```\n\n### Get pod logs\n```bash\npython3 tools/cluster-debug/cluster_debug.py mycluster logs -n app my-pod-name\npython3 tools/cluster-debug/cluster_debug.py mycluster kubectl logs -n app my-pod-name --tail=200\n```\n\n### Run arbitrary shell command\n```bash\npython3 tools/cluster-debug/cluster_debug.py mycluster exec 'df -h'\npython3 tools/cluster-debug/cluster_debug.py mycluster exec 'cat /etc/os-release'\n```\n\n### Deploy the privileged debug pod\n```bash\npython3 tools/cluster-debug/cluster_debug.py mycluster deploy-debug\n```\nThis deploys `kelvin-debug` pod in the `kelvin` namespace with:\n- `privileged: true`\n- `hostPID: true`\n- `hostNetwork: true`\n- Host root filesystem mounted at `/host`\n\n### Run a command on the host (via nsenter)\n```bash\npython3 tools/cluster-debug/cluster_debug.py mycluster host 'journalctl -u k3s --no-pager -n 50'\npython3 tools/cluster-debug/cluster_debug.py mycluster host 'crictl ps'\npython3 tools/cluster-debug/cluster_debug.py mycluster host 'free -h && df -h'\n```\n\n### Interactive REPL\n```bash\npython3 tools/cluster-debug/cluster_debug.py mycluster shell\n```\nEnter kubectl or shell commands one at a time. Type `exit` to quit.\n\n### Clean up the debug pod\n```bash\npython3 tools/cluster-debug/cluster_debug.py mycluster cleanup\n```\n\n## Common Debug Patterns\n\n### Check workload status\n```bash\npython3 tools/cluster-debug/cluster_debug.py <cluster> kubectl get pods -A\npython3 tools/cluster-debug/cluster_debug.py <cluster> kubectl describe pod -n app <pod-name>\npython3 tools/cluster-debug/cluster_debug.py <cluster> kubectl get events -n app --sort-by=.lastTimestamp\n```\n\n### Get logs from a stuck workload\n```bash\npython3 tools/cluster-debug/cluster_debug.py <cluster> kubectl logs -n app <pod> --previous\npython3 tools/cluster-debug/cluster_debug.py <cluster> kubectl logs -n app <pod> --tail=500\n```\n\n### Check node and cluster health\n```bash\npython3 tools/cluster-debug/cluster_debug.py <cluster> kubectl get nodes -o wide\npython3 tools/cluster-debug/cluster_debug.py <cluster> kubectl top nodes\npython3 tools/cluster-debug/cluster_debug.py <cluster> kubectl top pods -A\n```\n\n### Inspect edge services\n```bash\npython3 tools/cluster-debug/cluster_debug.py <cluster> kubectl get pods -n kelvin\npython3 tools/cluster-debug/cluster_debug.py <cluster> kubectl logs -n kelvin -l app=edge-k8s --tail=100\npython3 tools/cluster-debug/cluster_debug.py <cluster> kubectl logs -n kelvin -l app=edge-updater --tail=100\n```\n\n### Check staged workloads (common cause of pending-deploy issues)\n```bash\n# List all staged workloads in edge-k8s SQLite DB\npython3 tools/cluster-debug/cluster_debug.py <cluster> kubectl exec -n kelvin deploy/edge-k8s -- sqlite3 /data/edge-k8s.db 'SELECT * FROM staged_workloads;'\n```\n\n### Host-level inspection (requires debug pod)\n```bash\npython3 tools/cluster-debug/cluster_debug.py <cluster> deploy-debug\npython3 tools/cluster-debug/cluster_debug.py <cluster> host 'systemctl status k3s'\npython3 tools/cluster-debug/cluster_debug.py <cluster> host 'journalctl -u k3s -n 100 --no-pager'\npython3 tools/cluster-debug/cluster_debug.py <cluster> host 'crictl ps -a'\npython3 tools/cluster-debug/cluster_debug.py <cluster> cleanup\n```\n\n## Authentication\n\nThe tool reads the Kelvin API token from:\n1. OS keyring (service: `kelvin-api`, key: `token`) — preferred\n2. Environment variable: `KELVIN_TOKEN`\n3. Interactive prompt as fallback\n\nTo store your token in the keyring:\n```python\nimport keyring\nkeyring.set_password('kelvin-api', 'token', '<your-token>')\n```\n\n## Limitations\n\n- **Not interactive**: The shell/exec endpoint is request/response. Long-running or interactive commands (top, watch, vim) will time out or not work. Use the REPL for iterative investigation.\n- **Timeout**: Commands time out after ~30 seconds by default. For long operations (log dumps), pipe through `head` or use `--tail`.\n- **No streaming**: Large log outputs are returned in full. Use `--tail` to limit.\n- **Cluster must be online**: The cluster must have an active NATS connection to the cloud. Offline clusters cannot receive commands.",
+    "summary": "How to use the cluster-debug tool to remotely inspect and debug customer k3s clusters via the Kelvin API shell/exec endpoint, including deploying a privileged debug pod for host-level access.",
+    "source": "internal/engineering",
+    "code_examples": [
+        {
+            "language": "bash",
+            "code": "python3 tools/cluster-debug/cluster_debug.py mycluster kubectl get pods -A"
+        },
+        {
+            "language": "bash",
+            "code": "python3 tools/cluster-debug/cluster_debug.py mycluster deploy-debug && python3 tools/cluster-debug/cluster_debug.py mycluster host 'journalctl -u k3s -n 50 --no-pager'"
+        }
+    ],
+    "related": [
+        "concepts/core/internal-platform-architecture",
+        "how-to/operations/cluster_manage-clusters_logs-telemetry-cluster"
+    ],
+    "tags": [
+        "cluster",
+        "debug",
+        "edge",
+        "edge-updater",
+        "engineering",
+        "internal",
+        "k3s",
+        "kubectl",
+        "logs",
+        "operations",
+        "shell",
+        "support",
+        "troubleshoot"
+    ],
+    "metadata": {
+        "subcategory": "platform-administration",
+        "steps": [],
+        "step_count": 0,
+        "audience": "engineering",
+        "last_updated": "2026-02-20"
+    }
+}

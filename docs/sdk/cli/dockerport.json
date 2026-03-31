@@ -1,0 +1,28 @@
+{
+  "id": "sdk/cli/sdk.lib.models.ksdk-docker/dockerport",
+  "title": "DockerPort",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DockerPort\n\nInherits from: KSDKModel\n\n\n## Methods\n\n\n### port_mapping() -> str\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/ksdk_docker.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.ksdk_docker",
+    "item_type": "class",
+    "methods": [
+      "port_mapping"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

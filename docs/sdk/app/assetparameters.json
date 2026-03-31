@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.msg-builders/assetparameters",
+  "title": "AssetParameters",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AssetParameters\n\nInherits from: AppParameters\n\n\n[Deprecated] Use AppParameters instead\nParameters Builder. Set application parameters in bulk.\n\nArgs:\n    resource (Optional[KRNAppVersion]): Optional Kelvin Resource name for the target App Version.\n        Defaults to current app.\n    parameters (List[AssetParameters]): list of single asset parameters\n",
+  "summary": "[Deprecated] Use AppParameters instead Parameters Builder. Set application parameters in bulk.",
+  "source": "app/src/kelvin/message/msg_builders.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import AssetParameters\n\n# Usage example\napp = AssetParameters()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.msg_builders",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

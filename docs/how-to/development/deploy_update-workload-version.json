@@ -1,0 +1,26 @@
+{
+  "id": "how-to/deploy/update-workload-version",
+  "title": "Update a Workload",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Update a Workload\n\nWhen you update a workload, you can choose whether to deploy immediately or to stage the workload at the edge and apply it at a later time.\n\n    Not all options available when deploying will be available when updating.\n\n    If you required options not available, you will need delete the workload and redeploy it.\n\n| Field | Option | Description |\n| --- | --- | --- |\n| Standard | None | This will use the standard Kubernetes deployment process for workload containers and the workload will be automatically started after downloaded to the edge. |\n| Staged | Stage Only | This will download the workload to the edge but will not start the workload. You will need to send an additional command to start the workload either through the Kelvin API or locally in the terminal of the edge computer |\n| Staged | Instant Apply | This will use Kelvin's deployment process for workload containers and the workload will be automatically started after downloaded to the edge.<br><br> The difference to the Kubernetes deployment process is that Kelvin will download all workloads and stage them first. Only when all workloads have been successfully downloaded will the start command be given to all the workloads. |\n\nOr you can update a workload offline.\n\n!!! Kelvin Platform Versions\n\n    For some version of the Kelvin Platform, this will be the only option available to deploy a Workload.\n\nThis will require you to physically visit the targeted edge computer or ssh into a remote VM with the targeted Cluster and manually installing the Workload image.\n\nTo start, go to **Applications** and select any Application\n\nClick on the **Workloads** tab, click on the update icon { width=20 height=20 }.\n\nOR click on the name of a **Workload** to see its details and then click on the **Update Workload** button.\n\n    The upgrade steps are very similar to the **Deploy Workload** steps.\n\nNext, in Step 1 you can select the version you want to upgrade to.\n\nClick the **Next** button.\n\nThe rest of the process is exactly the same as deploying a new Workload.\n\n* For standard deploy updates, follow the documentation for [deploying a workload](./deploy-workloads-deploy.md).\n* For staged deploy updates, follow the documentation for [deploying a staged workload](./deploy-workloads-deploy-staged.md)\n* For offline updates, follow the documentation for [deploying workload offline](./deploy-workloads-deploy-staged.md)",
+  "summary": "When you update a workload, you can choose whether to deploy immediately or to stage the workload at the edge and apply it at a later time.",
+  "source": "core-docs/docs/developer-tools/how-to/deploy/update-workload-version.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "api",
+    "cli",
+    "deploy",
+    "development",
+    "smartapp",
+    "update",
+    "workload"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

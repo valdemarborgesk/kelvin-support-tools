@@ -1,0 +1,27 @@
+{
+  "id": "how-to/cluster/manage-clusters/delete-cluster",
+  "title": "Delete Cluster",
+  "type": "how_to",
+  "category": "operations",
+  "content": "### Delete Cluster\n\nFrom **Orchestration** menu click on a single Cluster, then under the **Configuration** tab you can delete the Cluster by clicking on the delete button;\n\n    This will permanently delete all Kelvin software from the cluster including all Kelvin SmartApps™, Docker Apps and Connectors deployed to the cluster.\n    \n    This is not reversible and you will need to setup a new cluster and redeploy all Kelvin SmartApps™, Docker Apps and Connectors again.\n\nAnd write **PERMANENTLY DELETE** to confirm deleting the cluster.",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/cluster/manage-clusters/delete-cluster.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "cluster",
+    "configure",
+    "delete",
+    "deploy",
+    "docker",
+    "operations",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

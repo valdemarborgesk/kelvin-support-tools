@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.evidences/dynacard",
+  "title": "Dynacard",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Dynacard\n\nInherits from: Chart\n\n\nEvidence for Dynacard representation. Defaults xAxis for Position(inch) and yAxis for Load(libs).\nThis uses line chart configurations, for more details see the [Highcharts Line Chart API]\n(https://api.highcharts.com/highcharts/series.line).\n\nAttributes:\n    series (list): Data series to be displayed in the line chart, following Highcharts API.\n\nNotes:\n    - Extra options beyond defined attributes are allowed and should follow Highcharts API\n    specifications to ensure compatibility.\n",
+  "summary": "Evidence for Dynacard representation. Defaults xAxis for Position(inch) and yAxis for Load(libs). This uses line chart configurations, for more details see the [Highcharts Line Chart API] (https://api.highcharts.com/highcharts/series.line).",
+  "source": "app/src/kelvin/message/evidences.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import Dynacard\n\n# Usage example\napp = Dynacard()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.evidences",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

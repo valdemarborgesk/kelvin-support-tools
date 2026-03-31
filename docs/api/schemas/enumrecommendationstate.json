@@ -1,0 +1,31 @@
+{
+  "id": "api/schemas/recommendationstate",
+  "title": "RecommendationState",
+  "type": "schema",
+  "category": "api",
+  "content": "# RecommendationState\n\n## Enum Values\n\n- `pending`\n- `accepted`\n- `auto_accepted`\n- `rejected`\n- `expired`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.RecommendationState",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "accepted",
+        "auto_accepted",
+        "rejected",
+        "expired"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "how-to/monitor/connection-logs",
+  "title": "View Connection Logs",
+  "type": "how_to",
+  "category": "development",
+  "content": "# View Connection Logs\n\nYou can see the logs of any Connection in the Kelvin UI.\n\n## Logs\n\nClick on **Connections** menu.\n\nClick on the Connection to view its details.\n\nand then click on the **Logs** tab.\n\n## Live Data\n\nIn the Logs screen you have a toggle option called **Live Data**.\n\n| Option | Description |\n| --- | --- |\n| Live Data  | The Connection logs are pulled directly from the edge to the Kelvin UI |\n| Live Data (Locked)  | The Connection logs are pulled directly from the edge to the Kelvin UI. This behavior is fixed and cannot be modified for the current Edition of the Kelvin Platform. |\n| Forwarded Data  | The Connection logs are pulled from the Kelvin Cloud to the Kelvin UI. Logs from the Connection at the edge are synced between the edge and the Kelvin Cloud automatically when online. |\n| Forwarded Data (Locked)  | The Connection logs are pulled from the Kelvin Cloud to the Kelvin UI. Logs from the Connection at the edge are synced between the edge and the Kelvin Cloud automatically when online. This behavior is fixed and cannot be modified for the current Edition of the Kelvin Platform. |\n\nUse the **Live Data** toggle to switch between viewing Connection log data from the Edge or from the Kelvin Platform.\n\n    Live feature is preferred if you want to view the direct logs as a new Connection is deployed to the edge.\n\n    Forwarded Data is preferred if you want to compile a time range of historical log data for performance analytics.",
+  "summary": "You can see the logs of any Connection in the Kelvin UI.",
+  "source": "core-docs/docs/developer-tools/how-to/monitor/connection-logs.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "connection",
+    "deploy",
+    "development",
+    "logs",
+    "monitor",
+    "view"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

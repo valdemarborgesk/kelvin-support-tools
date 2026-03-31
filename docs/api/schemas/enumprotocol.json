@@ -1,0 +1,30 @@
+{
+  "id": "api/schemas/protocol",
+  "title": "Protocol",
+  "type": "schema",
+  "category": "api",
+  "content": "# Protocol\n\nProtocol used by the Service.\n\n## Enum Values\n\n- `TCP`\n- `UDP`",
+  "summary": "Protocol used by the Service.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.Protocol",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "TCP",
+        "UDP"
+      ],
+      "example": "TCP",
+      "description": "Protocol used by the Service."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

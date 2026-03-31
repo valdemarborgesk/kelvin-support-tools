@@ -1,0 +1,663 @@
+{
+  "id": "api/endpoints/asset-insights/getAssetInsights",
+  "title": "Get Assets Insights",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Get Assets Insights\n\nAdvanced Asset Insights collates Asset data and optional custom defined fields and returns a structured array of Asset related objects. Ideal for generating UI lists, it accommodates a range of search, filter, and optional data on Data Streams, Parameters, Control Changes, Recommendations, etc. related to the Asset.\n\n## Endpoint\n\n`POST /asset-insights/get`",
+  "summary": "Get Assets Insights",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/asset-insights/get' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.asset_insights.getAssetInsights()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/asset-insights"
+  ],
+  "tags": [
+    "asset-insights",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/asset-insights/get",
+    "method": "POST",
+    "operation_id": "getAssetInsights",
+    "tag": "Asset Insights",
+    "permission": "kelvin.permission.asset_insights.read",
+    "parameters": [
+      {
+        "name": "page_size",
+        "in": "query",
+        "required": false,
+        "description": "Number of Asset objects to be returned.",
+        "type": "integer"
+      },
+      {
+        "name": "page",
+        "in": "query",
+        "required": false,
+        "description": "Return the list of Asset objects on requested page using the `page_size` as a page calculation reference.",
+        "type": "integer"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "asset_names": {
+            "type": "array",
+            "example": [
+              "beam",
+              "MOTOR"
+            ],
+            "description": "Filter on the Asset parameter `name`. The filter is on the full name only. All strings in the array are treated as `OR`. Can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "asset_states": {
+            "type": "array",
+            "example": [
+              "offline",
+              "unknown"
+            ],
+            "description": "Filter by the asset `state`. The filter is on the full name only. All strings in the array are treated as `OR`.",
+            "items": {
+              "type": "object"
+            }
+          },
+          "asset_types": {
+            "type": "array",
+            "example": [
+              "decrease_speed",
+              "increase_speed"
+            ],
+            "description": "Filter on the Asset Type parameter `name`. The filter is on the full name only. All strings in the array are treated as `OR`. Can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "extra_fields": {
+            "type": "object",
+            "description": "Create unlimited number of extra fields related to the Assets list and define specific filtering or aggregations for each new field.",
+            "properties": {
+              "apps": {
+                "type": "array",
+                "description": "Create new columns based on Apps in the App Registry related to Assets. Multiple columns can be created, each with different App filter requirements.",
+                "items": {
+                  "type": "object",
+                  "description": "Add an extra custom Column (Field) with Application related to the Assets in the list.",
+                  "properties": {
+                    "app_name": {
+                      "type": "string",
+                      "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                      "example": "motor-speed-optimization",
+                      "minLength": 1,
+                      "maxLength": 64,
+                      "description": "App Name from the App Registry. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+                    },
+                    "app_versions": {
+                      "type": "array",
+                      "example": [
+                        "1.2.0",
+                        "1.2.1"
+                      ],
+                      "description": "Filter Apps by version number of the App. The filter is on the full version name only. Can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+                      "items": {
+                        "type": "string",
+                        "format": "Major.Minor.Patch"
+                      }
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "app-motor-speed-optimization",
+                      "description": "Unique identifier name for the key in the response, all keys in extra_fields object must be unique."
+                    }
+                  }
+                }
+              },
+              "asset_properties": {
+                "type": "array",
+                "description": "Create new columns based on the `property` field in Assets. Multiple columns can be created, each with different `property` requirements. Separately, the `filter` option will remove Assets from the returned Asset list that do not meet the operator and value criteria.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "filters": {
+                      "type": "array",
+                      "description": "Optional to filter the returned Asset List based on an array of operator / value criteria relating to the Asset Property. Each filter is treated as `AND`. This will remove Assets from the returned Asset list that do not meet this criteria.",
+                      "items": {
+                        "$ref": "#/components/schemas/requests.AssetInsightsFilter"
+                      }
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "property-area",
+                      "description": "Unique identifier name for the key in the response, all keys in extra_fields object must be unique."
+                    },
+                    "primitive_type": {
+                      "$ref": "#/components/schemas/enum.PropertyType",
+                      "description": "Property data type of the new filtered Asset Property column."
+                    },
+                    "property_name": {
+                      "type": "string",
+                      "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                      "example": "area",
+                      "minLength": 1,
+                      "maxLength": 64,
+                      "description": "Name of the Asset Property to include. This Asset Property column are custom filtered fields that can be created with the Asset listing."
+                    }
+                  }
+                }
+              },
+              "control_changes": {
+                "type": "array",
+                "description": "Create new columns based on the Last Control Changes associated with the Asset. Multiple columns can be created, each with different Control Change filter requirements.",
+                "items": {
+                  "type": "object",
+                  "description": "Add an extra custom Column (Field) with Control Change data for the Assets in the list.",
+                  "properties": {
+                    "datastreams": {
+                      "type": "array",
+                      "description": "Filter Control Change Field by Control Change Data Stream key `datastream_name`. The filter is on the full name only. Can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+                      "items": {
+                        "type": "string",
+                        "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                        "example": "motor-speed",
+                        "minLength": 1,
+                        "maxLength": 64
+                      }
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "last-control-change",
+                      "description": "Unique identifier name for the key in the response, all keys in extra_fields object must be unique."
+                    },
+                    "since": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2025-11-13T12:00:00Z",
+                      "description": "UTC time for the earliest creation time of Control Changes associated with an Asset, formatted in RFC 3339. Control Changes before this time regardless of `state` will be ignored."
+                    },
+                    "statuses": {
+                      "type": "array",
+                      "example": [
+                        "pending",
+                        "sent"
+                      ],
+                      "description": "Filter Control Change Field by the Control Change current `state`.",
+                      "items": {
+                        "$ref": "#/components/schemas/enum.ControlChangeState"
+                      }
+                    }
+                  }
+                }
+              },
+              "custom_actions": {
+                "type": "array",
+                "description": "Create new columns based on the Last Custom Actions associated with the Asset. Multiple columns can be created, each with different Custom Action filter requirements.",
+                "items": {
+                  "type": "object",
+                  "description": "Add an extra custom Column (Field) with Custom Action data for the Assets in the list.",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "last-custom-action",
+                      "description": "Unique identifier name for the key in the response, all keys in extra_fields object must be unique."
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "Email",
+                      "description": "Filter Custom Action Field by the Custom Action `type`. The filter is on the full name only."
+                    },
+                    "since": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2025-12-13T12:00:00Z",
+                      "description": "UTC time for the earliest creation time of Custom Actions associated with an Asset, formatted in RFC 3339. Custom Actions before this time regardless of `state` will be ignored."
+                    },
+                    "statuses": {
+                      "type": "array",
+                      "example": [
+                        "pending",
+                        "completed"
+                      ],
+                      "description": "Filter Custom Action Field by the Custom Action current `state`.",
+                      "items": {
+                        "$ref": "#/components/schemas/enum.CustomActionState"
+                      }
+                    }
+                  }
+                }
+              },
+              "datastreams": {
+                "type": "array",
+                "description": "Create new columns based on mathematical calculations for a time range of a Data Stream associated with the Assets. Multiple columns can be created, each with its own mathematical formula and Asset / Data Stream pair.",
+                "items": {
+                  "type": "object",
+                  "description": "Add an extra custom Column (Field) with Data Stream data for the Assets in the list.",
+                  "properties": {
+                    "computation": {
+                      "$ref": "#/components/schemas/requests.DatastreamExtraFieldComputation"
+                    },
+                    "datastream_name": {
+                      "type": "string",
+                      "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                      "example": "motor-speed",
+                      "minLength": 1,
+                      "maxLength": 64,
+                      "description": "Data Stream key `name`. Used in connection with the Asset `name` to retrieve the Asset / Data Stream pair's data"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "datastream-motor-speed",
+                      "description": "Unique identifier name for the key in the response, all keys in extra_fields object must be unique."
+                    },
+                    "filters": {
+                      "type": "array",
+                      "description": "Optional to filter the returned Asset List based on an array of operator / value criteria relating to the Datastream. Each filter is treated as `AND`. This will remove Assets from the returned Asset list that do not meet this criteria.",
+                      "items": {
+                        "$ref": "#/components/schemas/requests.AssetInsightsFilter"
+                      }
+                    }
+                  }
+                }
+              },
+              "data_qualities": {
+                "type": "array",
+                "description": "Create new columns based on Data Qualities associated with the Asset. Multiple columns can be created, each with different Data Quality filter requirements.",
+                "items": {
+                  "type": "object",
+                  "description": "Add an extra custom Column (Field) with Data Quality data for the Assets in the list.",
+                  "properties": {
+                    "computation": {
+                      "$ref": "#/components/schemas/requests.DatastreamExtraFieldComputation"
+                    },
+                    "data_quality_name": {
+                      "type": "string",
+                      "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                      "example": "kelvin_timestamp_anomaly",
+                      "minLength": 1,
+                      "maxLength": 64,
+                      "description": "Data Quality key `name`. Used in connection with the Asset `name` to retrieve the Asset / Data Quality pair's data"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "data-quality-kelvin-timestamp-anomaly",
+                      "description": "Unique identifier name for the key in the response, all keys in extra_fields object must be unique."
+                    }
+                  }
+                }
+              },
+              "parameters": {
+                "type": "array",
+                "description": "Create new columns based on Application Parameters associated with the Asset. Multiple columns can be created, each with different Application Parameters requirements. Separately, the `filter` option will remove Assets from the returned Asset list that do not meet the operator and value criteria.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "app_name": {
+                      "type": "string",
+                      "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                      "example": "motor-speed-optimization",
+                      "minLength": 1,
+                      "maxLength": 32,
+                      "description": "App Registry App key `name` to retrieve the Parameters. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+                    },
+                    "filters": {
+                      "type": "array",
+                      "description": "Optional to filter the returned Asset List based on an array of operator / value criteria relating to the Parameters. Each filter is treated as `AND`. This will remove Assets from the returned Asset list that do not meet this criteria.",
+                      "items": {
+                        "$ref": "#/components/schemas/requests.AssetInsightsFilter"
+                      }
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "motor-speed-set-point-low",
+                      "description": "Unique identifier name for the key in the response, all keys in extra_fields object must be unique."
+                    },
+                    "parameter_name": {
+                      "type": "string",
+                      "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                      "example": "motor-speed-set-point",
+                      "minLength": 1,
+                      "maxLength": 64,
+                      "description": "Parameter key `name` to retrieve the Parameters from the App for the Assets. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+                    },
+                    "primitive_type": {
+                      "$ref": "#/components/schemas/enum.ParameterType"
+                    }
+                  }
+                }
+              },
+              "recommendations": {
+                "type": "array",
+                "description": "Create new columns based on Recommendations associated with the Asset. Multiple columns can be created, each with different Recommendation filter requirements.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "motor-speed-recommendations",
+                      "description": "Unique identifier name for the key in the response, all keys in extra_fields object must be unique."
+                    },
+                    "since": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2023-11-13T12:00:00Z",
+                      "description": "UTC time for the earliest creation time of Recommendations associated with an Asset, formatted in RFC 3339. Recommendations before this time regardless of `state` will be ignored."
+                    },
+                    "source": {
+                      "type": "string",
+                      "format": "krn",
+                      "example": "krn:user:richard.teo@kelvininc.com",
+                      "minLength": 1,
+                      "maxLength": 256,
+                      "description": "KRN of the User or Service that created the Recommendation."
+                    },
+                    "states": {
+                      "type": "array",
+                      "example": [
+                        "pending",
+                        "auto_accepted"
+                      ],
+                      "description": "Only return Recommendations associated with one or more `states`. The filter is on the full `state` name only. All strings in the array are treated as `OR`.",
+                      "items": {
+                        "$ref": "#/components/schemas/enum.RecommendationState"
+                      }
+                    },
+                    "types": {
+                      "type": "array",
+                      "example": [
+                        "Decrease speed",
+                        "increase_speed"
+                      ],
+                      "description": "Only return Recommendations associated with one or more Recommendation Types. The filter is on the full Recommendation Type `name` only. All strings in the array are treated as `OR`.",
+                      "items": {
+                        "type": "string",
+                        "format": "^[a-zA-Z0-9]([-_ .a-zA-Z0-9]*[a-zA-Z0-9])?$",
+                        "minLength": 1,
+                        "maxLength": 64
+                      }
+                    }
+                  }
+                }
+              },
+              "parameters_schedule": {
+                "type": "array",
+                "description": "Create new columns based on the Parameters Schedule associated with the Asset. Multiple columns can be created, each with different Schedule filter requirements.",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "example": "next-schedule",
+                      "description": "Unique identifier name for the key in the response, all keys in extra_fields object must be unique."
+                    },
+                    "schedule_type": {
+                      "$ref": "#/components/schemas/enum.AssetInsightsParameterScheduleType"
+                    },
+                    "max_date": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2024-04-26T12:00:00Z",
+                      "description": "UTC time for the latest time of a Schedule associated with an Asset, formatted in RFC 3339. Schedules after this time will be ignored."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "filters": {
+            "type": "object",
+            "description": "Create unlimited number of filters related to the Assets list and define specific filtering criteria for each new filter.",
+            "properties": {
+              "control_changes": {
+                "type": "object",
+                "description": "Create new filters based on Control Changes associated with the Assets.",
+                "properties": {
+                  "contains": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "If true, only return Assets that have Control Changes associated with them. If false, only return Assets that do not have Control Changes associated with them."
+                  },
+                  "filters": {
+                    "type": "array",
+                    "description": "Apply specific filter criteria to the Control Changes associated with the Assets.",
+                    "items": {
+                      "$ref": "#/components/schemas/requests.ControlChangeFilter"
+                    }
+                  }
+                }
+              },
+              "recommendations": {
+                "type": "object",
+                "description": "Create new filters based on Recommendations associated with the Assets.",
+                "properties": {
+                  "contains": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "If true, only return Assets that have Recommendations associated with them. If false, only return Assets that do not have Recommendations associated with them."
+                  },
+                  "filters": {
+                    "type": "array",
+                    "description": "Apply specific filter criteria to the Recommendations associated with the Assets.",
+                    "items": {
+                      "$ref": "#/components/schemas/requests.RecommendationFilter"
+                    }
+                  }
+                }
+              },
+              "data_tags": {
+                "type": "object",
+                "description": "Create new filters based on Data Tags associated with the Assets.",
+                "properties": {
+                  "contains": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "If true, only return Assets that have Data Tags associated with them. If false, only return Assets that do not have Data Tags associated with them."
+                  },
+                  "filters": {
+                    "type": "array",
+                    "description": "Apply specific filter criteria to the Data Tags associated with the Assets.",
+                    "items": {
+                      "$ref": "#/components/schemas/requests.DataTagFilter"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "filter_assets_with_data_qualities": {
+            "type": "boolean",
+            "example": true,
+            "description": "Only return Assets with configured data qualities."
+          },
+          "force_parameters_refresh": {
+            "type": "boolean",
+            "example": true,
+            "description": "Force all parameters to be refreshed."
+          },
+          "pinned_assets": {
+            "type": "array",
+            "example": [
+              "beam_pump_01",
+              "beam_pump_32"
+            ],
+            "description": "List of Asset names that should always appear at the top of page 1 of any search results. The filter is on the full name only. Can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "search": {
+            "type": "array",
+            "example": [
+              "beam",
+              "Motor"
+            ],
+            "description": "Search and filter on the list based on the Asset keys `title` (Display Name) or `name`. The search is case insensitive and will find partial matches as well.",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "sort_by": {
+            "type": "array",
+            "description": "Options for sorting the returned results.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "direction": {
+                  "type": "string",
+                  "default": "asc",
+                  "example": "desc",
+                  "enum": [
+                    "asc",
+                    "desc"
+                  ],
+                  "description": "Sorting order for the results returned.",
+                  "x-enum-inline": true
+                },
+                "field": {
+                  "type": "string",
+                  "default": "name",
+                  "example": "title",
+                  "description": "Key name of the Asset or `extra_field` field `name` to sort by. Source of field will be determined by the `SortByExtraField` key. If sorting by Asset key, available options are; `name`, `title`, `asset_type_name`, `asset_type_title` and `state`."
+                },
+                "sort_by_extra_field": {
+                  "type": "boolean",
+                  "example": false,
+                  "description": "Choose the `sort_by` source of the `field` parameter. If `false`, the source of the `field` name is an Asset key. If `true`, the source is a `extra_field[].name` key."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "description": "A dictionary with a data property that contains an array of up to `page_size` Asset objects starting from `page` number.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "asset_type_name": {
+                    "type": "string",
+                    "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                    "example": "beam_pump",
+                    "description": "Unique identifier `name` of the Asset Type linked to this Asset."
+                  },
+                  "asset_type_title": {
+                    "type": "string",
+                    "example": "Well 01",
+                    "maxLength": 64,
+                    "description": "Display name (`title`) of the Asset Type."
+                  },
+                  "extra_fields": {
+                    "type": "object",
+                    "description": "A dictionary of all requested data from the `extra_fields` key in the request body. The key names and values for each column of data are defined in the request body."
+                  },
+                  "last_seen": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-06-26T18:22:18.582724Z",
+                    "description": "UTC time when this the Asset was last seen online, formatted in RFC 3339."
+                  },
+                  "name": {
+                    "type": "string",
+                    "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                    "example": "well_01",
+                    "maxLength": 64,
+                    "description": "Unique identifier `name` of the Asset."
+                  },
+                  "pinned": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "Pinned status of the Asset. The pinned Assets are defined in an array from the request in the key `PinnedAssets`."
+                  },
+                  "state": {
+                    "type": "string",
+                    "example": "offline",
+                    "enum": [
+                      "online",
+                      "offline",
+                      "unknown"
+                    ],
+                    "description": "Current status (`state`) of the Asset."
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "Well 01",
+                    "maxLength": 64,
+                    "description": "Display name (`title`) of the Asset."
+                  }
+                }
+              }
+            },
+            "pagination": {
+              "type": "object",
+              "description": "Pagination information for current page and total filtered results.",
+              "properties": {
+                "page_size": {
+                  "type": "integer",
+                  "example": 20,
+                  "description": "Number of objects returned in current page."
+                },
+                "page": {
+                  "type": "integer",
+                  "example": 8,
+                  "description": "Current page number of returned objects."
+                },
+                "total_pages": {
+                  "type": "integer",
+                  "example": 39,
+                  "description": "Total pages available based on current request parameters."
+                },
+                "total_items": {
+                  "type": "integer",
+                  "example": 628,
+                  "description": "Total number of objects based on current request parameters."
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "424": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

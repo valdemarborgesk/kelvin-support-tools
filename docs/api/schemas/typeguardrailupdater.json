@@ -1,0 +1,71 @@
+{
+  "id": "api/schemas/guardrailupdater",
+  "title": "GuardrailUpdater",
+  "type": "schema",
+  "category": "api",
+  "content": "# GuardrailUpdater\n\nOptional limits for absolute minimum and maximum values.\nThis is defined using the value of another Asset / Data Stream pair.\nTip : This is useful if the guardrail values should be customizable by Operations.\n\n\n## Properties\n\n- **number** (`object`): Limits for absolute minimum and maximum values.",
+  "summary": "Optional limits for absolute minimum and maximum values.\nThis is defined using the value of another Asset / Data Stream pair.\nTip : This is useful if the guardrail values should be customizable by Operations.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.GuardrailUpdater",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "description": "Optional limits for absolute minimum and maximum values.\nThis is defined using the value of another Asset / Data Stream pair.\nTip : This is useful if the guardrail values should be customizable by Operations.",
+      "properties": {
+        "number": {
+          "type": "object",
+          "description": "Limits for absolute minimum and maximum values.",
+          "properties": {
+            "min": {
+              "type": "object",
+              "required": [
+                "source"
+              ],
+              "description": "Limiting value definitions.",
+              "properties": {
+                "source": {
+                  "description": "Asset / Data Stream pair used to determine the values for the minimum and maximum guardrail values.",
+                  "type": "string",
+                  "format": "krn"
+                },
+                "inclusive": {
+                  "description": "The Asset / Data Stream pair value is inclusive within the allowable range.",
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            },
+            "max": {
+              "type": "object",
+              "required": [
+                "source"
+              ],
+              "description": "Limiting value definitions.",
+              "properties": {
+                "source": {
+                  "description": "Asset / Data Stream pair used to determine the values for the minimum and maximum guardrail values.",
+                  "type": "string",
+                  "format": "krn"
+                },
+                "inclusive": {
+                  "description": "The Asset / Data Stream pair value is inclusive within the allowable range.",
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

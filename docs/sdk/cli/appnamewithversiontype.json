@@ -1,0 +1,31 @@
+{
+  "id": "sdk/cli/sdk.lib.utils.click-utils/appnamewithversiontype",
+  "title": "AppNameWithVersionType",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AppNameWithVersionType\n\nInherits from: StringParamType\n\n\nClick Custom App name with version validator\nValidates for app name with version \"someapp:1.0.0\" and/or container name \"somecontainer.app\"\n\nAttributes\n----------\nversion_required: bool, optional, default False\n    If True, version needs to be present in the string  e.g. \"app:1.0.0\"\nallow_container: bool, optional, default False\n    If True, also the container name is allowed in the following format \"somecontainer.app\"\n\n\n## Methods\n\n\n### __init__(version_required: bool, allow_container: bool) -> None\n\n\n### convert(value: str, param: Optional[Parameter], ctx: Optional[Context]) -> str\n\n\n### validate_container(value: str, param: Optional[Parameter], ctx: Optional[Context]) -> None\n\n\n### validate_app_name_with_version(value: str, param: Optional[Parameter], ctx: Optional[Context]) -> None\n",
+  "summary": "Click Custom App name with version validator Validates for app name with version \"someapp:1.0.0\" and/or container name \"somecontainer.app\"",
+  "source": "cli/src/kelvin/sdk/lib/utils/click_utils.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.utils.click_utils",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "convert",
+      "validate_container",
+      "validate_app_name_with_version"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

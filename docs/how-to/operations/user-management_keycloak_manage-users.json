@@ -1,0 +1,24 @@
+{
+  "id": "how-to/user-management/keycloak/manage-users",
+  "title": "Manage Users",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Manage Users\n\n_On this page you will learn as an Administrator of a Kelvin Cloud how to create, edit and delete the Users inside Keycloak._\n\n## Users\n\nWhen you add a user, this user can use their credentials to sign on to any program which is linked to the Keycloak Realm. The actions they can perform will be limited in all programs to the Realm Roles assigned to them either individually or through group assignments.\n\n<div class=\"result\" markdown>\n\n=== \"Create New User\"\n\n    To create a new user, click on the **Users** option in the left sidebar and then click on the **Add User** button in the top right hand corner.\n\n    \n\n    You can then fill in the basic information about the user.\n\n    \n        You can also add the groups that the user should be associated with here.\n\n    \n\n    The last option is Required User Actions where you can force a user to take certain actions when they first login such as compulsory 2FA or change password, etc.\n\n    \n\n    When finished you can click the **Save** button. You will now be able to adjust any specific details about the user such as their individual roles mappings, Groups assignments, etc.\n\n    \n        You do not need to save the any changes you make. It will be automatically saved every time you change a setting.\n\n    Normally if you assigned the group permissions in the previous page correctly you will only need to set an initial temporary password for the new user.\n\n=== \"Manage Users\"\n\n    To manage current users, click on the **Users** option in the left sidebar and then search for the user.\n\n    \n\n    \n        For security reasons the users list will start empty. This does not mean there are no users, it just will not automatically display them.\n\n        To display all users, you can click on the **View all users** button.\n\n    When you find the user, then click on the **ID** alphanumeric number to open the details about the user. You can then edit many settings for the user.\n\n    \n\n=== \"Reset Passwords\"\n\n    In **Credentials** you can do the following tasks\n        \n    * Change a user's password\n    * Reset a user's password\n    * Force user to change password on next login\n\n    \n\n</div>",
+  "summary": "_On this page you will learn as an Administrator of a Kelvin Cloud how to create, edit and delete the Users inside Keycloak._",
+  "source": "core-docs/docs/platform-administration/how-to/user-management/keycloak/manage-users.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "create",
+    "manage",
+    "operations",
+    "users"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

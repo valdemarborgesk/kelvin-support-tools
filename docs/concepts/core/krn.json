@@ -1,0 +1,27 @@
+{
+  "id": "concepts/core/krn",
+  "title": "Kelvin Resource Name Registry",
+  "type": "concept",
+  "category": "core",
+  "content": "# Kelvin Resource Name Registry\n\n## Overview\n\nThe Kelvin Resource Name (KRN) Registry provides a unified way to identify resources across the Kelvin Platform. It acts as a standardized naming system, ensuring that every resource has a unique, structured, and consistent reference.  \n\nConceptually, the KRN is similar to other global resource identifiers (such as URNs or ARNs) but is designed specifically for Kelvin’s ecosystem. Its purpose is to bring clarity, consistency, and interoperability when dealing with resources across different applications and services.  \n\n## Core Concepts\n\n- **Unified Identification**  \n  Every resource in the platform can be represented by a KRN, eliminating ambiguity and ensuring consistency.\n\n- **Namespace Structure**  \n  KRNs are divided into namespaces that group related resources. This provides both organizational clarity and a logical hierarchy.\n\n- **Flexibility**  \n  The format allows for many different types of resources to be referenced, whether they are assets, workloads, data streams, or other entities.\n\n- **Interoperability**  \n  By using a common scheme, KRNs make it possible to link, exchange, and manage resources across services without confusion.\n\n- **Documentation Requirement**  \n  Each namespace and its usage is documented in the [Developer Tools section](../../developer-tools/how-to/develop/krn.md), ensuring that the meaning and purpose of every identifier is clear within the platform.\n\n## Summary\n\nThe KRN Registry is not just a naming format but a foundational concept for how Kelvin structures and organizes its ecosystem. It enables resource management at scale while keeping identifiers human-readable, consistent, and interoperable across applications.",
+  "summary": "",
+  "source": "core-docs/docs/overview/concepts/krn.md",
+  "code_examples": [],
+  "related": [
+    "how-to/krn"
+  ],
+  "tags": [
+    "application",
+    "asset",
+    "core",
+    "data",
+    "kelvin",
+    "name",
+    "registry",
+    "resource"
+  ],
+  "metadata": {
+    "section": "overview/concepts",
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "how-to/cluster/manage-nodes/nodes-dashboard",
+  "title": "Nodes Dashboard",
+  "type": "how_to",
+  "category": "operations",
+  "content": "## Overview\n\nThe Nodes dashboard gives you information about the local Node and the Workloads that are running on it.\n\n## Nodes Status\n\nIn a Cluster you can have many Nodes available. In this section you can see all the Nodes in the Cluster and the current status of each Node.\n\n    If communications to one or more nodes has been lost, then the status of the affected Nodes will be updated to read \"Not Ready\".\n\n## Workloads on Node\n\nIf you click on a Node, then you can see more details about the individual Node and the workloads running on the Node.\n\n    Details on the workloads screen is the same as the workloads screen for the Cluster.\n\n## Node Info\n\nIf you click on a Node, then click the info tab you can see more details about the individual Node.\n\n### General Information\n\nThe top card has the general information about the Node, its operating system and Kubernetes versions.\n\n### Node Capacity\n\nBelow the General Information you can see the current hardware specifications available to the Node.\n\nScroll down to the bottom and you will see the **Capacity** card.\n\n### Network Information\n\nBelow the Capacity you can see the physical network interface information.\n\n### Node Conditions\n\nAnd finally at the bottom it is possible to monitor the condition of the resources used by the Node in real time and to see any problems.\n\nScroll down to the bottom and you will see the **Conditions** card.",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/cluster/manage-nodes/nodes-dashboard.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "dashboard",
+    "monitor",
+    "nodes",
+    "operations"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

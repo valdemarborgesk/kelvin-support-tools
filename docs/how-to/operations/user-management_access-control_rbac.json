@@ -1,0 +1,27 @@
+{
+  "id": "how-to/user-management/access-control/rbac",
+  "title": "Role Based Access Control",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Role Based Access Control\n\nRole-Based Access Control (RBAC) is the access control system used by the authentication framework.\n\n    RBAC can be broadly defined as the user access rights to perform actions in the Kelvin Platform.\n\n    For example, users can be given read and/or write access to view and edit Assets.\n\nEach role consists of a set of permissions. Users can be assigned to roles to group common permissions or can be assigned individual permissions directly.\n\nPermissions are the broad user access rights. This controls the access users have to each API endpoint.\n\n    Do not confuse this role with the roles in the Attribute Based Access Control (ABAC) which is managed by a different system.\n\nKelvin has created an extensive granular list of Roles & Permissions in the RBAC so that you can fine tune exactly what users and groups can do.\n\n    Access is checked also with ABAC in the following order.\n\n    1. User's Group\n    1. Group's Role Based Access Control settings in permissions\n    1. Group's Attribute Based Access Control settings in policies\n\n    Only if a user has access to all three will access or action be granted.\n\nWhen looking at the Kelvin API Reference you will see the permission required for each API endpoint.\n\n## Top Level Roles\n\nThere are two top level roles that give overall group permissions.\n\n* Operations (Engineers)\n* Administrator\n\nThis is clearly defined in the left hand sidebar of the Kelvin UI where you can see the two top level roles - **Operations** and **Administration**.\n\n## Roles & Permissions\n\n    These roles will change from version to version. You may found many roles that do not exist in the current version. They are maintained for backwards compatibility with older versions of Kelvin.\n\n### Full Access\n\n| Roles                | Description                                                                 |\n| -------------------- | --------------------------------------------------------------------------- |\n| kelvin.permission.\\* | This will give the user unlimited access to all features on Kelvin          |\n\n### Granular Permissions\n\nYou can see the latest list of permissions for each API endpoint in the [API reference documentation](../../../../developer-tools/api/reference/api.html).",
+  "summary": "Role-Based Access Control (RBAC) is the access control system used by the authentication framework.",
+  "source": "core-docs/docs/platform-administration/how-to/user-management/access-control/rbac.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "access",
+    "api",
+    "based",
+    "control",
+    "create",
+    "operations",
+    "role",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

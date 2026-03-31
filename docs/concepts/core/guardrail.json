@@ -1,0 +1,25 @@
+{
+  "id": "concepts/core/guardrail",
+  "title": "Guardrail",
+  "type": "concept",
+  "category": "core",
+  "content": "# Guardrail\n\n## Overview\n\nWhen values are written to assets, multiple mechanisms ensure that incorrect data values are blocked. These controls can be implemented in your program, configured directly within Kelvin SmartApp™ configuration files, or enforced through Guard Rails.\n\nGuardrails serve as the final layer of validation, preventing any data from being written to asset/data stream pairs that fail to meet specified criteria.\n\nThere are three types of Guardrails available;\n\nA minimum/maximum limits where values outside these limits will be rejected by the Guardrail and not sent or written to the Asset.\n\nA minimum/maximum increase limits where the change from the current value to the new value is outside the limits will be rejected by the Guardrail and not sent or written to the Asset.\n\nA minimum/maximum decrease limits where the change from the current value to the new value is outside the limits will be rejected by the Guardrail and not sent or written to the Asset.\n\n## Guardrail Actions\n\nWhen a guardrail rule is breached, then the Control Change will automatically fail and an annotation will be added to the Control Change object.\n\nThe easiest way to see Control Change annotations is through the Data Explorer on the Control Change activity lane by hovering your mouse over an event.\n\n    You can also use the Kelvin API or Kelvin API Client (Python) to compile Control Change failures and their annotations.",
+  "summary": "",
+  "source": "core-docs/docs/overview/concepts/guardrail.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "api",
+    "application",
+    "asset",
+    "control",
+    "core",
+    "data",
+    "guardrail",
+    "sdk"
+  ],
+  "metadata": {
+    "section": "overview/concepts",
+    "last_updated": "2026-02-04"
+  }
+}

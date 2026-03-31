@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/controlchangerangeget",
+  "title": "ControlChangeRangeGet",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ControlChangeRangeGet\n\nInherits from: DataModelBase\n\n\nControlChangeRangeGet object.\n\nParameters\n----------\n    end_date: datetime\n    resources: Optional[list[KRN]]\n    sources: Optional[list[KRN]]\n    start_date: datetime\n    states: Optional[list[enum.ControlChangeState]]\n    trace_ids: Optional[list[TraceId]]\n",
+  "summary": "ControlChangeRangeGet object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

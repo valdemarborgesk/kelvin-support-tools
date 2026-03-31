@@ -1,0 +1,96 @@
+{
+  "id": "how-to/develop/test/csv",
+  "title": "Testing with historical CSV file",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Testing with historical CSV file\n\nIn the Kelvin SDK there is a `kelvin-publisher` test tool to help you ingest data to the inputs and debug the outputs to test the performance of your Kelvin SmartApp™.\n\nIt is a CLI utility for exercising your application during development. It is not imported into your code and is used only as a standalone testing tool.\n\n    You must have installed the `kelvin-python-sdk[publisher]` library for this feature to work.\n\nThe Kelvin SDK CSV publisher tool is designed to allow testers to ingest messages from a CSV file for testing purposes.\n\n## CSV Tool Overview\n\nThe CSV publisher tool supports a variety of options to customize its behavior. Below is a list of the available options:\n\n| Test Parameters                      | Required          | Description                                           | Note                                       |\n|--------------------------------|-------------------|-------------------------------------------------------|--------------------------------------------|\n| `--csv TEXT`                   | **required**      | Path to the CSV file                                  | N/A                                        |\n| `--config TEXT`                | **optional**      | Path to the `app.yaml`                                | **Default**: Current directory             |\n| `--publish-interval CSV|FLOAT` | **optional**      | Publish interval. Set either to \"csv\" to use the interval between csv rows or to a number to set afixed publishing interval in seconds.            | **Default**: csv                       |\n| `--ignore-timestamps`          | **optional**      | Ignore CSV timestamps                                 | N/A                                        |\n| `--now-offset`                 | **optional**      | Offsets the first csv timestamp to the current time   | N/A                                        |\n| `--replay`                     | **optional**      | Continuously publish data from CSV when reaching EOF  | N/A                                        |\n| `--asset-count INTEGER`        | **optional**      | Number of Assets (test-asset-N)                       | **Default**: 1                             |\n| `--assets PATH`                | **optional**      | Assets Info (Properties) CSV file                     | N/A                                        |\n| `--asset-parameter TEXT`       | **optional**      | Sets App Parameter                                  | Can be used multiple times                 |\n\n## CSV File Structure\n\nTo structure the CSV file for your application, please follow the rules outlined below:\n\n1. **Timestamp Column**:\n\n    - The first column should be labeled as **timestamp**.\n    - The timestamp should follow one of the supported formats by the [Arrow](https://arrow.readthedocs.io/en/latest/) library. Examples of accepted formats include:\n        - `YYYY-MM-DD HH:mm:ss`\n        - `YYYY/M/D HH:mm`\n        - `YYYYDDDD HH:mm`\n        - Other Arrow-compatible formats\n\n2. **Asset Column**:\n\n            If you use the `--asset-count` option, then this `asset` column and external asset CSV file will be ignored.\n\n    - Optionally include an `asset` column to link it to a list of assets and their properties stored in another CSV file, as specified by the `--asset` option.\n    - During testing, the `asset` name in the CSV column will be matched with the `asset` name in the external asset CSV file, injecting all associated asset properties.\n\n    The asset CSV file contains the asset name and its properties.\n\n    The first column (Name ID) must contain the asset names, and any subsequent columns should define property names and their corresponding values, with each column representing one property.\n\n    Example of an asset CSV file with asset names and the properties `diameter` and `type`:\n\n    ```csv title=\"Testing Data CSV File Example\" linenums=\"1\"\n    Name ID,diameter,type\n    asset1,47,plunger\n    asset2,23.1,motor\n    (...)\n    ```\n\n3. **Input Columns**:\n\n            If you do not use the `--asset` option mentioned above then you can define the number of assets to test using the `--asset-count` option.\n\n    - Include additional columns for each input defined in your `app.yaml` file. These columns represent the various data stream inputs your application receives.\n    - Example input columns might include:\n        - **motor_temperature**\n        - **pressure**\n        - **gas_flow**\n\n4. **Optional App Parameters**:\n\n    - If you have optional app parameters defined in your `app.yaml` file, include them as additional columns. These parameters can be useful for evaluating different operational behaviors.\n    - Example optional parameter columns might include:\n        - **temperature_max_threshold**\n        - **speed_decrease_set_point**\n        - **closed_loop**\n\n## Download CSV Test File\n\nNow that you're familiar with the basics of the CSV publisher tool, it's time to put the Event Detection SmartApp to the test using a CSV file.\n\nDownload the CSV file from the link below and save it to your local machine:\n\n[:material-download: Download test.csv](https://raw.githubusercontent.com/kelvininc/app-samples/master/applications/event-detection/csv/test.csv){: data-force-download download=\"test.csv\" .md-button }\n\n    Make sure to copy the downloaded CSV file into the directory of your Kelvin SmartApp™ project before proceeding.\n\nThe CSV file you downloaded contains the following data:\n\n```csv title=\"Sample Test Data CSV File\" linenums=\"1\"\ntimestamp,motor_temperature\n2023-10-27 10:00:01.0,50\n2023-10-27 10:00:02.0,51\n2023-10-27 10:00:03.0,52\n2023-10-27 10:00:04.0,53\n2023-10-27 10:00:05.0,54\n2023-10-27 10:00:06.0,55\n2023-10-27 10:00:07.0,56\n2023-10-27 10:00:08.0,57\n2023-10-27 10:00:09.0,58\n2023-10-27 10:00:10.0,59\n2023-10-27 10:00:11.0,60\n```\n\n## Test your SmartApp\n\nOpen a terminal window on the folder of your Kelvin SmartApp™ project and follow the steps below to test your Event Detection SmartApp using the CSV file you downloaded:\n\n1. **Run the CSV Test Tool:**\n\n    ```bash title=\"Starting Test Tool with CSV File Data\" linenums=\"1\"\n    kelvin-publisher csv --replay --now-offset --csv test.csv\n    ```\n\n    and you should see the following output:\n\n    ```bash title=\"Test Tool Output\" linenums=\"1\"\n    Publisher started.\n    ```\n  \n2. **Open a NEW terminal window and run the SmartApp**:\n\n    ```bash title=\"Running Kelvin SmartApp™ Python Example\" linenums=\"1\"\n    python3 main.py\n    ```\n\n    and you should see the following output:\n\n    ```bash title=\"Kelvin SmartApp™ Python Example Output\" linenums=\"1\"\n    Received Motor Temperature | Asset: test-asset-1 | Value: 50.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 51.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 52.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 53.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 54.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 55.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 56.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 57.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 58.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 59.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 60.0\n\n    Published Motor Speed SetPoint (Control Change) Recommendation: 1000.0\n\n    (...)\n    ```\n\n3. **Go to the CSV Tool terminal and check the logs:**\n\n    ```bash title=\"Test Tool Output\" linenums=\"1\"\n    Publisher started.\n    Connected\n\n    CSV ingestion is complete\n\n    Received Recommendation Message:\n    RecommendationMsg(id=UUID('e5cc136a-5ae1-4014-a106-6699b6423e62'), type=KMessageTypeRecommendation('recommendation', ''), trace_id=None, source=None, timestamp=datetime.datetime(2024, 8, 9, 18, 10, 40, 231994, tzinfo=datetime.timezone(datetime.timedelta(seconds=3600), 'WEST')), resource=KRNAsset(asset='test-asset-1'), payload=RecommendationPayload(source=None, resource=KRNAsset(asset='test-asset-1'), type='decrease_speed', description=None, confidence=None, expiration_date=None, actions=RecommendationActions(control_changes=[RecommendationControlChange(timeout=None, retries=None, expiration_date=datetime.datetime(2024, 8, 9, 18, 20, 40, 231843, tzinfo=datetime.timezone(datetime.timedelta(seconds=3600), 'WEST')), payload=1000.0, from_value=None, state=None, resource=KRNAssetDataStream(asset='test-asset-1', data_stream='motor_speed_set_point'), control_change_id=None)]), metadata={}, state=None))\n    ```\n\nAnd here is a video showing the test in action:\n\nAs you can see, the SmartApp is receiving the motor temperature data and publishing a control change recommendation to decrease the motor speed set point.",
+  "summary": "In the Kelvin SDK there is a kelvin-publisher test tool to help you ingest data to the inputs and debug the outputs to test the performance of your Kelvin SmartApp™. It is a CLI utility for exercising your application during development. It is not...",
+  "source": "core-docs/docs/developer-tools/how-to/develop/test/csv.md",
+  "code_examples": [
+    {
+      "language": "csv",
+      "code": "Name ID,diameter,type\n    asset1,47,plunger\n    asset2,23.1,motor\n    (...)",
+      "title": "Testing Data CSV File Example"
+    },
+    {
+      "language": "csv",
+      "code": "timestamp,motor_temperature\n2023-10-27 10:00:01.0,50\n2023-10-27 10:00:02.0,51\n2023-10-27 10:00:03.0,52\n2023-10-27 10:00:04.0,53\n2023-10-27 10:00:05.0,54\n2023-10-27 10:00:06.0,55\n2023-10-27 10:00:07.0,56\n2023-10-27 10:00:08.0,57\n2023-10-27 10:00:09.0,58\n2023-10-27 10:00:10.0,59\n2023-10-27 10:00:11.0,60",
+      "title": "Sample Test Data CSV File"
+    },
+    {
+      "language": "bash",
+      "code": "kelvin-publisher csv --replay --now-offset --csv test.csv",
+      "title": "Starting Test Tool with CSV File Data"
+    },
+    {
+      "language": "bash",
+      "code": "Publisher started.",
+      "title": "Test Tool Output"
+    },
+    {
+      "language": "bash",
+      "code": "python3 main.py",
+      "title": "Running Kelvin SmartApp™ Python Example"
+    },
+    {
+      "language": "bash",
+      "code": "Received Motor Temperature | Asset: test-asset-1 | Value: 50.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 51.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 52.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 53.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 54.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 55.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 56.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 57.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 58.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 59.0\n\n    Received Motor Temperature | Asset: test-asset-1 | Value: 60.0\n\n    Published Motor Speed SetPoint (Control Change) Recommendation: 1000.0\n\n    (...)",
+      "title": "Kelvin SmartApp™ Python Example Output"
+    },
+    {
+      "language": "bash",
+      "code": "Publisher started.\n    Connected\n\n    CSV ingestion is complete\n\n    Received Recommendation Message:\n    RecommendationMsg(id=UUID('e5cc136a-5ae1-4014-a106-6699b6423e62'), type=KMessageTypeRecommendation('recommendation', ''), trace_id=None, source=None, timestamp=datetime.datetime(2024, 8, 9, 18, 10, 40, 231994, tzinfo=datetime.timezone(datetime.timedelta(seconds=3600), 'WEST')), resource=KRNAsset(asset='test-asset-1'), payload=RecommendationPayload(source=None, resource=KRNAsset(asset='test-asset-1'), type='decrease_speed', description=None, confidence=None, expiration_date=None, actions=RecommendationActions(control_changes=[RecommendationControlChange(timeout=None, retries=None, expiration_date=datetime.datetime(2024, 8, 9, 18, 20, 40, 231843, tzinfo=datetime.timezone(datetime.timedelta(seconds=3600), 'WEST')), payload=1000.0, from_value=None, state=None, resource=KRNAssetDataStream(asset='test-asset-1', data_stream='motor_speed_set_point'), control_change_id=None)]), metadata={}, state=None))",
+      "title": "Test Tool Output"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "cli",
+    "configure",
+    "csv",
+    "development",
+    "file",
+    "historical",
+    "monitor",
+    "sdk",
+    "smartapp",
+    "test",
+    "testing",
+    "with"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "Timestamp Column:"
+      },
+      {
+        "step": 2,
+        "instruction": "Asset Column:"
+      },
+      {
+        "step": 3,
+        "instruction": "Input Columns:"
+      },
+      {
+        "step": 4,
+        "instruction": "Optional App Parameters:"
+      },
+      {
+        "step": 5,
+        "instruction": "Run the CSV Test Tool:"
+      },
+      {
+        "step": 6,
+        "instruction": "Open a NEW terminal window and run the SmartApp:"
+      },
+      {
+        "step": 7,
+        "instruction": "Go to the CSV Tool terminal and check the logs:"
+      }
+    ],
+    "step_count": 7,
+    "last_updated": "2026-02-04"
+  }
+}

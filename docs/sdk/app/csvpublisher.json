@@ -1,0 +1,35 @@
+{
+  "id": "sdk/app/publisher.csv-publisher/csvpublisher",
+  "title": "CSVPublisher",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# CSVPublisher\n\nInherits from: DataGenerator\n\n\n## Methods\n\n\n### __init__(csv_file_path: str, publish_interval: Optional[float], playback: bool, ignore_timestamps: bool, now_offset: bool) -> Any\n\n\n### parse_timestamp(ts_str: str, offset: timedelta) -> Optional[datetime]\n\n\n### async run() -> AsyncGenerator[MessageData, None]\n",
+  "summary": "",
+  "source": "app/src/kelvin/publisher/csv_publisher.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import CSVPublisher\n\n# Usage example\napp = CSVPublisher()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "publisher.csv_publisher",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "parse_timestamp",
+      "run"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

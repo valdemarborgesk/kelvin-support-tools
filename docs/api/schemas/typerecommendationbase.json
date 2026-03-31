@@ -1,0 +1,110 @@
+{
+  "id": "api/schemas/recommendationbase",
+  "title": "RecommendationBase",
+  "type": "schema",
+  "category": "api",
+  "content": "# RecommendationBase\n\n\n## Properties\n\n- **confidence** (`integer`): Confidence level of the Recommendation. This is usually, but not mandatory, related to any machine learning model confidence results.\n- **custom_identifier** (`string`): An optional custom identifier for any purpose.\n- **description** (`string`): Detailed description of the Recommendation.\n- **expiration_date** (`string`): UTC time when any the Recommendation will expire and the `status` automatically marked as `expired`, formatted in RFC 3339. The operator will not be able to take any further actions on this Recommendation. If no date is given, then the Recommendation will never expire.\n- **metadata** (`object`): Custom dictionary keys/values for use by clients for anything useful and related to the Recommendation.\n- **resource** (`string`): The asset that this Recommendation is related to.\n- **resource_parameters** (`object`): resource_parameters\n- **trace_id** (`string`): The Trace ID associated with the Recommendation used for tracing and debugging.\n- **type** (`string`): The Recommendation Type `name` associated with the Recommendation.\n- **evidences** (`array`): A list of evidence that is being used to create the Recommendation.",
+  "summary": "Object with properties: confidence, custom_identifier, description, expiration_date, metadata",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.RecommendationBase",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "required": [
+        "resource",
+        "type"
+      ],
+      "properties": {
+        "confidence": {
+          "type": "integer",
+          "minimum": -2147483648,
+          "maximum": 2147483647,
+          "example": 7,
+          "description": "Confidence level of the Recommendation. This is usually, but not mandatory, related to any machine learning model confidence results."
+        },
+        "custom_identifier": {
+          "deprecated": true,
+          "type": "string",
+          "example": "model-aws-ltsm-anomaly",
+          "description": "An optional custom identifier for any purpose."
+        },
+        "description": {
+          "type": "string",
+          "example": "Beam pump speed AI optimizer application recommends a new value for the speed setpoint of the controller.",
+          "description": "Detailed description of the Recommendation."
+        },
+        "expiration_date": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when any the Recommendation will expire and the `status` automatically marked as `expired`, formatted in RFC 3339. The operator will not be able to take any further actions on this Recommendation. If no date is given, then the Recommendation will never expire."
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Custom dictionary keys/values for use by clients for anything useful and related to the Recommendation."
+        },
+        "resource": {
+          "type": "string",
+          "format": "krn",
+          "example": "krn:asset:bp_16",
+          "maxLength": 256,
+          "description": "The asset that this Recommendation is related to."
+        },
+        "resource_parameters": {
+          "type": "object",
+          "description": "resource_parameters"
+        },
+        "trace_id": {
+          "type": "string",
+          "example": "app-trace-123",
+          "maxLength": 256,
+          "description": "The Trace ID associated with the Recommendation used for tracing and debugging."
+        },
+        "type": {
+          "type": "string",
+          "format": "^[a-zA-Z0-9]([-_ .a-zA-Z0-9]*[a-zA-Z0-9])?$",
+          "maxLength": 64,
+          "example": "Decrease Speed",
+          "description": "The Recommendation Type `name` associated with the Recommendation."
+        },
+        "evidences": {
+          "type": "array",
+          "description": "A list of evidence that is being used to create the Recommendation.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "image",
+                "enum": [
+                  "markdown",
+                  "image",
+                  "iframe",
+                  "chart",
+                  "line-chart",
+                  "bar-chart",
+                  "dynacard",
+                  "data-explorer"
+                ],
+                "description": "Type of evidence that is being used to create the Recommendation."
+              },
+              "payload": {
+                "type": "object",
+                "description": "The payload of the evidence that is being used to create the Recommendation."
+              }
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "api/schemas/recommendationstatecreate",
+  "title": "RecommendationStateCreate",
+  "type": "schema",
+  "category": "api",
+  "content": "# RecommendationStateCreate\n\n## Enum Values\n\n- `pending`\n- `auto_accepted`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.RecommendationStateCreate",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "auto_accepted"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

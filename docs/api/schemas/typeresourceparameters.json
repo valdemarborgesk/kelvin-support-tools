@@ -1,0 +1,73 @@
+{
+  "id": "api/schemas/resourceparameters",
+  "title": "ResourceParameters",
+  "type": "schema",
+  "category": "api",
+  "content": "# ResourceParameters\n\n\n## Properties\n\n- **resource** (`string`): The target Asset to which the parameters are to be applied.\n- **parameters** (`array`): ",
+  "summary": "Object with properties: resource, parameters",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.ResourceParameters",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "required": [
+        "resource",
+        "parameters"
+      ],
+      "properties": {
+        "resource": {
+          "type": "string",
+          "format": "krn",
+          "minLength": 1,
+          "maxLength": 256,
+          "description": "The target Asset to which the parameters are to be applied."
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Parameter name"
+              },
+              "value": {
+                "oneOf": [
+                  {
+                    "type": "number",
+                    "description": "Parameter value as number"
+                  },
+                  {
+                    "type": "string",
+                    "description": "Parameter value as string"
+                  },
+                  {
+                    "type": "boolean",
+                    "description": "Parameter value as boolean"
+                  }
+                ]
+              },
+              "comment": {
+                "type": "string",
+                "description": "Comment regarding the parameter change action"
+              }
+            },
+            "required": [
+              "name",
+              "value"
+            ],
+            "type": "object"
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

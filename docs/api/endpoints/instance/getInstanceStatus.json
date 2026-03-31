@@ -1,0 +1,113 @@
+{
+  "id": "api/endpoints/instance/getInstanceStatus",
+  "title": "Get Instance Health Status",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Get Instance Health Status\n\nRetrieve the Health Status of all services on the Instance\n\n## Endpoint\n\n`GET /instance/status/get`",
+  "summary": "Get Instance Health Status",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X GET \\\n  'https://api.kelvininc.com/api/v4/instance/status/get' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.instance.getInstanceStatus()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/instance"
+  ],
+  "tags": [
+    "instance",
+    "api",
+    "get"
+  ],
+  "metadata": {
+    "path": "/instance/status/get",
+    "method": "GET",
+    "operation_id": "getInstanceStatus",
+    "tag": "Instance",
+    "permission": "n/a",
+    "parameters": [],
+    "request_body": null,
+    "responses": {
+      "200": {
+        "description": "Created",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "components": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                    "example": "api-workload",
+                    "minLength": 1,
+                    "maxLength": 64,
+                    "description": "Name of service on the Instance."
+                  },
+                  "status": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "Current status of the service on the Instance."
+                  }
+                }
+              }
+            },
+            "status": {
+              "type": "boolean",
+              "example": true,
+              "description": "Overall status of the Instance."
+            }
+          }
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      },
+      "503": {
+        "description": "Service Unavailable",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "components": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                    "example": "api-workload",
+                    "minLength": 1,
+                    "maxLength": 64,
+                    "description": "Name of service on the Instance."
+                  },
+                  "status": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "Current status of the service on the Instance."
+                  }
+                }
+              }
+            },
+            "status": {
+              "type": "boolean",
+              "example": true,
+              "description": "Overall status of the Instance."
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

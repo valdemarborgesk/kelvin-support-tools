@@ -1,0 +1,41 @@
+{
+  "id": "api/schemas/customaction",
+  "title": "CustomAction",
+  "type": "schema",
+  "category": "api",
+  "content": "# CustomAction\n\n\n## Properties\n\n- **type** (`string`): The type of the custom action.\n- **way** (`string`): The direction of the custom action. If `input-ca`, the app recieves and executes custom actions. If `output-ca`, the app sends custom actions which are then executed by an app with the corresponding `input-ca`.",
+  "summary": "Object with properties: type, way",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "manifest",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "manifest.CustomAction",
+    "schema_type": "manifest",
+    "schema": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The type of the custom action."
+        },
+        "way": {
+          "type": "string",
+          "enum": [
+            "input-ca",
+            "output-ca"
+          ],
+          "description": "The direction of the custom action. If `input-ca`, the app recieves and executes custom actions. If `output-ca`, the app sends custom actions which are then executed by an app with the corresponding `input-ca`."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

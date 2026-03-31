@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.configs.pypi-configs/pypiconfigs",
+  "title": "PypiConfigs",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# PypiConfigs\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/configs/pypi_configs.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.configs.pypi_configs",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

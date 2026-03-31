@@ -1,0 +1,32 @@
+{
+  "id": "api/schemas/threaduserfollow",
+  "title": "ThreadUserFollow",
+  "type": "schema",
+  "category": "api",
+  "content": "# ThreadUserFollow\n\n\n## Properties\n\n- **mute** (`boolean`): \n- **seen** (`boolean`): ",
+  "summary": "Object with properties: mute, seen",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.ThreadUserFollow",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "mute": {
+          "type": "boolean"
+        },
+        "seen": {
+          "type": "boolean"
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

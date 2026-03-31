@@ -1,0 +1,136 @@
+{
+  "id": "api/schemas/bridge",
+  "title": "Bridge",
+  "type": "schema",
+  "category": "api",
+  "content": "# Bridge\n\n\n## Properties\n\n- **cluster_name** (`string`): Unique identifier `name` of the Cluster.\n- **created** (`string`): UTC time when the Bridge (Connection) was first created, formatted in RFC 3339.\n- **enabled** (`boolean`): If true, Bridge (Connection) `status` is set to `running` and will process I/O's. If false, Bridge (Connection) `status` is set to `stopped` but remains in Node on the Edge System.\n- **name** (`string`): Unique identifier `name` of the Bridge (Connection).\n- **node_name** (`string`): Unique identifier `name` of the Node in the Cluster hosting the Bridge (Connection).\n- **payload** (`object`): \n- **status** (`object`): Realtime information about the Workload as seen from the Cloud.\n- **title** (`string`): Display name (`title`) of the Bridge (Connection).\n- **updated** (`string`): UTC time when any Bridge (Connection) keys were last updated, formatted in RFC 3339.\n- **workload_name** (`string`): Unique identifier `name` of the Workload that the Bridge (Connection) App is deployed as to the Cluster.\n- **app_name** (`string`): Unique identifier `name` of the App. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.\n- **app_version** (`string`): App version",
+  "summary": "Object with properties: cluster_name, created, enabled, name, node_name",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.Bridge",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "cluster_name": {
+          "type": "string",
+          "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+          "example": "docs-demo-cluster-k3s",
+          "maxLength": 64,
+          "description": "Unique identifier `name` of the Cluster."
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-12-26T18:22:18.582724Z",
+          "description": "UTC time when the Bridge (Connection) was first created, formatted in RFC 3339."
+        },
+        "enabled": {
+          "type": "boolean",
+          "example": true,
+          "description": "If true, Bridge (Connection) `status` is set to `running` and will process I/O's. If false, Bridge (Connection) `status` is set to `stopped` but remains in Node on the Edge System."
+        },
+        "name": {
+          "type": "string",
+          "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+          "example": "motor-plc-opcua-connection",
+          "maxLength": 32,
+          "description": "Unique identifier `name` of the Bridge (Connection)."
+        },
+        "node_name": {
+          "type": "string",
+          "format": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$",
+          "example": "docs-demo-node-01",
+          "maxLength": 64,
+          "description": "Unique identifier `name` of the Node in the Cluster hosting the Bridge (Connection)."
+        },
+        "payload": {
+          "type": "object"
+        },
+        "status": {
+          "type": "object",
+          "description": "Realtime information about the Workload as seen from the Cloud.",
+          "properties": {
+            "last_seen": {
+              "type": "string",
+              "format": "date-time",
+              "description": "UTC time when the Workload was last seen by the Cloud, formatted in RFC 3339."
+            },
+            "message": {
+              "type": "string",
+              "description": "Descriptive, human-readable string for `state`."
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "pending_deploy",
+                "pending_update",
+                "pending_start",
+                "pending_stop",
+                "pending_apply",
+                "deploying",
+                "running",
+                "stopping",
+                "stopped",
+                "failed",
+                "starting",
+                "applying",
+                "received",
+                "downloading",
+                "ready",
+                "unreachable",
+                "staged"
+              ]
+            },
+            "warnings": {
+              "type": "array",
+              "description": "All warnings received for any Workload operations.",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "title": {
+          "type": "string",
+          "example": "Motor PLC OPCUA Connection",
+          "description": "Display name (`title`) of the Bridge (Connection)."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-12-18T18:22:18.582724Z",
+          "description": "UTC time when any Bridge (Connection) keys were last updated, formatted in RFC 3339."
+        },
+        "workload_name": {
+          "type": "string",
+          "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+          "example": "motor-plc-opcua-connection",
+          "maxLength": 32,
+          "description": "Unique identifier `name` of the Workload that the Bridge (Connection) App is deployed as to the Cluster."
+        },
+        "app_name": {
+          "type": "string",
+          "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+          "example": "test-app",
+          "maxLength": 64,
+          "description": "Unique identifier `name` of the App. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+        },
+        "app_version": {
+          "type": "string",
+          "format": "Major.Minor.Patch",
+          "example": "1.2.0",
+          "description": "App version"
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

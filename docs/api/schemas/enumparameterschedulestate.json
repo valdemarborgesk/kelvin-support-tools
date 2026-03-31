@@ -1,0 +1,30 @@
+{
+  "id": "api/schemas/parameterschedulestate",
+  "title": "ParameterScheduleState",
+  "type": "schema",
+  "category": "api",
+  "content": "# ParameterScheduleState\n\n## Enum Values\n\n- `scheduled`\n- `scheduled-revert`\n- `completed`\n- `error`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.ParameterScheduleState",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "scheduled",
+        "scheduled-revert",
+        "completed",
+        "error"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

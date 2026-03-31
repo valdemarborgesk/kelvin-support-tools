@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/parametertype",
+  "title": "ParameterType",
+  "type": "schema",
+  "category": "api",
+  "content": "# ParameterType\n\n## Enum Values\n\n- `number`\n- `string`\n- `boolean`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.ParameterType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "number",
+        "string",
+        "boolean"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

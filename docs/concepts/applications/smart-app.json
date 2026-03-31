@@ -1,0 +1,25 @@
+{
+  "id": "concepts/applications/smart-app",
+  "title": "Kelvin SmartApps™",
+  "type": "concept",
+  "category": "applications",
+  "content": "# Kelvin SmartApps™\n\n## What is Kelvin SmartApps™?\n\n**Kelvin SmartApps™** is a software program developed in Python, which is encapsulated within a Kelvin Wrapper and uploaded to the App Registry, the distribution hub for all Kelvin SmartApp™. From there Kelvin SmartApps™ can be efficiently deployed across numerous edge locations and assets on a large scale.\n\nKelvin SmartApps™ are design to take the technical IT and software development knowledge requirements out of the picture of deployment process to the edge.\n\nThis allows the Operations Engineers to add Assets to Kelvin SmartApps™ to monitor and control their assets without the need to have any knowledge of the software or the edge infrastructure.\n\n## Structure\n\nKelvin SmartApps™ are designed to be easy to develop and powerful to interact with the Users through the Kelvin UI and the Assets at the edge.\n\n## Kelvin SmartApps™ & Docker Apps\n\n[Video content]\n\n### Kelvin SmartApps™ vs Docker Apps\n\nKelvin SmartApps™ is a specialized Python application with the key difference that half of the deployment options are automatically generated through predefined settings either as global variables set by the Platform Administrator or runtime selections set by the Operations Engineer.\n\nThis bring advantages and disadvantages which are discussed in the next chapter.\n\nOverall Kelvin SmartApps™ do have some limitations on program flexibility compared with Docker Apps but bring many advantages with the tight integration with the Kelvin Platform.\n\n### Kelvin SmartApps™ as the Solution ?\n\nKelvin SmartApps™ are an efficient method of quickly converting your inhouse Python test programs into fully scalable solutions for your global organization. End users need minimal training as the interface remains consistent across different Kelvin SmartApps™ and the technical deployment process to process Asset data is automated.\n\nYou can view a practical example in the Paper Industry where an inhouse machine learning program design to optimize the production settings to maintain high output quality is scaled up and deployed company-wide within minutes.\n\n[Video content]\n\n## Advantages & Considerations\n\n### Advantages\n\nKelvin SmartApps™ is design to take all the technical IT and software development knowledge requirements out of the deployment process and automate it.\n\nThe Operations Engineers can then focus on their expertise to just select the assets they want to run on a Kelvin SmartApp™ and deploy it.\n\n* Easy to deploy hundreds of assets to a Kelvin SmartApp™ in one step\n* Easily scale your operations up or down with minimal effort\n* No knowledge of Kubernetes Clusters or the IT infrastructure required\n* No knowledge of the inner workings of the software or machine learning models\n* Easily oversee hundreds or thousands of assets and Kelvin SmartApps™ from Kelvin UI\n* Easily manage many assets over different versions of Kelvin SmartApps™\n* Allow the Operations Engineers, Software Engineers and Administrators to work independently, even possible to distribute the tasks to different companies.\n\n### Considerations\n\nKelvin SmartApps™ is designed to solve specific issues when working in a decentralized or large organization, or when working with common Kelvin SmartApps™ and machine learning models on hundreds or thousands of assets where scaling at ease is important.\n\nBut there are also instances when Operations Engineers may want to ask Software Engineers use the traditional deployment of Kelvin SmartApps™ through Orchestration. Some scenarios include;\n\n* Your Clusters are location specific and Kelvin SmartApp™ / Assets need to be assigned to that particular location only\n* Each Kelvin SmartApp™ needs to have individually specific parameters\n* Your Clusters will experience Internet outages on a regular basis",
+  "summary": "Kelvin SmartApps™ is a software program developed in Python, which is encapsulated within a Kelvin Wrapper and uploaded to the App Registry, the distribution hub for all Kelvin SmartApp™. From there Kelvin SmartApps™ can be efficiently deployed across numerous edge locations and assets on a large...",
+  "source": "core-docs/docs/overview/concepts/kelvin-smartapp.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "application",
+    "applications",
+    "asset",
+    "cluster",
+    "control",
+    "kelvin",
+    "sdk",
+    "smartapps"
+  ],
+  "metadata": {
+    "section": "overview/concepts",
+    "last_updated": "2026-02-04"
+  }
+}

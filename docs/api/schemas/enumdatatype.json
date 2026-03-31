@@ -1,0 +1,30 @@
+{
+  "id": "api/schemas/datatype",
+  "title": "DataType",
+  "type": "schema",
+  "category": "api",
+  "content": "# DataType\n\n## Enum Values\n\n- `boolean`\n- `number`\n- `object`\n- `string`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.DataType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "boolean",
+        "number",
+        "object",
+        "string"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

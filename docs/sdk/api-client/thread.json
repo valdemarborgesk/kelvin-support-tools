@@ -1,0 +1,42 @@
+{
+  "id": "sdk/api-client/client.api.thread/thread",
+  "title": "Thread",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Thread\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### create_thread(data: Optional[Union[requests.ThreadCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.ThreadCreate\n\nCreate Thread\n\n\n### list_threads(type: Optional[str], related_to: Optional[str], user_id: Optional[str], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.ThreadsList\n\nList Threads\n\n\n### delete_thread(thread_id: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDelete Thread\n\n\n### update_thread_follow(thread_id: str, follow: Optional[bool], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.ThreadFollowUpdate\n\nUpdate Thread Follow\n\n\n### get_thread(thread_id: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.ThreadGet\n\nGet Thread\n\n\n### create_thread_reply(thread_id: str, reply_id: Optional[str], data: Optional[Union[requests.ThreadReplyCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.ThreadReplyCreate\n\nCreate Thread Reply\n\n\n### delete_thread_reply(thread_id: str, reply_id: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> str\n\nDelete Thread Reply\n\n\n### update_thread_reply(thread_id: str, reply_id: str, data: Optional[Union[requests.ThreadReplyUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.ThreadReplyUpdate\n\nUpdate Thread Reply\n\n\n### update_thread_seen(thread_id: str, seen: Optional[bool], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.ThreadSeenUpdate\n\nUpdate Thread Seen\n\n\n### update_thread(thread_id: str, data: Optional[Union[requests.ThreadUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.ThreadUpdate\n\nUpdate Thread\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/thread.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.thread.create_thread()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.thread",
+    "item_type": "class",
+    "methods": [
+      "create_thread",
+      "list_threads",
+      "delete_thread",
+      "update_thread_follow",
+      "get_thread",
+      "create_thread_reply",
+      "delete_thread_reply",
+      "update_thread_reply",
+      "update_thread_seen",
+      "update_thread"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

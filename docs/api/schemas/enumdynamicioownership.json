@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/dynamicioownership",
+  "title": "DynamicIOOwnership",
+  "type": "schema",
+  "category": "api",
+  "content": "# DynamicIOOwnership\n\n## Enum Values\n\n- `both`\n- `owned`\n- `remote`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.DynamicIOOwnership",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "both",
+        "owned",
+        "remote"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

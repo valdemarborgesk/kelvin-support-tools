@@ -1,0 +1,30 @@
+{
+  "id": "api/schemas/appstatus",
+  "title": "AppStatus",
+  "type": "schema",
+  "category": "api",
+  "content": "# AppStatus\n\n## Enum Values\n\n- `running`\n- `stopped`\n- `updating`\n- `requires_attention`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.AppStatus",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "running",
+        "stopped",
+        "updating",
+        "requires_attention"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

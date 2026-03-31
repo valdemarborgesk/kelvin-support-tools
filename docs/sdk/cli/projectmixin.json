@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.models.factories.project.project/projectmixin",
+  "title": "ProjectMixin",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ProjectMixin\n\n\nWorkaround due to mypy and dataclasses issue\nhttps://github.com/python/mypy/issues/5374\n",
+  "summary": "Workaround due to mypy and dataclasses issue https://github.com/python/mypy/issues/5374",
+  "source": "cli/src/kelvin/sdk/lib/models/factories/project/project.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.factories.project.project",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

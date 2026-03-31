@@ -1,0 +1,47 @@
+{
+  "id": "how-to/asset/asset-type/create-asset-type",
+  "title": "Create Asset Type",
+  "type": "how_to",
+  "category": "operations",
+  "content": "**Reference:**\n\nField                | Description\n---------------------|------------------------------------------\nName (Name ID)                 | Unique name identifier. It must contain only lowercase alphanumeric characters. The characters `.`, `_` and `-` are allowed to separate words instead of a space BUT can not be at the beginning or end of the name.\nTitle (Display Name)                | The display name to show on the Kelvin UI. It can contain any characters, including spaces.\n\n## Create Asset Type\n\nIn this example we will create an Asset Type.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin UI\"\n\n    Asset Types can be managed from the Administration section of the UI.\n\n    \n        Do not get confused with the Asset management in the Operations section which is designed for the Production Engineers.\n\n    You can watch this short demo video or read the full step-by step written tutorial below.\n\n    <iframe\n    src=\"https://demo.arcade.software/X4iMwqIfGs7LTJMLNXxu?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true\"\n    title=\"Kelvin Core | Operations\"\n    frameborder=\"0\"\n    loading=\"lazy\"\n    webkitallowfullscreen\n    mozallowfullscreen\n    allowfullscreen\n    allow=\"clipboard-write\"\n    style=\"width: 100%; height: 400px; border: none;\">\n    </iframe>\n\n    To start, go to the **Assets** in the Administration section of the left side bar and then click on the Asset Types tab.\n\n    \n\n    To add an Asset Type, click on the **Add Asset Type** button;\n\n    \n\n    Then type in the Asset Type details and click **Add**.\n\n    \n\n=== \"Kelvin API\"\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/assets/types/create\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n            \"name\": \"doc_demo_asset_type\",\n            \"title\": \"Documentation Demo Asset Type\"\n        }'\n    ```\n\n    You will get a response similar to this;\n\n    ```json title=\"API cURL Example Response\" linenums=\"1\"\n    <Response [201]>\n    {\n        \"name\":\"doc_demo_asset_type\",\n        \"title\":\"Documentation Demo Asset Type\",\n        \"created\":\"2025-01-23T08:53:28.650245Z\",\n        \"updated\":\"2025-01-23T08:53:28.650245Z\"\n    }\n    ```\n    \n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Create Asset Type\n    response = client.asset.create_asset_type(data={\n        \"name\": \"doc_demo_asset_type\",\n        \"title\": \"Documentation Demo Asset Type\"\n    })\n\n    print(response)\n    ```\n\n    You will get a response similar to this;\n\n    ```bash title=\"API Client (Python) Example Response\" linenums=\"1\"\n    created=datetime.datetime(2024, 5, 23, 8, 52, 7, 803281, tzinfo=datetime.timezone.utc) name='doc_demo_asset_type' title='Documentation Demo Asset Type' updated=datetime.datetime(2024, 5, 23, 8, 52, 7, 803281, tzinfo=datetime.timezone.utc)\n    ```\n\n</div>",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/asset/asset-type/create-asset-type.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/assets/types/create\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n            \"name\": \"doc_demo_asset_type\",\n            \"title\": \"Documentation Demo Asset Type\"\n        }'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "json",
+      "code": "<Response [201]>\n    {\n        \"name\":\"doc_demo_asset_type\",\n        \"title\":\"Documentation Demo Asset Type\",\n        \"created\":\"2025-01-23T08:53:28.650245Z\",\n        \"updated\":\"2025-01-23T08:53:28.650245Z\"\n    }",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Create Asset Type\n    response = client.asset.create_asset_type(data={\n        \"name\": \"doc_demo_asset_type\",\n        \"title\": \"Documentation Demo Asset Type\"\n    })\n\n    print(response)",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "bash",
+      "code": "created=datetime.datetime(2024, 5, 23, 8, 52, 7, 803281, tzinfo=datetime.timezone.utc) name='doc_demo_asset_type' title='Documentation Demo Asset Type' updated=datetime.datetime(2024, 5, 23, 8, 52, 7, 803281, tzinfo=datetime.timezone.utc)",
+      "title": "API Client (Python) Example Response"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "api",
+    "asset",
+    "cli",
+    "create",
+    "operations",
+    "sdk",
+    "type"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

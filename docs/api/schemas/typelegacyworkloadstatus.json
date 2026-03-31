@@ -1,0 +1,71 @@
+{
+  "id": "api/schemas/legacyworkloadstatus",
+  "title": "LegacyWorkloadStatus",
+  "type": "schema",
+  "category": "api",
+  "content": "# LegacyWorkloadStatus\n\nRealtime information about the Workload as seen from the Cloud.\n\n\n## Properties\n\n- **last_seen** (`string`): UTC time when the Workload was last seen by the Cloud, formatted in RFC 3339.\n- **message** (`string`): Descriptive, human-readable string for `state`.\n- **state** (`string`): \n- **warnings** (`array`): All warnings received for any Workload operations.",
+  "summary": "Realtime information about the Workload as seen from the Cloud.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.LegacyWorkloadStatus",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "description": "Realtime information about the Workload as seen from the Cloud.",
+      "properties": {
+        "last_seen": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-12-18T18:22:18.582724Z",
+          "description": "UTC time when the Workload was last seen by the Cloud, formatted in RFC 3339."
+        },
+        "message": {
+          "type": "string",
+          "example": "Pending for deploy",
+          "description": "Descriptive, human-readable string for `state`."
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "pending_deploy",
+            "pending_update",
+            "pending_start",
+            "pending_stop",
+            "pending_apply",
+            "deploying",
+            "running",
+            "stopping",
+            "stopped",
+            "failed",
+            "starting",
+            "applying",
+            "received",
+            "downloading",
+            "ready",
+            "unreachable",
+            "staged"
+          ]
+        },
+        "warnings": {
+          "type": "array",
+          "example": [
+            "back-off 5m0s restarting failed container=motor-speed-control-sjfhksdfhks67",
+            "back-off 5m0s restarting failed container=gateway"
+          ],
+          "description": "All warnings received for any Workload operations.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

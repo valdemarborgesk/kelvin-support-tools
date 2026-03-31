@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.msg-type/kmessagetypedata",
+  "title": "KMessageTypeData",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KMessageTypeData\n\nInherits from: KMessageTypePrimitive\n",
+  "summary": "",
+  "source": "app/src/kelvin/message/msg_type.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import KMessageTypeData\n\n# Usage example\napp = KMessageTypeData()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.msg_type",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

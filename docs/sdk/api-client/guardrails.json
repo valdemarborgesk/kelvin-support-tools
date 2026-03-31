@@ -1,0 +1,39 @@
+{
+  "id": "sdk/api-client/client.api.guardrails/guardrails",
+  "title": "Guardrails",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Guardrails\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### create_bulk_guardrails(data: Optional[Union[requests.BulkGuardrailsCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.BulkGuardrailsCreate\n\nCreate multiple guardrails at once.\n\n\n### delete_bulk_guardrails(data: Optional[Union[requests.BulkGuardrailsDelete, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDeletes multiple guardrails.\n\n\n### create_guardrail(data: Optional[Union[requests.GuardrailCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.GuardrailCreate\n\nCreate a new Guardrail.\n\n\n### list_guardrails(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], search: Optional[Sequence[str]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.GuardrailsList, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.Guardrail], responses.GuardrailsListPaginatedResponseCursor]\n\nList guardrails based on the provided filters.\n\n\n### delete_guardrail(resource: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDelete a Guardrail by ID.\n\n\n### get_guardrail(resource: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.GuardrailGet\n\nGet a Guardrail by ID.\n\n\n### update_guardrail(resource: str, data: Optional[Union[requests.GuardrailUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.GuardrailUpdate\n\nUpdate a Guardrail by providing the Guardrail ID and the fields to update. This request changes the whole Guardrail.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/guardrails.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.guardrails.create_bulk_guardrails()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.guardrails",
+    "item_type": "class",
+    "methods": [
+      "create_bulk_guardrails",
+      "delete_bulk_guardrails",
+      "create_guardrail",
+      "list_guardrails",
+      "delete_guardrail",
+      "get_guardrail",
+      "update_guardrail"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.evidences/evidence",
+  "title": "Evidence",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Evidence\n\nInherits from: BaseModel\n",
+  "summary": "",
+  "source": "app/src/kelvin/message/evidences.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import Evidence\n\n# Usage example\napp = Evidence()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.evidences",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

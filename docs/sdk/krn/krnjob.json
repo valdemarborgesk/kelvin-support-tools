@@ -1,0 +1,29 @@
+{
+  "id": "sdk/krn/krn/krnjob",
+  "title": "KRNJob",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KRNJob\n\nInherits from: KRN\n\n\n## Methods\n\n\n### __init__(job: str, job_run_id: str) -> None\n\n\n### from_krn(ns_id: str, ns_string: str) -> Self\n",
+  "summary": "",
+  "source": "krn/src/kelvin/krn/krn.py",
+  "code_examples": [],
+  "related": [
+    "sdk/krn"
+  ],
+  "tags": [
+    "krn",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "krn",
+    "module": "krn",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "from_krn"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

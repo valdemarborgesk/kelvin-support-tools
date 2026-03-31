@@ -1,0 +1,38 @@
+{
+  "id": "api/schemas/any",
+  "title": "Any",
+  "type": "schema",
+  "category": "api",
+  "content": "# Any\n\nValue represented in one of these formats.\n",
+  "summary": "Value represented in one of these formats.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.Any",
+    "schema_type": "type",
+    "schema": {
+      "description": "Value represented in one of these formats.",
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

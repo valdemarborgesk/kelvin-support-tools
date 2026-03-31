@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.models.ksdk-docker/ksdkdockervolume",
+  "title": "KSDKDockerVolume",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KSDKDockerVolume\n\nInherits from: KSDKModel\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/ksdk_docker.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.ksdk_docker",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

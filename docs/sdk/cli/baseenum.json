@@ -1,0 +1,29 @@
+{
+  "id": "sdk/cli/sdk.lib.models.types/baseenum",
+  "title": "BaseEnum",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# BaseEnum\n\nInherits from: Enum\n\n\n## Methods\n\n\n### as_list() -> List[str]\n\n\n### value_as_str() -> str\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/types.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.types",
+    "item_type": "class",
+    "methods": [
+      "as_list",
+      "value_as_str"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

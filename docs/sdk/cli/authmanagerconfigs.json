@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.configs.auth-manager-configs/authmanagerconfigs",
+  "title": "AuthManagerConfigs",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AuthManagerConfigs\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/configs/auth_manager_configs.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.configs.auth_manager_configs",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

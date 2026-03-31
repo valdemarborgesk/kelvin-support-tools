@@ -1,0 +1,32 @@
+{
+  "id": "sdk/cli/sdk.lib.models.ksdk-global-configuration/kelvinsdkconfiguration",
+  "title": "KelvinSDKConfiguration",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KelvinSDKConfiguration\n\nInherits from: KSDKSettings\n\n\n## Methods\n\n\n### validate_configurations(v: Any) -> KelvinSDKEnvironmentVariables\n\n\n### versions() -> dict\n\n\n### reset() -> Any\n\n\n### from_file(ksdk_config_file_path: KPath) -> Any\n\n\n### from_default_config() -> KelvinSDKConfiguration\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/ksdk_global_configuration.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.ksdk_global_configuration",
+    "item_type": "class",
+    "methods": [
+      "validate_configurations",
+      "versions",
+      "reset",
+      "from_file",
+      "from_default_config"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

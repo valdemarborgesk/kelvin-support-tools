@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/orchestrationclustersupdate",
+  "title": "OrchestrationClustersUpdate",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# OrchestrationClustersUpdate\n\nInherits from: DataModelBase\n\n\nOrchestrationClustersUpdate object.\n\nParameters\n----------\n    forward_logs_buffer_size: Optional[StrictInt]\n    forward_logs_enabled: Optional[StrictBool]\n    manifests_scrape_enabled: Optional[StrictBool]\n    manifests_scrape_interval: Optional[StrictInt]\n    ready: Optional[StrictBool]\n    sync_scrape_interval: Optional[StrictInt]\n    telemetry_buffer_size: Optional[StrictInt]\n    telemetry_enabled: Optional[StrictBool]\n    telemetry_alerts_enabled: Optional[StrictBool]\n    title: Optional[StrictStr]\n    upgrade: Optional[ClusterUpgrade]\n    api_credentials: Optional[ClusterEdgeAPICredentials]\n    edge_apps: Optional[ClusterEdgeApps]\n    edge_options: Optional[ClusterEdgeOptions]\n",
+  "summary": "OrchestrationClustersUpdate object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

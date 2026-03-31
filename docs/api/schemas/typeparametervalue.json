@@ -1,0 +1,37 @@
+{
+  "id": "api/schemas/parametervalue",
+  "title": "ParameterValue",
+  "type": "schema",
+  "category": "api",
+  "content": "# ParameterValue\n",
+  "summary": "Schema definition",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.ParameterValue",
+    "schema_type": "type",
+    "schema": {
+      "oneOf": [
+        {
+          "type": "number",
+          "description": "Parameter value as number"
+        },
+        {
+          "type": "string",
+          "description": "Parameter value as string"
+        },
+        {
+          "type": "boolean",
+          "description": "Parameter value as boolean"
+        }
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

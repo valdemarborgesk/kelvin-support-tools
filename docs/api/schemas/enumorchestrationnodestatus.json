@@ -1,0 +1,30 @@
+{
+  "id": "api/schemas/orchestrationnodestatus",
+  "title": "OrchestrationNodeStatus",
+  "type": "schema",
+  "category": "api",
+  "content": "# OrchestrationNodeStatus\n\nCurrent status of the Node.\n\n## Enum Values\n\n- `online`\n- `unreachable`\n- `not_ready`",
+  "summary": "Current status of the Node.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.OrchestrationNodeStatus",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "description": "Current status of the Node.",
+      "enum": [
+        "online",
+        "unreachable",
+        "not_ready"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

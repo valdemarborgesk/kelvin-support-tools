@@ -1,0 +1,28 @@
+{
+  "id": "sdk/cli/sdk.lib.exceptions/invalidbaseimageexception",
+  "title": "InvalidBaseImageException",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# InvalidBaseImageException\n\nInherits from: KSDKException\n\n\nRaised when the provided docker image is not valid/supported by the current system.\n\n\n## Methods\n\n\n### __init__(registry_url: str, docker_image_name: str) -> Any\n",
+  "summary": "Raised when the provided docker image is not valid/supported by the current system.",
+  "source": "cli/src/kelvin/sdk/lib/exceptions.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.exceptions",
+    "item_type": "class",
+    "methods": [
+      "__init__"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

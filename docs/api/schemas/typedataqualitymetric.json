@@ -1,0 +1,96 @@
+{
+  "id": "api/schemas/dataqualitymetric",
+  "title": "DataQualityMetric",
+  "type": "schema",
+  "category": "api",
+  "content": "# DataQualityMetric\n\n\n## Properties\n\n- **name** (`string`): Unique identifier `name` of the Data Quality Metric.\n- **title** (`string`): Display name (`title`) of the Data Quality Metric.\n- **data_type_name** (`string`): \n- **description** (`string`): Optional description of the Data Quality Metric.\n- **is_protected** (`boolean`): Indicates whether this metric is system-protected and cannot be modified or deleted.\n- **in_use_by** (`array`): List of workload sources that are using this Data Quality Metric.\n- **created** (`string`): UTC time when the Data Quality Metric was first created, formatted in RFC 3339.\n- **created_by** (`string`): The user or process that created this Data Quality Metric.\n- **updated** (`string`): UTC time when any Data Quality Metric keys were last updated, formatted in RFC 3339.\n- **updated_by** (`string`): The user or process that last updated this Data Quality Metric.",
+  "summary": "Object with properties: name, title, data_type_name, description, is_protected",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.DataQualityMetric",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "example": "custom_availability_metric",
+          "maxLength": 64,
+          "description": "Unique identifier `name` of the Data Quality Metric."
+        },
+        "title": {
+          "type": "string",
+          "example": "Custom Availability Metric",
+          "maxLength": 64,
+          "description": "Display name (`title`) of the Data Quality Metric."
+        },
+        "data_type_name": {
+          "type": "string",
+          "enum": [
+            "boolean",
+            "number",
+            "object",
+            "string"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "nullable": true,
+          "example": "Custom metric for high-priority assets requiring 99.9% uptime",
+          "maxLength": 200,
+          "description": "Optional description of the Data Quality Metric."
+        },
+        "is_protected": {
+          "type": "boolean",
+          "example": false,
+          "description": "Indicates whether this metric is system-protected and cannot be modified or deleted."
+        },
+        "in_use_by": {
+          "type": "array",
+          "description": "List of workload sources that are using this Data Quality Metric.",
+          "items": {
+            "type": "string",
+            "format": "krn",
+            "example": "krn:wlappv:cluster1/workload1/app1/1.2.0",
+            "maxLength": 256
+          }
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when the Data Quality Metric was first created, formatted in RFC 3339."
+        },
+        "created_by": {
+          "type": "string",
+          "format": "krn",
+          "example": "krn:user:john@kelvininc.com",
+          "maxLength": 256,
+          "description": "The user or process that created this Data Quality Metric."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when any Data Quality Metric keys were last updated, formatted in RFC 3339."
+        },
+        "updated_by": {
+          "type": "string",
+          "format": "krn",
+          "example": "krn:user:john@kelvininc.com",
+          "maxLength": 256,
+          "description": "The user or process that last updated this Data Quality Metric."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

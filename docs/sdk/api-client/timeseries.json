@@ -1,0 +1,37 @@
+{
+  "id": "sdk/api-client/client.api.timeseries/timeseries",
+  "title": "Timeseries",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Timeseries\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### create_timeseries(publish: Optional[bool], data: Optional[Union[requests.TimeseriesCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nCreate Time Series Data individually or in bulk for one or more Asset / Data Stream resources.\n\n\n### get_timeseries_last(data: Optional[Union[requests.TimeseriesLastGet, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> KList[responses.TimeseriesLastGet]\n\nReturns a list of Time Series objects and its latest value. The list returned must be filtered by one or more `resources` and optionally on `fields`. This list is not pageable.\n\n\n### list_timeseries(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.TimeseriesList, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.TimeseriesData], responses.TimeseriesListPaginatedResponseCursor]\n\nReturns a list of Time Series objects and its latest value. The list returned can be optionally restricted to one or more resources and/or sources.\n\n\n### download_timeseries_range(data: Optional[Union[requests.TimeseriesRangeDownload, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> Iterator[None]\n\nReturns a **CSV file** with Time Series data within the specified time range one or more resources (Asset /Data Stream pairs). Optional to preprocess and aggregate the data on the server using `agg` and `time_bucket` before downloading.\n\n\n### get_timeseries_range(data: Optional[Union[requests.TimeseriesRangeGet, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> KIterator[responses.TimeseriesRangeGet]\n\nReturns an array with Time Series data within the specified time range for one or more resources (Asset /Data Stream pairs). Optional to preprocess and aggregate the data on the server using `agg` and `time_bucket` before downloading.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/timeseries.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.timeseries.create_timeseries()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.timeseries",
+    "item_type": "class",
+    "methods": [
+      "create_timeseries",
+      "get_timeseries_last",
+      "list_timeseries",
+      "download_timeseries_range",
+      "get_timeseries_range"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

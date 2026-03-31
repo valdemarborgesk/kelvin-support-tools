@@ -11,19 +11,19 @@ The structured knowledge base for the Kelvin platform lives in the `kelvin-ai-do
 ## Locating the Docs
 
 ```bash
-ls kelvin-ai-docs/docs-ai/ 2>/dev/null || echo "Docs not found — run: git submodule update --init"
+ls docs/ 2>/dev/null || echo "Docs not found — run: git submodule update --init"
 ```
 
 ## Query Strategy
 
 | Question Type | Where to Look |
 |---------------|---------------|
-| Concepts (what is an asset, datastream, app) | `kelvin-ai-docs/docs-ai/concepts/` |
-| REST API endpoints (create asset, list workloads) | `kelvin-ai-docs/docs-ai/api/endpoints/` |
-| API schemas (data structures) | `kelvin-ai-docs/docs-ai/api/schemas/` |
-| Python SDK (KelvinApp, stream_filter, entry points) | `kelvin-ai-docs/docs-ai/sdk/` |
-| How-to guides (deploy app, configure bridge) | `kelvin-ai-docs/docs-ai/how-to/development/` |
-| Infrastructure (k3s, NATS, edge clusters) | `kelvin-ai-docs/docs-ai/infra/` |
+| Concepts (what is an asset, datastream, app) | `docs/concepts/` |
+| REST API endpoints (create asset, list workloads) | `docs/api/endpoints/` |
+| API schemas (data structures) | `docs/api/schemas/` |
+| Python SDK (KelvinApp, stream_filter, entry points) | `docs/sdk/` |
+| How-to guides (deploy app, configure bridge) | `docs/how-to/development/` |
+| Infrastructure (k3s, NATS, edge clusters) | `docs/infra/` |
 
 ## Search Priority
 
@@ -63,6 +63,6 @@ When the docs reference REST API endpoints:
 
 ## Rules
 
-- Read `kelvin-ai-docs/docs-ai/agents.md` first if you need guidance on how to search the docs.
+- Read `docs/agents.md` first if you need guidance on how to search the docs.
 - If the submodule is not initialized, instruct the user to run `git submodule update --init`.
 - Prefer `summary` for quick answers, full `content` when the user needs detail.

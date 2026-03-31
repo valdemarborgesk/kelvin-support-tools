@@ -1,0 +1,23 @@
+{
+  "id": "how-to/impact/smartapp-details-tab-impact",
+  "title": "Impact Tab",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Impact Tab\n\n    This tab is only available with the Application `type` Kelvin SmartApp™\n\nThe impact tab allows you to see an overview of the Kelvin SmartApp™.\n\nThere is a default overview which gives a range of analytical information.",
+  "summary": "",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/impact/smartapp-details-tab-impact.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "impact",
+    "operations",
+    "smartapp",
+    "tab"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "api/schemas/orchestrationclusterstatus",
+  "title": "OrchestrationClusterStatus",
+  "type": "schema",
+  "category": "api",
+  "content": "# OrchestrationClusterStatus\n\nCurrent status of the Cluster.\n\n## Enum Values\n\n- `pending_provision`\n- `pending`\n- `online`\n- `unreachable`\n- `requires_attention`",
+  "summary": "Current status of the Cluster.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.OrchestrationClusterStatus",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "description": "Current status of the Cluster.",
+      "enum": [
+        "pending_provision",
+        "pending",
+        "online",
+        "unreachable",
+        "requires_attention"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

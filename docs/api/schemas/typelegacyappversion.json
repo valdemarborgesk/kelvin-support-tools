@@ -1,0 +1,54 @@
+{
+  "id": "api/schemas/legacyappversion",
+  "title": "LegacyAppVersion",
+  "type": "schema",
+  "category": "api",
+  "content": "# LegacyAppVersion\n\n\n## Properties\n\n- **created** (`string`): UTC time when this App version was first uploaded to the App Registry, formatted in RFC 3339.\n- **id** (`string`): Unique identifier for this version of the App in the App Registry.\n- **payload** (`object`): Dictionary with keys for app inputs/outputs, info, spec version and system packages. Each key represents specific settings and parameters for the App.\n- **updated** (`string`): UTC time when any App keys for this App version in the App Registry were last updated, formatted in RFC 3339.\n- **version** (`string`): Version number of this App in the App Registry.",
+  "summary": "Object with properties: created, id, payload, updated, version",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.LegacyAppVersion",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-06-26T18:22:18.582724Z",
+          "description": "UTC time when this App version was first uploaded to the App Registry, formatted in RFC 3339."
+        },
+        "id": {
+          "type": "string",
+          "format": "^[a-z]+([A-Z][a-z0-9]+)*$",
+          "example": "58ba052085dfd66545bf24a4957f6c8fd4af3c27",
+          "description": "Unique identifier for this version of the App in the App Registry."
+        },
+        "payload": {
+          "type": "object",
+          "description": "Dictionary with keys for app inputs/outputs, info, spec version and system packages. Each key represents specific settings and parameters for the App."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-06-26T18:22:18.582724Z",
+          "description": "UTC time when any App keys for this App version in the App Registry were last updated, formatted in RFC 3339."
+        },
+        "version": {
+          "type": "string",
+          "format": "Major.Minor.Patch",
+          "example": "1.2.0",
+          "description": "Version number of this App in the App Registry."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

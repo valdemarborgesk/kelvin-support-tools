@@ -1,0 +1,60 @@
+{
+  "id": "api/schemas/stagedstatus",
+  "title": "StagedStatus",
+  "type": "schema",
+  "category": "api",
+  "content": "# StagedStatus\n\nRealtime information about the Staged Workload as seen from the Cloud.\n\n\n## Properties\n\n- **message** (`string`): Descriptive, human-readable string for `state`.\n- **state** (`string`): \n- **warnings** (`array`): All warnings received for any Staged Workload operations.",
+  "summary": "Realtime information about the Staged Workload as seen from the Cloud.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.StagedStatus",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "description": "Realtime information about the Staged Workload as seen from the Cloud.",
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "Descriptive, human-readable string for `state`."
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "pending_deploy",
+            "pending_update",
+            "pending_start",
+            "pending_stop",
+            "pending_apply",
+            "deploying",
+            "running",
+            "stopping",
+            "stopped",
+            "failed",
+            "starting",
+            "applying",
+            "received",
+            "downloading",
+            "ready",
+            "unreachable",
+            "staged"
+          ]
+        },
+        "warnings": {
+          "type": "array",
+          "description": "All warnings received for any Staged Workload operations.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

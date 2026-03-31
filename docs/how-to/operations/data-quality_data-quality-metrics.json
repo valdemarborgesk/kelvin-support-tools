@@ -1,0 +1,29 @@
+{
+  "id": "how-to/data-quality/data-quality-metrics",
+  "title": "Data Quality Metrics",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Data Quality Metrics\n\n    To understand the concept of Data Quality, you can read a full description in the [Concept Overview page here](../../../overview/concepts/data-quality.md).\n\n## Overview\n\nThe metrics page shows all the types of Data Quality Metrics available.\n\nThis includes both the builtin Data Quality Metric Applications as well as third party custom built Data Quality Metric Applications.\n\nThere are five built-in metrics for Asset / Data Stream pairs can be enabled;\n\n* Data Availability\n* Outlier Detection\n* Range Validation\n* Duplication Detection\n* Timestamp Anomalies.\n\nTo see the list of Metrics, click on the Data Quality menu item and then the Metrics tab.\n\n## Features\n\nYou have all the usual Kelvin table features available.\n\n### Search\n\nSearch the table for specific Metrics.\n\n### Data Types\n\nFilter the table on one or more specific Data Types.\n\n    Data Types is the type of data the Data Quality Metric Application will be processing.\n\n### List Features\n\nYou have the familiar Kelvin table features including row spacing, page management and table configuration.\n\n## Create Data Quality Metrics\n\nYou can create the name of the Data Quality Metric and define the Data Type it will be processing.\n\n    You will still need to write a custom Data Quality Metric Application that will process the Data Quality Metric.\n\nYou can create Data Quality Metrics either individually or in bulk by importing a CSV file with the list of new Data Quality Metrics.\n\n### Create Data Quality Metric\n\nClick on the **Create Data Quality Metric** button in the top right corner.\n\nType in a Display Name and a Data Type.\n\n    The Name ID is automatically created from the Display Name.\n\n    You can customize this name id if required.\n\nThen click on Create button to create the new Metric.\n\n### Bulk Import Data Quality Metrics\n\nClick on the **Import Data Quality Metrics** button in the top right corner.\n\nHere you can download the example CSV file and open it in Google Sheets or Microsoft Excel to fill in.\n\nWhen ready, you can upload your updated CSV file.\n\nClick on **Select File** button or drag and drop your CSV file into the browser box.\n\nClick the **Next** button.\n\nYour file will be validated.\n\nIf it passes all tests, then you can proceed by clicking the **Import** button.\n\n## Edit Data Quality Metric\n\nTo edit a Data Quality Metric, click on the Edit icon { width=20 height=20 }.\n\n    You can not edit the builtin Data Quality Metrics and the option is grayed out.\n\nIn the popup you can now edit the Display Name.\n\nWhen finished, click on the **Save** button.\n\n## Delete Data Quality Metric\n\nTo delete a Data Quality Metric, click on the Delete icon { width=20 height=20 }.\n\n    You can not delete the builtin Data Quality Metrics and the option is grayed out.\n\nIn the popup, type **PERMANENTLY DELETE** into the textbox.\n\nAnd click the **Delete** button to confirm your deletion.\n\nYour Data Quality Metric is now permanently deleted.",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/data-quality/data-quality-metrics.md",
+  "code_examples": [],
+  "related": [
+    "concepts/data-quality"
+  ],
+  "tags": [
+    "cli",
+    "configure",
+    "create",
+    "data",
+    "metrics",
+    "operations",
+    "quality",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

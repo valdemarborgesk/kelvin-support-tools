@@ -1,0 +1,34 @@
+{
+  "id": "how-to/asset/asset-properties/asset-properties-update",
+  "title": "Updating Asset Properties",
+  "type": "how_to",
+  "category": "operations",
+  "content": "You can learn more about [Asset Properties in the Overview ⟶ Concepts page](../../../../overview/concepts/variables/asset-properties.md).\n\n# Updating Asset Properties\n\nTo update the Asset Property, you can use the `/properties/{property_name}/values/update` API endpoint.\n\n    You can only update an Asset property in the Kelvin UI or the Kelvin API.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin UI\"\n\n    To update an Asset Property, you can do this through editing the Asset.\n\n    Full documentation on how to edit an Asset is in the [Platform Administration section under Asset Management](../../../../platform-administration/how-to/asset/update-asset.md).\n\n=== \"Kelvin SDK\"\n\n    You can not update an Asset Property in the Kelvin SDK.\n\n=== \"Kelvin API\"\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/properties/<PROPERTY_NAME>/values/update\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Content-Type: application/json\" \\\n    -H 'accept: */*' \\\n    -d '{\n    \"resource_values\": {\n      \"krn:asset:<ASSET_NAME>\": 1,\n      \"krn:asset:<ASSET_NAME>\": 2\n    }\n    ```\n\n</div>",
+  "summary": "To update the Asset Property, you can use the /properties/{property_name}/values/update API endpoint.",
+  "source": "core-docs/docs/platform-administration/how-to/asset/asset-properties/asset-properties-update.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/properties/<PROPERTY_NAME>/values/update\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Content-Type: application/json\" \\\n    -H 'accept: */*' \\\n    -d '{\n    \"resource_values\": {\n      \"krn:asset:<ASSET_NAME>\": 1,\n      \"krn:asset:<ASSET_NAME>\": 2\n    }",
+      "title": "API cURL Example"
+    }
+  ],
+  "related": [
+    "how-to/update-asset",
+    "concepts/asset-properties"
+  ],
+  "tags": [
+    "api",
+    "asset",
+    "operations",
+    "properties",
+    "sdk",
+    "updating"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

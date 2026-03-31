@@ -1,0 +1,80 @@
+{
+  "id": "api/endpoints/asset/getAssetStatusCurrent",
+  "title": "Get Asset Statuses",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Get Asset Statuses\n\nReturns a list of all Assets and their current status (`state`).\n\n## Endpoint\n\n`GET /assets/status/current/get`",
+  "summary": "Get Asset Statuses",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X GET \\\n  'https://api.kelvininc.com/api/v4/assets/status/current/get' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.asset.getAssetStatusCurrent()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/asset"
+  ],
+  "tags": [
+    "asset",
+    "api",
+    "get"
+  ],
+  "metadata": {
+    "path": "/assets/status/current/get",
+    "method": "GET",
+    "operation_id": "getAssetStatusCurrent",
+    "tag": "Asset",
+    "permission": "kelvin.permission.asset.read",
+    "parameters": [],
+    "request_body": null,
+    "responses": {
+      "200": {
+        "description": "OK",
+        "schema": {
+          "properties": {
+            "data": {
+              "type": "array",
+              "description": "A dictionary with a data property that contains an array of all Assets and their corresponding current status (`state`).",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                    "example": "beam_pump",
+                    "maxLength": 64,
+                    "description": "Unique identifier `name` for the Asset. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+                  },
+                  "state": {
+                    "type": "string",
+                    "enum": [
+                      "online",
+                      "offline",
+                      "unknown"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

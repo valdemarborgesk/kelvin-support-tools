@@ -1,0 +1,74 @@
+{
+  "id": "api/endpoints/app-workloads/startWorkloads",
+  "title": "Start Workloads",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Start Workloads\n\n\n\n## Endpoint\n\n`POST /apps/workloads/start`",
+  "summary": "Start Workloads",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/apps/workloads/start' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.app_workloads.startWorkloads()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/app-workloads"
+  ],
+  "tags": [
+    "app-workloads",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/apps/workloads/start",
+    "method": "POST",
+    "operation_id": "startWorkloads",
+    "tag": "App Workloads",
+    "permission": "kelvin.permission.workload.update",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": false,
+      "schema": {
+        "properties": {
+          "workload_names": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "type": "object"
+      }
+    },
+    "responses": {
+      "204": {
+        "description": "No Content"
+      },
+      "207": {
+        "description": ""
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "403": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

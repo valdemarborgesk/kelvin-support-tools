@@ -1,0 +1,43 @@
+{
+  "id": "api/schemas/workloadstatus",
+  "title": "WorkloadStatus",
+  "type": "schema",
+  "category": "api",
+  "content": "# WorkloadStatus\n\n## Enum Values\n\n- `pending_deploy`\n- `pending_update`\n- `pending_start`\n- `pending_stop`\n- `pending_apply`\n- `deploying`\n- `running`\n- `stopping`\n- `stopped`\n- `failed`\n- `starting`\n- `applying`\n- `received`\n- `downloading`\n- `ready`\n- `unreachable`\n- `staged`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.WorkloadStatus",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "pending_deploy",
+        "pending_update",
+        "pending_start",
+        "pending_stop",
+        "pending_apply",
+        "deploying",
+        "running",
+        "stopping",
+        "stopped",
+        "failed",
+        "starting",
+        "applying",
+        "received",
+        "downloading",
+        "ready",
+        "unreachable",
+        "staged"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "api/schemas/servicetype",
+  "title": "ServiceType",
+  "type": "schema",
+  "category": "api",
+  "content": "# ServiceType\n\nType of Service. `cluster_ip` restricts communication to within the cluster, not accessible externally. `node_port` makes the Service available on a static port across all Nodes. `host_port` exposes the Service on a designated port of the host Node only.\n\n## Enum Values\n\n- `cluster_ip`\n- `node_port`\n- `host_port`",
+  "summary": "Type of Service. `cluster_ip` restricts communication to within the cluster, not accessible externally. `node_port` makes the Service available on a static port across all Nodes. `host_port` exposes the Service on a designated port of the host Node only.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.ServiceType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "example": "cluster_ip",
+      "enum": [
+        "cluster_ip",
+        "node_port",
+        "host_port"
+      ],
+      "description": "Type of Service. `cluster_ip` restricts communication to within the cluster, not accessible externally. `node_port` makes the Service available on a static port across all Nodes. `host_port` exposes the Service on a designated port of the host Node only."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

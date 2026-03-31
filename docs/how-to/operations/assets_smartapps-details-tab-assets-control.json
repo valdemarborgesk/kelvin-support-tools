@@ -1,0 +1,26 @@
+{
+  "id": "how-to/assets/smartapps-details-tab-assets-control",
+  "title": "Enable / Disable Assets",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Enable / Disable Assets\n\n    This tab is only available with the Application `type` Kelvin SmartApp™\n\nIn Kelvin SmartApps™ you have the ability to enable or disable each Asset individually in a Kelvin SmartApp™.\n\nWhen you disable Kelvin SmartApp™ for an Asset, the Kelvin SmartApp™ will no longer process the data coming from the Asset and will not produce any output calculations, control changes or send recommendations to the Operations Engineers for this Asset.\n\nThe Kelvin SmartApp™ will continue processing data for the other Assets.\n\nTo control any Asset in a Kelvin SmartApp™, go to **SmartApps™** dashboard page and select the Kelvin SmartApp™ where your Assets have been deployed.\n\nClick on the **Assets** tab, and you can see a list of Assets for the Kelvin SmartApp™.\n\n    If you have a large number of Assets in a Kelvin SmartApp™, you can use the filters to quickly find the Asset of interest.\n\n## Enable / Disable\n\nYou can control, on a per-Asset basis, whether the Kelvin SmartApp™ processes each Asset.\n\n**Enabled** button - The Kelvin SmartApp™ will start to process input data for your Asset and produce the output data required.\n\n**Disabled** button - The Kelvin SmartApp™ will stop processing data for your Asset.\n\nYou can also control multiple Assets at the same time by selecting the Assets and then choosing a bulk action to take for all.",
+  "summary": "",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/assets/smartapps-details-tab-assets-control.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "assets",
+    "cli",
+    "deploy",
+    "disable",
+    "enable",
+    "operations",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

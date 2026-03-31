@@ -1,0 +1,58 @@
+{
+  "id": "how-to/create-app-with-chatgpt",
+  "title": "Create SmartApps with ChatGPT",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Create SmartApps with ChatGPT\n\n    \n    Follow [this link to start our custom GPT in ChatGPT](https://chatgpt.com/g/g-68182a4408f481919e59ba1128dd85db-kelvin-smartapptm-builder){target=\"_blank\"}.\n\nYou can create a complete Kelvin SmartApp™ application with ChatGPT using our custom GPT.\n\nThis will ask you a few questions then create all the files required ready for upload to the Kelvin Platform.\n\n---\n\n## Creating a SmartApp with GPT\n\nFollow [this link to start the GPT in ChatGPT](https://chatgpt.com/g/g-68182a4408f481919e59ba1128dd85db-kelvin-smartapptm-builder){target=\"_blank\"}.\n\n    You will need to be logged in to ChatGPT use this. A ChatGPT requirement.\n\nFirst, outline what you want to program in the SmartApp. For example type;\n\n> Create a program that will monitor two values as they come in. It will add these two values together and if the result is more than a maximum defined value, then turn off the conveyor belt. If it is less than a minimum defined value, then turn it back on.\n\nGPT will review your requirements and summarize the steps.  \n\nAnd it will also ask any outstanding questions.  \n\nYou can answer, review, or modify the program logic.  \n\nWhen ready, GPT will generate all required code files and package them into a zip for download.\n\nHere you can download the zipped files and test locally, then upload to Kelvin manually.\n\nCongratulations !! You have created your Kelvin SmartApp™ with ChatGPT.\n\n---\n\n## Dev in GitHub and Codespaces\n\nOnce you have downloaded your Kelvin SmartApp™ zipped file, you can now do the following;\n\n* Unzip and continue testing and development on your own computer.\n* Unzip and upload the files to GitHub to continue development in a GitHub Codespace environment.\n\nExpand this section to see documentation on using GitHub and Codespaces for development and testing.\n\n??? note \"Optional Direct GitHub and Codespace Integration\"\n\n    ### Upload to new GitHub Repository\n\n    Once you have downloaded your Kelvin SmartApp™ zipped file, you can now do the following;\n\n    * Unzip and continue testing and development on your own computer.\n    * Unzip and upload the files to GitHub to continue development in a GitHub Codespace environment.\n\n            The zipped files already contain all the files required to automatically setup the environment for the GitHub Codespace environment.\n\n    To upload to a new GitHub repository, first unzip into a folder and open a terminal in the folder.\n\n    ??? note \"Create repository with Git CLI\"\n\n        If you have installed Git CLI, then create the repository from the terminal:\n\n        ```bash\n        gh repo create your-repo-name --public --source=. --remote=origin --push\n        ```\n\n    ??? note \"Create repository in GitHub and initialize folder\"\n\n        Go to GitHub and create a new repository (without README or .gitignore)\n\n        Initialise the folder as a Git repository:\n\n        ```bash\n        git init\n        ```\n\n        Add the GitHub remote (replace with your repository URL):\n\n        ```bash\n        git remote add origin https://github.com/your-username/your-repo-name.git\n        ```\n\n    Now add all files to staging:\n\n    ```bash\n    git add .\n    ```\n\n    Commit the files:\n\n    ```bash\n    git commit -m \"Initial commit\"\n    ```\n\n    Ensure the branch is called `main`:\n\n    ```bash\n    git branch -M main\n    ```\n\n    Push the code to GitHub:\n    ```bash\n    git push -u origin main\n    ```\n\n    Congratulations !! The code is now in GitHub.\n\n    ---\n\n    ### Using GitHub Codespace\n\n            The folder `.devcontainer` in the zipped files holds all the instructions to setup the GitHUb Codespace environment.\n\n        You can edit this to add additional libraries, environment variables, use a specific Python version, etc.\n\n    Go to your repository on GitHub where you will see your newly created repository.\n\n    \n\n    Click on the repository and click the **Code** dropdown and finally click on the **Codespaces** tab.\n\n    \n\n    Click **\"Create codespace on main\"** button. A new tab will open up in GitHub codespace and start to install the environment.\n\n            This may take a couple of minutes to install all dependencies for Kelvin SDK environment.\n\n    \n\n    When ready you can now check the code, test it and do any final adjustments to the Kelvin SmartApp™.\n\n            In most cases the complete Python code and all supporting files should come from ChatGPT fully complete and can be **uploaded** and **deployed** without any changes required.\n\n    \n\n??? note \"Optional GitHub Codespace Integration from Kelvin UI\"\n\n    ### Create GitHub Codespaces from Kelvin UI\n\n    Once you have downloaded your Kelvin SmartApp™ zipped file, you can now do the following;\n\n    * Unzip and continue testing and development on your own computer.\n    * Unzip and upload the files to GitHub to continue development in a GitHub Codespace environment.\n\n    You can create a new GitHub Codespace environment with all Kelvin specific libraries installed and ready from the Kelvin UI.\n\n    Check out [this documentation](./github-codespace.md) on how to do this.\n\n    When your environment is ready, then just drag and drop these files into your GitHub codespace environment for development and testing.\n\n---\n\n## Upload to Kelvin Platform\n\n    [Click here to read](../quick-start/how-to/upload-kelvin-smartapp.md) the full documentation on Uploading a Kelvin SmartApp™ to the Kelvin Platform\n\nWhen you are ready, you can go to the terminal, login to Kelvin Platform and upload it to the Kelvin Platform with the following commands:\n\n```bash title=\"Upload Kelvin SmartApp™ Example\" linenums=\"1\"\nkelvin auth login\n\nkelvin app upload\n```\n\nAnd when you go to Kelvin UI you can now see your Application.\n\n---\n\n## Additional Guides\n\n### Prompt Guides\n\nAll LLMs like ChatGPT require quality prompts to ensure you get the right results.\n\nHere we guide you with some of the common key terms in the Kelvin Platform which will make it easier to ensure ChatGPT understands what you want.\n\n| Key Term | Description |\n| --- | --- |\n| input | This refers to Asset / Data Stream values that will be received by the Kelvin SmartApp™ |\n| output | This refers to Asset / Data Stream values that will be sent from the Kelvin SmartApp™ |\n| app parameter | These are program variables that can be changed through the Kelvin UI by the user during runtime |\n| control change | This is the actual method used for changing values of an Asset at the edge |\n| custom action | This required a type name. This is a method for sending data in a set format to another Kelvin SmartApp™ called an executor that will do some common tasks. This is useful if you have a common task like sending emails to an SMTP server and want to have centralized code for this common task that all other Kelvin SmartApps™ can use |\n| ... package in a recommendation | This will take any commands like a control change and package them into a recommendation rather than executing them directly |\n\nSome example prompts that work in the GPT are given as suggestions when you first open GPT. Here they are;\n\n> Create a program that will monitor two values as they come in. It will add these two values together and if the result is more than a maximum defined value, then turn off the conveyor belt. If it is less than a minimum defined value, then turn it back on.\n\nand \n\n> Create a computer vision application that receives images, classifies defects using a pre-trained model, and sends a recommendation if a defect is detected.\n\nand \n\n> Create a machine learning anomaly detection app that processes vibration data from a pump using a tumbling window and raises a recommendation when anomalies are found.\n\nand \n\n> Create an oil & gas app that monitors pressure, temperature, fluid level, and pump speed. It adjusts the pump speed set point to reach a target fluid level defined by app parameters.",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/create-app-with-chatgpt.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "gh repo create your-repo-name --public --source=. --remote=origin --push"
+    },
+    {
+      "language": "bash",
+      "code": "git remote add origin https://github.com/your-username/your-repo-name.git"
+    },
+    {
+      "language": "bash",
+      "code": "git commit -m \"Initial commit\""
+    },
+    {
+      "language": "bash",
+      "code": "git branch -M main"
+    },
+    {
+      "language": "bash",
+      "code": "git push -u origin main"
+    },
+    {
+      "language": "bash",
+      "code": "kelvin auth login\n\nkelvin app upload",
+      "title": "Upload Kelvin SmartApp™ Example"
+    }
+  ],
+  "related": [
+    "how-to/upload-kelvin-smartapp"
+  ],
+  "tags": [
+    "chatgpt",
+    "cli",
+    "create",
+    "deploy",
+    "development",
+    "monitor",
+    "sdk",
+    "smartapp",
+    "smartapps",
+    "test",
+    "with"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

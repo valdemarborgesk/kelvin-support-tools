@@ -1,0 +1,41 @@
+{
+  "id": "api/schemas/simpleasset",
+  "title": "SimpleAsset",
+  "type": "schema",
+  "category": "api",
+  "content": "# SimpleAsset\n\n\n## Properties\n\n- **name** (`string`): Unique identifier `name` for the Asset. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.\n- **state** (`string`): ",
+  "summary": "Object with properties: name, state",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.SimpleAsset",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "example": "beam_pump",
+          "maxLength": 64,
+          "description": "Unique identifier `name` for the Asset. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "online",
+            "offline",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

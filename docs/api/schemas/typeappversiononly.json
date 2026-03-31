@@ -1,0 +1,52 @@
+{
+  "id": "api/schemas/appversiononly",
+  "title": "AppVersionOnly",
+  "type": "schema",
+  "category": "api",
+  "content": "# AppVersionOnly\n\n\n## Properties\n\n- **version** (`string`): \n- **created_at** (`string`): UTC time when the object was created, formatted in RFC 3339.\n- **created_by** (`string`): KRN of the user or process that created the object.\n- **updated_at** (`string`): UTC time when any keys were last updated, formatted in RFC 3339.\n- **updated_by** (`string`): KRN of the user or process that last updated any of the keys.",
+  "summary": "Object with properties: version, created_at, created_by, updated_at, updated_by",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.AppVersionOnly",
+    "schema_type": "type",
+    "schema": {
+      "properties": {
+        "version": {
+          "type": "string",
+          "format": "semver"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "UTC time when the object was created, formatted in RFC 3339.",
+          "format": "date-time"
+        },
+        "created_by": {
+          "type": "string",
+          "description": "KRN of the user or process that created the object.",
+          "format": "krn",
+          "example": "krn:user:me@example.com"
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "UTC time when any keys were last updated, formatted in RFC 3339.",
+          "format": "date-time"
+        },
+        "updated_by": {
+          "type": "string",
+          "description": "KRN of the user or process that last updated any of the keys.",
+          "format": "krn",
+          "example": "krn:user:me@example.com"
+        }
+      },
+      "type": "object"
+    },
+    "last_updated": "2026-02-04"
+  }
+}

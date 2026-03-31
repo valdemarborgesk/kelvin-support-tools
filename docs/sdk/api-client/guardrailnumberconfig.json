@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.type/guardrailnumberconfig",
+  "title": "GuardrailNumberConfig",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# GuardrailNumberConfig\n\nInherits from: GuardrailRelativeConfig\n\n\nGuardrailNumberConfig object.\n\nParameters\n----------\n    min: Optional[GuardrailValue]\n    max: Optional[GuardrailValue]\n",
+  "summary": "GuardrailNumberConfig object.",
+  "source": "api/src/kelvin/api/client/model/type.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.type.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.type",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

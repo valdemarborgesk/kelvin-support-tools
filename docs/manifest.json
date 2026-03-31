@@ -1,0 +1,127 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-02-24T16:10:54.958299",
+  "description": "Kelvin AI documentation for RAG and LLM context",
+  "schema_version": "1.0",
+  "statistics": {
+    "total_documents": 1825,
+    "by_type": {
+      "ops_guide": 53,
+      "how_to": 199,
+      "sdk_class": 1115,
+      "concept": 19,
+      "schema": 188,
+      "api_endpoint": 251
+    },
+    "by_category": {
+      "tools": 15,
+      "infrastructure": 38,
+      "development": 88,
+      "operations": 111,
+      "sdk": 1115,
+      "core": 11,
+      "applications": 5,
+      "data": 3,
+      "api": 439
+    },
+    "total_code_examples": 2146,
+    "documents_with_examples": 1297,
+    "avg_content_length": 859
+  },
+  "sources": [
+    {
+      "name": "core-docs",
+      "type": "markdown",
+      "description": "Conceptual documentation and how-to guides"
+    },
+    {
+      "name": "openapi.json",
+      "type": "openapi",
+      "description": "API reference with 249 endpoints and 663 schemas"
+    },
+    {
+      "name": "core-sdk-python",
+      "type": "python",
+      "description": "Python SDK with app, api-client, krn, and cli packages"
+    },
+    {
+      "name": "core-api, core-edge, kelvin-platform-infra",
+      "type": "curated",
+      "description": "Infrastructure and ops docs derived from platform source code (K3s, services, troubleshooting)"
+    },
+    {
+      "name": "team-tst",
+      "type": "curated",
+      "description": "Support operations tools: Jira CLI, user creation, SSH key manager, cluster debug, triage agent, Grafana, Slack"
+    }
+  ],
+  "document_types": [
+    {
+      "type": "concept",
+      "description": "Core platform concepts"
+    },
+    {
+      "type": "api_endpoint",
+      "description": "REST API endpoints"
+    },
+    {
+      "type": "schema",
+      "description": "API data schemas"
+    },
+    {
+      "type": "sdk_class",
+      "description": "Python SDK classes"
+    },
+    {
+      "type": "sdk_method",
+      "description": "Python SDK methods"
+    },
+    {
+      "type": "how_to",
+      "description": "Step-by-step guides"
+    },
+    {
+      "type": "ops_guide",
+      "description": "Infrastructure and operational troubleshooting guides"
+    }
+  ],
+  "categories": [
+    {
+      "name": "core",
+      "description": "Platform fundamentals"
+    },
+    {
+      "name": "data",
+      "description": "Data concepts (streams, properties)"
+    },
+    {
+      "name": "applications",
+      "description": "Application development"
+    },
+    {
+      "name": "api",
+      "description": "API reference"
+    },
+    {
+      "name": "sdk",
+      "description": "SDK documentation"
+    },
+    {
+      "name": "development",
+      "description": "Developer guides"
+    },
+    {
+      "name": "operations",
+      "description": "Platform operations"
+    },
+    {
+      "name": "infrastructure",
+      "description": "Infrastructure, K3s clusters, services, troubleshooting"
+    },
+    {
+      "name": "tools",
+      "description": "Support operations tools (Jira, Keycloak, SSH, cluster debug, monitoring, automation)"
+    }
+  ],
+  "cross_reference_count": 688851
+}

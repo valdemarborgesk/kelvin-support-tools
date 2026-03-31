@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/recommendationactionstatus",
+  "title": "RecommendationActionStatus",
+  "type": "schema",
+  "category": "api",
+  "content": "# RecommendationActionStatus\n\n## Enum Values\n\n- `none`\n- `dispatched`\n- `dispatch_error`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.RecommendationActionStatus",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "none",
+        "dispatched",
+        "dispatch_error"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

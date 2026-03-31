@@ -1,0 +1,34 @@
+{
+  "id": "sdk/app/application.window/basetimewindow",
+  "title": "BaseTimeWindow",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# BaseTimeWindow\n\nInherits from: BaseWindow\n\n\nTime-based windowing of data streams.\n\nParameters\n----------\nassets : list[str]\n    Asset identifiers to include.\ninputs : list[str]\n    Data stream identifiers to include as DataFrame columns.\nqueue : asyncio.Queue[AssetDataMessage]\n    Source of incoming messages.\nwindow_size : timedelta\n    Duration of each window.\nhop_size : timedelta\n    Time between the start of consecutive windows.\nround_to : timedelta or None\n    Optional timestamp quantization step.\nalign_step : timedelta or None\n    Optional alignment step for initial window start. If None, no extra alignment.\nallowed_lateness : timedelta or None\n    If provided, accept events older than `window_start` by up to this amount.\nbuffer_size : int or None\n    Optional bound for per-asset buffer deques.\n\nNotes\n-----\n- Naive `window_start` values are interpreted as UTC.\n- Message timestamps that are naive are also treated as UTC.\n\n\n## Methods\n\n\n### __init__(assets: List[str], inputs: List[str], queue: asyncio.Queue[AssetDataMessage], window_size: timedelta, hop_size: timedelta) -> None\n\n\n### async stream(window_start: Optional[datetime]) -> AsyncGenerator[Tuple[str, pd.DataFrame], None]\n\nContinuously emit windowed DataFrames per asset.\n",
+  "summary": "Time-based windowing of data streams.",
+  "source": "app/src/kelvin/application/window.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import BaseTimeWindow\n\n# Usage example\napp = BaseTimeWindow()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "application.window",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "stream"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

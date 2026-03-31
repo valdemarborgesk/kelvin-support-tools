@@ -1,0 +1,174 @@
+{
+  "id": "api/endpoints/deprecated-bridge/getBridge",
+  "title": "Get Bridge",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Get Bridge\n\nRetrieve the parameters of a Bridge (Connection).\n\n## Endpoint\n\n`GET /bridges/{bridge_name}/get`",
+  "summary": "Get Bridge",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X GET \\\n  'https://api.kelvininc.com/api/v4/bridges/{bridge_name}/get' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.deprecated_bridge.getBridge()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/deprecated-bridge"
+  ],
+  "tags": [
+    "deprecated-bridge",
+    "api",
+    "get"
+  ],
+  "metadata": {
+    "path": "/bridges/{bridge_name}/get",
+    "method": "GET",
+    "operation_id": "getBridge",
+    "tag": "(Deprecated) Bridge",
+    "permission": "kelvin.permission.bridge.read",
+    "parameters": [
+      {
+        "name": "bridge_name",
+        "in": "path",
+        "required": true,
+        "description": "Unique identifier `name` of the Bridge (Connection).",
+        "type": "string"
+      }
+    ],
+    "request_body": null,
+    "responses": {
+      "200": {
+        "description": "OK",
+        "schema": {
+          "properties": {
+            "cluster_name": {
+              "type": "string",
+              "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+              "example": "docs-demo-cluster-k3s",
+              "maxLength": 64,
+              "description": "Unique identifier `name` of the Cluster."
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-12-26T18:22:18.582724Z",
+              "description": "UTC time when the Bridge (Connection) was first created, formatted in RFC 3339."
+            },
+            "enabled": {
+              "type": "boolean",
+              "example": true,
+              "description": "If true, Bridge (Connection) `status` is set to `running` and will process I/O's. If false, Bridge (Connection) `status` is set to `stopped` but remains in Node on the Edge System."
+            },
+            "name": {
+              "type": "string",
+              "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+              "example": "motor-plc-opcua-connection",
+              "maxLength": 32,
+              "description": "Unique identifier `name` of the Bridge (Connection)."
+            },
+            "node_name": {
+              "type": "string",
+              "format": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$",
+              "example": "docs-demo-node-01",
+              "maxLength": 64,
+              "description": "Unique identifier `name` of the Node in the Cluster hosting the Bridge (Connection)."
+            },
+            "payload": {
+              "type": "object"
+            },
+            "status": {
+              "type": "object",
+              "description": "Realtime information about the Workload as seen from the Cloud.",
+              "properties": {
+                "last_seen": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "UTC time when the Workload was last seen by the Cloud, formatted in RFC 3339."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Descriptive, human-readable string for `state`."
+                },
+                "state": {
+                  "type": "string",
+                  "enum": [
+                    "pending_deploy",
+                    "pending_update",
+                    "pending_start",
+                    "pending_stop",
+                    "pending_apply",
+                    "deploying",
+                    "running",
+                    "stopping",
+                    "stopped",
+                    "failed",
+                    "starting",
+                    "applying",
+                    "received",
+                    "downloading",
+                    "ready",
+                    "unreachable",
+                    "staged"
+                  ]
+                },
+                "warnings": {
+                  "type": "array",
+                  "description": "All warnings received for any Workload operations.",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "title": {
+              "type": "string",
+              "example": "Motor PLC OPCUA Connection",
+              "description": "Display name (`title`) of the Bridge (Connection)."
+            },
+            "updated": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-12-18T18:22:18.582724Z",
+              "description": "UTC time when any Bridge (Connection) keys were last updated, formatted in RFC 3339."
+            },
+            "workload_name": {
+              "type": "string",
+              "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+              "example": "motor-plc-opcua-connection",
+              "maxLength": 32,
+              "description": "Unique identifier `name` of the Workload that the Bridge (Connection) App is deployed as to the Cluster."
+            },
+            "app_name": {
+              "type": "string",
+              "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+              "example": "test-app",
+              "maxLength": 64,
+              "description": "Unique identifier `name` of the App. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+            },
+            "app_version": {
+              "type": "string",
+              "format": "Major.Minor.Patch",
+              "example": "1.2.0",
+              "description": "App version"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

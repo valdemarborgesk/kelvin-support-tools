@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.templates.templates-manager/templates",
+  "title": "Templates",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Templates\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/templates/templates_manager.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.templates.templates_manager",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

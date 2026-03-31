@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.runtime-manifest/dataquality",
+  "title": "DataQuality",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataQuality\n\nInherits from: BaseModel\n",
+  "summary": "",
+  "source": "app/src/kelvin/message/runtime_manifest.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import DataQuality\n\n# Usage example\napp = DataQuality()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.runtime_manifest",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

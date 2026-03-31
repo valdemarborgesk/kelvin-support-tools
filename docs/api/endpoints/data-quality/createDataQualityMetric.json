@@ -1,0 +1,168 @@
+{
+  "id": "api/endpoints/data-quality/createDataQualityMetric",
+  "title": "Create Data Quality Metric",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Create Data Quality Metric\n\nCreate a new Data Quality Metric.\n\n## Endpoint\n\n`POST /data-quality/metric/create`",
+  "summary": "Create Data Quality Metric",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/data-quality/metric/create' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.data_quality.createDataQualityMetric()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/data-quality"
+  ],
+  "tags": [
+    "data-quality",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/data-quality/metric/create",
+    "method": "POST",
+    "operation_id": "createDataQualityMetric",
+    "tag": "Data Quality",
+    "permission": "kelvin.permission.data-quality.create",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "required": [
+          "name",
+          "title",
+          "data_type_name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+            "example": "custom_availability_metric",
+            "maxLength": 64,
+            "description": "Unique identifier `name` of the Data Quality Metric."
+          },
+          "title": {
+            "type": "string",
+            "example": "Custom Availability Metric",
+            "maxLength": 64,
+            "description": "Display name (`title`) of the Data Quality Metric."
+          },
+          "data_type_name": {
+            "type": "string",
+            "enum": [
+              "boolean",
+              "number",
+              "object",
+              "string"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "example": "Custom metric for high-priority assets requiring 99.9% uptime",
+            "maxLength": 200,
+            "description": "Optional description of the Data Quality Metric."
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Created",
+        "schema": {
+          "properties": {
+            "name": {
+              "type": "string",
+              "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+              "example": "custom_availability_metric",
+              "maxLength": 64,
+              "description": "Unique identifier `name` of the Data Quality Metric."
+            },
+            "title": {
+              "type": "string",
+              "example": "Custom Availability Metric",
+              "maxLength": 64,
+              "description": "Display name (`title`) of the Data Quality Metric."
+            },
+            "data_type_name": {
+              "type": "string",
+              "enum": [
+                "boolean",
+                "number",
+                "object",
+                "string"
+              ]
+            },
+            "description": {
+              "type": "string",
+              "nullable": true,
+              "example": "Custom metric for high-priority assets requiring 99.9% uptime",
+              "maxLength": 200,
+              "description": "Optional description of the Data Quality Metric."
+            },
+            "is_protected": {
+              "type": "boolean",
+              "example": false,
+              "description": "Indicates whether this metric is system-protected and cannot be modified or deleted."
+            },
+            "in_use_by": {
+              "type": "array",
+              "description": "List of workload sources that are using this Data Quality Metric.",
+              "items": {
+                "type": "string",
+                "format": "krn",
+                "example": "krn:wlappv:cluster1/workload1/app1/1.2.0",
+                "maxLength": 256
+              }
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-12-18T18:22:18.582724Z",
+              "description": "UTC time when the Data Quality Metric was first created, formatted in RFC 3339."
+            },
+            "created_by": {
+              "type": "string",
+              "format": "krn",
+              "example": "krn:user:john@kelvininc.com",
+              "maxLength": 256,
+              "description": "The user or process that created this Data Quality Metric."
+            },
+            "updated": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-12-18T18:22:18.582724Z",
+              "description": "UTC time when any Data Quality Metric keys were last updated, formatted in RFC 3339."
+            },
+            "updated_by": {
+              "type": "string",
+              "format": "krn",
+              "example": "krn:user:john@kelvininc.com",
+              "maxLength": 256,
+              "description": "The user or process that last updated this Data Quality Metric."
+            }
+          },
+          "type": "object"
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "409": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

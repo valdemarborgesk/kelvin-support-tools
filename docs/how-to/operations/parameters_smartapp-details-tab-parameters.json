@@ -1,0 +1,25 @@
+{
+  "id": "how-to/parameters/smartapp-details-tab-parameters",
+  "title": "Parameters Tab",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Parameters Tab\n\nApp Parameters are values set by the user and used by Kelvin SmartApps™ to perform calculations on incoming data for each individual Asset.\n\n    When an Asset is first added to a Kelvin SmartApp™, a default set of values will be first applied to its Parameters.\n\nThe App Parameters parameter are used in the Application while it is running its program. How they are used will depend on the type of program and how the Software Engineers have programmed it.\n\nIn many cases they will have an influence on the type of Recommendations that are produced to either control the assets directly or for the Production Engineers to review and approve.\n\n## Filter Assets List\n\nYou can filter the Asset table to show relevant Assets only.\n\n<div class=\"result\" markdown>\n\n=== \"App Version\"\n\n    You can filter according to the App version. Only Assets deployed with this version will be displayed.\n\n    \n\n=== \"Advanced Filter\"\n\n    You can also filter on an advanced filter setting from Asset Properties and/or Kelvin SmartApps™ Parameters.\n\n    \n        Multiple advanced filters can be defined and will be filtered as `AND` meaning that Assets displayed must meet all criteria in the advanced filters section.\n\n    \n\n</div>\n\n## View Parameter Values\n\nYou can see the current App Parameter values for each Asset.\n\nThen select any Asset and the current values will be shown in the Parameters section.",
+  "summary": "App Parameters are values set by the user and used by Kelvin SmartApps™ to perform calculations on incoming data for each individual Asset.",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/parameters/smartapp-details-tab-parameters.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "configure",
+    "deploy",
+    "operations",
+    "parameters",
+    "smartapp",
+    "tab"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

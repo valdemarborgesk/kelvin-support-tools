@@ -1,0 +1,32 @@
+{
+  "id": "how-to/develop/produce/data-tag-messages",
+  "title": "Data Tag Messages",
+  "type": "how_to",
+  "category": "development",
+  "content": "## Data Tag Messages\n\nData Tags are used to label Asset time series data. This has many applications such as;\n\n* For data scientists to use for machine learning training\n* For developers to have additional information beyond the raw data to review and improve Kelvin SmartApps™\n* For Operations to tag events linked to the time series data for historical records\n\nOn the Kelvin UI, the data tags will show in the Data Explorer.\n\nKelvin SmartApps™ can publish a `DataTag` Message in order to label important events on a certain point in time (or time range) for a certain Asset.\n\n    Operations can also their own add Data Tags manually through the Kelvin UI\n\nThe DataTag Object supports the following attributes:\n\n| Data Tag Attribute       | Required     | Description                                                                                 |\n|-----------------|--------------|---------------------------------------------------------------------------------------------|\n| `start_date`    | **required** | Start date for the Data Tag. Time is based on UTC timezone, formatted in RFC 3339.          |\n| `end_date`      | **optional** | End date for the Data Tag. Time is based on UTC timezone, formatted in RFC 3339.            |\n| `tag_name`      | **required** | Tag name to categorize the Data Tag.                                                        |\n| `resource`      | **required** | The Asset that this Data Tag is related to. This is in KRN format (e.g. `krn:asset:bp_01`). |\n| `description`   | **optional** | Detailed description of the Data Tag.                                                       |\n| `contexts`      | **optional** | A list of associated Kelvin resources with this Data Tag. (e.g. KRNDatastream, KRNApp, etc).|\n\nThis is how they can be created and published:\n\n```python title=\"Create and Publish Data Tag Python Example\" linenums=\"1\"\nfrom datetime import timedelta, datetime\n\nfrom kelvin.application import KelvinApp\nfrom kelvin.message import DataTag\nfrom kelvin.krn import KRNAsset, KRNDatastream\n\napp = KelvinApp()\n\n@app.timer(interval=10)\nasync def publish_data():\n\n    now = datetime.now()\n\n    # Create and Publish DataTag\n    await app.publish(\n        DataTag(\n            start_date=now - timedelta(seconds=datatag_duration_secs),\n            end_date=now,\n            tag_name=\"My Tag\",\n            resource=KRNAsset(\"my_asset\"),\n            contexts=[KRNApp(\"app_name\"), KRNDatastream(\"my_datastream\")]\n        )\n    )\n\napp.run()\n```",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/develop/produce/data-tag-messages.md",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from datetime import timedelta, datetime\n\nfrom kelvin.application import KelvinApp\nfrom kelvin.message import DataTag\nfrom kelvin.krn import KRNAsset, KRNDatastream\n\napp = KelvinApp()\n\n@app.timer(interval=10)\nasync def publish_data():\n\n    now = datetime.now()\n\n    # Create and Publish DataTag\n    await app.publish(\n        DataTag(\n            start_date=now - timedelta(seconds=datatag_duration_secs),\n            end_date=now,\n            tag_name=\"My Tag\",\n            resource=KRNAsset(\"my_asset\"),\n            contexts=[KRNApp(\"app_name\"), KRNDatastream(\"my_datastream\")]\n        )\n    )\n\napp.run()",
+      "title": "Create and Publish Data Tag Python Example"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "create",
+    "data",
+    "development",
+    "messages",
+    "sdk",
+    "smartapp",
+    "tag"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "how-to/develop-connections/upload-app",
+  "title": "Upload Application to Kelvin Platform",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Upload Application to Kelvin Platform\n\nOnce you have finished writing and testing your new Import / Export Application, then you need to upload it to the App Registry on the Kelvin Platform.\n\nWhen you create a new Connection, it will be listed as a selectable option.\n\n**For Imports**\n\n**For Exports**\n\nTo upload, you can follow the [Application Quick Start Guide for Upload](../../quick-start/how-to/upload-kelvin-smartapp.md).",
+  "summary": "Once you have finished writing and testing your new Import / Export Application, then you need to upload it to the App Registry on the Kelvin Platform. When you create a new Connection, it will be listed as a selectable option.",
+  "source": "core-docs/docs/developer-tools/how-to/develop-connections/upload-app.md",
+  "code_examples": [],
+  "related": [
+    "how-to/upload-kelvin-smartapp"
+  ],
+  "tags": [
+    "application",
+    "create",
+    "development",
+    "kelvin",
+    "platform",
+    "smartapp",
+    "test",
+    "upload"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

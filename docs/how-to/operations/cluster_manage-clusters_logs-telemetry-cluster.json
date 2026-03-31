@@ -1,0 +1,26 @@
+{
+  "id": "how-to/cluster/manage-clusters/logs-telemetry-cluster",
+  "title": "Logs Telemetry Cluster",
+  "type": "how_to",
+  "category": "operations",
+  "content": "## Logs\n\n### Viewing Cluster Logs\n\nIn the Kelvin UI you can view the logs of a Cluster and all the Workloads running on the Cluster.\n\n    You can configure the Log options in the Configuration section of the Cluster.\n\n    [Click here](./clusters-dashboard.md#configuring-cluster-logs) to read the full documentation.\n\nFrom **Clusters** menu find the Cluster row and click on the logs icon to the right hand side of the row.\n\nAnd then you will see the logs being displayed in a Grafana environment.\n\n## Telemetry\n\n### Viewing Cluster Telemetry\n\nIn the Kelvin UI you can view the Telemetry of the Cluster. It will show you the resources used on the hardware or in the case of a Virtual Machine, the resources the VM is using.\n\n    You can configure the Telemetry options in the Configuration section of the Cluster.\n\n    [Click here](./clusters-dashboard.md#configuring-cluster-telemetry) to read the full documentation.\n\nFrom **Clusters** menu find the Cluster row and click on the telemetry icon to the right hand side of the row.\n\nAnd then you will see the telemetry being displayed in a Grafana environment.",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/cluster/manage-clusters/logs-telemetry-cluster.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "cluster",
+    "configure",
+    "logs",
+    "monitor",
+    "operations",
+    "telemetry"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

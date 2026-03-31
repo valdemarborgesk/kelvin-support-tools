@@ -1,0 +1,86 @@
+{
+  "id": "api/schemas/legacyworkloadstaged",
+  "title": "LegacyWorkloadStaged",
+  "type": "schema",
+  "category": "api",
+  "content": "# LegacyWorkloadStaged\n\n\n## Properties\n\n- **ready** (`boolean`): Staged workload ready to be applied.\n- **app_version** (`string`): Version Number of the Kelvin App used for the Staged Workload.\n- **payload** (`object`): Internal Kelvin configuration information for deployment of the Staged Workload.\n- **instantly_apply** (`boolean`): Whether the staged workload should be instantly applied or not.\n- **status** (`object`): Realtime information about the Staged Workload as seen from the Cloud.",
+  "summary": "Object with properties: ready, app_version, payload, instantly_apply, status",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.LegacyWorkloadStaged",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "ready": {
+          "type": "boolean",
+          "example": true,
+          "description": "Staged workload ready to be applied."
+        },
+        "app_version": {
+          "type": "string",
+          "format": "Major.Minor.Patch",
+          "example": "1.2.0",
+          "description": "Version Number of the Kelvin App used for the Staged Workload."
+        },
+        "payload": {
+          "type": "object",
+          "properties": {},
+          "description": "Internal Kelvin configuration information for deployment of the Staged Workload."
+        },
+        "instantly_apply": {
+          "type": "boolean",
+          "example": true,
+          "description": "Whether the staged workload should be instantly applied or not."
+        },
+        "status": {
+          "type": "object",
+          "description": "Realtime information about the Staged Workload as seen from the Cloud.",
+          "properties": {
+            "message": {
+              "type": "string",
+              "description": "Descriptive, human-readable string for `state`."
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "pending_deploy",
+                "pending_update",
+                "pending_start",
+                "pending_stop",
+                "pending_apply",
+                "deploying",
+                "running",
+                "stopping",
+                "stopped",
+                "failed",
+                "starting",
+                "applying",
+                "received",
+                "downloading",
+                "ready",
+                "unreachable",
+                "staged"
+              ]
+            },
+            "warnings": {
+              "type": "array",
+              "description": "All warnings received for any Staged Workload operations.",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

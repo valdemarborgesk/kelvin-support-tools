@@ -1,0 +1,50 @@
+{
+  "id": "how-to/develop-connections/app-configuration",
+  "title": "Connector Configuration",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Connector Configuration\n\nYou can learn more about [App Configurations in the Overview ⟶ Concepts page](../../../overview/concepts/variables/app-configurations.md).\n\n## Creating App Configurations\n\nThe configuration variable names and values are defined in the Import Application's `app.yaml` file as `configuration`.\n\nConfigurations can also be optionally defined in the `ui_schemas` that provides a link to a JSON file containing all the information about how to display Configurations in the Kelvin UI.\n\n    Operations will have the option to change these at runtime from the Kelvin UI.\n\n```yaml title=\"app.yaml Example\" linenums=\"1\"\nui_schemas:\n  configuration: \"ui_schemas/configuration.json\"\n\ndefaults:\n  configuration:\n    upload_interval: 15\n    nest-example:\n      nest1: 25\n      next2: 30\n```\n\nFor the `configuration.json` file you can define all the information for the Kelvin UI. This can be the title, type of input required and limitations of the values allowed.\n\nIt will look something like this.\n\n```json title=\"sample ui_schema/configuration.json\" linenums=\"1\"\n{\n    \"type\": \"object\",\n    \"properties\": {\n      \"upload_interval\": {\n        \"type\": \"number\",\n        \"title\": \"Upload Interval\",\n        \"minimum\": 0,\n        \"maximum\": 100\n      }\n    },\n    \"required\": [\"upload_interval\"]\n}\n```\n## Get Configuration Values\n\nThis is how to access the global configuration variables in a Import Application:\n\n```python title=\"Get Configuration Values Python Example\" linenums=\"1\"\nimport asyncio\n\nfrom kelvin.application import KelvinApp\n\napp = KelvinApp()\n\n@app.task\nasync def continuous_task():\n    \"\"\"Runs continuously in the background\"\"\"\n    while True:\n\n        # Get IP\n        ip = app.app_configuration[\"broker-ip\"]\n        print(f'The Broker IP address for this application is {ip}')\n        await asyncio.sleep(10)\n\napp.run()\n```\n    `app.app_configuration` will only be available after `app.connect()`\n\nYou can also get nested App Configuration values;\n\n```python title=\"Get Nested Configuration Values Python Example\" linenums=\"1\"\nimport asyncio\n\nfrom kelvin.application import KelvinApp\n\napp = KelvinApp()\n\n@app.task\nasync def continuous_task():\n    \"\"\"Runs continuously in the background\"\"\"\n    while True:\n\n        # Get IP\n        ip = app.app_configuration[\"nest-example\"][\"nest1\"]\n        print(f'The Broker IP address for this application is {ip}')\n        await asyncio.sleep(10)\n\napp.run()\n```\n\n## Updating Configuration Values\n\nDevelopers and Administrators can update these values through the Kelvin API without needing to re-upload the complete Import Application or Kelvin UI.\n\nTo update the configuration values dynamically, you can use the Kelvin UI editing option of a Connector to update the configuration values.\n\nTo start go to the Connector page;\n\nClick on the update connector icon of the Connector you want to update;\n\nThen in step 2 you can update the values and then go to the last step and click the **update** button.\n\n## Upgrading Import Applications\n\nWhen a Import Application is upgraded, Kelvin automatically propagates all matching App Configuration values from the previous version to the new version.\n\nFor any new App Configurations introduced in the upgraded Import Application version, the default values will initially applied to the Workload.",
+  "summary": "You can learn more about App Configurations in the Overview ⟶ Concepts page.",
+  "source": "core-docs/docs/developer-tools/how-to/develop-connections/app-configuration.md",
+  "code_examples": [
+    {
+      "language": "yaml",
+      "code": "ui_schemas:\n  configuration: \"ui_schemas/configuration.json\"\n\ndefaults:\n  configuration:\n    upload_interval: 15\n    nest-example:\n      nest1: 25\n      next2: 30",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n    \"type\": \"object\",\n    \"properties\": {\n      \"upload_interval\": {\n        \"type\": \"number\",\n        \"title\": \"Upload Interval\",\n        \"minimum\": 0,\n        \"maximum\": 100\n      }\n    },\n    \"required\": [\"upload_interval\"]\n}",
+      "title": "sample ui_schema/configuration.json"
+    },
+    {
+      "language": "python",
+      "code": "import asyncio\n\nfrom kelvin.application import KelvinApp\n\napp = KelvinApp()\n\n@app.task\nasync def continuous_task():\n    \"\"\"Runs continuously in the background\"\"\"\n    while True:\n\n        # Get IP\n        ip = app.app_configuration[\"broker-ip\"]\n        print(f'The Broker IP address for this application is {ip}')\n        await asyncio.sleep(10)\n\napp.run()",
+      "title": "Get Configuration Values Python Example"
+    },
+    {
+      "language": "python",
+      "code": "import asyncio\n\nfrom kelvin.application import KelvinApp\n\napp = KelvinApp()\n\n@app.task\nasync def continuous_task():\n    \"\"\"Runs continuously in the background\"\"\"\n    while True:\n\n        # Get IP\n        ip = app.app_configuration[\"nest-example\"][\"nest1\"]\n        print(f'The Broker IP address for this application is {ip}')\n        await asyncio.sleep(10)\n\napp.run()",
+      "title": "Get Nested Configuration Values Python Example"
+    }
+  ],
+  "related": [
+    "concepts/app-configurations"
+  ],
+  "tags": [
+    "api",
+    "cli",
+    "configuration",
+    "configure",
+    "connector",
+    "create",
+    "development",
+    "sdk"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

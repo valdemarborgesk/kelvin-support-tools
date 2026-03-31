@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/clustersettingedgeapps",
+  "title": "ClusterSettingEdgeApps",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ClusterSettingEdgeApps\n\nInherits from: DataModelBase\n\n\nClusterSettingEdgeApps object.\n\nParameters\n----------\n    edge_ui: Optional[EdgeUi]\n    edge_ccm: Optional[EdgeCcm]\n    edge_k8s: Optional[EdgeK8s]\n    edge_info: Optional[EdgeInfo]\n    edge_mqtt: Optional[EdgeMqtt]\n    edge_nats: Optional[EdgeNats]\n    edge_sync: Optional[EdgeSync]\n    edge_leader_api: Optional[EdgeLeaderApi]\n    edge_custom_action_manager: Optional[EdgeCustomActionManager]\n",
+  "summary": "ClusterSettingEdgeApps object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

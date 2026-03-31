@@ -1,0 +1,31 @@
+{
+  "id": "how-to/deploy-kelvin-smartapp",
+  "title": "Deploy Kelvin SmartApp™",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Deploy Kelvin SmartApp™\n\n<p style=\"text-align: center;\">\n  <a href=\"../configure-cloud-for-smartapp/\" class=\"md-button md-button--primary\">\n    ← Configure Kelvin Cloud\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-left: 0.4em;\">⑤</span>\n  </a>\n  <a href=\"../monitor-kelvin-smartapp/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">⑦</span>\n    Monitor SmartApp →\n  </a>\n</p>\n\nNow that you have your first SmartApp uploaded, you can deploy it to the **assets** that you previously created in your Kelvin Cloud instance. \n\n    Before proceeding to add Assets to SmartApp in the Kelvin UI (which deploys a Workload to a Cluster in the background), make sure you have an active [Cluster on your Instance](../../../platform-administration/how-to/cluster/clusters-overview.md) and the default [Cluster setting for Kelvin SmartApps™ deployment](../../../platform-administration/how-to/cluster/manage-clusters/set-default-cluster.md) is set. \n\n    This demonstration video was done in v5.9.\n    \n    There may be slight differences with the latest version.\n\n    Check the latest documentation for the specific tasks should any feature not quite work as expected.\n\n## Video Guide\n\nWatch this quick start guide performed in real time in less than 2 minutes.\n\n<iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/5amb6os2erU?si=javmHbekWnGDSecs\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\n## Written Guide\n\nOpen your browser and navigate to `https://<instance>.kelvin.ai`. Login with your credentials and you will be presented with the Kelvin UI.\n\nGo to **Applications** and select the **Event Detection** app you just uploaded. \n\nThe next step is to deploy the app to assets. Click on the **Workloads** tab an then on the **Deploy Workload** button.\n\nChoose the app **latest version** and then click the **Next** button.\n\nSelect the assets you want to deploy to the app. In this case we will select the assets with the name `Beam Pump #02` and `Beam Pump #03` and then click the **Next** button.\n\nIn step three there are a number of settings available. We will only focus on two of the areas;\n\n**Cluster**\n\nSelect the cluster to deploy the workload assets to.\n\n**IO Mapping**\n\nNow we'll map the asset data streams to the SmartApp inputs and outputs. This entails channeling the live data from the assets directly into the application.\n\nKelvin will oversee the data routing to the Kelvin SmartApp™; your role is to ensure the correct data stream is selected to feed into the SmartApp inputs.\n\nFor the **Event Detection** Kelvin SmartApp™, we have a singular input named **motor_temperature**. Thus, we'll be selecting the **Temperature** data stream from the asset.\n\nLike the input, the output should already be automatically selected to the closest type of Data Stream name available. Normally this should be ok.\n\nAnd the final step is to click on the **Deploy** button to deploy the app to the assets.\n\nYou can observe the workload being **deployed** to the assets. And in a couple of seconds the app will be **running** for the assets.\n\n    **Congratulations!** You've successfully deployed your SmartApp to your assets.\n\n## Next Step\n\nNow that you have your first Kelvin SmartApp™ deployed to your assets, you can visualize the recommendations, control changes and monitor the logs and telemetry of your app.\n\n<p style=\"text-align: center;\">\n  <a href=\"../configure-cloud-for-smartapp/\" class=\"md-button md-button--primary\">\n    ← Configure Kelvin Cloud\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-left: 0.4em;\">⑤</span>\n  </a>\n  <a href=\"../monitor-kelvin-smartapp/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">⑦</span>\n    Monitor SmartApp →\n  </a>\n</p>",
+  "summary": "<p style=\"text-align: center;\"> <a href=\"../configure-cloud-for-smartapp/\" class=\"md-button md-button--primary\"> ← Configure Kelvin Cloud <span style=\"font-size: 1.5em; vertical-align: middle; margin-left: 0.4em;\">⑤</span>",
+  "source": "core-docs/docs/developer-tools/quick-start/how-to/deploy-kelvin-smartapp.md",
+  "code_examples": [],
+  "related": [
+    "how-to/set-default-cluster",
+    "how-to/clusters-overview"
+  ],
+  "tags": [
+    "cli",
+    "configure",
+    "create",
+    "deploy",
+    "development",
+    "kelvin",
+    "monitor",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

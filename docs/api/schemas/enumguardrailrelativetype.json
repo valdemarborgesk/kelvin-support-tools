@@ -1,0 +1,33 @@
+{
+  "id": "api/schemas/guardrailrelativetype",
+  "title": "GuardrailRelativeType",
+  "type": "schema",
+  "category": "api",
+  "content": "# GuardrailRelativeType\n\nLimiting rate of change value is an absolute value or a percentage of the current value before the control change.\n\n## Enum Values\n\n- `value`\n- `percentage`",
+  "summary": "Limiting rate of change value is an absolute value or a percentage of the current value before the control change.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.GuardrailRelativeType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "description": "Limiting rate of change value is an absolute value or a percentage of the current value before the control change.",
+      "enum": [
+        "value",
+        "percentage"
+      ],
+      "x-enum-varnames": [
+        "VALUE",
+        "PERCENTAGE"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

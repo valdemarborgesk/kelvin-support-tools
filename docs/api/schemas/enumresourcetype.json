@@ -1,0 +1,30 @@
+{
+  "id": "api/schemas/resourcetype",
+  "title": "ResourceType",
+  "type": "schema",
+  "category": "api",
+  "content": "# ResourceType\n\n## Enum Values\n\n- `asset`\n- `datastream`\n- `app`\n- `app-parameter`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.ResourceType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "asset",
+        "datastream",
+        "app",
+        "app-parameter"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

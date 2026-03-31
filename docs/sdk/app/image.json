@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.evidences/image",
+  "title": "Image",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Image\n\nInherits from: Evidence\n\n\nEvidence representing an image.\n\nAttributes:\n    title (Optional[str]): The title of the image evidence.\n    description (Optional[str]): A description or caption for the image, providing additional context.\n    url (AnyHttpUrl): The URL of the image source, used for displaying the image.\n    timestamp (Optional[datetime]): The timestamp related with the image was created.\n",
+  "summary": "Evidence representing an image.",
+  "source": "app/src/kelvin/message/evidences.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import Image\n\n# Usage example\napp = Image()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.evidences",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

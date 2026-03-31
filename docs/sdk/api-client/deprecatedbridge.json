@@ -1,0 +1,38 @@
+{
+  "id": "sdk/api-client/client.api.deprecated-bridge/deprecatedbridge",
+  "title": "DeprecatedBridge",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DeprecatedBridge\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### deploy_bridge(data: Optional[Union[requests.BridgeDeploy, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.BridgeDeploy\n\nDeploy a Bridge (Connection) from the App Registry as a Workload to a Cluster/Node.\n\n\n### list_bridges(names: Optional[Sequence[str]], search: Optional[Sequence[str]], cluster_name: Optional[Sequence[str]], workload_name: Optional[Sequence[str]], status_state: Optional[Sequence[str]], app_name: Optional[Sequence[str]], app_version: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.BridgeItem], responses.BridgesListPaginatedResponseCursor]\n\nReturns a list of Bridges (also known as Connections) and its parameters. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### delete_bridge(bridge_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete an existing Bridge (Connection). You will no longer receive Asset / Data Stream data from the assets associated with the Bridge (Connection). This cannot be undone once the API request has been submitted.\n\n\n### get_bridge(bridge_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.BridgeGet\n\nRetrieve the parameters of a Bridge (Connection).\n\n\n### start_bridge(bridge_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nStart running the Bridge (Connection).\n\n\n### stop_bridge(bridge_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nStop running the Bridge (Connection). **Permission Required:** `kelvin.permission.bridge.update`.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/deprecated_bridge.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.deprecated_bridge.deploy_bridge()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.deprecated_bridge",
+    "item_type": "class",
+    "methods": [
+      "deploy_bridge",
+      "list_bridges",
+      "delete_bridge",
+      "get_bridge",
+      "start_bridge",
+      "stop_bridge"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/base.api-service-model/apiservicemodelmeta",
+  "title": "ApiServiceModelMeta",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ApiServiceModelMeta\n\nInherits from: ModelMetaclass\n\n\nDataModel metaclass.\n",
+  "summary": "DataModel metaclass.",
+  "source": "api/src/kelvin/api/base/api_service_model.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.api_service_model.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.api_service_model",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

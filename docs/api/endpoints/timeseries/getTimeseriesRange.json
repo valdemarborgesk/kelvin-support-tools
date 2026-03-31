@@ -1,0 +1,159 @@
+{
+  "id": "api/endpoints/timeseries/getTimeseriesRange",
+  "title": "Get Range Time Series Data",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Get Range Time Series Data\n\nReturns an array with Time Series data within the specified time range for one or more resources (Asset /Data Stream pairs). Optional to preprocess and aggregate the data on the server using `agg` and `time_bucket` before downloading.\n\n## Endpoint\n\n`POST /timeseries/range/get`",
+  "summary": "Get Range Time Series Data",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/timeseries/range/get' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.timeseries.getTimeseriesRange()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/timeseries"
+  ],
+  "tags": [
+    "timeseries",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/timeseries/range/get",
+    "method": "POST",
+    "operation_id": "getTimeseriesRange",
+    "tag": "Timeseries",
+    "permission": "kelvin.permission.storage.read",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "required": [
+          "end_time",
+          "selectors",
+          "start_time"
+        ],
+        "type": "object",
+        "properties": {
+          "agg": {
+            "type": "string",
+            "example": "mean",
+            "default": "none",
+            "enum": [
+              "none",
+              "count",
+              "distinct",
+              "integral",
+              "mean",
+              "median",
+              "mode",
+              "spread",
+              "stddev",
+              "sum",
+              "max",
+              "min",
+              "first",
+              "last"
+            ],
+            "description": "Performs mathematical calculations on the Time Series values and returns the calculated results only. Depending on enumerator used `time_bucket` may also be required."
+          },
+          "end_time": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-06-01T12:00:00Z",
+            "description": "UTC time for the latest time in the Time Series, formatted in RFC 3339."
+          },
+          "fill": {
+            "type": "string",
+            "example": "25",
+            "default": "none",
+            "description": "How to fill the values when there is no data. Valid options are:\n  - `none`: Doesn't fill empty values\n  - `null`: Fills empty values with a null value\n  - `linear`: Fills using [linear interpolation](https://en.wikipedia.org/wiki/Linear_interpolation)\n  - `previous`: Fills using the previous non-null value\n  - `<value>`: Provide a value to be used to fill"
+          },
+          "group_by_selector": {
+            "type": "boolean",
+            "example": true,
+            "default": true,
+            "description": "If true, results will be separated per `selector` element `resource` (Asset / Data Stream pair)."
+          },
+          "order": {
+            "type": "string",
+            "example": "ASC",
+            "default": "ASC",
+            "enum": [
+              "ASC",
+              "DESC"
+            ],
+            "description": "Sort order of the `timestamp` key for the returned data. This string is case sensitive."
+          },
+          "selectors": {
+            "type": "array",
+            "description": "An array of `resources` and corresponding data `field` element name to filter on the list and optional `agg` calculations.",
+            "items": {
+              "type": "object",
+              "required": [
+                "resource"
+              ],
+              "properties": {
+                "fields": {
+                  "type": "array",
+                  "description": "A filter on the list based on the `field` element names. Blank array will return all data field element names and associated values.",
+                  "items": {
+                    "type": "string",
+                    "format": "^[a-z]+([A-Z][a-z0-9]+)*$",
+                    "example": "value"
+                  }
+                },
+                "resource": {
+                  "type": "string",
+                  "format": "krn",
+                  "example": "krn:ad:asset1/data_stream1",
+                  "minLength": 1,
+                  "maxLength": 256,
+                  "description": "Specifies the resource (Asset / Data Stream pair) from which field/values are returned."
+                }
+              }
+            }
+          },
+          "start_time": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2023-06-01T12:00:00Z",
+            "description": "UTC time for the earliest time in the Time Series, formatted in RFC 3339."
+          },
+          "time_bucket": {
+            "type": "string",
+            "example": "5m",
+            "description": "Defines the time range to use to aggregate the data values when using the `agg` key. Valid time units are \"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\"."
+          },
+          "time_shift": {
+            "type": "string",
+            "example": "1h",
+            "description": "Shift initial starting point of time buckets from the standard epoch for `time_bucket`. Valid time units are \"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\"."
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK"
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

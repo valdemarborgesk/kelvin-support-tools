@@ -1,0 +1,27 @@
+{
+  "id": "api/schemas/rolepolicyactions",
+  "title": "RolePolicyActions",
+  "type": "schema",
+  "category": "api",
+  "content": "# RolePolicyActions\n",
+  "summary": "Array of object",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.RolePolicyActions",
+    "schema_type": "type",
+    "schema": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

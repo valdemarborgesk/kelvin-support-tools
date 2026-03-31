@@ -1,0 +1,764 @@
+{
+  "id": "api/schemas/appmanifest",
+  "title": "AppManifest",
+  "type": "schema",
+  "category": "api",
+  "content": "# AppManifest\n\n\n## Properties\n\n- **name** (`string`): The name of the application. This is the unique identifier for the application.\n- **title** (`string`): Human-readable name of the application.\n- **description** (`string`): Human-readable description of the application.\n- **category** (`string`): The category of the application.\n- **type** (`string`): The type of application.\n\n- `app`: An App that allows mapping inputs and outputs to data\nstreams, sending control changes, recommendations, and data tags.\n- `importer`: Connects to an external system to import data into the\nplatform as well as receive control changes to act on the external\nsystem.\n- `exporter`: Connects to the platform to export data to an external\nsystem.\n- `docker`: An external application that does not connect to the\nplatform's data streams.\n- `task`: An application type used internally by the Tasks feature.\n- **version** (`string`): The version of the application being created.\n- **flags** (`object`): Flags that can be set to enable specific behaviours on the platform when managing the application.\n- **io** (`array`): \n- **dynamic_io** (`array`): \n- **parameters** (`array`): \n- **custom_actions** (`array`): \n- **data_quality** (`array`): \n- **schemas** (`object`): Custom JSON Schemas to be used by the UI when configuring the application.\n- **defaults** (`object`): Default values for the application deployment and runtime configurations.",
+  "summary": "Object with properties: name, title, description, category, type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "manifest",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "manifest.AppManifest",
+    "schema_type": "manifest",
+    "schema": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the application. This is the unique identifier for the application."
+        },
+        "title": {
+          "type": "string",
+          "description": "Human-readable name of the application."
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of the application."
+        },
+        "category": {
+          "type": "string",
+          "description": "The category of the application."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "app",
+            "importer",
+            "exporter",
+            "docker",
+            "task"
+          ],
+          "description": "The type of application.\n\n- `app`: An App that allows mapping inputs and outputs to data\nstreams, sending control changes, recommendations, and data tags.\n- `importer`: Connects to an external system to import data into the\nplatform as well as receive control changes to act on the external\nsystem.\n- `exporter`: Connects to the platform to export data to an external\nsystem.\n- `docker`: An external application that does not connect to the\nplatform's data streams.\n- `task`: An application type used internally by the Tasks feature."
+        },
+        "version": {
+          "type": "string",
+          "format": "semver",
+          "description": "The version of the application being created."
+        },
+        "flags": {
+          "type": "object",
+          "description": "Flags that can be set to enable specific behaviours on the platform when managing the application.",
+          "properties": {
+            "spec_version": {
+              "type": "string",
+              "format": "semver",
+              "description": "The version of the specification that the application is using."
+            },
+            "legacy_data_types": {
+              "type": "boolean",
+              "default": false,
+              "description": "If `true`, the application uses the legacy data types (e.g. `raw.float64`, `raw.int32`,...)."
+            },
+            "legacy_extras": {
+              "type": "object"
+            },
+            "gateway_mode": {
+              "type": "string",
+              "description": "The mode which the gateway is operates on. The default is `socket`, which uses a socket as an interface for the application to connect to the realtime data flow.",
+              "enum": [
+                "socket",
+                "legacy"
+              ]
+            },
+            "enable_runtime_update": {
+              "type": "object",
+              "properties": {
+                "configuration": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "resource_parameters": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "resource_properties": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            },
+            "deployment": {
+              "type": "object",
+              "properties": {
+                "allowed_resources": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "krn",
+                    "x-kelvin-supported-krns": [
+                      "asset-type"
+                    ]
+                  }
+                }
+              }
+            },
+            "resources_required": {
+              "type": "boolean",
+              "description": "Define whether the application is deployed to specific resources (e.g. assets) or not. Applications that have inputs or outputs always require resources."
+            }
+          }
+        },
+        "io": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The name of the input/output used in the Application."
+              },
+              "data_type": {
+                "type": "string",
+                "description": "Primitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects."
+              },
+              "way": {
+                "type": "string",
+                "enum": [
+                  "output",
+                  "input-cc",
+                  "input-cc+output",
+                  "input",
+                  "output-cc",
+                  "input+output-cc"
+                ],
+                "description": "The direction and characteristics of the input/output. The `cc` suffix means that in accepts or sends Control Changes on the input or output respectively."
+              },
+              "storage": {
+                "type": "string",
+                "enum": [
+                  "node-and-cloud",
+                  "node",
+                  "none"
+                ],
+                "description": "The storage location of the data. `node-and-cloud` means that the data is stored in the node and in the cloud. `node` means that the data is stored only in the node. `none` means that the data is not stored."
+              },
+              "unit": {
+                "type": "string",
+                "description": "The unit of the data. It's recommended to use the [UCUM](http://unitsofmeasure.org/ucum.html) standard for units."
+              }
+            }
+          }
+        },
+        "dynamic_io": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "type_name"
+            ],
+            "properties": {
+              "type_name": {
+                "type": "string",
+                "description": "Dynamic I/O type name."
+              },
+              "data_types": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "Primitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects."
+                },
+                "description": "List of data types that the dynamic I/O type can have. If empty, any data type is allowed."
+              },
+              "ownership": {
+                "type": "string",
+                "enum": [
+                  "both",
+                  "owned",
+                  "remote"
+                ]
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "both",
+                  "data",
+                  "control"
+                ]
+              }
+            }
+          }
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The name of the parameter."
+              },
+              "title": {
+                "type": "string",
+                "description": "Human-readable name of the parameter."
+              },
+              "data_type": {
+                "type": "string",
+                "enum": [
+                  "string",
+                  "number",
+                  "boolean"
+                ],
+                "description": "The data type of the parameter. It can be `string`, `number`, or `boolean`."
+              },
+              "default": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "custom_actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The type of the custom action."
+              },
+              "way": {
+                "type": "string",
+                "enum": [
+                  "input-ca",
+                  "output-ca"
+                ],
+                "description": "The direction of the custom action. If `input-ca`, the app recieves and executes custom actions. If `output-ca`, the app sends custom actions which are then executed by an app with the corresponding `input-ca`."
+              }
+            }
+          }
+        },
+        "data_quality": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The name of the data quality."
+              },
+              "data_type": {
+                "type": "string",
+                "description": "Primitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects."
+              },
+              "datastreams": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "way": {
+                "type": "string",
+                "enum": [
+                  "output",
+                  "input"
+                ],
+                "description": "The direction of the data quality. If `output`, the app computes and produces the data quality value. If `input`, the app receives the data quality value."
+              }
+            }
+          }
+        },
+        "schemas": {
+          "type": "object",
+          "description": "Custom JSON Schemas to be used by the UI when configuring the application.",
+          "properties": {
+            "parameters": {
+              "type": "object",
+              "description": "JSON Schema that defines the Resource Parameters that can be configured for the App. The schema is limited to the having an `object` with `properties` that are `number`, `boolean`, or `string`."
+            },
+            "configuration": {
+              "type": "object",
+              "description": "JSON Schema used to generate the UI."
+            },
+            "io_configurations": {
+              "type": "array",
+              "description": "JSON Schema of each asset's dynamic I/O configuration.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type_name": {
+                    "type": "string",
+                    "description": "Dynamic I/O type name."
+                  },
+                  "schema": {
+                    "type": "object",
+                    "description": "JSON Schema to build the configuration by the UI."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "defaults": {
+          "type": "object",
+          "description": "Default values for the application deployment and runtime configurations.",
+          "properties": {
+            "deployment": {
+              "type": "object",
+              "description": "Default rules for application deployment.",
+              "properties": {
+                "max_resources": {
+                  "description": "Maximum number of resources that a single workload handles when deploying the application.",
+                  "type": "integer",
+                  "default": 1
+                },
+                "deployment_type": {
+                  "type": "string",
+                  "enum": [
+                    "standard",
+                    "staged+instant-apply",
+                    "staged-only"
+                  ],
+                  "description": "Specifies the method for deploying a workload on the platform.\n\n- `standard`: The default deployment method. The workload is\nautomatically created and started.\n- `staged+instant-apply`: Similar to `standard`, but if the workload\nexists with a different app image, the new image is downloaded before\nstopping the existing workload. This minimizes application downtime.\n- `staged-only`: Prepares the workload by downloading the necessary\nimages, but does not create or start the workload. The workload is only\nstarted upon explicit user request (see `/workloads/apply`)."
+                },
+                "target": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "cluster",
+                        "resource-cluster"
+                      ],
+                      "default": "cluster",
+                      "description": "Type of target to deploy the application to.\n\n- `cluster`: Deploy the application to a specific cluster, and optionally to a specific node.\n- `resource-cluster`: Deploy the application to the cluster specified by the resource property `cluster`."
+                    },
+                    "cluster": {
+                      "type": "object",
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "Cluster to deploy the application to."
+                        },
+                        "node_name": {
+                          "type": "string",
+                          "description": "Node to deploy the application to."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "app": {
+              "type": "object",
+              "properties": {
+                "configuration": {
+                  "type": "object"
+                },
+                "io_datastream_mapping": {
+                  "type": "array",
+                  "description": "Mapping of Application inputs and outputs to Data Streams.",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "io",
+                      "datastream"
+                    ],
+                    "properties": {
+                      "io": {
+                        "type": "string",
+                        "description": "Name of the input/output used in the Application."
+                      },
+                      "datastream": {
+                        "type": "string",
+                        "description": "Name of the Data Stream linked to the input/output in the Application."
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "system": {
+              "type": "object",
+              "properties": {
+                "health_check": {
+                  "type": "object",
+                  "title": "Health Check",
+                  "properties": {
+                    "liveness_probe": {
+                      "type": "object",
+                      "title": "Liveness Probe",
+                      "description": "Checks if the container is running. Failing the probe restarts the container.",
+                      "properties": {
+                        "initial_delay_seconds": {
+                          "type": "integer",
+                          "title": "Initial Delay (s)",
+                          "description": "Seconds to wait before starting probes.",
+                          "default": 1,
+                          "minimum": 0,
+                          "maximum": 2147483647
+                        },
+                        "period_seconds": {
+                          "type": "integer",
+                          "title": "Probe Interval (s)",
+                          "description": "Frequency of probe execution.",
+                          "default": 10,
+                          "minimum": 1,
+                          "maximum": 2147483647
+                        },
+                        "timeout_seconds": {
+                          "type": "integer",
+                          "title": "Timeout (s)",
+                          "description": "Seconds before the probe times out.",
+                          "default": 1,
+                          "minimum": 1,
+                          "maximum": 2147483647
+                        },
+                        "failure_threshold": {
+                          "type": "integer",
+                          "title": "Failure Threshold",
+                          "description": "Failures before restarting the container.",
+                          "default": 3,
+                          "minimum": 1,
+                          "maximum": 2147483647
+                        },
+                        "type": {
+                          "$ref": "#/components/schemas/enum.LivenessProbeType"
+                        },
+                        "http_get": {
+                          "type": "object",
+                          "title": "HTTP GET Probe",
+                          "description": "Performs an HTTP GET request to check health.",
+                          "required": [
+                            "port"
+                          ],
+                          "properties": {
+                            "path": {
+                              "type": "string",
+                              "title": "Path",
+                              "description": "HTTP path to access."
+                            },
+                            "port": {
+                              "type": "integer",
+                              "title": "Port",
+                              "description": "Port for the HTTP server.",
+                              "minimum": 1,
+                              "maximum": 65535
+                            },
+                            "scheme": {
+                              "$ref": "#/components/schemas/enum.URIScheme"
+                            },
+                            "http_headers": {
+                              "type": "array",
+                              "title": "HTTP Headers",
+                              "description": "Custom headers for the request.",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "title": "Header Name",
+                                    "format": "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$"
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "title": "Header Value",
+                                    "format": "^[\\x20-\\x7E]*$"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "tcp_socket": {
+                          "type": "object",
+                          "title": "TCP Socket Probe",
+                          "description": "Checks if a TCP port is open.",
+                          "required": [
+                            "port"
+                          ],
+                          "properties": {
+                            "port": {
+                              "type": "integer",
+                              "title": "Port",
+                              "description": "TCP port to check.",
+                              "minimum": 1,
+                              "maximum": 65535
+                            }
+                          }
+                        },
+                        "exec": {
+                          "type": "object",
+                          "title": "Exec Probe",
+                          "description": "Runs a command inside the container to check health.",
+                          "required": [
+                            "command"
+                          ],
+                          "properties": {
+                            "command": {
+                              "type": "array",
+                              "title": "Command",
+                              "description": "Command to execute. Exit code 0 is healthy.",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "resources": {
+                  "type": "object",
+                  "title": "Resource Configuration",
+                  "properties": {
+                    "requests": {
+                      "type": "object",
+                      "title": "Resource Requests",
+                      "properties": {
+                        "cpu": {
+                          "type": "string",
+                          "title": "CPU Request",
+                          "description": "Minimum CPU required.",
+                          "format": "^([0-9]+m|[0-9]+(\\.[0-9]+)?|[0-9]+)$"
+                        },
+                        "memory": {
+                          "type": "string",
+                          "title": "Memory Request",
+                          "description": "Minimum memory required.",
+                          "format": "^([0-9]+(\\.[0-9]+)?(Ei|Pi|Ti|Gi|Mi|Ki|E|P|T|G|M|K)?|[0-9]+)$"
+                        }
+                      }
+                    },
+                    "limits": {
+                      "type": "object",
+                      "properties": {
+                        "cpu": {
+                          "type": "string",
+                          "title": "CPU Limit",
+                          "description": "Maximum CPU allowed.",
+                          "format": "^([0-9]+m|[0-9]+(\\.[0-9]+)?|[0-9]+)$"
+                        },
+                        "memory": {
+                          "type": "string",
+                          "title": "Memory Limit",
+                          "description": "Maximum memory allowed.",
+                          "format": "^([0-9]+(\\.[0-9]+)?(Ei|Pi|Ti|Gi|Mi|Ki|E|P|T|G|M|K)?|[0-9]+)$"
+                        }
+                      }
+                    }
+                  }
+                },
+                "privileged": {
+                  "type": "boolean",
+                  "description": "Run the container in privileged mode.",
+                  "default": false
+                },
+                "environment_vars": {
+                  "type": "array",
+                  "title": "Environment Variables",
+                  "description": "List of environment variables.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "title": "Variable Name",
+                        "description": "Name of the environment variable.",
+                        "format": "^[A-Za-z_][A-Za-z0-9_]*$"
+                      },
+                      "value": {
+                        "type": "string",
+                        "title": "Variable Value",
+                        "description": "Value of the environment variable."
+                      }
+                    }
+                  }
+                },
+                "ports": {
+                  "type": "array",
+                  "title": "Container Ports",
+                  "description": "List of ports exposed by the container.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "title": "Port Name",
+                        "description": "Name identifier for the port.",
+                        "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$"
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "Type of port to expose.",
+                        "enum": [
+                          "host",
+                          "service"
+                        ]
+                      },
+                      "host": {
+                        "type": "object",
+                        "title": "Host Configuration",
+                        "required": [
+                          "port"
+                        ],
+                        "properties": {
+                          "port": {
+                            "type": "integer",
+                            "title": "Host Port",
+                            "description": "Port on the host machine.",
+                            "minimum": 1,
+                            "maximum": 65535
+                          }
+                        }
+                      },
+                      "service": {
+                        "type": "object",
+                        "title": "Service Configuration",
+                        "required": [
+                          "port"
+                        ],
+                        "properties": {
+                          "port": {
+                            "type": "integer",
+                            "title": "Service Port",
+                            "description": "Port exposed by the service.",
+                            "minimum": 1,
+                            "maximum": 65535
+                          },
+                          "container_port": {
+                            "type": "integer",
+                            "title": "Container Port",
+                            "description": "Port exposed by the container.",
+                            "minimum": 1,
+                            "maximum": 65535
+                          },
+                          "exposed": {
+                            "type": "boolean",
+                            "title": "Exposed",
+                            "description": "Expose the port outside the cluster.",
+                            "default": false
+                          },
+                          "exposed_port": {
+                            "type": "integer",
+                            "title": "Exposed Port",
+                            "description": "Port exposed outside the cluster.",
+                            "minimum": 30001,
+                            "maximum": 32767
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "volumes": {
+                  "type": "array",
+                  "title": "Volumes",
+                  "description": "List of volumes mounted by the container.",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "title": "Volume Name",
+                        "description": "Name identifier for the volume.",
+                        "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$"
+                      },
+                      "target": {
+                        "type": "string",
+                        "title": "Mount Path",
+                        "description": "Path where the volume is mounted."
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "Type of volume to use.",
+                        "enum": [
+                          "persistent",
+                          "host",
+                          "text"
+                        ]
+                      },
+                      "text": {
+                        "type": "object",
+                        "title": "Text Volume",
+                        "required": [
+                          "data"
+                        ],
+                        "properties": {
+                          "data": {
+                            "type": "string",
+                            "title": "Data",
+                            "description": "Text content of the volume."
+                          },
+                          "base64": {
+                            "type": "boolean",
+                            "title": "Base64 Encoded",
+                            "description": "Data is base64 encoded.",
+                            "default": false
+                          },
+                          "encoding": {
+                            "$ref": "#/components/schemas/enum.VolumeEncoding"
+                          }
+                        }
+                      },
+                      "host": {
+                        "type": "object",
+                        "title": "Host Volume",
+                        "required": [
+                          "source"
+                        ],
+                        "properties": {
+                          "source": {
+                            "type": "string",
+                            "title": "Source Path",
+                            "description": "Path on the host machine."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "name",
+        "title",
+        "description",
+        "type",
+        "version"
+      ],
+      "type": "object"
+    },
+    "last_updated": "2026-02-04"
+  }
+}

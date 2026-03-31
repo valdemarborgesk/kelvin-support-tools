@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/dynamiciotype",
+  "title": "DynamicIOType",
+  "type": "schema",
+  "category": "api",
+  "content": "# DynamicIOType\n\n## Enum Values\n\n- `both`\n- `data`\n- `control`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.DynamicIOType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "both",
+        "data",
+        "control"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

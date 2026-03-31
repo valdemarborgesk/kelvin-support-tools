@@ -1,0 +1,79 @@
+{
+  "id": "api/endpoints/recommendation/updateRecommendationReject",
+  "title": "Update Reject Recommendation",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Update Reject Recommendation\n\nUpdate a Recommendation `state` to `rejected`. All `actions` will only be archived and not implemented.\n\n## Endpoint\n\n`POST /recommendations/{recommendation_id}/reject/update`",
+  "summary": "Update Reject Recommendation",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/recommendations/{recommendation_id}/reject/update' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.recommendation.updateRecommendationReject()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/recommendation"
+  ],
+  "tags": [
+    "recommendation",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/recommendations/{recommendation_id}/reject/update",
+    "method": "POST",
+    "operation_id": "updateRecommendationReject",
+    "tag": "Recommendation",
+    "permission": "kelvin.permission.recommendation.update",
+    "parameters": [
+      {
+        "name": "recommendation_id",
+        "in": "path",
+        "required": true,
+        "description": "Recommendation key `id` to reject. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+        "type": "string"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "confidence": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 2147483647,
+            "example": 7,
+            "description": "Confidence level of the decision to reject the Recommendation. This is usually, but not mandatory, related to any machine learning model confidence results."
+          },
+          "message": {
+            "type": "string",
+            "example": "Recommendation is not accurate based on the current performance.",
+            "description": "Contains a message with any descriptions useful to be associated with the `reject` state."
+          }
+        }
+      }
+    },
+    "responses": {
+      "204": {
+        "description": "No Content"
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

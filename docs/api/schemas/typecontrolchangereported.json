@@ -1,0 +1,107 @@
+{
+  "id": "api/schemas/controlchangereported",
+  "title": "ControlChangeReported",
+  "type": "schema",
+  "category": "api",
+  "content": "# ControlChangeReported\n\nThe values reported by either the Bridge or CCM referring to the moments before and after the Control Change was applied.\n\n\n## Properties\n\n- **before** (`object`): \n- **after** (`object`): ",
+  "summary": "The values reported by either the Bridge or CCM referring to the moments before and after the Control Change was applied.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.ControlChangeReported",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "description": "The values reported by either the Bridge or CCM referring to the moments before and after the Control Change was applied.",
+      "properties": {
+        "before": {
+          "type": "object",
+          "required": [
+            "value",
+            "timestamp",
+            "source"
+          ],
+          "properties": {
+            "value": {
+              "description": "Value represented in one of these formats.",
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "object"
+                }
+              ]
+            },
+            "timestamp": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-12-18T18:22:18.582724Z"
+            },
+            "source": {
+              "description": "Indicates who provided the value, the Bridge or the Control Change Manager",
+              "type": "string",
+              "enum": [
+                "bridge",
+                "ccm"
+              ]
+            }
+          }
+        },
+        "after": {
+          "type": "object",
+          "required": [
+            "value",
+            "timestamp",
+            "source"
+          ],
+          "properties": {
+            "value": {
+              "description": "Value represented in one of these formats.",
+              "oneOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "object"
+                }
+              ]
+            },
+            "timestamp": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-12-18T18:22:18.582724Z"
+            },
+            "source": {
+              "description": "Indicates who provided the value, the Bridge or the Control Change Manager",
+              "type": "string",
+              "enum": [
+                "bridge",
+                "ccm"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "api/schemas/deploymenttarget",
+  "title": "DeploymentTarget",
+  "type": "schema",
+  "category": "api",
+  "content": "# DeploymentTarget\n\n\n## Properties\n\n- **type** (`string`): Type of target to deploy the application to.\n\n- `cluster`: Deploy the application to a specific cluster, and optionally to a specific node.\n- `resource-cluster`: Deploy the application to the cluster specified by the resource property `cluster`.\n- **cluster** (`object`): ",
+  "summary": "Object with properties: type, cluster",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "manifest",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "manifest.DeploymentTarget",
+    "schema_type": "manifest",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "cluster",
+            "resource-cluster"
+          ],
+          "default": "cluster",
+          "description": "Type of target to deploy the application to.\n\n- `cluster`: Deploy the application to a specific cluster, and optionally to a specific node.\n- `resource-cluster`: Deploy the application to the cluster specified by the resource property `cluster`."
+        },
+        "cluster": {
+          "type": "object",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Cluster to deploy the application to."
+            },
+            "node_name": {
+              "type": "string",
+              "description": "Node to deploy the application to."
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

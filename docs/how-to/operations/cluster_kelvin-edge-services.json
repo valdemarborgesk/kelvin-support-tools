@@ -1,0 +1,27 @@
+{
+  "id": "how-to/cluster/kelvin-edge-services",
+  "title": "Kelvin Edge Services",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Kelvin Edge Services\n\nWhen you install a Docker Cluster, you have the option to select what Kelvin Edge Services you require at the edge.\n\n    This is designed to minimize resource usage to the bare minimum required.\n\n    Very useful when using low powered edge servers, like arm devices.\n\nTo see what services are available and choose what to enable, click on the **Clusters** menu on the left sidebar and select the Docker Cluster.\n\n    This feature is only available for Docker Clusters.\n\nClick on the **Configuration** tab and scroll down to **Kelvin Edge Services**.\n\nHere you can see all the options available;\n\n| Edge Service | Description |\n| --- | --- |\n| Edge Control Manager | Looks after Control Change Objects, ensuring their delivery to the assets and the validation of the write attempt |\n| Edge Nats Broker | Responsible for handling lightweight, high-performance messaging between edge devices and centralized systems. It acts as a message relay, ensuring efficient communication between Edge Connectors, the Kelvin Platform, and other services. |\n| Edge Sync | Responsible for synchronizing Asset / Data Stream values between the assets and the Kelvin Platform. Handle connection interruptions without data loss. |\n| Edge UI/API | Delivers a local edge server experience for local edge management services |\n| Edge MQTT Broker | Handles all the communications between services. This has options to expose this service to the LAN and allow anonymous connections |",
+  "summary": "When you install a Docker Cluster, you have the option to select what Kelvin Edge Services you require at the edge.",
+  "source": "core-docs/docs/platform-administration/how-to/cluster/kelvin-edge-services.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "api",
+    "cli",
+    "configure",
+    "docker",
+    "edge",
+    "kelvin",
+    "operations",
+    "services"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

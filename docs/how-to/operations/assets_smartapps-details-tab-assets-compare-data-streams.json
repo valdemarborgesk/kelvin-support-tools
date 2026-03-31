@@ -1,0 +1,24 @@
+{
+  "id": "how-to/assets/smartapps-details-tab-assets-compare-data-streams",
+  "title": "Compare Data Streams",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Compare Data Streams\n\n_On this page you will learn how to quickly analyze multiple Asset Data Streams in Data Explorer from Kelvin SmartApps™ section of Kelvin UI._\n\nWhen running Kelvin SmartApps™ with many Assets, a very useful tool in Kelvin is the ability to compare the Data Streams of multiple Assets.\n\nThis feature allows Operations Engineers to analyze similar assets and quickly identify problems and solutions with low performance assets.\n\nTo compare the Data Streams of up to four Assets together with one action go to **SmartApps™** and select Kelvin SmartApps™ of interest.\n\nThen in the **Assets** tab select up to four Assets you would like to compare. You will see a new button appear at the top named **Compare in Data Explorer**.\n\nThis will then open up Data Explorer and the graphs will be prepopulated with the Assets into a multi-asset graph. From here you can perform your analytics on the performance of your assets.\n\n    If this is the first time you are looking at your Assets in the Data Explorer, then you will need to go to the Data Source ⟶ Data Streams section on the right hand side bar and select some Data Streams to show in the graphs. These settings are saved and remembered each time you come back to the Data Explorer.",
+  "summary": "_On this page you will learn how to quickly analyze multiple Asset Data Streams in Data Explorer from Kelvin SmartApps™ section of Kelvin UI._ When running Kelvin SmartApps™ with many Assets, a very useful tool in Kelvin is the ability to compare ...",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/assets/smartapps-details-tab-assets-compare-data-streams.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "compare",
+    "data",
+    "operations",
+    "smartapp",
+    "streams"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

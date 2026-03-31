@@ -1,0 +1,115 @@
+{
+  "id": "how-to/develop/consume/data-windows",
+  "title": "Data Windows",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Data Windows\n\nData windows aggregate incoming data over time or count, returning pandas DataFrames for analysis.\n\n    You must have installed the `kelvin-python-sdk[ai]` library for this feature to work.\n\n## Introduction\n\nThe Kelvin SDK facilitates three primary windowing methods:\n\n1. **Tumbling Window:** This method uses fixed-size, non-overlapping windows that reset after each window period, making it suitable for isolated data analysis in each segment.\n2. **Hopping Window:** These windows are also fixed-size but can overlap based on a specified hop size, allowing for more frequent data analysis intervals.\n3. **Rolling Window:** Unlike the other types, this method creates fixed-size windows based on the count of messages, not on time intervals.\n\n    It is important to note that windows are always ordered by timestamp, ensuring that temporal sequencing is maintained across the data processed.\n\n### Irregular Data Scenarios\n\n* **Lateness in Data:** Lateness occurs when data arrives after its processing window. Kelvin incorporates late data into open windows; otherwise, it is ignored.\n\n* **Out-of-Order Events:** Out-of-order events arrive in a sequence different from their timestamps. Window methods correctly place them in their respective windows by timestamp, preserving temporal order.\n\n### Time Windows\n\nTime-based windows include the start of the interval but exclude the end, preventing data duplication across windows.\n\n## Tumbling Window\n\nExample of temperature readings with a tumbling window of 10 seconds.\n\n``` title=\"Tumbling Window Example\" linenums=\"1\"\nOriginal Data:\nTime: [00:00]   25°C\nTime: [00:04]   26°C\nTime: [00:07]   27°C\nTime: [00:12]   28°C\nTime: [00:18]   26°C\nTime: [00:22]   29°C\nTime: [00:27]   30°C\nTime: [00:31]   27°C\nTime: [00:35]   25°C\n\nTumbling Windows:\nTime: [00:00, 00:10):   [25°C (00:00), 26°C (00:04), 27°C (00:07)]\nTime: [00:10, 00:20):   [28°C (00:12), 26°C (00:18)]\nTime: [00:20, 00:30):   [29°C (00:22), 30°C (00:27)]\nTime: [00:30, 00:40):   [27°C (00:31), 25°C (00:35)]\n```\n\nEach window (W1, W2, etc.) processes data that falls within its respective 10-second time frame. No data overlaps between the windows.\n\n### Examples\n\n<div class=\"result\" markdown>\n\n=== \"Basic\"\n\n    ```python title=\"Basic Tumbling Window Python Example\" linenums=\"1\"\n    app = KelvinApp()\n    await app.connect()\n\n    # Streaming data in 5-minute tumbling windows\n    window_start = datetime.now()\n    async for asset_name, df in app.tumbling_window(window_size=timedelta(minutes=5)).stream(window_start):\n        print(asset_name, df)\n    ```\n\n    This will automatically process data in 5-minute intervals for all data streams defined in your `app.yaml` and for all assets your app is running on. Each iteration of the loop will return:\n\n    * `asset_name`: the unique identifier of the asset\n    * `df`: a Pandas DataFrame containing the data for that asset within the 5-minute window. This DataFrame’s index is timestamp-based, with the values in monotonic increasing order.\n\n=== \"Filter Data Streams\"\n\n    To narrow down the processing to specific data streams within a window, you can specify which streams to include:\n\n            The order of data streams in the list specifies the order of the columns within the DataFrame produced by the window. \n\n    ```python title=\"Filtered Data Streams Tumbling Window Python Example\" linenums=\"1\"\n    app = KelvinApp()\n    await app.connect()\n\n    window_start = datetime.now()\n    async for asset_name, df in app.tumbling_window(window_size=timedelta(minutes=5), \n                                            datastreams=['temperature', 'pressure']).stream(window_start):\n        print(asset_name, df)\n    ```\n\n=== \"Filter Assets\"\n\n    To narrow down the processing to specific Assets within a window, you can specify which Asset to include:\n\n    ```python title=\"Filtered Asset Tumbling Window Python Example\" linenums=\"1\"\n    app = KelvinApp()\n    await app.connect()\n\n    window_start = datetime.now()\n    async for asset_name, df in app.tumbling_window(window_size=timedelta(minutes=5), \n                                            assets=['asset1', 'asset2']).stream(window_start):\n        print(asset_name, df)\n    ```\n\n=== \"Aligned Data\"\n\n    The `round_to` parameter is designed to align message timestamps to the nearest specified time unit, such as a second, minute, or hour. This functionality is particularly beneficial for ensuring that rows within a DataFrame are synchronized, which is crucial for consistent data analysis and reporting.\n\n    ```python title=\"Time Aligned Tumbling Window Python Example\" linenums=\"1\"\n    app = KelvinApp()\n    await app.connect()\n\n    # Aligning windows to the nearest minute\n    window_start = datetime.now()\n    async for asset_name, df in app.tumbling_window(window_size=timedelta(minutes=5), \n                                            round_to=timedelta(minutes=1)).stream(window_start):\n        print(asset_name, df)\n    ```\n\n</div>\n\n## Hopping Window\nA hopping window, also known as a sliding window, is a series of fixed-sized, overlapping intervals where each window “hops” forward by a specified time interval (hop size). It is suitable for applications where data points may need to be included in multiple intervals for continuous calculations.\n\nExample of temperature readings with a hopping window size of 10 seconds and a hop size of 5 seconds:\n\n``` title=\"Hopping Window Example\" linenums=\"1\"\nOriginal Data:\nTime: [00:00]   25°C\nTime: [00:04]   26°C\nTime: [00:07]   27°C\nTime: [00:12]   28°C\nTime: [00:18]   26°C\nTime: [00:22]   29°C\nTime: [00:27]   30°C\nTime: [00:31]   27°C\nTime: [00:35]   25°C\n\nWindows:\nTime: [00:00, 00:10):   [25°C (00:00), 26°C (00:04), 27°C (00:07)]\nTime: [00:05, 00:15):   [26°C (00:04), 27°C (00:07), 28°C (00:12)]\nTime: [00:10, 00:20):   [28°C (00:12), 26°C (00:18)]\nTime: [00:15, 00:25):   [26°C (00:18), 29°C (00:22)]\nTime: [00:20, 00:30):   [29°C (00:22), 30°C (00:27)]\nTime: [00:25, 00:35):   [30°C (00:27), 27°C (00:31)]\nTime: [00:30, 00:40):   [27°C (00:31), 25°C (00:35)]\n```\n\nHere, each new window starts every 5 seconds, causing overlapping between windows (e.g., 26°C and 29°C appear in multiple windows).\n\n### Examples\n\n<div class=\"result\" markdown>\n\n=== \"Basic\"\n\n    ```python title=\"Basic Hopping Window Python Example\" linenums=\"1\"\n    app = KelvinApp()\n    await app.connect()\n\n    # Processing data using a 5-minute hopping window with a 2-minute hop size\n    window_start = datetime.now()\n    for asset_name, df in app.hopping_window(window_size=timedelta(minutes=5), \n                                            hop_size=timedelta(minutes=2)).stream(window_start=window_start):\n        print(asset_name, df)\n    ```\n\n    This code snippet will stream data from all configured data streams and assets, processing it in 5-minute windows that move forward by 2 minutes after each iteration. \n\n=== \"Filter Data Streams\"\n\n    To narrow down the processing to specific data streams within a window, you can specify which streams to include:\n\n            The order of data streams in the list specifies the order of the columns within the DataFrame produced by the window. \n\n    ```python title=\"Filtered Data Streams Hopping Window Python Example\" linenums=\"1\"\n    app = KelvinApp()\n    await app.connect()\n\n    # Processing data using a 5-minute hopping window with a 2-minute hop size\n    window_start = datetime.now()\n    async for asset_name, df in app.hopping_window(window_size=timedelta(minutes=5), \n                                            hop_size=timedelta(minutes=2), \n                                            datastreams=['temperature', 'pressure']).stream(window_start=window_start):\n        print(asset_name, df)\n    ```\n\n=== \"Filter Assets\"\n\n    To narrow down the processing to specific Assets within a window, you can specify which Asset to include:\n\n    ```python title=\"Filtered Asset Hopping Window Python Example\" linenums=\"1\"\n    app = KelvinApp()\n    await app.connect()\n\n    # Processing data using a 5-minute hopping window with a 2-minute hop size\n    window_start = datetime.now()\n    async for asset_name, df in app.hopping_window(window_size=timedelta(minutes=5), \n                                            hop_size=timedelta(minutes=2), \n                                            assets=['asset1', 'asset2']).stream(window_start=window_start):\n        print(asset_name, df)\n    ```\n\n=== \"Aligned Data\"\n\n    The `round_to` parameter is designed to align message timestamps to the nearest specified time unit, such as a second, minute, or hour. This functionality is particularly beneficial for ensuring that rows within a DataFrame are synchronized, which is crucial for consistent data analysis and reporting.\n\n    ```python title=\"Time Aligned Hopping Window Python Example\" linenums=\"1\"\n    app = KelvinApp()\n    await app.connect()\n\n    # Processing data using a 5-minute hopping window with a 2-minute hop size\n    window_start = datetime.now()\n    async for asset_name, df in app.hopping_window(window_size=timedelta(minutes=5), \n                                            hop_size=timedelta(minutes=2), \n                                            round_to=timedelta(minutes=1)).stream(window_start=window_start):\n        print(asset_name, df)\n    ```\n\n</div>\n\n## Rolling Window\nA rolling window, also known as a moving window, calculates over a window of a specified number of data points (count size). Unlike time-based windows, it moves one observation at a time. This method is ideal for smoothing or averaging data points directly.\n\nExample of temperature readings with a rolling window of 3 elements:\n\n``` title=\"Rolling Window Example\" linenums=\"1\"\nOriginal Data:\nTime: [00:00]   25°C\nTime: [00:04]   26°C\nTime: [00:07]   27°C\nTime: [00:12]   28°C\nTime: [00:18]   26°C\nTime: [00:22]   29°C\nTime: [00:27]   30°C\nTime: [00:31]   27°C\nTime: [00:35]   25°C\n\nWindows:\nWindow 1:   [25°C (00:00), 26°C (00:04), 27°C (00:07)]\nWindow 2:   [26°C (00:04), 27°C (00:07), 28°C (00:12)]\nWindow 3:   [27°C (00:07), 28°C (00:12), 26°C (00:18)]\nWindow 4:   [28°C (00:12), 26°C (00:18), 29°C (00:22)]\nWindow 5:   [26°C (00:18), 29°C (00:22), 30°C (00:27)]\nWindow 6:   [29°C (00:22), 30°C (00:27), 27°C (00:31)]\nWindow 7:   [30°C (00:27), 27°C (00:31), 25°C (00:35)]\n```\n\nEach window contains 3 events, and as new data arrives, the window shifts forward, always keeping the latest 3 events in focus.\n\n### Examples\n\n<div class=\"result\" markdown>\n\n=== \"Basic\"\n\n    ```python title=\"Basic Rolling Window Python Example\" linenums=\"1\"\n    app = KelvinApp()\n    await app.connect()\n\n    async for asset_name, df in app.rolling_window(count_size=5).stream():\n        print(asset_name, df)\n    ```\n\n=== \"Filter Data Streams\"\n\n    To narrow down the processing to specific data streams within a window, you can specify which streams to include:\n\n            The order of data streams in the list specifies the order of the columns within the DataFrame produced by the window. \n\n    ```python title=\"Filtered Data Streams Rolling Window Python Example\" linenums=\"1\"\n    app = KelvinApp()\n    await app.connect()\n\n    async for asset_name, df in app.rolling_window(count_size=5, \n                                            datastreams=['temperature', 'pressure']).stream():\n        print(asset_name, df)\n    ```\n\n=== \"Filter Assets\"\n\n    To narrow down the processing to specific Assets within a window, you can specify which Asset to include:\n\n    ```python title=\"Filtered Asset Rolling Window Python Example\" linenums=\"1\"\n    app = KelvinApp()\n    await app.connect()\n\n    async for asset_name, df in app.rolling_window(count_size=5, a\n                                            assets=['asset1', 'asset2']).stream():\n        print(asset_name, df)\n    ```\n\n=== \"Aligned Data\"\n\n    The `round_to` parameter is designed to align message timestamps to the nearest specified time unit, such as a second, minute, or hour. This functionality is particularly beneficial for ensuring that rows within a DataFrame are synchronized, which is crucial for consistent data analysis and reporting.\n\n    ```python title=\"Time Aligned Rolling Window Python Example\" linenums=\"1\"\n    app = KelvinApp()\n    await app.connect()\n\n    async for asset_name, df in app.rolling_window(count_size=5, \n                                            round_to=timedelta(minutes=1)).stream():\n        print(asset_name, df)\n    ```\n\n</div>",
+  "summary": "Data windows aggregate incoming data over time or count, returning pandas DataFrames for analysis.",
+  "source": "core-docs/docs/developer-tools/how-to/develop/consume/data-windows.md",
+  "code_examples": [
+    {
+      "language": "text",
+      "code": "Original Data:\nTime: [00:00]   25°C\nTime: [00:04]   26°C\nTime: [00:07]   27°C\nTime: [00:12]   28°C\nTime: [00:18]   26°C\nTime: [00:22]   29°C\nTime: [00:27]   30°C\nTime: [00:31]   27°C\nTime: [00:35]   25°C\n\nTumbling Windows:\nTime: [00:00, 00:10):   [25°C (00:00), 26°C (00:04), 27°C (00:07)]\nTime: [00:10, 00:20):   [28°C (00:12), 26°C (00:18)]\nTime: [00:20, 00:30):   [29°C (00:22), 30°C (00:27)]\nTime: [00:30, 00:40):   [27°C (00:31), 25°C (00:35)]",
+      "title": "Tumbling Window Example"
+    },
+    {
+      "language": "python",
+      "code": "app = KelvinApp()\n    await app.connect()\n\n    # Streaming data in 5-minute tumbling windows\n    window_start = datetime.now()\n    async for asset_name, df in app.tumbling_window(window_size=timedelta(minutes=5)).stream(window_start):\n        print(asset_name, df)",
+      "title": "Basic Tumbling Window Python Example"
+    },
+    {
+      "language": "python",
+      "code": "app = KelvinApp()\n    await app.connect()\n\n    window_start = datetime.now()\n    async for asset_name, df in app.tumbling_window(window_size=timedelta(minutes=5), \n                                            datastreams=['temperature', 'pressure']).stream(window_start):\n        print(asset_name, df)",
+      "title": "Filtered Data Streams Tumbling Window Python Example"
+    },
+    {
+      "language": "python",
+      "code": "app = KelvinApp()\n    await app.connect()\n\n    window_start = datetime.now()\n    async for asset_name, df in app.tumbling_window(window_size=timedelta(minutes=5), \n                                            assets=['asset1', 'asset2']).stream(window_start):\n        print(asset_name, df)",
+      "title": "Filtered Asset Tumbling Window Python Example"
+    },
+    {
+      "language": "python",
+      "code": "app = KelvinApp()\n    await app.connect()\n\n    # Aligning windows to the nearest minute\n    window_start = datetime.now()\n    async for asset_name, df in app.tumbling_window(window_size=timedelta(minutes=5), \n                                            round_to=timedelta(minutes=1)).stream(window_start):\n        print(asset_name, df)",
+      "title": "Time Aligned Tumbling Window Python Example"
+    },
+    {
+      "language": "text",
+      "code": "Original Data:\nTime: [00:00]   25°C\nTime: [00:04]   26°C\nTime: [00:07]   27°C\nTime: [00:12]   28°C\nTime: [00:18]   26°C\nTime: [00:22]   29°C\nTime: [00:27]   30°C\nTime: [00:31]   27°C\nTime: [00:35]   25°C\n\nWindows:\nTime: [00:00, 00:10):   [25°C (00:00), 26°C (00:04), 27°C (00:07)]\nTime: [00:05, 00:15):   [26°C (00:04), 27°C (00:07), 28°C (00:12)]\nTime: [00:10, 00:20):   [28°C (00:12), 26°C (00:18)]\nTime: [00:15, 00:25):   [26°C (00:18), 29°C (00:22)]\nTime: [00:20, 00:30):   [29°C (00:22), 30°C (00:27)]\nTime: [00:25, 00:35):   [30°C (00:27), 27°C (00:31)]\nTime: [00:30, 00:40):   [27°C (00:31), 25°C (00:35)]",
+      "title": "Hopping Window Example"
+    },
+    {
+      "language": "python",
+      "code": "app = KelvinApp()\n    await app.connect()\n\n    # Processing data using a 5-minute hopping window with a 2-minute hop size\n    window_start = datetime.now()\n    for asset_name, df in app.hopping_window(window_size=timedelta(minutes=5), \n                                            hop_size=timedelta(minutes=2)).stream(window_start=window_start):\n        print(asset_name, df)",
+      "title": "Basic Hopping Window Python Example"
+    },
+    {
+      "language": "python",
+      "code": "app = KelvinApp()\n    await app.connect()\n\n    # Processing data using a 5-minute hopping window with a 2-minute hop size\n    window_start = datetime.now()\n    async for asset_name, df in app.hopping_window(window_size=timedelta(minutes=5), \n                                            hop_size=timedelta(minutes=2), \n                                            datastreams=['temperature', 'pressure']).stream(window_start=window_start):\n        print(asset_name, df)",
+      "title": "Filtered Data Streams Hopping Window Python Example"
+    },
+    {
+      "language": "python",
+      "code": "app = KelvinApp()\n    await app.connect()\n\n    # Processing data using a 5-minute hopping window with a 2-minute hop size\n    window_start = datetime.now()\n    async for asset_name, df in app.hopping_window(window_size=timedelta(minutes=5), \n                                            hop_size=timedelta(minutes=2), \n                                            assets=['asset1', 'asset2']).stream(window_start=window_start):\n        print(asset_name, df)",
+      "title": "Filtered Asset Hopping Window Python Example"
+    },
+    {
+      "language": "python",
+      "code": "app = KelvinApp()\n    await app.connect()\n\n    # Processing data using a 5-minute hopping window with a 2-minute hop size\n    window_start = datetime.now()\n    async for asset_name, df in app.hopping_window(window_size=timedelta(minutes=5), \n                                            hop_size=timedelta(minutes=2), \n                                            round_to=timedelta(minutes=1)).stream(window_start=window_start):\n        print(asset_name, df)",
+      "title": "Time Aligned Hopping Window Python Example"
+    },
+    {
+      "language": "text",
+      "code": "Original Data:\nTime: [00:00]   25°C\nTime: [00:04]   26°C\nTime: [00:07]   27°C\nTime: [00:12]   28°C\nTime: [00:18]   26°C\nTime: [00:22]   29°C\nTime: [00:27]   30°C\nTime: [00:31]   27°C\nTime: [00:35]   25°C\n\nWindows:\nWindow 1:   [25°C (00:00), 26°C (00:04), 27°C (00:07)]\nWindow 2:   [26°C (00:04), 27°C (00:07), 28°C (00:12)]\nWindow 3:   [27°C (00:07), 28°C (00:12), 26°C (00:18)]\nWindow 4:   [28°C (00:12), 26°C (00:18), 29°C (00:22)]\nWindow 5:   [26°C (00:18), 29°C (00:22), 30°C (00:27)]\nWindow 6:   [29°C (00:22), 30°C (00:27), 27°C (00:31)]\nWindow 7:   [30°C (00:27), 27°C (00:31), 25°C (00:35)]",
+      "title": "Rolling Window Example"
+    },
+    {
+      "language": "python",
+      "code": "app = KelvinApp()\n    await app.connect()\n\n    async for asset_name, df in app.rolling_window(count_size=5).stream():\n        print(asset_name, df)",
+      "title": "Basic Rolling Window Python Example"
+    },
+    {
+      "language": "python",
+      "code": "app = KelvinApp()\n    await app.connect()\n\n    async for asset_name, df in app.rolling_window(count_size=5, \n                                            datastreams=['temperature', 'pressure']).stream():\n        print(asset_name, df)",
+      "title": "Filtered Data Streams Rolling Window Python Example"
+    },
+    {
+      "language": "python",
+      "code": "app = KelvinApp()\n    await app.connect()\n\n    async for asset_name, df in app.rolling_window(count_size=5, a\n                                            assets=['asset1', 'asset2']).stream():\n        print(asset_name, df)",
+      "title": "Filtered Asset Rolling Window Python Example"
+    },
+    {
+      "language": "python",
+      "code": "app = KelvinApp()\n    await app.connect()\n\n    async for asset_name, df in app.rolling_window(count_size=5, \n                                            round_to=timedelta(minutes=1)).stream():\n        print(asset_name, df)",
+      "title": "Time Aligned Rolling Window Python Example"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "configure",
+    "create",
+    "data",
+    "development",
+    "sdk",
+    "test",
+    "windows"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "Tumbling Window: This method uses fixed-size, non-overlapping windows that reset after each window period, making it suitable for isolated data analysis in each segment."
+      },
+      {
+        "step": 2,
+        "instruction": "Hopping Window: These windows are also fixed-size but can overlap based on a specified hop size, allowing for more frequent data analysis intervals."
+      },
+      {
+        "step": 3,
+        "instruction": "Rolling Window: Unlike the other types, this method creates fixed-size windows based on the count of messages, not on time intervals."
+      }
+    ],
+    "step_count": 3,
+    "last_updated": "2026-02-04"
+  }
+}

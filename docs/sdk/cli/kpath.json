@@ -1,0 +1,42 @@
+{
+  "id": "sdk/cli/sdk.lib.models.generic/kpath",
+  "title": "KPath",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KPath\n\n\n## Methods\n\n\n### raise_if_has_files() -> Any\n\nRaise an exception if the path contains files.\n\n\n### delete_dir() -> Any\n\nA simple wrapper around the deletion of a directory.\n\n\n### create_dir(parents: bool, exist_ok: bool) -> Any\n\nCreate a directory.\n\n\n### read_yaml_all(verbose: bool) -> Iterator\n\nLoad the content of the specified yaml_file into a dictionary.\n\n\n### read_yaml(context: Optional[Mapping[str, Any]], delimiter_style: DelimiterStyle, verbose: bool) -> Dict[str, Any]\n\nLoad the content of the specified yaml_file into a dictionary.\n\n\n### write_yaml(yaml_data: dict) -> Any\n\nWrite the provided yaml data to a file.\n\n\n### complete_path() -> KPath\n\n\n### read_content() -> Any\n\nRead content from the provided file.\n\n\n### write_content(content: str) -> Any\n\nWrite the provided data to the file.\n\n\n### read_json() -> dict\n\nRead json content from the provided file.\n\n\n### write_json(content: Any) -> Any\n\nParameters ---------- content : Any the json data to write into the file\n\n\n### dir_content() -> List[str]\n\nRetrieve the list of files contained inside the folder.\n\n\n### clone_into(path: KPath) -> Any\n\nClones the current file into the newly provided path.\n\n\n### clone_dir_into(path: KPath) -> Any\n\nClones the current directory into the newly provided dir path.\n\n\n### remove() -> Any\n\nA simple remove wrapper for KPath\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/generic.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.generic",
+    "item_type": "class",
+    "methods": [
+      "raise_if_has_files",
+      "delete_dir",
+      "create_dir",
+      "read_yaml_all",
+      "read_yaml",
+      "write_yaml",
+      "complete_path",
+      "read_content",
+      "write_content",
+      "read_json",
+      "write_json",
+      "dir_content",
+      "clone_into",
+      "clone_dir_into",
+      "remove"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

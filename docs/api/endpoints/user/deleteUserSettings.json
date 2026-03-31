@@ -1,0 +1,59 @@
+{
+  "id": "api/endpoints/user/deleteUserSettings",
+  "title": "Delete User Setting",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Delete User Setting\n\nPermanently delete an existing User Setting. This cannot be undone once the API request has been submitted.\n\n## Endpoint\n\n`POST /users/settings/{setting_name}/delete`",
+  "summary": "Delete User Setting",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/users/settings/{setting_name}/delete' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.user.deleteUserSettings()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/user"
+  ],
+  "tags": [
+    "user",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/users/settings/{setting_name}/delete",
+    "method": "POST",
+    "operation_id": "deleteUserSettings",
+    "tag": "User",
+    "permission": "kelvin.permission.users.delete",
+    "parameters": [
+      {
+        "name": "setting_name",
+        "in": "path",
+        "required": true,
+        "description": "The User Setting key `setting_name` to delete. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+        "type": "string"
+      }
+    ],
+    "request_body": null,
+    "responses": {
+      "200": {
+        "description": "User Setting deleted successfully"
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

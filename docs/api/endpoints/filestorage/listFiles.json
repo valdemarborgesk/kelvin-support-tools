@@ -1,0 +1,132 @@
+{
+  "id": "api/endpoints/filestorage/listFiles",
+  "title": "List files",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# List files\n\nList the files currently present in the filestorage\n\n## Endpoint\n\n`POST /filestorage/list`",
+  "summary": "List files",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/filestorage/list' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.filestorage.listFiles()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/filestorage"
+  ],
+  "tags": [
+    "filestorage",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/filestorage/list",
+    "method": "POST",
+    "operation_id": "listFiles",
+    "tag": "Filestorage",
+    "permission": "kelvin.permission.filestorage.read",
+    "parameters": [
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": false,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "file_names": {
+            "type": "array",
+            "description": "Array of file names to filter. This filter only returns exact matches with the passed values.",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "test.csv",
+              "test.tar.gz"
+            ]
+          },
+          "sources": {
+            "type": "array",
+            "description": "Array of sources to filter. This filter only returns exact matches with the passed values. (Note that all sources are in the KRN format)",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "krn:user:user1",
+              "krn:user:user2"
+            ]
+          },
+          "search": {
+            "type": "array",
+            "description": "Search and filter based of file name. All values in array will be filtered as `OR`. The search is case insensitive and will find partial matches as well.",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "test.csv",
+              "test.tar.gz"
+            ]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK"
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

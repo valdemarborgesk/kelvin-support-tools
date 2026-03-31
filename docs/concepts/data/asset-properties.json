@@ -1,0 +1,21 @@
+{
+  "id": "concepts/data/asset-properties",
+  "title": "Asset Properties",
+  "type": "concept",
+  "category": "data",
+  "content": "# Asset Properties\n\nAsset Properties are any extra information you want to hold about an Asset. This is a variable that will rarely change for the lifetime of the Asset, like the pump size, equipment model number, brand, etc.\n\nEach Asset Property value is related to the Asset only. Each Asset can have different Asset Properties and values.\n\n    The Asset Properties are global variables and not related to any Application.\n\n    Changing the Asset Property value for an Asset will apply this change to all Applications that process the Asset.\n\nThis can be retrieved by a Kelvin SmartApp™ for use in a program or used as filtering option in the Kelvin UI.\n\nFor example you could have a Beam Pump 01 Asset, and then create an Asset Property Model to be able to distinguish between the Assets. This can be used to target the Kelvin SmartApp™ for only certain types of Models.",
+  "summary": "Asset Properties are any extra information you want to hold about an Asset. This is a variable that will rarely change for the lifetime of the Asset, like the pump size, equipment model number, brand, etc.",
+  "source": "core-docs/docs/overview/concepts/variables/asset-properties.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "application",
+    "asset",
+    "data",
+    "properties"
+  ],
+  "metadata": {
+    "section": "concepts/variables",
+    "last_updated": "2026-02-04"
+  }
+}

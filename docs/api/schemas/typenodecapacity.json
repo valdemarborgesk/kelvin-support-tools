@@ -1,0 +1,54 @@
+{
+  "id": "api/schemas/nodecapacity",
+  "title": "NodeCapacity",
+  "type": "schema",
+  "category": "api",
+  "content": "# NodeCapacity\n\nSet of information about the Node's capacity.\n\n\n## Properties\n\n- **cpu** (`string`): Number of CPU cores available on the Node.\n- **ephemeral-storage** (`string`): Amount of ephemeral storage available on the Node.\n- **memory** (`string`): Amount of memory available on the Node.\n- **pods** (`string`): Maximum number of Pods that can be scheduled on the Node.",
+  "summary": "Set of information about the Node's capacity.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.NodeCapacity",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "cpu": {
+          "type": "string",
+          "example": "2",
+          "description": "Number of CPU cores available on the Node."
+        },
+        "ephemeral-storage": {
+          "type": "string",
+          "example": "30417472Ki",
+          "x-needs-quotes": true,
+          "description": "Amount of ephemeral storage available on the Node."
+        },
+        "memory": {
+          "type": "string",
+          "example": "3944492Ki",
+          "description": "Amount of memory available on the Node."
+        },
+        "pods": {
+          "type": "string",
+          "example": "110",
+          "description": "Maximum number of Pods that can be scheduled on the Node."
+        }
+      },
+      "example": {
+        "cpu": "2",
+        "ephemeral-storage": "30417472Ki",
+        "memory": "3944492Ki",
+        "pods": "110"
+      },
+      "description": "Set of information about the Node's capacity."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "api/schemas/recommendationevidencetype",
+  "title": "RecommendationEvidenceType",
+  "type": "schema",
+  "category": "api",
+  "content": "# RecommendationEvidenceType\n\nType of evidence that is being used to create the Recommendation.\n\n## Enum Values\n\n- `markdown`\n- `image`\n- `iframe`\n- `chart`\n- `line-chart`\n- `bar-chart`\n- `dynacard`\n- `data-explorer`",
+  "summary": "Type of evidence that is being used to create the Recommendation.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.RecommendationEvidenceType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "example": "image",
+      "enum": [
+        "markdown",
+        "image",
+        "iframe",
+        "chart",
+        "line-chart",
+        "bar-chart",
+        "dynacard",
+        "data-explorer"
+      ],
+      "description": "Type of evidence that is being used to create the Recommendation."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

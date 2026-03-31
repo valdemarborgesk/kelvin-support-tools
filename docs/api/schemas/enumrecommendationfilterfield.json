@@ -1,0 +1,32 @@
+{
+  "id": "api/schemas/recommendationfilterfield",
+  "title": "RecommendationFilterField",
+  "type": "schema",
+  "category": "api",
+  "content": "# RecommendationFilterField\n\nField name of the Recommendation to filter by.\n\n## Enum Values\n\n- `created`\n- `updated`\n- `type_name`\n- `state`",
+  "summary": "Field name of the Recommendation to filter by.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.RecommendationFilterField",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "example": "created",
+      "enum": [
+        "created",
+        "updated",
+        "type_name",
+        "state"
+      ],
+      "description": "Field name of the Recommendation to filter by."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

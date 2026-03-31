@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.primitives/string",
+  "title": "String",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# String\n\nInherits from: Message\n",
+  "summary": "",
+  "source": "app/src/kelvin/message/primitives.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import String\n\n# Usage example\napp = String()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.primitives",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

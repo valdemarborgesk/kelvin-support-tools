@@ -1,0 +1,34 @@
+{
+  "id": "sdk/app/config.appconfig/kelvinyamlconfigsettingssource",
+  "title": "KelvinYamlConfigSettingsSource",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KelvinYamlConfigSettingsSource\n\nInherits from: PydanticBaseSettingsSource\n\n\nA Pydantic Settings Source that reads Kelvin-style YAML configuration files.\n\n\n## Methods\n\n\n### __init__(settings_cls: Type[BaseSettings]) -> None\n\n\n### get_field_value(field: FieldInfo, field_name: str) -> tuple[Any, str, bool]\n",
+  "summary": "A Pydantic Settings Source that reads Kelvin-style YAML configuration files.",
+  "source": "app/src/kelvin/config/appconfig.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import KelvinYamlConfigSettingsSource\n\n# Usage example\napp = KelvinYamlConfigSettingsSource()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "config.appconfig",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "get_field_value"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

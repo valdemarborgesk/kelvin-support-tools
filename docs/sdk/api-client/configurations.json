@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/configurations",
+  "title": "Configurations",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Configurations\n\nInherits from: DataModelBase\n\n\nConfigurations object.\n\nParameters\n----------\n    kelvin_stale_detection: Optional[type_1.KelvinStaleDetection]\n    kelvin_out_of_range_detection: Optional[type_1.KelvinOutOfRangeDetection]\n    kelvin_outlier_detection: Optional[type_1.KelvinOutlierDetection]\n    kelvin_data_availability: Optional[type_1.KelvinDataAvailability]\n",
+  "summary": "Configurations object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

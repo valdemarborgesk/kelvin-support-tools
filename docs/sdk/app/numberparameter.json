@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.primitives/numberparameter",
+  "title": "NumberParameter",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# NumberParameter\n\nInherits from: Message\n",
+  "summary": "",
+  "source": "app/src/kelvin/message/primitives.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import NumberParameter\n\n# Usage example\napp = NumberParameter()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.primitives",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

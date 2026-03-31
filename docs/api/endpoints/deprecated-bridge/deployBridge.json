@@ -1,0 +1,229 @@
+{
+  "id": "api/endpoints/deprecated-bridge/deployBridge",
+  "title": "Deploy Bridge",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Deploy Bridge\n\nDeploy a Bridge (Connection) from the App Registry as a Workload to a Cluster/Node.\n\n## Endpoint\n\n`POST /bridges/deploy`",
+  "summary": "Deploy Bridge",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/bridges/deploy' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.deprecated_bridge.deployBridge()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/deprecated-bridge"
+  ],
+  "tags": [
+    "deprecated-bridge",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/bridges/deploy",
+    "method": "POST",
+    "operation_id": "deployBridge",
+    "tag": "(Deprecated) Bridge",
+    "permission": "kelvin.permission.bridge.create",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "required": [
+          "cluster_name",
+          "name",
+          "payload",
+          "app_name"
+        ],
+        "type": "object",
+        "properties": {
+          "app_version": {
+            "maxLength": 64,
+            "type": "string"
+          },
+          "cluster_name": {
+            "type": "string",
+            "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+            "example": "docs-demo-cluster-k3s",
+            "minLength": 1,
+            "maxLength": 64,
+            "description": "Unique identifier `name` of the Cluster. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+          },
+          "node_name": {
+            "type": "string",
+            "format": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$",
+            "example": "my-node",
+            "maxLength": 64,
+            "description": "Target Node Name for Workload deployment. If not provided, the Cluster will select the Node."
+          },
+          "name": {
+            "type": "string",
+            "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+            "example": "motor-plc-opcua-connection",
+            "minLength": 1,
+            "maxLength": 32,
+            "description": "Unique identifier `name` of the Bridge (Connection). The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+          },
+          "payload": {
+            "type": "object"
+          },
+          "title": {
+            "type": "string",
+            "example": "Motor PLC OPCUA Connection",
+            "description": "Display name (`title`) of the Bridge (Connection)."
+          },
+          "app_name": {
+            "type": "string",
+            "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+            "example": "test-app",
+            "minLength": 1,
+            "maxLength": 64,
+            "description": "Unique identifier `name` of the App. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Created",
+        "schema": {
+          "properties": {
+            "cluster_name": {
+              "type": "string",
+              "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+              "example": "docs-demo-cluster-k3s",
+              "maxLength": 64,
+              "description": "Unique identifier `name` of the Cluster."
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-12-26T18:22:18.582724Z",
+              "description": "UTC time when the Bridge (Connection) was first created, formatted in RFC 3339."
+            },
+            "enabled": {
+              "type": "boolean",
+              "example": true,
+              "description": "If true, Bridge (Connection) `status` is set to `running` and will process I/O's. If false, Bridge (Connection) `status` is set to `stopped` but remains in Node on the Edge System."
+            },
+            "name": {
+              "type": "string",
+              "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+              "example": "motor-plc-opcua-connection",
+              "maxLength": 32,
+              "description": "Unique identifier `name` of the Bridge (Connection)."
+            },
+            "node_name": {
+              "type": "string",
+              "format": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$",
+              "example": "docs-demo-node-01",
+              "maxLength": 64,
+              "description": "Unique identifier `name` of the Node in the Cluster hosting the Bridge (Connection)."
+            },
+            "payload": {
+              "type": "object"
+            },
+            "status": {
+              "type": "object",
+              "description": "Realtime information about the Workload as seen from the Cloud.",
+              "properties": {
+                "last_seen": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "UTC time when the Workload was last seen by the Cloud, formatted in RFC 3339."
+                },
+                "message": {
+                  "type": "string",
+                  "description": "Descriptive, human-readable string for `state`."
+                },
+                "state": {
+                  "type": "string",
+                  "enum": [
+                    "pending_deploy",
+                    "pending_update",
+                    "pending_start",
+                    "pending_stop",
+                    "pending_apply",
+                    "deploying",
+                    "running",
+                    "stopping",
+                    "stopped",
+                    "failed",
+                    "starting",
+                    "applying",
+                    "received",
+                    "downloading",
+                    "ready",
+                    "unreachable",
+                    "staged"
+                  ]
+                },
+                "warnings": {
+                  "type": "array",
+                  "description": "All warnings received for any Workload operations.",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "title": {
+              "type": "string",
+              "example": "Motor PLC OPCUA Connection",
+              "description": "Display name (`title`) of the Bridge (Connection)."
+            },
+            "updated": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-12-18T18:22:18.582724Z",
+              "description": "UTC time when any Bridge (Connection) keys were last updated, formatted in RFC 3339."
+            },
+            "workload_name": {
+              "type": "string",
+              "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+              "example": "motor-plc-opcua-connection",
+              "maxLength": 32,
+              "description": "Unique identifier `name` of the Workload that the Bridge (Connection) App is deployed as to the Cluster."
+            },
+            "app_name": {
+              "type": "string",
+              "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+              "example": "test-app",
+              "maxLength": 64,
+              "description": "Unique identifier `name` of the App. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+            },
+            "app_version": {
+              "type": "string",
+              "format": "Major.Minor.Patch",
+              "example": "1.2.0",
+              "description": "App version"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "409": {
+        "description": ""
+      },
+      "424": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

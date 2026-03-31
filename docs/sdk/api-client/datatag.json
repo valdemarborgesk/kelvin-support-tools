@@ -1,0 +1,42 @@
+{
+  "id": "sdk/api-client/client.api.data-tag/datatag",
+  "title": "DataTag",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataTag\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### create_data_tag(data: Optional[Union[requests.DataTagCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataTagCreate\n\nCreate a new Data Tag event.\n\n\n### list_data_tag(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.DataTagList, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.DataTag], responses.DataTagListPaginatedResponseCursor]\n\nReturns a list of Data Tags. The Data Tags can be optionally filtered and sorted on the server before being returned.\n\n\n### create_tag(data: Optional[Union[requests.TagCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.TagCreate\n\nCreate a new Tag.\n\n\n### list_tag(search: Optional[Sequence[str]], names: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.Tag], responses.TagListPaginatedResponseCursor]\n\nReturns a list of Tags. The Tags can be optionally filtered and sorted on the server before being returned.\n\n\n### delete_tag(tag_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete an existing Tag. An error will be returned if there are any current links to a DataTag and the Tag will not be deleted. **Permission Required:** `kelvin.permission.datatag.delete`.\n\n\n### get_tag(tag_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.TagGet\n\nRetrieves a Tag.\n\n\n### update_tag(tag_name: str, data: Optional[Union[requests.TagUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.TagUpdate\n\nUpdate an existing Tag. The Tag key `name` can not be updated.\n\n\n### delete_data_tag(datatag_id: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete an existing Data Tag. **Permission Required:** `kelvin.permission.datatag.delete`.\n\n\n### get_data_tag(datatag_id: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataTagGet\n\nRetrieves a Data Tag.\n\n\n### update_data_tag(datatag_id: str, data: Optional[Union[requests.DataTagUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataTagUpdate\n\nUpdate an existing Data Tag. Any parameters that are not provided will remain unchanged.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/data_tag.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.data_tag.create_data_tag()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.data_tag",
+    "item_type": "class",
+    "methods": [
+      "create_data_tag",
+      "list_data_tag",
+      "create_tag",
+      "list_tag",
+      "delete_tag",
+      "get_tag",
+      "update_tag",
+      "delete_data_tag",
+      "get_data_tag",
+      "update_data_tag"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

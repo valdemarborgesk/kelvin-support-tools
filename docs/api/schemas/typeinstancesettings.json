@@ -1,0 +1,50 @@
+{
+  "id": "api/schemas/instancesettings",
+  "title": "InstanceSettings",
+  "type": "schema",
+  "category": "api",
+  "content": "# InstanceSettings\n\n\n## Properties\n\n- **created** (`string`): UTC time when the Instance Setting was first created, formatted in RFC 3339.\n- **name** (`string`): Unique identifier `name` of the Instance Setting.\n- **payload** (`object`): The Instance Settings. The structure of this `payload` object depends on the type of Instance Setting being defined.\n- **updated** (`string`): UTC time when any Instance Settings keys were last updated, formatted in RFC 3339.",
+  "summary": "Object with properties: created, name, payload, updated",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.InstanceSettings",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-06-26T18:22:18.582724Z",
+          "description": "UTC time when the Instance Setting was first created, formatted in RFC 3339."
+        },
+        "name": {
+          "type": "string",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "example": "core.ui.datastreams.asset-type.groups",
+          "maxLength": 64,
+          "description": "Unique identifier `name` of the Instance Setting."
+        },
+        "payload": {
+          "type": "object",
+          "properties": {},
+          "description": "The Instance Settings. The structure of this `payload` object depends on the type of Instance Setting being defined."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when any Instance Settings keys were last updated, formatted in RFC 3339."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

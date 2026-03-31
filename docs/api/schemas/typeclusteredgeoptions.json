@@ -1,0 +1,31 @@
+{
+  "id": "api/schemas/clusteredgeoptions",
+  "title": "ClusterEdgeOptions",
+  "type": "schema",
+  "category": "api",
+  "content": "# ClusterEdgeOptions\n\n\n## Properties\n\n- **image_pull_policy** (`string`): Image pull policy to be used when deploying workloads. Options are `Always`, and `IfNotPresent`. Default: `IfNotPresent`",
+  "summary": "Object with properties: image_pull_policy",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.ClusterEdgeOptions",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "image_pull_policy": {
+          "type": "string",
+          "example": "IfNotPresent",
+          "description": "Image pull policy to be used when deploying workloads. Options are `Always`, and `IfNotPresent`. Default: `IfNotPresent`"
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

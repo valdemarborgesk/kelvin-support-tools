@@ -1,0 +1,35 @@
+{
+  "id": "sdk/app/publisher.simulator/simulator",
+  "title": "Simulator",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Simulator\n\nInherits from: DataGenerator\n\n\n## Methods\n\n\n### __init__(app_config: ExporterConfig | ImporterConfig | SmartAppConfig | ExternalConfig | AppYaml, period: float, rand_min: float, rand_max: float, random: bool, assets_extra: List[AssetsEntry], parameters_override: List[str]) -> Any\n\n\n### generate_random_value(data_type: str) -> Union[bool, float, str, dict]\n\n\n### async run() -> AsyncGenerator[MessageData, None]\n",
+  "summary": "",
+  "source": "app/src/kelvin/publisher/simulator.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import Simulator\n\n# Usage example\napp = Simulator()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "publisher.simulator",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "generate_random_value",
+      "run"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

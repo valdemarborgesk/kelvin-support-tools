@@ -1,0 +1,67 @@
+{
+  "id": "api/schemas/filestorage",
+  "title": "FileStorage",
+  "type": "schema",
+  "category": "api",
+  "content": "# FileStorage\n\n\n## Properties\n\n- **file_id** (`string`): Generated UUID for a file\n- **file_name** (`string`): Actual file name\n- **file_size** (`integer`): File size in bytes\n- **checksum** (`string`): File SHA256 checksum\n- **source** (`string`): Resource that uploaded the file\n- **created** (`string`): UTC time representing when the file was uploaded, formatted in RFC 3339.\n- **metadata** (`object`): A free-form JSON object representing the files metadata",
+  "summary": "Object with properties: file_id, file_name, file_size, checksum, source",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.FileStorage",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "file_id": {
+          "type": "string",
+          "example": "50FDD765-DBD7-4C7C-844D-E6211C9CD9E7",
+          "description": "Generated UUID for a file"
+        },
+        "file_name": {
+          "type": "string",
+          "example": "test.csv",
+          "maxLength": 128,
+          "description": "Actual file name"
+        },
+        "file_size": {
+          "type": "integer",
+          "example": 300,
+          "description": "File size in bytes"
+        },
+        "checksum": {
+          "type": "string",
+          "example": "e07de9b7a1788fe439bd1d9a114d1a3ee4eb5b29f8a9e11057f7c31d718c5614",
+          "description": "File SHA256 checksum"
+        },
+        "source": {
+          "type": "string",
+          "example": "krn:user:user1",
+          "description": "Resource that uploaded the file"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-02-20T22:22:18.582724Z",
+          "description": "UTC time representing when the file was uploaded, formatted in RFC 3339."
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true,
+          "example": {
+            "property1": true,
+            "property2": 2
+          },
+          "description": "A free-form JSON object representing the files metadata"
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

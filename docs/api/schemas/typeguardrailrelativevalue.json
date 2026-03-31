@@ -1,0 +1,51 @@
+{
+  "id": "api/schemas/guardrailrelativevalue",
+  "title": "GuardrailRelativeValue",
+  "type": "schema",
+  "category": "api",
+  "content": "# GuardrailRelativeValue\n\nRate of change limit definition\n\n\n## Properties\n\n- **value** (`number`): The limiting rate of change value.\n- **inclusive** (`boolean`): The defined limiting rate of change value is inclusive within the allowable range.\n- **type** (`string`): Limiting rate of change value is an absolute value or a percentage of the current value before the control change.",
+  "summary": "Rate of change limit definition",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.GuardrailRelativeValue",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "description": "Rate of change limit definition",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "description": "The limiting rate of change value.",
+          "type": "number"
+        },
+        "inclusive": {
+          "description": "The defined limiting rate of change value is inclusive within the allowable range.",
+          "type": "boolean",
+          "default": false
+        },
+        "type": {
+          "type": "string",
+          "description": "Limiting rate of change value is an absolute value or a percentage of the current value before the control change.",
+          "enum": [
+            "value",
+            "percentage"
+          ],
+          "x-enum-varnames": [
+            "VALUE",
+            "PERCENTAGE"
+          ]
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

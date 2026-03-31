@@ -1,0 +1,25 @@
+{
+  "id": "how-to/viewing-assets",
+  "title": "Viewing Assets",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Viewing Assets\n\nThe first time you see this page it will only show the Geospatial Map view.\n\nThis is a Google Maps view with the common features like Satellite view.\n\nYou can create customized views and save them for quickly zooming to commonly visited locations.\n\n    Even if you do not save your view, the last view will be remembered and displayed next time you visit the page.\n\nThis features works the same as the Custom Views option in Assets. Visit the [documentation there](../../assets-page/how-to/managing-assets.md#custom-views) to understand all the options available.",
+  "summary": "The first time you see this page it will only show the Geospatial Map view. This is a Google Maps view with the common features like Satellite view. You can create customized views and save them for quickly zooming to commonly visited locations.",
+  "source": "core-docs/docs/operations-tools/asset-map/how-to/viewing-assets.md",
+  "code_examples": [],
+  "related": [
+    "how-to/managing-assets"
+  ],
+  "tags": [
+    "assets",
+    "create",
+    "operations",
+    "viewing"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

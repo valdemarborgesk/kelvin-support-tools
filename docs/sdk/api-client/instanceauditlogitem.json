@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.type/instanceauditlogitem",
+  "title": "InstanceAuditLogItem",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# InstanceAuditLogItem\n\nInherits from: DataModelBase\n\n\nInstanceAuditLogItem object.\n\nParameters\n----------\n    action: Optional[StrictStr]\n    created: Optional[datetime]\n    id: Optional[StrictInt]\n    identifier: Optional[StrictStr]\n    meta: Optional[dict[str, Any]]\n    namespace: Optional[StrictStr]\n    request_id: Optional[StrictStr]\n    user_id: Optional[UUID]\n    username: Optional[StrictStr]\n",
+  "summary": "InstanceAuditLogItem object.",
+  "source": "api/src/kelvin/api/client/model/type.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.type.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.type",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

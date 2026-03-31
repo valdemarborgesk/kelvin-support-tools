@@ -1,0 +1,180 @@
+{
+  "id": "api/endpoints/recommendation/getRecommendationLast",
+  "title": "Get Last Recommendation",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Get Last Recommendation\n\nReturns a dictionary with a data property containing an array of latest Recommendations. Only the latest Recommendation for each `resource` in the request filters will be returned.\n\n## Endpoint\n\n`POST /recommendations/last/get`",
+  "summary": "Get Last Recommendation",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/recommendations/last/get' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.recommendation.getRecommendationLast()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/recommendation"
+  ],
+  "tags": [
+    "recommendation",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/recommendations/last/get",
+    "method": "POST",
+    "operation_id": "getRecommendationLast",
+    "tag": "Recommendation",
+    "permission": "kelvin.permission.recommendation.read",
+    "parameters": [
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": "sort_by",
+        "in": "query",
+        "required": false,
+        "description": "",
+        "type": "array"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "required": [
+          "resources"
+        ],
+        "type": "object",
+        "properties": {
+          "resources": {
+            "type": "array",
+            "example": [
+              "krn:asset:bp_02",
+              "krn:asset:bp_16"
+            ],
+            "description": "A filter on the list to show Last Recommendation for requested Assets only. The filter is on the full name only. All strings in the array are treated as `OR`. Each Asset name can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "krn",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "sources": {
+            "type": "array",
+            "example": [
+              "krn:app:motor-speed-control"
+            ],
+            "description": "A filter on the list showing only Data Streams associated with any workloads in the array. The filter is on the full name only. All strings in the array are treated as `OR`. Each Workload name can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "krn",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "states": {
+            "type": "array",
+            "example": [
+              "accepted",
+              "auto_accepted"
+            ],
+            "description": "A filter on the list showing only Recommendations associated with one or more `states`. The filter is on the full `state` name only. All strings in the array are treated as `OR`.",
+            "items": {
+              "type": "string",
+              "enum": [
+                "pending",
+                "accepted",
+                "auto_accepted",
+                "rejected",
+                "expired"
+              ]
+            }
+          },
+          "trace_ids": {
+            "type": "array",
+            "example": [
+              "trace id change 123"
+            ],
+            "description": "A filter on the list showing only Recommendations associated with one or more Trace IDs.",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "types": {
+            "type": "array",
+            "example": [
+              "Decrease speed",
+              "increase_speed"
+            ],
+            "description": "A filter on the list showing only Recommendations associated with one or more `types`. The filter is on the full `types` name only. All strings in the array are treated as `OR`.",
+            "items": {
+              "type": "string",
+              "format": "^[a-zA-Z0-9]([-_ .a-zA-Z0-9]*[a-zA-Z0-9])?$$",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK"
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "how-to/asset/create-asset",
+  "title": "Create Asset",
+  "type": "how_to",
+  "category": "operations",
+  "content": "**Reference:**\n\nField                | Description\n---------------------|------------------------------------------\nName (Name ID)                 | Unique name identifier. It must contain only lowercase alphanumeric characters. The characters `.`, `_` and `-` are allowed to separate words instead of a space BUT can not be at the beginning or end of the name.\nTitle (Display Name)               | The display name to show on the Kelvin UI. It can contain any characters, including spaces.\nAsset Type           | The name of the Asset Type that this Asset belongs to. This must be a valid Asset Type name.\nProperties           | A list of key/value pairs that define custom properties of the asset. Use this to define attributes like: GPS location, Associated Assets, Site, PLC Type, Manufacturer, Serial Number, etc.\n\n## Create Asset\n\nIn this example we will create an Asset.\n\n    Please make sure the Asset Type `beam_pump` exists before creating the Asset.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin UI\"\n\n    Assets can be managed from the Administration section of the UI.\n\n    \n        This video tutorial was done on v6.0. There may be differences in the latest version.\n\n        It will give you a good idea of the process to create Assets.\n\n    You can watch this short demo video or read the full step-by step written tutorial below.\n\n    <iframe\n    src=\"https://demo.arcade.software/qVHNSmhwUlLs0RbJYYkY?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true\"\n    title=\"Kelvin Core | Operations\"\n    frameborder=\"0\"\n    loading=\"lazy\"\n    webkitallowfullscreen\n    mozallowfullscreen\n    allowfullscreen\n    allow=\"clipboard-write\"\n    style=\"width: 100%; height: 400px; border: none;\">\n    </iframe>\n\n    To start, go to the **Assets** in the Administration section of the left side bar.\n\n    \n\n    To create a new Asset click on the Add Asset button;\n\n    \n\n    In Step 1, the mandatory settings that you need to fill in are;\n\n            If you are in Operations and you get a warning on this screen \"This app version is missing some app settings required so you are able to add assets.\".\n        \n        You will need to contact your Platform Administrator or Developer to setup the App Settings before you can proceed.\n    \n    * Asset's Display Name\n    * Name ID (optional in the sense that it will be auto filled)\n    * The Asset Type (must exist already)\n\n    \n\n    You also have a number of optional settings available.\n\n    If you fill in the following settings, these will be used as the default options when adding Assets to Applications.\n\n            You can read more about [Adding Assets to Applications here](../../../operations-tools/kelvin-smartapps-page/how-to/assets/smartapp-details-tab-assets-add-asset.md).\n    \n    * Cluster\n    * Relationships - This is used to show links between assets in Asset Maps\n    * Latitude, Longitude - This is used to show location of Asset in Asset Maps\n\n    \n\n    When ready click **Next** button.\n\n    Then in Step 2 add any Asset Properties related to this Asset.\n\n    Asset Properties are any extra information you want to hold about an Asset.\n    \n    This can be retrieved by a Kelvin SmartApp™ for use in a program.\n    \n            For example you could have a Beam Pump 01 Asset, and then create an Asset Property **Model** to be able to distinguish between the Assets. This can be used to target the Kelvin SmartApp™ for only certain types of Models.\n\n    \n        Once a Type is selected (Number, String or Boolean) you can no longer change this type when editing. You will need to make a new Property to select a new Type.\n\n    .\n\n    When done your Asset Properties should look something like this;\n\n    \n\n    When finished, click **Add** and your Asset is created.\n\n=== \"Kelvin API\"\n\n    \n        Adding properties will not work in the built-in Swagger tool provided by Kelvin. If you need to add properties, then you will need to use a different API client or use curl.\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/assets/create\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n            \"name\": \"doc_demo_asset\",\n            \"title\": \"Documentation Demo Asset\",\n            \"asset_type_name\": \"pcp\",\n            \"properties\": [\n                {\n                  \"name\": \"plc_manufacturer\",\n                  \"title\": \"PLC Manufacturer\",\n                  \"value\": \"Siemens\"\n                }\n            ]\n        }'\n    ```\n\n    The response will look like this;\n\n    ```json title=\"API cURL Example Response\" linenums=\"1\"\n    {\n       \"name\":\"doc_demo_asset\",\n       \"title\":\"Documentation Demo Asset\",\n       \"status\":{\n          \"state\":\"unknown\",\n          \"last_seen\":null\n       },\n       \"asset_type_name\":\"pcp\",\n       \"asset_type_title\":\"Doc Demo Asset\",\n       \"properties\":[\n          {\n             \"name\":\"plc_manufacturer\",\n             \"title\":\"PLC Manufacturer\",\n             \"value\":\"Siemens\"\n          }\n       ],\n       \"created\":\"2024-04-27T04:00:32.747852Z\",\n       \"updated\":\"2024-04-27T04:00:32.747852Z\"\n    }\n    ```\n\n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(config={\"url\": \"https://<url.kelvin.ai>\", \"username\": \"<your_username>\"})\n    client.login(password=\"<your_password>\")\n\n    # Create Asset\n    response = client.asset.create_asset(\n        data={\n            \"name\": \"doc_demo_asset\",\n            \"title\": \"Documentation Demo Asset\",\n            \"asset_type_name\": \"pcp\",\n            \"properties\": [\n                {\n                \"name\": \"plc_manufacturer\",\n                \"title\": \"PLC Manufacturer\",\n                \"value\": \"Siemens\"\n                },\n            ]\n        }\n    )\n\n    print(response)\n    ```\n\n    You will get a response similar to this;\n\n    ```bash title=\"API Client (Python) Example Response\" linenums=\"1\"\n    asset_type_name='pcp' asset_type_title='Progressing Cavity Pump' created=datetime.datetime(2024, 5, 23, 8, 52, 58, 422300, tzinfo=datetime.timezone.utc) name='doc_demo_asset' properties=[AssetProperty(name='plc_manufacturer', title='PLC Manufacturer', value='Siemens')] status=AssetStatusItem(last_seen=None, state=<AssetState.unknown: 'unknown'>) title='Documentation Demo Asset' updated=datetime.datetime(2024, 5, 23, 8, 52, 58, 422300, tzinfo=datetime.timezone.utc)\n    ```\n\n</div>",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/asset/create-asset.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/assets/create\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n            \"name\": \"doc_demo_asset\",\n            \"title\": \"Documentation Demo Asset\",\n            \"asset_type_name\": \"pcp\",\n            \"properties\": [\n                {\n                  \"name\": \"plc_manufacturer\",\n                  \"title\": \"PLC Manufacturer\",\n                  \"value\": \"Siemens\"\n                }\n            ]\n        }'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n       \"name\":\"doc_demo_asset\",\n       \"title\":\"Documentation Demo Asset\",\n       \"status\":{\n          \"state\":\"unknown\",\n          \"last_seen\":null\n       },\n       \"asset_type_name\":\"pcp\",\n       \"asset_type_title\":\"Doc Demo Asset\",\n       \"properties\":[\n          {\n             \"name\":\"plc_manufacturer\",\n             \"title\":\"PLC Manufacturer\",\n             \"value\":\"Siemens\"\n          }\n       ],\n       \"created\":\"2024-04-27T04:00:32.747852Z\",\n       \"updated\":\"2024-04-27T04:00:32.747852Z\"\n    }",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(config={\"url\": \"https://<url.kelvin.ai>\", \"username\": \"<your_username>\"})\n    client.login(password=\"<your_password>\")\n\n    # Create Asset\n    response = client.asset.create_asset(\n        data={\n            \"name\": \"doc_demo_asset\",\n            \"title\": \"Documentation Demo Asset\",\n            \"asset_type_name\": \"pcp\",\n            \"properties\": [\n                {\n                \"name\": \"plc_manufacturer\",\n                \"title\": \"PLC Manufacturer\",\n                \"value\": \"Siemens\"\n                },\n            ]\n        }\n    )\n\n    print(response)",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "bash",
+      "code": "asset_type_name='pcp' asset_type_title='Progressing Cavity Pump' created=datetime.datetime(2024, 5, 23, 8, 52, 58, 422300, tzinfo=datetime.timezone.utc) name='doc_demo_asset' properties=[AssetProperty(name='plc_manufacturer', title='PLC Manufacturer', value='Siemens')] status=AssetStatusItem(last_seen=None, state=<AssetState.unknown: 'unknown'>) title='Documentation Demo Asset' updated=datetime.datetime(2024, 5, 23, 8, 52, 58, 422300, tzinfo=datetime.timezone.utc)",
+      "title": "API Client (Python) Example Response"
+    }
+  ],
+  "related": [
+    "how-to/smartapp-details-tab-assets-add-asset"
+  ],
+  "tags": [
+    "api",
+    "asset",
+    "cli",
+    "configure",
+    "create",
+    "operations",
+    "sdk",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "sdk/cli/sdk.lib.auth.callback-server/callbackhandler",
+  "title": "CallbackHandler",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# CallbackHandler\n\nInherits from: BaseHTTPRequestHandler\n\n\nHTTP request handler for OAuth callbacks\n\n\n## Methods\n\n\n### do_GET() -> None\n\nHandle GET requests to the callback endpoint\n\n\n### finish() -> None\n\nOverride finish to ensure connection is properly closed\n\n\n### log_message(format: str) -> None\n\nSuppress log messages\n",
+  "summary": "HTTP request handler for OAuth callbacks",
+  "source": "cli/src/kelvin/sdk/lib/auth/callback_server.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.auth.callback_server",
+    "item_type": "class",
+    "methods": [
+      "do_GET",
+      "finish",
+      "log_message"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

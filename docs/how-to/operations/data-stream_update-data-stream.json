@@ -1,0 +1,40 @@
+{
+  "id": "how-to/data-stream/update-data-stream",
+  "title": "Update Data Stream",
+  "type": "how_to",
+  "category": "operations",
+  "content": "**Reference:**\n\nField                | Mandatory | Description\n---------------------|-----------| -------------------------------\nName                 | Yes | Unique name identifier. It must contain only lowercase alphanumeric characters. The characters `.`, `_` and `-` are allowed to separate words instead of a space BUT can not be at the beginning or end of the name.\nTitle                | Yes | The display name to show on the Kelvin UI. It can contain any characters, including spaces.\nDescription          | No | Optional description for the data stream, up to 200 characters.\nType                 | Yes | Determines the type of data, see [overview explanations](../../../overview/concepts/data-stream.md#data-type) for more details. Allowed values for SDK/API: **measurement**, **computed**, **data_quality**, **set_point**.\nSemantic Type        | No | Provides context or deeper meaning behind the data, beyond just its format or structure. Check Kelvin API for the full list of available semantic types.\nData Type       | Yes | Specifies the kind of data in the stream. Allowed values for SDK/API: **boolean**, **number**, **object**, **string**.\nUnit                 | No | Defines the measurement unit for data. Check Kelvin API for the full list of available units.\n\n    You can see a full list of the default [Sematic Type and Units available here](./semantics-and-units.md).\n\n    See your Platform Administrator for any custom Semantic Types and Units created for your Kelvin Platform.\n\n## Update Data Stream\n\nYou can only change the Display Name and Description of a Data Stream.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin UI\"\n\n    You can watch this short demo video or read the full step-by step written tutorial below.\n\n    <iframe\n    src=\"https://demo.arcade.software/WmXhzy30iz0FMkIR1Qs9?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true\"\n    title=\"Kelvin Core | Operations\"\n    frameborder=\"0\"\n    loading=\"lazy\"\n    webkitallowfullscreen\n    mozallowfullscreen\n    allowfullscreen\n    allow=\"clipboard-write\"\n    style=\"width: 100%; height: 400px; border: none;\">\n    </iframe>\n\n    Go to the Data Streams page, select the Data Stream you want to edit and click on the **Pencil** button on the right hand side.\n\n    \n\n    You can only edit some of the data stream information.\n\n    \n\n    Then click on the **Save** button.\n\n=== \"Kelvin API\"\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/datastreams/doc_demo_data_stream/update\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n            \"title\": \"My Tubing Pressure\",\n            \"description\": \"Tubing pressure in oil and gas refers to the pressure within the production tubing.\"\n        }'\n    ```\n\n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Update Data Stream\n    response = client.datastreams.update_data_stream(\n        data_stream_name=\"doc_demo_data_stream\",\n        data={\n            \"title\": \"My Tubing Pressure\",\n            \"description\": \"Tubing pressure in oil and gas refers to the pressure within the production tubing.\",\n        },\n    )\n\n    print(response)\n    ```\n\n</div>",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/data-stream/update-data-stream.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/datastreams/doc_demo_data_stream/update\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n            \"title\": \"My Tubing Pressure\",\n            \"description\": \"Tubing pressure in oil and gas refers to the pressure within the production tubing.\"\n        }'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Update Data Stream\n    response = client.datastreams.update_data_stream(\n        data_stream_name=\"doc_demo_data_stream\",\n        data={\n            \"title\": \"My Tubing Pressure\",\n            \"description\": \"Tubing pressure in oil and gas refers to the pressure within the production tubing.\",\n        },\n    )\n\n    print(response)",
+      "title": "API Client (Python) Example"
+    }
+  ],
+  "related": [
+    "concepts/data-stream"
+  ],
+  "tags": [
+    "api",
+    "cli",
+    "create",
+    "data",
+    "operations",
+    "sdk",
+    "stream",
+    "update"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

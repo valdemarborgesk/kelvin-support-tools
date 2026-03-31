@@ -1,0 +1,24 @@
+{
+  "id": "how-to/data-stream-aggregates",
+  "title": "Data Streams - Aggregates",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Data Streams - Aggregates\n\nYou can retrieve an aggregate of any Asset / Data Stream pair values over a specified time range.\n\n    If you do not specify one or more Asset names in your prompt, then Kelvin AI will retrieve all Assets that have Data Stream values.\n\nPossible aggregate options are;\n\n| Aggregate | Description                         |\n|-----------|-------------------------------------|\n| sum       | Total of all values                 |\n| mean      | Arithmetic average of values        |\n| min       | Smallest value                      |\n| max       | Largest value                       |\n| count     | Number of values                    |\n\n## Video Example\n\nSee Kelvin AI in action for this widget.\n\n<!--ARCADE EMBED START--><div style=\"position: relative; padding-bottom: calc(48.333333333333336% + 41px); height: 0; width: 100%;\"><iframe src=\"https://demo.arcade.software/I0QIvtR5vNX7h5AD15qz?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true\" title=\"Kelvin Core | Operations\" frameborder=\"0\" loading=\"lazy\" webkitallowfullscreen mozallowfullscreen allowfullscreen allow=\"clipboard-write\" style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;\" ></iframe></div><!--ARCADE EMBED END-->\n\n## Written Example\n\nTo start, click on the Kelvin AI menu and type a prompt similar to this;\n\n> min and max for casing pressure data stream on beam pump 1 asset over past 2 hours\n\nKelvin AI will use the Data Stream widget to provide an accurate answer.",
+  "summary": "You can retrieve an aggregate of any Asset / Data Stream pair values over a specified time range.",
+  "source": "core-docs/docs/operations-tools/kelvin-ai/how-to/data-stream-aggregates.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "aggregates",
+    "cli",
+    "data",
+    "operations",
+    "streams"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

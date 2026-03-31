@@ -1,0 +1,34 @@
+{
+  "id": "sdk/app/application.window/rollingwindow",
+  "title": "RollingWindow",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# RollingWindow\n\nInherits from: BaseWindow\n\n\nRolling window based on a fixed count of messages per asset.\n\nNotes\n-----\n- The internal per-asset deque is bounded to prevent unbounded growth.\n- The DataFrame yielded for an asset represents the last `count_size` items after merging\n  duplicate timestamps inside that slice.\n\n\n## Methods\n\n\n### __init__(assets: List[str], inputs: List[str], queue: asyncio.Queue[AssetDataMessage], count_size: int) -> None\n\n\n### async stream() -> AsyncGenerator[Tuple[str, pd.DataFrame], None]\n\nContinuously emit rolling windows as new messages arrive.\n",
+  "summary": "Rolling window based on a fixed count of messages per asset.",
+  "source": "app/src/kelvin/application/window.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import RollingWindow\n\n# Usage example\napp = RollingWindow()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "application.window",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "stream"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

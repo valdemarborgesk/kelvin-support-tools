@@ -1,0 +1,22 @@
+{
+  "id": "concepts/applications/app-parameters",
+  "title": "App Parameters",
+  "type": "concept",
+  "category": "applications",
+  "content": "# App Parameters\n\n## Overview\n\nApp Parameters are variables are a method to expose Kelvin SmartApp™ variables to Operations through the Kelvin UI. Their values are dynamic and can be modified at runtime by Operations.\n\nThese are usually the settings required by the Kelvin SmartApp™ to be able to customize its calculations for each Asset.\n\nEach App Parameter value is related to and unique to a specific Asset within a Kelvin SmartApp™.\n\n    Default values can be defined when the Assets are intially added to a Kelvin SmartApp™.\n\n## Data Type\n\nIt's essential to choose the appropriate Data Type that matches the kind of data you expect to use.\n\n    Some Semantic Types are predefined and will automatically determine the Data Type for you. For instance, if you choose \"Pressure\" as the semantic type, the system will automatically set the data type to Number. In contrast, the \"State\" semantic type offers more flexibility and can be a Boolean, Number, or String. In such cases, you'll need to manually select the correct Data Type.\n\nBelow are the available primitive data types with brief descriptions and their respective ranges:\n\nOption  | Declaration Name | Description                                                            \n------- | ----------|------------------------------------------------------------ \nBoolean | `boolean` | Represents a binary state, either True or False                        \nNumber  | `number`  | Uses a double precision floating point format.                         \nString  | `string`  | Variable-length text.                                                     \nObject  | Any word  | This is unique because the word object is not explicitly used. Instead, an object is first defined in ui_schemas, and its filename serves as its identifier.</p> For example, you can use the word `dynacard` which you can define in ui_schemas/io_configuration/, corresponding to the file schemas/io_configuration/dynacard.json.\n\nEnsure that you pick the type that best aligns with the data you anticipate receiving to maintain data integrity and optimize processing.",
+  "summary": "",
+  "source": "core-docs/docs/overview/concepts/variables/app-parameters.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "app",
+    "application",
+    "applications",
+    "asset",
+    "parameters"
+  ],
+  "metadata": {
+    "section": "concepts/variables",
+    "last_updated": "2026-02-04"
+  }
+}

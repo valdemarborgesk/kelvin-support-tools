@@ -1,0 +1,199 @@
+{
+  "id": "api/endpoints/data-tag/listDataTag",
+  "title": "List Data Tag",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# List Data Tag\n\nReturns a list of Data Tags. The Data Tags can be optionally filtered and sorted on the server before being returned.\n\n## Endpoint\n\n`POST /datatags/list`",
+  "summary": "List Data Tag",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/datatags/list' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.data_tag.listDataTag()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/data-tag"
+  ],
+  "tags": [
+    "data-tag",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/datatags/list",
+    "method": "POST",
+    "operation_id": "listDataTag",
+    "tag": "Data Tag",
+    "permission": "kelvin.permission.datatag.read",
+    "parameters": [
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": "sort_by",
+        "in": "query",
+        "required": false,
+        "description": "",
+        "type": "array"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "example": [
+              "0002bc79-b42f-461b-95d6-cf0a28ba87aa",
+              "00080f9e-d086-452d-b41d-c8aa8fb27c92"
+            ],
+            "description": "Search and filter on the list based on the key `id`. The filter is on the full UUID `id` only. All strings in the array are treated as `OR`.",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "search": {
+            "type": "array",
+            "example": [
+              "break",
+              "change"
+            ],
+            "description": "Search and filter on the list based on the key `tag_name`. The search is case insensitive and will find partial matches as well. All strings in the array are treated as `OR`.",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "tag_names": {
+            "type": "array",
+            "example": [
+              "Breakdown",
+              "Valve Change"
+            ],
+            "description": "A filter on the list showing only Data Tags associated with one or more tags. The filter is on the full Data Tags `tag_name` only. All strings in the array are treated as `OR`.",
+            "items": {
+              "type": "string",
+              "format": "^[a-zA-Z0-9]([-_ .a-zA-Z0-9]*[a-zA-Z0-9])?$",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "resources": {
+            "type": "array",
+            "example": [
+              "krn:asset:bp_16",
+              "krn:asset:bp_21"
+            ],
+            "description": "A filter on the list showing only Data Tags associated with any Assets in the array. The filter is on the full KRN Asset name only. All strings in the array are treated as `OR`. Each Asset name must be in the KRN format.",
+            "items": {
+              "type": "string",
+              "format": "krn",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "sources": {
+            "type": "array",
+            "example": [
+              "krn:wlappv:cluster1/app1/1.2.0",
+              "krn:user:richard.teo@kelvininc.com"
+            ],
+            "description": "A filter on the list showing only Data Tags created by a certain source. The filter is on the full `source` KRN name only. All strings in the array are treated as `OR`.",
+            "items": {
+              "type": "string",
+              "format": "krn",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "contexts": {
+            "type": "array",
+            "example": [
+              "krn:datastream:temperature",
+              "krn:appversion:smart-pcp/2.0.0"
+            ],
+            "description": "A filter on the list showing only Data Tags associated with any context resource. The filter is on the full `contexts` KRN only. All strings in the array are treated as `OR`.",
+            "items": {
+              "type": "string",
+              "format": "krn",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-02-06T00:00:00.000000Z",
+            "description": "Earliest `end_date` time for the list of Data Tags. Time is based on UTC timezone, formatted in RFC 3339."
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-02-07T00:00:00.000000Z",
+            "description": "Most recent `start_date` time for the list of Data Tags. Time is based on UTC timezone, formatted in RFC 3339."
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK"
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

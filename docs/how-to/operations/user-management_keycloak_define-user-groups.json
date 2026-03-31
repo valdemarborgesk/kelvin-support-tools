@@ -1,0 +1,25 @@
+{
+  "id": "how-to/user-management/keycloak/define-user-groups",
+  "title": "Manage User Groups",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Manage User Groups\n\n_On this page you will learn as an Administrator of a Kelvin Cloud how to manage User Groups inside Keycloak._\n\nGroups is a way to assign a set of common permissions to users without having to individually assign them to the user.\n\nGroups that have permissions modified will affect the access rights to the Kelvin Cloud for all users who are associated with the group.\n\n<div class=\"result\" markdown>\n\n=== \"Create a Group\"\n\n    To create a new group, click on the **Groups** option in the left sidebar and then click on the New button in the top right hand corner.\n\n    \n\n    Now just type an understandable name and click save.\n\n    You will then see the editing section of the new Group you just created. For the basic operations the only area of importance is the **Realm Roles** in **Role Mappings**. So click on the **Role Mappings** tab.\n\n    \n        You do not need to save the **Realm Roles**. It will be automatically saved every time you to click **Add Selected** or **Remove Selected**.\n\n    \n\n    Add from the list of available roles the ones that are relevant to your group.\n\n=== \"Edit Role Mappings\"\n\n    To edit the **Realm Roles** in a group, click on the **Groups** option in the left sidebar and then click on any group name you wish to edit, then click **Edit**.\n\n    \n\n    You will then see the editing section of the selected Group. For the basic operations the only area of importance is the **Realm Roles** in **Role Mappings**. So click on the **Role Mappings** tab.\n\n    \n        You do not need to save the realm Roles. It will be automatically saved every time you to click **Add Selected** or **Remove Selected**.\n\n    \n\n    Add from the list of available roles the ones that are relevant to your group.\n\n=== \"Default Groups\"\n\n    When creating new users, you can have groups automatically assigned to the user by default. To select which groups are automatically assigned to any new user click on the **Groups** option in the left sidebar, then on the **Default Groups** tab.\n\n    \n\n    Now add or remove which groups should be automatically assigned to new users. The system will automatically save each time you select or remove.\n\n</div>",
+  "summary": "_On this page you will learn as an Administrator of a Kelvin Cloud how to manage User Groups inside Keycloak._ Groups is a way to assign a set of common permissions to users without having to individually assign them to the user.",
+  "source": "core-docs/docs/platform-administration/how-to/user-management/keycloak/define-user-groups.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "create",
+    "groups",
+    "manage",
+    "operations",
+    "user"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

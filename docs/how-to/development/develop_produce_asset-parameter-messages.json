@@ -1,0 +1,39 @@
+{
+  "id": "how-to/develop/produce/asset-parameter-messages",
+  "title": "Asset Parameter Messages",
+  "type": "how_to",
+  "category": "development",
+  "content": "## App Parameter Messages\n\nKelvin SmartApps™ can publish an `App Parameter` Message in order to (asynchronously) update a given App Parameter for a given Asset.\n\nThe App Parameter update will persist as soon as this message is synced with the Kelvin Cloud.\n\n    A user can also change the App Parameter value through the Kelvin UI.\n\n    Any changes done automatically by an application will be updated on the Kelvin UI screen.\n\nYou can see the configuration options for a Kelvin SmartApp™ for an Asset in SmartApp section of the Kelvin UI.\n\nThe AssetParameter Object supports the following attributes:\n\n| Attribute       | Required     | Description                                                                                 |\n|-----------------|--------------|---------------------------------------------------------------------------------------------|\n| `resource`      | **required** | The **KRNAssetParameter** that this update is meant for.                                    |\n| `value`         | **required** | App Parameter value (Boolean, Integer, Float or String).                                  |\n| `comment`       | **optional** | Detailed description of the App Parameter update.                                         |\n\n## Examples\n\n### Basic Usage\n\nThis is how an App Parameter can be created and published in a Kelvin SmartApp™:\n\n```python title=\"Create and Publish App Parameter Python Example\" linenums=\"1\"\nfrom datetime import timedelta, datetime\n\nfrom kelvin.application import KelvinApp\nfrom kelvin.message import AssetParameter\nfrom kelvin.krn import KRNAssetParameter\n\napp = KelvinApp()\n\n@app.timer(interval=10)\nasync def publish_data():\n\n    # Create and Publish App Parameter\n    await app.publish(\n      AssetParameters(\n        parameters=[\n          AssetParameter(resource=KRNAssetParameter(asset, \"min_treshold\"), value=0)\n        ],\n        resource=KRNAppVersion(target_app_name, \"1.0.0\")\n      )\n    )\n\napp.run()\n```\n\n### App to App Usage\n\nApp Parameters can also be automatically updated from one Kelvin SmartApp™ to another Kelvin SmartApp™.\n\n    There needs to be an Internet connection to the Kelvin Cloud even if both Kelvin SmartApps™ are deployed to the same Cluster.\n\nIn the Kelvin SmartApp™ program, it can produce an update App Parameter value(s) to another Kelvin SmartApp™ like this;\n\n```python title=\"Create and Publish Multiple App Parameters Python Example\" linenums=\"1\"\nfrom kelvin.message import AssetParameters, AssetParameter\nfrom kelvin.krn import KRNAppVersion\n\napp = KelvinApp()\n\n@app.timer(interval=10)\nasync def publish_data():\n\n    # Create and Publish Multiple App Parameters\n    await app.publish(\n      AssetParameters(\n        parameters=[\n          AssetParameter(resource=KRNAssetParameter(asset, \"min_treshold\"), value=0), \n          AssetParameter(resource=KRNAssetParameter(asset, \"max_treshold\"), value=50)\n        ],\n        resource=KRNAppVersion(target_app_name, \"1.0.0\")\n      )\n    )\n\napp.run()\n```",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/develop/produce/asset-parameter-messages.md",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from datetime import timedelta, datetime\n\nfrom kelvin.application import KelvinApp\nfrom kelvin.message import AssetParameter\nfrom kelvin.krn import KRNAssetParameter\n\napp = KelvinApp()\n\n@app.timer(interval=10)\nasync def publish_data():\n\n    # Create and Publish App Parameter\n    await app.publish(\n      AssetParameters(\n        parameters=[\n          AssetParameter(resource=KRNAssetParameter(asset, \"min_treshold\"), value=0)\n        ],\n        resource=KRNAppVersion(target_app_name, \"1.0.0\")\n      )\n    )\n\napp.run()",
+      "title": "Create and Publish App Parameter Python Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.message import AssetParameters, AssetParameter\nfrom kelvin.krn import KRNAppVersion\n\napp = KelvinApp()\n\n@app.timer(interval=10)\nasync def publish_data():\n\n    # Create and Publish Multiple App Parameters\n    await app.publish(\n      AssetParameters(\n        parameters=[\n          AssetParameter(resource=KRNAssetParameter(asset, \"min_treshold\"), value=0), \n          AssetParameter(resource=KRNAssetParameter(asset, \"max_treshold\"), value=50)\n        ],\n        resource=KRNAppVersion(target_app_name, \"1.0.0\")\n      )\n    )\n\napp.run()",
+      "title": "Create and Publish Multiple App Parameters Python Example"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "asset",
+    "configure",
+    "create",
+    "deploy",
+    "development",
+    "messages",
+    "parameter",
+    "sdk",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

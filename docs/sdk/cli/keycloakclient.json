@@ -1,0 +1,38 @@
+{
+  "id": "sdk/cli/sdk.lib.auth.keycloak-client/keycloakclient",
+  "title": "KeycloakClient",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KeycloakClient\n\n\nClient for interacting with Keycloak OAuth/OIDC endpoints\n\n\n## Methods\n\n\n### __init__(base_url: str, realm: str, client_id: str, client_secret: Optional[str]) -> Any\n\n\n### get_oidc_configuration() -> Dict\n\nFetch the OIDC configuration from Keycloak's well-known endpoint.\n\n\n### get_authorization_endpoint() -> str\n\nGet the authorization endpoint URL.\n\n\n### get_token_endpoint() -> str\n\nGet the token endpoint URL.\n\n\n### exchange_code_for_tokens(code: str, redirect_uri: str, code_verifier: str) -> Dict\n\nExchange an authorization code for access and refresh tokens.\n\n\n### authenticate_with_password(username: str, password: str, totp: Optional[str]) -> Dict\n\nAuthenticate using Resource Owner Password Credentials Grant.\n\n\n### authenticate_with_client_credentials(client_id: str, client_secret: str) -> Dict\n\nAuthenticate using Client Credentials Grant.\n\n\n### refresh_access_token(refresh_token: str) -> Dict\n\nRefresh the access token using a refresh token.\n\n\n### get_user_info(access_token: str) -> Dict\n\nFetch user information from Keycloak's userinfo endpoint.\n\n\n### validate_token(access_token: str) -> bool\n\nValidate an access token by making a request to the userinfo endpoint.\n\n\n### logout(refresh_token: str) -> None\n\nLogout by invalidating the refresh token at Keycloak's logout endpoint.\n",
+  "summary": "Client for interacting with Keycloak OAuth/OIDC endpoints",
+  "source": "cli/src/kelvin/sdk/lib/auth/keycloak_client.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.auth.keycloak_client",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "get_oidc_configuration",
+      "get_authorization_endpoint",
+      "get_token_endpoint",
+      "exchange_code_for_tokens",
+      "authenticate_with_password",
+      "authenticate_with_client_credentials",
+      "refresh_access_token",
+      "get_user_info",
+      "validate_token",
+      "logout"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "how-to/cluster/spotlight-tips/unreliable-internet",
+  "title": "Unreliable Internet",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Unreliable Internet\n\nFor some edge systems, the Internet connection for the Cluster may not be available 24/7. Some situations where this is the case could be;\n\n1. The Cluster is located where the Internet is either unreliable and patchy, especially if it is connected to traditional Satellite, starlink or moving through remote areas on 4G/5G.\n2. The Internet is only available at set times each day/week\n3. The Internet is only available when a roaming asset returns to a fixed location (for example if the Cluster is located in a Truck that works temporarily at different projects and returns to base upon completion of the project)\n\nIn all these cases, the Clusters is resilient to interruptions to Internet connections between the Edge Cluster and the Cloud.\n\nBoth at the Edge and in the Cloud actions or data that is produced will be stored and transferred once the Internet connection is restored.\n\n    If all the necessary Connections and Kelvin SmartApps™ are deployed to a Cluster or multiple Clusters that are connected through a local LAN connection, Kelvin SmartApps™ can run independently and communicate to the Assets available on the LAN.\n\n## Nats Broker in Cluster\n\nThe Nats Broker in the Cluster at the edge is used as a communication and temporary store buffer for the data when communications to the Cloud is slow or broken.\n\nThis guarantees that you will not lose data.\n\nIt can store data for up to 1 year or up to 5 GB, whichever comes first. When communications is restored, the stored data will be sent to the Cloud and the local database is cleared.\n\n## Kelvin Cloud\n\nKelvin Cloud continuously monitors the health of the connection to all Clusters and Nodes.\n\nIf the communications to a Cluster is temporarily disconnected then any actions that users perform, like deploying a new Kelvin SmartApps™ or updating Asset / Data Stream data, the actions will be queued and automatically applied when the Cluster is next online.\n\n## Upgrading\n\nWhen you are upgrading either the custom Kelvin pods or Kelvin SmartApps™, Docker Apps or Connections, you have the option on how you want to perform the upgrades.\n\nIn cases where the Internet is only active at set times or the Internet is unreliable you can turn off automatic upgrades and initiate upgrades manually when you know the Internet connection is active and/or stable.\n\nThere are a range of manual upgrade options, but in cases of Internet unreliability we recommend that you set `staged` to `true` when starting the manual upgrade process to ensure all apps requiring upgrades is downloaded first before being applied.\n\nYou can then also select `instantly_apply` to `true` or `false` depending on whether you want to upgrade all the apps immediately after download or to manually initiate the upgrades at your discretion. This will ensure a smooth upgrade process and avoid reliance on the Internet during the crucial actual upgrade process.\n\nYou can read the full options available for [Stages Workloads by following this link](../../../../developer-tools/how-to/deploy/deploy-workloads-deploy-staged.md).",
+  "summary": "For some edge systems, the Internet connection for the Cluster may not be available 24/7. Some situations where this is the case could be; 1. The Cluster is located where the Internet is either unreliable and patchy, especially if it is connected ...",
+  "source": "core-docs/docs/platform-administration/how-to/cluster/spotlight-tips/unreliable-internet.md",
+  "code_examples": [],
+  "related": [
+    "how-to/deploy-workloads-deploy-staged"
+  ],
+  "tags": [
+    "deploy",
+    "docker",
+    "internet",
+    "monitor",
+    "operations",
+    "smartapp",
+    "unreliable"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "The Cluster is located where the Internet is either unreliable and patchy, especially if it is connected to traditional Satellite, starlink or moving through remote areas on 4G/5G."
+      },
+      {
+        "step": 2,
+        "instruction": "The Internet is only available at set times each day/week"
+      },
+      {
+        "step": 3,
+        "instruction": "The Internet is only available when a roaming asset returns to a fixed location (for example if the Cluster is located in a Truck that works temporarily at different projects and returns to base upon completion of the project)"
+      }
+    ],
+    "step_count": 3,
+    "last_updated": "2026-02-04"
+  }
+}

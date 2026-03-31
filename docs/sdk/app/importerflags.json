@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/config.importer/importerflags",
+  "title": "ImporterFlags",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ImporterFlags\n\nInherits from: ConfigBaseModel\n",
+  "summary": "",
+  "source": "app/src/kelvin/config/importer.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import ImporterFlags\n\n# Usage example\napp = ImporterFlags()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "config.importer",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "api/schemas/assetstatusitem",
+  "title": "AssetStatusItem",
+  "type": "schema",
+  "category": "api",
+  "content": "# AssetStatusItem\n\nAsset's status information.\n\n\n## Properties\n\n- **last_seen** (`string`): UTC time when the Asset was last seen, formatted in RFC 3339.\n- **state** (`string`): ",
+  "summary": "Asset's status information.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.AssetStatusItem",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "description": "Asset's status information.",
+      "properties": {
+        "last_seen": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when the Asset was last seen, formatted in RFC 3339."
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "online",
+            "offline",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.configs.emulation-configs/controlmanagerconfigs",
+  "title": "ControlManagerConfigs",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ControlManagerConfigs\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/configs/emulation_configs.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.configs.emulation_configs",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

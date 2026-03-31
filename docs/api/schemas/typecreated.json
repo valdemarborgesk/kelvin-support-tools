@@ -1,0 +1,37 @@
+{
+  "id": "api/schemas/created",
+  "title": "Created",
+  "type": "schema",
+  "category": "api",
+  "content": "# Created\n\n\n## Properties\n\n- **created_at** (`string`): UTC time when the object was created, formatted in RFC 3339.\n- **created_by** (`string`): KRN of the user or process that created the object.",
+  "summary": "Object with properties: created_at, created_by",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.Created",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "description": "UTC time when the object was created, formatted in RFC 3339.",
+          "format": "date-time"
+        },
+        "created_by": {
+          "type": "string",
+          "description": "KRN of the user or process that created the object.",
+          "format": "krn",
+          "example": "krn:user:me@example.com"
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

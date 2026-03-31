@@ -1,0 +1,50 @@
+{
+  "id": "api/schemas/assetstatus",
+  "title": "AssetStatus",
+  "type": "schema",
+  "category": "api",
+  "content": "# AssetStatus\n\n\n## Properties\n\n- **data** (`array`): A dictionary with a data property that contains an array of all Assets and their corresponding current status (`state`).",
+  "summary": "Object with properties: data",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.AssetStatus",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "A dictionary with a data property that contains an array of all Assets and their corresponding current status (`state`).",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                "example": "beam_pump",
+                "maxLength": 64,
+                "description": "Unique identifier `name` for the Asset. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+              },
+              "state": {
+                "type": "string",
+                "enum": [
+                  "online",
+                  "offline",
+                  "unknown"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

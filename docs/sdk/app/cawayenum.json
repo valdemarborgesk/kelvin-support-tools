@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.runtime-manifest/cawayenum",
+  "title": "CAWayEnum",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# CAWayEnum\n\nInherits from: str, Enum\n",
+  "summary": "",
+  "source": "app/src/kelvin/message/runtime_manifest.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import CAWayEnum\n\n# Usage example\napp = CAWayEnum()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.runtime_manifest",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

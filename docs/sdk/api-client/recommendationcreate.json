@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/recommendationcreate",
+  "title": "RecommendationCreate",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# RecommendationCreate\n\nInherits from: RecommendationBase\n\n\nRecommendationCreate object.\n\nParameters\n----------\n    actions: Optional[type_1.RecommendationActionsCreate]\n    state: Optional[enum.RecommendationStateCreate]\n",
+  "summary": "RecommendationCreate object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

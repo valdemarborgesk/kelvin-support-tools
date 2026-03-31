@@ -1,0 +1,24 @@
+{
+  "id": "how-to/monitor/monitor-dashboard",
+  "title": "All Dashboards",
+  "type": "how_to",
+  "category": "development",
+  "content": "# All Dashboards\n\nTo see a list of all Telemetry and Log dashboards available, click on the **Monitoring** menu item on the left hand side bar.\n\nYou can then access all the Logs and Telemetry information available on the Kelvin Platform through a centralized Grafana Dashboard.",
+  "summary": "To see a list of all Telemetry and Log dashboards available, click on the Monitoring menu item on the left hand side bar. You can then access all the Logs and Telemetry information available on the Kelvin Platform through a centralized Grafana Das...",
+  "source": "core-docs/docs/developer-tools/how-to/monitor/monitor-dashboard.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "all",
+    "cli",
+    "dashboards",
+    "development",
+    "monitor"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

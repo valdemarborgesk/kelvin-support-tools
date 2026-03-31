@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.responses/assetinsightsitem",
+  "title": "AssetInsightsItem",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AssetInsightsItem\n\nInherits from: DataModelBase\n\n\nAssetInsightsItem object.\n\nParameters\n----------\n    asset_type_name: Optional[StrictStr]\n    asset_type_title: Optional[StrictStr]\n    extra_fields: Optional[dict[str, Any]]\n    last_seen: Optional[datetime]\n    name: Optional[StrictStr]\n    pinned: Optional[StrictBool]\n    state: Optional[enum.AssetInsightsState]\n    title: Optional[StrictStr]\n",
+  "summary": "AssetInsightsItem object.",
+  "source": "api/src/kelvin/api/client/model/responses.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.responses.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.responses",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

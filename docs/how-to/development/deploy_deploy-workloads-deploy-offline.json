@@ -1,0 +1,28 @@
+{
+  "id": "how-to/deploy/deploy-workloads-deploy-offline",
+  "title": "Deploy Workload Offline",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Deploy Workload Offline\n\nYou can also deploy a Workload to any Cluster locally on the Edge computer/VM directly. This method does not need an Internet connection (unless you are remotely connecting to the computer with SSH or other remote control software through LAN or Internet).\n\n!!! Kelvin Platform Versions\n\n    For some version of the Kelvin Platform, this will be the only option available to deploy a Workload.\n\nThis will require you to physically visit the targeted edge computer or ssh into a remote VM with the targeted Cluster and manually installing the Workload image.\n\nFirstly we will work on the **Kelvin Platform** to create the Workload Image.\n\n### Create Your Workload\n\nThis method of Deployment can be done for Applications and Connections.\n\n* For Applications deployment you will can find full details how to deploy an Application [here](../deploy/deploy-workloads-deploy.md).\n* For a Connection deployment, go to Connections and click on the `Create Connection` button. Once successfully created, then go to Orchestration and select the Cluster where you have deployed the Connection where you will see the workload that is your Connection. \n\n### Download Your Workload Image\n\n* Find the Workload you just deployed in the Cluster you chose through the Orchestration menu.\n* Click on the Create Image menu icon { width=20 height=20 }.\n\n    You most likely will need to wait a few minutes for the image to be created and then you can download it from the same menu option.\n\n* When the image has been created then the Create Image icon will change to a Download icon { width=20 height=20 }. \n\nClick on the icon and select where you want to locally save the file.\n\n* Transfer the file to the edge system either through a USB stick or via a transfer program like SCP or Filezilla.\n\n    This image is ONLY valid for the Cluster you have deployed to. This image will not be able to be used to install the Workload on any other Clusters.\n\n    For Kelvin Professional edition the image will be automatically created.\n\nThe workload image is stored as a zip file.\n\n    Do not unpack the zip file !\n\n### Deploy Workload Image\n\nNow go to the Edge computer or login remotely to the Edge VM.\n\n    To understand how to access and login to the Edge Services, you can read the [full documentation on Edge Services here](../../../platform-administration/how-to/edge-services/index.md).\n\nYou have a few options to deploy the workload image using the Edge Services on the local Edge computer/VM.\n\n    Open the Edge UI in a browser.\n\n    \n\n    In the dashboard, click on the `Deploy Workload` button.\n\n    \n\n    Either drag and drop the downloaded image file or click and select it then click on the **Deploy** button when it turns blue.\n\n    \n\n    The Workload will be uploaded and deployed to a Node in the Cluster.\n\n    \n        Once deployed successfully, the status of the Workload on the Kelvin Platform will be updated from `Pending Deploy` to `Running` the next time the edge computer is connected to the Internet.\n\n    \n\n    Congratulations, you have deployed your new Workload.",
+  "summary": "You can also deploy a Workload to any Cluster locally on the Edge computer/VM directly. This method does not need an Internet connection (unless you are remotely connecting to the computer with SSH or other remote control software through LAN or I...",
+  "source": "core-docs/docs/developer-tools/how-to/deploy/deploy-workloads-deploy-offline.md",
+  "code_examples": [],
+  "related": [
+    "how-to/index"
+  ],
+  "tags": [
+    "cli",
+    "create",
+    "deploy",
+    "development",
+    "offline",
+    "smartapp",
+    "workload"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

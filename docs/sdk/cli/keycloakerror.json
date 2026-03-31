@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.auth.errors/keycloakerror",
+  "title": "KeycloakError",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KeycloakError\n\nInherits from: AuthError\n\n\nRaised when there is an error related to Keycloak operations.\n",
+  "summary": "Raised when there is an error related to Keycloak operations.",
+  "source": "cli/src/kelvin/sdk/lib/auth/errors.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.auth.errors",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

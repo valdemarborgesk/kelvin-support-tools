@@ -1,0 +1,99 @@
+{
+  "id": "api/schemas/threadreply",
+  "title": "ThreadReply",
+  "type": "schema",
+  "category": "api",
+  "content": "# ThreadReply\n\n\n## Properties\n\n- **content** (`object`): \n- **created** (`string`): \n- **id** (`string`): \n- **updated** (`string`): \n- **user_id** (`string`): ",
+  "summary": "Object with properties: content, created, id, updated, user_id",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.ThreadReply",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "object",
+          "properties": {
+            "attachments": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "extension": {
+                    "type": "string"
+                  },
+                  "filename": {
+                    "type": "string"
+                  },
+                  "size": {
+                    "type": "integer"
+                  },
+                  "url": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "mentions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "replies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "$ref": "#/components/schemas/type.ThreadContent"
+                  },
+                  "created": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "updated": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "user_id": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "text": {
+              "type": "string"
+            }
+          }
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "id": {
+          "type": "string"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "api/schemas/roleconditionexpr",
+  "title": "RoleConditionExpr",
+  "type": "schema",
+  "category": "api",
+  "content": "# RoleConditionExpr\n\n\n## Properties\n\n- **expr** (`string`): ",
+  "summary": "Object with properties: expr",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.RoleConditionExpr",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "expr": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "expr"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

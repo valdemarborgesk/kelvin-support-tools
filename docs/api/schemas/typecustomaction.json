@@ -1,0 +1,192 @@
+{
+  "id": "api/schemas/customaction",
+  "title": "CustomAction",
+  "type": "schema",
+  "category": "api",
+  "content": "# CustomAction\n\n\n## Properties\n\n- **id** (`string`): \n- **timestamp** (`string`): The timestamp of when the Custom Action was created. It may differ from 'created' when created on the edge.\n- **created** (`string`): UTC time when the Recommendation Type was created on the database, formatted in RFC 3339.\n- **created_by** (`string`): The user or process that initiated the creation of this custom action.\n- **updated** (`string`): UTC time when any Recommendation Type keys were last updated, formatted in RFC 3339.\n- **updated_by** (`string`): The user or process that updated this custom action.\n- **type** (`string`): The type of the action. This is used to identify the action in the system.\n- **type_title** (`string`): The type name of the action.\n- **resource** (`string`): \n- **title** (`string`): The title of the action. This is a short description of the action that will be displayed to the user.\n- **description** (`string`): The description of the action. This is a longer description of the action that will be displayed to the user.\n- **expiration_date** (`string`): The expiration date of the action. The action will be automatically cancelled if it is not completed by this date.\n- **payload** (`object`): The payload is a JSON object that contains the necessary information for the executor to perform the action. The structure of the payload will depend on the action type.\n- **trace_id** (`string`): \n- **state** (`string`): The state of an action.\n- **failure_reason** (`string`): The error type of an action, if any.\n\n* `none`: No error. The same as empty, used when the action is not completed or completed successfully.\n* `reported_failed`: The action was reported as failed by the executor.\n* `expired`: The action was not delivered to an executor before the expiration date.\n* `lost`: The action was delivered to the executor, but the executor restarted without reporting the status.\n* `executor_gone`: The action was delivered to the executor, but the executor is no longer available and the expiration date was reached.\n* `other`: Other error.\n- **message** (`string`): A message associated with the state transition.\n- **status_logs** (`array`): The transitions array contains a list of entries that describe the action state transitions.",
+  "summary": "Object with properties: id, timestamp, created, created_by, updated",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.CustomAction",
+    "schema_type": "type",
+    "schema": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The timestamp of when the Custom Action was created. It may differ from 'created' when created on the edge."
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when the Recommendation Type was created on the database, formatted in RFC 3339."
+        },
+        "created_by": {
+          "type": "string",
+          "format": "krn",
+          "example": "krn:user:email@kelvininc.com",
+          "description": "The user or process that initiated the creation of this custom action."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when any Recommendation Type keys were last updated, formatted in RFC 3339."
+        },
+        "updated_by": {
+          "type": "string",
+          "format": "krn",
+          "example": "krn:user:email@kelvininc.com",
+          "description": "The user or process that updated this custom action."
+        },
+        "type": {
+          "type": "string",
+          "example": "email",
+          "description": "The type of the action. This is used to identify the action in the system."
+        },
+        "type_title": {
+          "type": "string",
+          "example": "Web Hook",
+          "description": "The type name of the action."
+        },
+        "resource": {
+          "type": "string",
+          "example": "krn:asset:my-asset",
+          "description": "",
+          "format": "krn"
+        },
+        "title": {
+          "type": "string",
+          "example": "Diagnose Beam Pump GW-B12-037",
+          "description": "The title of the action. This is a short description of the action that will be displayed to the user."
+        },
+        "description": {
+          "type": "string",
+          "example": "Beam Pump GW-B12-037 needs to be diagnosed.",
+          "description": "The description of the action. This is a longer description of the action that will be displayed to the user."
+        },
+        "expiration_date": {
+          "type": "string",
+          "description": "The expiration date of the action. The action will be automatically cancelled if it is not completed by this date.",
+          "format": "date-time"
+        },
+        "payload": {
+          "type": "object",
+          "example": {
+            "id": "WO-2025-0412",
+            "priority": "high",
+            "description": "Diagnose Beam Pump GW-B12-037."
+          },
+          "description": "The payload is a JSON object that contains the necessary information for the executor to perform the action. The structure of the payload will depend on the action type."
+        },
+        "trace_id": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "description": "The state of an action.",
+          "enum": [
+            "pending",
+            "ready",
+            "in_progress",
+            "completed",
+            "cancelled",
+            "failed"
+          ]
+        },
+        "failure_reason": {
+          "type": "string",
+          "description": "The error type of an action, if any.\n\n* `none`: No error. The same as empty, used when the action is not completed or completed successfully.\n* `reported_failed`: The action was reported as failed by the executor.\n* `expired`: The action was not delivered to an executor before the expiration date.\n* `lost`: The action was delivered to the executor, but the executor restarted without reporting the status.\n* `executor_gone`: The action was delivered to the executor, but the executor is no longer available and the expiration date was reached.\n* `other`: Other error.",
+          "enum": [
+            "none",
+            "other",
+            "reported_failed",
+            "expired",
+            "lost",
+            "executor_gone"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "description": "A message associated with the state transition."
+        },
+        "status_logs": {
+          "type": "array",
+          "description": "The transitions array contains a list of entries that describe the action state transitions.",
+          "items": {
+            "properties": {
+              "state": {
+                "type": "string",
+                "description": "The state of an action.",
+                "enum": [
+                  "pending",
+                  "ready",
+                  "in_progress",
+                  "completed",
+                  "cancelled",
+                  "failed"
+                ]
+              },
+              "failure_reason": {
+                "type": "string",
+                "description": "The error type of an action, if any.\n\n* `none`: No error. The same as empty, used when the action is not completed or completed successfully.\n* `reported_failed`: The action was reported as failed by the executor.\n* `expired`: The action was not delivered to an executor before the expiration date.\n* `lost`: The action was delivered to the executor, but the executor restarted without reporting the status.\n* `executor_gone`: The action was delivered to the executor, but the executor is no longer available and the expiration date was reached.\n* `other`: Other error.",
+                "enum": [
+                  "none",
+                  "other",
+                  "reported_failed",
+                  "expired",
+                  "lost",
+                  "executor_gone"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "description": "A message associated with the state transition."
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "source": {
+                "type": "string",
+                "format": "krn"
+              }
+            },
+            "required": [
+              "state",
+              "timestamp",
+              "source"
+            ],
+            "type": "object"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "created",
+        "created_by",
+        "updated",
+        "updated_by",
+        "resource",
+        "type",
+        "title",
+        "expiration_date",
+        "state"
+      ],
+      "type": "object"
+    },
+    "last_updated": "2026-02-04"
+  }
+}

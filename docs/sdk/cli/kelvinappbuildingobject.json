@@ -1,0 +1,30 @@
+{
+  "id": "sdk/cli/sdk.lib.models.apps.ksdk-app-setup/kelvinappbuildingobject",
+  "title": "KelvinAppBuildingObject",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KelvinAppBuildingObject\n\nInherits from: ProjectBuildingObject\n\n\n## Methods\n\n\n### get_wheels_dir() -> Optional[str]\n\n\n### get_dockerfile_template() -> EmbeddedFiles\n\nFrom the current application build object, yield the correct dockerfile template.\n\n\n### get_dockerfile_run_command() -> Tuple[Optional[str], Optional[str]]\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/apps/ksdk_app_setup.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.apps.ksdk_app_setup",
+    "item_type": "class",
+    "methods": [
+      "get_wheels_dir",
+      "get_dockerfile_template",
+      "get_dockerfile_run_command"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

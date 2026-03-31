@@ -1,0 +1,29 @@
+{
+  "id": "sdk/cli/sdk.lib.session.session-manager/server",
+  "title": "Server",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Server\n\nInherits from: BaseHTTPRequestHandler\n\n\n## Methods\n\n\n### log_message(format: str) -> None\n\n\n### do_GET() -> None\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/session/session_manager.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.session.session_manager",
+    "item_type": "class",
+    "methods": [
+      "log_message",
+      "do_GET"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

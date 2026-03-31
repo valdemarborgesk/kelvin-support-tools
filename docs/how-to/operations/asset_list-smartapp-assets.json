@@ -1,0 +1,55 @@
+{
+  "id": "how-to/asset/list-smartapp-assets",
+  "title": "List Smartapp Assets",
+  "type": "how_to",
+  "category": "operations",
+  "content": "**Reference:**\n\nField                |  Mandatory |  Example | Description\n---------------------|---|---|------------------------------------\napp_name | Yes | `event-detection` | The Kelvin SmartApp™ name to filter the Asset list. It must contain only lowercase alphanumeric characters. The characters `.`, `_` and `-` are allowed to separate words instead of a space BUT can not be at the beginning or end of the name.\napp_versions | No | 1.0.1 | Filter the results on the Kelvin SmartApp™ versions\nenabled_states | No | Options are `true` or `false` | Filter whether the Kelvin SmartApp™ is currently processing data from the Asset\nresources | No | `krn:asset:beam_pump_16` | Filter for only certain Assets\nstatuses | No | Options are `running`, `stopped`, `staged`, `updating`. | Filter on the status of the Kelvin SmartApp™ for the Asset.\n\nA Kelvin SmartApp™ can be processing many thousands of Assets at the same time. Kelvin UI makes it easy to monitor the status of all these Assets and quickly add or delete Assets to the Kelvin SmartApp™.\n\nYou can list all Assets used by a Kelvin SmartApp™.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin UI\"\n\n    To see a full list of Assets running a certain , go to **SmartApps™** dashboard page and select the Kelvin SmartApp™.\n\n    \n\n    Click on the **Management** tab, and click on the **Assets** tab. Here you can see a list of Assets and the configuration options for the Kelvin SmartApp™.\n\n    \n\n=== \"Kelvin API\"\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/app-manager/app/event-detection/resources/list?pagination_type=cursor&page_size=20&direction=asc&sort_by=workload_name\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n        }'\n    ```\n\n    The response will look like this;\n\n    ```json title=\"API cURL Example Response\" linenums=\"1\"\n    {\n    \"pagination\": {\n        \"next_page\": null,\n        \"previous_page\": null\n    },\n    \"data\": [\n            {\n            \"enabled\": true,\n            \"resource\": {\n                \"name\": \"motor_01\",\n                \"title\": \"Motor #01\",\n                \"created\": \"2024-11-12T17:01:18.667512Z\",\n                \"updated\": \"2024-11-12T17:01:18.667512Z\"\n            },\n            \"app\": {\n                \"name\": \"event-detection\",\n                \"version\": \"1.0.0\"\n            },\n            \"workload\": {\n                \"name\": \"event-detection-d4v7branw9po\",\n                \"cluster\": \"beta-cluster-01\",\n                \"warnings\": []\n            },\n            \"status\": {\n                \"status\": \"running\",\n                \"last_seen\": \"2024-12-09T04:06:03.771644Z\",\n                \"updated\": \"2024-11-12T17:01:18.667512Z\",\n                \"updated_by\": \"krn:user:demo@kelvin.ai\"\n            }\n            },\n            {\n            \"enabled\": true,\n            \"resource\": {\n                \"name\": \"motor_02\",\n                \"title\": \"Motor #02\",\n                \"created\": \"2024-11-12T17:01:18.667512Z\",\n                \"updated\": \"2024-11-12T17:01:18.667512Z\"\n            },\n            \"app\": {\n                \"name\": \"event-detection\",\n                \"version\": \"1.0.0\"\n            },\n            \"workload\": {\n                \"name\": \"event-detection-d4v7branw9po\",\n                \"cluster\": \"beta-cluster-01\",\n                \"warnings\": []\n            },\n            \"status\": {\n                \"status\": \"running\",\n                \"last_seen\": \"2024-12-09T04:06:03.771644Z\",\n                \"updated\": \"2024-11-12T17:01:18.667512Z\",\n                \"updated_by\": \"krn:user:demo@kelvin.ai\"\n            }\n            },\n        ]\n    }\n    ```\n\n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # List Assets in SmartApp\n    response = client.app_manager.list_app_manager_app_resources(app_name=<SMARTAPP_NAME>)\n    df = response.to_df()\n    resource_names = [row['name'] for row in df['resource'] if isinstance(row, dict) and 'name' in row]\n\n    print(f'Here is a list of assets for {SMARTAPP_NAME} : {resource_names}')\n    ```\n\n    You will get a response similar to this;\n\n    ```bash title=\"API Client (Python) Example Response\" linenums=\"1\"\n    Here is a list of assets for esp-optimization : ['esp_01', 'esp_02', 'esp_03', 'esp_04', 'esp_05', 'esp_06', 'esp_07', 'esp_08', 'esp_09', 'esp_10', 'esp_11', 'esp_12', 'esp_13', 'esp_14', 'esp_15', 'esp_16', 'esp_17', 'esp_18', 'esp_19', 'esp_20', 'esp_21', 'esp_22', 'esp_23', 'esp_24', 'esp_25']\n    ```\n\n    **Bonus :**\n\n    You can also add extra code to export the data to a CSV file.\n\n    ```python title=\"Export to CSV File Python Example\" linenums=\"1\"\n    import pandas as pd\n\n    df['resource_name'] = df['resource'].apply(lambda x: x['name'] if isinstance(x, dict) and 'name' in x else None)\n    df[['resource_name']].to_csv('resource_names.csv', index=False)\n    ```\n\n</div>",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/asset/list-smartapp-assets.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/app-manager/app/event-detection/resources/list?pagination_type=cursor&page_size=20&direction=asc&sort_by=workload_name\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n        }'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n    \"pagination\": {\n        \"next_page\": null,\n        \"previous_page\": null\n    },\n    \"data\": [\n            {\n            \"enabled\": true,\n            \"resource\": {\n                \"name\": \"motor_01\",\n                \"title\": \"Motor #01\",\n                \"created\": \"2024-11-12T17:01:18.667512Z\",\n                \"updated\": \"2024-11-12T17:01:18.667512Z\"\n            },\n            \"app\": {\n                \"name\": \"event-detection\",\n                \"version\": \"1.0.0\"\n            },\n            \"workload\": {\n                \"name\": \"event-detection-d4v7branw9po\",\n                \"cluster\": \"beta-cluster-01\",\n                \"warnings\": []\n            },\n            \"status\": {\n                \"status\": \"running\",\n                \"last_seen\": \"2024-12-09T04:06:03.771644Z\",\n                \"updated\": \"2024-11-12T17:01:18.667512Z\",\n                \"updated_by\": \"krn:user:demo@kelvin.ai\"\n            }\n            },\n            {\n            \"enabled\": true,\n            \"resource\": {\n                \"name\": \"motor_02\",\n                \"title\": \"Motor #02\",\n                \"created\": \"2024-11-12T17:01:18.667512Z\",\n                \"updated\": \"2024-11-12T17:01:18.667512Z\"\n            },\n            \"app\": {\n                \"name\": \"event-detection\",\n                \"version\": \"1.0.0\"\n            },\n            \"workload\": {\n                \"name\": \"event-detection-d4v7branw9po\",\n                \"cluster\": \"beta-cluster-01\",\n                \"warnings\": []\n            },\n            \"status\": {\n                \"status\": \"running\",\n                \"last_seen\": \"2024-12-09T04:06:03.771644Z\",\n                \"updated\": \"2024-11-12T17:01:18.667512Z\",\n                \"updated_by\": \"krn:user:demo@kelvin.ai\"\n            }\n            },\n        ]\n    }",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # List Assets in SmartApp\n    response = client.app_manager.list_app_manager_app_resources(app_name=<SMARTAPP_NAME>)\n    df = response.to_df()\n    resource_names = [row['name'] for row in df['resource'] if isinstance(row, dict) and 'name' in row]\n\n    print(f'Here is a list of assets for {SMARTAPP_NAME} : {resource_names}')",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "bash",
+      "code": "Here is a list of assets for esp-optimization : ['esp_01', 'esp_02', 'esp_03', 'esp_04', 'esp_05', 'esp_06', 'esp_07', 'esp_08', 'esp_09', 'esp_10', 'esp_11', 'esp_12', 'esp_13', 'esp_14', 'esp_15', 'esp_16', 'esp_17', 'esp_18', 'esp_19', 'esp_20', 'esp_21', 'esp_22', 'esp_23', 'esp_24', 'esp_25']",
+      "title": "API Client (Python) Example Response"
+    },
+    {
+      "language": "python",
+      "code": "import pandas as pd\n\n    df['resource_name'] = df['resource'].apply(lambda x: x['name'] if isinstance(x, dict) and 'name' in x else None)\n    df[['resource_name']].to_csv('resource_names.csv', index=False)",
+      "title": "Export to CSV File Python Example"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "api",
+    "assets",
+    "cli",
+    "configure",
+    "create",
+    "list",
+    "monitor",
+    "operations",
+    "sdk",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

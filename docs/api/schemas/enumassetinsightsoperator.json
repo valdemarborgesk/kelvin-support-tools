@@ -1,0 +1,58 @@
+{
+  "id": "api/schemas/assetinsightsoperator",
+  "title": "AssetInsightsOperator",
+  "type": "schema",
+  "category": "api",
+  "content": "# AssetInsightsOperator\n\nType of operation for the filter, allowed operators: '==', '!=', '<', '>', '>=', '<=', 'has', '!has', 'contains', '!contains', 'starts_with', '!starts_with', 'ends_with', '!ends_with'\n\n## Enum Values\n\n- `==`\n- `!=`\n- `<`\n- `>`\n- `>=`\n- `<=`\n- `has`\n- `!has`\n- `contains`\n- `!contains`\n- `starts_with`\n- `!starts_with`\n- `ends_with`\n- `!ends_with`",
+  "summary": "Type of operation for the filter, allowed operators: '==', '!=', '<', '>', '>=', '<=', 'has', '!has', 'contains', '!contains', 'starts_with', '!starts_with', 'ends_with', '!ends_with'",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.AssetInsightsOperator",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "==",
+        "!=",
+        "<",
+        ">",
+        ">=",
+        "<=",
+        "has",
+        "!has",
+        "contains",
+        "!contains",
+        "starts_with",
+        "!starts_with",
+        "ends_with",
+        "!ends_with"
+      ],
+      "x-enum-varnames": [
+        "Equal",
+        "NotEqual",
+        "Lower",
+        "Greater",
+        "GreaterOrEqual",
+        "LowerOrEqual",
+        "Has",
+        "NotHas",
+        "Contains",
+        "NotContains",
+        "StartsWith",
+        "NotStartsWith",
+        "EndsWith",
+        "NotEndsWith"
+      ],
+      "example": "==",
+      "description": "Type of operation for the filter, allowed operators: '==', '!=', '<', '>', '>=', '<=', 'has', '!has', 'contains', '!contains', 'starts_with', '!starts_with', 'ends_with', '!ends_with'"
+    },
+    "last_updated": "2026-02-04"
+  }
+}

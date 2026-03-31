@@ -1,0 +1,27 @@
+{
+  "id": "api/schemas/keyvalue",
+  "title": "KeyValue",
+  "type": "schema",
+  "category": "api",
+  "content": "# KeyValue\n",
+  "summary": "Object type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.KeyValue",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "how-to/deploy-connections/deploy-export",
+  "title": "Deploy Export Connection",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Deploy Export Connection\n\nDeploy Export Connections are covered in detail in the Platform Administration section of the Kelvin Documentation.\n\n    The examples in the Platform Administration shows the Import Connections.\n    \n    The process is the same for Export Connections.\n\n    For Export Connections there are no default OOTB solutions, only custom Export Connections built by developers.\n\nFull documentation can be found in the Platform Administration section under [Deploy Custom Connector](../../../platform-administration/how-to/connect/connect-to-data/custom.md).",
+  "summary": "Deploy Export Connections are covered in detail in the Platform Administration section of the Kelvin Documentation.",
+  "source": "core-docs/docs/developer-tools/how-to/deploy-connections/deploy-export.md",
+  "code_examples": [],
+  "related": [
+    "how-to/custom"
+  ],
+  "tags": [
+    "connection",
+    "deploy",
+    "development",
+    "export"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

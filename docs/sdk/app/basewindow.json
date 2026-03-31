@@ -1,0 +1,34 @@
+{
+  "id": "sdk/app/application.window/basewindow",
+  "title": "BaseWindow",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# BaseWindow\n\n\nManage per-asset in-memory buffers and DataFrames for streaming data.\n\nDesign\n------\n- Each asset has a deque of (timestamp, {stream: payload}). The deque can be bounded by `buffer_size`.\n- Timestamps are normalized to UTC and optionally quantized.\n- DataFrames are per asset, indexed by UTC timestamps, with columns equal to `inputs`.\n- Duplicate timestamps within a buffer are merged into a single row before appending.\n\n\n## Methods\n\n\n### __init__(assets: List[str], inputs: List[str], queue: asyncio.Queue[AssetDataMessage]) -> None\n\n\n### get_df(asset_name: str) -> pd.DataFrame\n\nReturn a copy of the DataFrame for the asset or an empty shell.\n",
+  "summary": "Manage per-asset in-memory buffers and DataFrames for streaming data.",
+  "source": "app/src/kelvin/application/window.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import BaseWindow\n\n# Usage example\napp = BaseWindow()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "application.window",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "get_df"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

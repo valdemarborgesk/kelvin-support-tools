@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.response/errorobject",
+  "title": "ErrorObject",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ErrorObject\n\nInherits from: DataModelBase\n\n\nErrorObject object.\n\nParameters\n----------\n    name: Optional[StrictStr]\n    title: Optional[StrictStr]\n    description: Optional[StrictStr]\n    solution: Optional[StrictStr]\n    payload: Optional[Union[dict[str, Any], list[Union[StrictInt, StrictFloat, StrictStr, StrictBool, dict[str, Any]]]]]\n",
+  "summary": "ErrorObject object.",
+  "source": "api/src/kelvin/api/client/model/response.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.response.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.response",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

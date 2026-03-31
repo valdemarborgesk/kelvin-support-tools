@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/dqway",
+  "title": "DQWay",
+  "type": "schema",
+  "category": "api",
+  "content": "# DQWay\n\nThe direction of the data quality. If `output`, the app computes and produces the data quality value. If `input`, the app receives the data quality value.\n\n## Enum Values\n\n- `output`\n- `input`",
+  "summary": "The direction of the data quality. If `output`, the app computes and produces the data quality value. If `input`, the app receives the data quality value.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.DQWay",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "output",
+        "input"
+      ],
+      "description": "The direction of the data quality. If `output`, the app computes and produces the data quality value. If `input`, the app receives the data quality value."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

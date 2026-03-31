@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/config.manifest/appmanifest",
+  "title": "AppManifest",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AppManifest\n\nInherits from: AppBaseConfig\n",
+  "summary": "",
+  "source": "app/src/kelvin/config/manifest.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import AppManifest\n\n# Usage example\napp = AppManifest()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "config.manifest",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

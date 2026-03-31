@@ -1,0 +1,23 @@
+{
+  "id": "how-to/cluster/clusters-overview",
+  "title": "Cluster Management - How To",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Cluster Management - How To\n\n## Installation\n\nYou can use you own kubernetes cluster or let Kelvin install a k3s cluster onto a bare metal VM or physical machine.\n\nIf you let kelvin do the k3s installation, then you will also have the kelvin-provision tools on the VM/machine to perform many operations locally from the command line.\n\nYou can install Kelvin on many different flavors of kubernetes. Here we walk you through k3s and three others.\n\n* [Let Kelvin install k3s on a bare metal VM/machine](./provision/provision-a-k3s-cluster.md)\n* [Install Kelvin on a standard kuberenetes cluster](./provision/provision-a-cloud-cluster.md)\n* [Install Kelvin on a AWS EKS cluster](./provision/provision-an-eks-cluster.md)\n* [Install Kelvin on a Azure AKS cluster](./provision/provision-an-eks-cluster.md)",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/cluster/clusters-overview.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "cluster",
+    "management",
+    "operations"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

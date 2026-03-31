@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/appversionparametersuniquevaluesget",
+  "title": "AppVersionParametersUniqueValuesGet",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AppVersionParametersUniqueValuesGet\n\nInherits from: DataModelBase\n\n\nAppVersionParametersUniqueValuesGet object.\n\nParameters\n----------\n    app_parameters: Optional[list[AppParameter]]\n    data_types: Optional[list[enum.ParameterType]]\n",
+  "summary": "AppVersionParametersUniqueValuesGet object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

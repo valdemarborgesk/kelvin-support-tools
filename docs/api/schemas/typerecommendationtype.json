@@ -1,0 +1,66 @@
+{
+  "id": "api/schemas/recommendationtype",
+  "title": "RecommendationType",
+  "type": "schema",
+  "category": "api",
+  "content": "# RecommendationType\n\n\n## Properties\n\n- **created** (`string`): UTC time when the Recommendation Type was created, formatted in RFC 3339.\n- **created_by** (`string`): The user or process that initiated the creation of this recommendation type.\n- **name** (`string`): Unique identifier `name` for the Recommendation Type.\n- **title** (`string`): \n- **metadata** (`object`): Detailed Attributes of the Recommendation Type. The structure of the `metadata` object can have any key/value structure.\n- **updated** (`string`): UTC time when any Recommendation Type keys were last updated, formatted in RFC 3339.\n- **updated_by** (`string`): The user or process that updated this recommendation type.",
+  "summary": "Object with properties: created, created_by, name, title, metadata",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.RecommendationType",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when the Recommendation Type was created, formatted in RFC 3339."
+        },
+        "created_by": {
+          "type": "string",
+          "format": "krn",
+          "example": "krn:user:email@kelvininc.com",
+          "description": "The user or process that initiated the creation of this recommendation type."
+        },
+        "name": {
+          "type": "string",
+          "format": "^[a-zA-Z0-9]([-_ .a-zA-Z0-9]*[a-zA-Z0-9])?$",
+          "example": "Decrease speed",
+          "maxLength": 64,
+          "description": "Unique identifier `name` for the Recommendation Type."
+        },
+        "title": {
+          "type": "string",
+          "example": "Decrease Speed",
+          "maxLength": 64
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Detailed Attributes of the Recommendation Type. The structure of the `metadata` object can have any key/value structure."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when any Recommendation Type keys were last updated, formatted in RFC 3339."
+        },
+        "updated_by": {
+          "type": "string",
+          "format": "krn",
+          "example": "krn:user:email@kelvininc.com",
+          "description": "The user or process that updated this recommendation type."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

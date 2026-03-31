@@ -1,0 +1,29 @@
+{
+  "id": "how-to/kelvin-smartapps-dashboard",
+  "title": "Applications Monitoring",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Applications Monitoring\n\n_On this page you will learn about the concept and important features of Applications for Operations Engineers ._\n\n## Dashboard\n\nWhen you go to Applications dashboard page you will see all the Applications stored in the App Registry.\n\nFor any application that have been deployed as Applications, you will see the status, how many Assets that have been deployed and the total number running status and its last update.\n\n## Groups\n\nInitially Applications are conveniently grouped into the `type` of Application. You can also add custom groups and move Applications into your custom groups.\n\n### Default Groups\n\nCurrently there are two fixed types available;\n\n* **Docker Apps** : These are applications that the Developers have designed using any development architecture outside of the Kelvin Platform. Without the tight integration to Kelvin, these have limited UI features.\n* **Kelvin SmartApps™** : These are applications designed with the Kelvin development tools and are referred to as Applications. There are a host of features and options available within the Kelvin UI.\n\n### Manage Groups\n\nYou can manage the groups and define where you want to show each application.\n\n    If you do not assign a Application to a group, it will be shown in the default location defined by its `type`.\n\n    The `type` is set by the Developer.\n\nTo manage your groups, click on the settings icon in the top right corner.\n\nYou will then see your group management window.\n\n<div class=\"result\" markdown>\n\n=== \"Search Applications\"\n\n    You can filter the Applications that are shown on the list in this group management section.\n\n            This does not change how the applications are displayed in the Dashboard itself.\n\n    \n\n=== \"Move Applications\"\n\n    You can drag and drop an Application to reorganize the order of the Applications.\n\n    \n\n    Or use the move icon.\n\n    \n\n=== \"Move Group\"\n\n    You can drag and drop a group to reorder how the Groups are shown on the Dashboard.\n\n    \n\n=== \"Hide Applications\"\n\n    You can hide an application so that it is not shown in the Dashboard.\n\n    \n\n</div>\n\n### Add Custom Group\n\nThe default groups are mandatory and can not be removed.\n\n    If there are no Applications listed in a default group or all Applications are hidden, then the Group will not be shown in the Dashboard.\n\nYou can also add a new custom groups.\n\nSimply click on the **Add Group** button.\n\nA side bar will open up.\n\nYou can also immediately populate it with your wanted Applications.\n\nGive it a name and you can immediately populate it before clicking on the **Add Group** button.\n\n## Card\n\nEach Application is represented by a card style information display.\n\nCard Section | Description\n--- | ---\nTitle / Name | This is the title and the name of the Application in the App Registry.<br><br>You can click on this to go into Applications details page related to this Application.\nStatus | This will tell you the overall status of all Workloads deployed under Applications procedure.<br><br>If any need attention, this will change red and alert the user that attention is required.\nRunning On | This will tell you how many Assets have been deployed using Applications method and associated with the Application.\nLast Update | This will show you the date of the last action taken on Applications, whether that be a new deploy, an update to an existing deploy or an undeploy of an Asset.\n\nYou have a few basic options to customize your view of Applications cards.\n\n<div class=\"result\" markdown>\n\n=== \"Sort Applications\"\n\n    You can also sort Applications.\n\n    \n\n    | Sort Option                        | Description                                                                                    |\n    | ---------------------------------- | ---------------------------------------------------------------------------------------------- |\n    | Status - Requiring attention first | This will put all Applications that have any reported issues at the top.                |\n    | Last updated first                 | This will put Applications that have been created or updated in any way at the top. |\n\n=== \"Search Applications\"\n\n    When dealing with large quantities of Applications, you can search for Applications of interest.\n\n    This is dynamic and will update the list as you type.\n\n    \n          The search feature is not case-sensitive and will search for any matches anywhere in Applications name, i.e. it does not have to be at the beginning of the name.\n\n    \n\n</div>",
+  "summary": "_On this page you will learn about the concept and important features of Applications for Operations Engineers ._",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/kelvin-smartapps-dashboard.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "applications",
+    "cli",
+    "configure",
+    "create",
+    "deploy",
+    "docker",
+    "monitor",
+    "monitoring",
+    "operations",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

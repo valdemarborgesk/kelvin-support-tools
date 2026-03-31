@@ -1,0 +1,32 @@
+{
+  "id": "how-to/github-codespace",
+  "title": "Github Codespace & Kelvin SDK",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Github Codespace & Kelvin SDK\n\nFrom the Kelvin UI you can open up a Github codespace environment with all the Kelvin SDK requirements fully installed and ready for you to start your programming, testing and upload experience.\n\nThis allows you to program, test and upload Applications directly from Github Codespace to the Kelvin Platform.\n\n    The advantage of this approach is that you do not need to install any software onto your own computer.\n\nTo start, login to the Kelvin UI and click on the Applications menu.\n\nIn the top right hand corner click on the **Create SmartApp** button.\n\nYou will be redirected to github where it will ask you to create a codespace\n\n    You will need to have an account and be logged into Github. A free account is all you will need.\n\n    If you have already created a codespace previously, it will ask if you want to continue in the previous codespace or create a new one.\n\nClick on **Create new codespace** button.\n\nGithub will now setup the codespace environment. This includes;\n\n* Installing docker-in-docker which is a Kelvin SDK prerequisite\n* Installing the Python support Visual Studio Code extension\n* Installing the Python language server Visual Studio Code extension\n* Installing Python\n* Installing the Kelvin SDK library and all dependencies\n\n    This will take up to 5 minutes to complete, so please do be patient when you first crete a Github codespace.\n\n    Once created, you can keep the codespace environment and restart it later. This will start faster as it does not need to reinitialize and install the environment again.\n\nWhen all initialization installations and the environment setup is complete, then your codespace environment will start.\n\nThe default Kelvin SmartApp™ Application files are loaded and ready for you to start your programming journey in Kelvin.\n\nYou can also [test your Application](../quick-start/how-to/test-kelvin-smartapp.md) before uploading to the Kelvin Platform and [upload your Application](../quick-start/how-to/upload-kelvin-smartapp.md) using the remote terminal interface.\n\nYour environment is setup and ready for you to program, test and upload your Kelvin Applications.\n\n    You can develop both Kelvin SmartApps™, Import & Export Connectors and Docker Apps in this environment.\n\n    To see all your Github Codespace environments, go to https://github.com/codespaces",
+  "summary": "From the Kelvin UI you can open up a Github codespace environment with all the Kelvin SDK requirements fully installed and ready for you to start your programming, testing and upload experience. This allows you to program, test and upload Applicat...",
+  "source": "core-docs/docs/developer-tools/how-to/github-codespace.md",
+  "code_examples": [],
+  "related": [
+    "how-to/upload-kelvin-smartapp",
+    "how-to/test-kelvin-smartapp"
+  ],
+  "tags": [
+    "cli",
+    "codespace",
+    "create",
+    "development",
+    "docker",
+    "github",
+    "kelvin",
+    "sdk",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

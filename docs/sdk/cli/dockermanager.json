@@ -1,0 +1,44 @@
+{
+  "id": "sdk/cli/sdk.lib.docker.docker-manager/dockermanager",
+  "title": "DockerManager",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DockerManager\n\n\n## Methods\n\n\n### __init__() -> None\n\n\n### login_to_docker_registry(registry_url: str, username: str, password: str) -> None\n\n\n### build_kelvin_app_dockerfile(kelvin_app_building_object: KelvinAppBuildingObject) -> bool\n\nBuild the docker file used in the creation of the docker image.\n\n\n### get_docker_images(labels: Optional[dict], image_ids: Optional[List[str]], image_parent_ids: Optional[List[str]], image_names: Optional[List[str]]) -> List[DockerImage]\n\nObtain a list of all docker images available in the system.\n\n\n### build_kelvin_app_docker_image(kelvin_app_building_object: KelvinAppBuildingObject) -> bool\n\nBuild the docker image from the provided KelvinAppBuildingObject.\n\n\n### build_docker_app_image(docker_build_object: DockerAppBuildingObject) -> bool\n\nBuild the docker image from the provided DockerAppBuildingObject.\n\n\n### build_kelvin_v2_app_image(build_object: ProjectBuildingObject) -> bool\n\nBuild the docker image from the provided DockerAppBuildingObject.\n\n\n### ensure_docker_image_exists(docker_image: str) -> str\n\nUsing the base logged client, ensure that the provided image is valid either in the currently logged registry or the in the public one (DockerHub).\n\n\n### pull_docker_image_from_registry(docker_image_name: DockerImageName, auth_config: Optional[dict], tag_local_name: bool) -> str\n\nPull the specified docker image from the currently logged registry.\n\n\n### remove_docker_image(docker_image_name: str) -> bool\n\nRemove the specified docker image from the local system.\n\n\n### prune_docker_images(filters: Optional[dict]) -> bool\n\nA simple wrapper around the client to prune dangling docker images.\n\n\n### check_if_docker_image_exists(docker_image_name: str, silent: bool, raise_exception: bool) -> bool\n\nCheck whether the specified docker image exists on the local system.\n\n\n### extract_dir_from_docker_image(app_name: str, output_dir: str, container_dir: str) -> bool\n\nExtract the content of the specified built application to the provided output directory.\n\n\n### get_docker_containers(target_all_containers: bool, image_names: Optional[List[str]], container_names: Optional[List[str]], labels: Optional[dict]) -> List[DockerContainer]\n\nObtain a list of all docker containers available in the system.\n\n\n### stop_containers(container_names: Optional[List[str]], image_names: Optional[List[str]]) -> bool\n\nInternal function for stopping containers by either container name or image name.\n\n\n### remove_container(container_name: str) -> bool\n\nRemove the provided container from the system.\n\n\n### prune_docker_containers(filters: Optional[dict]) -> bool\n\nA simple wrapper around the client to prune dangling docker containers.\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/docker/docker_manager.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.docker.docker_manager",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "login_to_docker_registry",
+      "build_kelvin_app_dockerfile",
+      "get_docker_images",
+      "build_kelvin_app_docker_image",
+      "build_docker_app_image",
+      "build_kelvin_v2_app_image",
+      "ensure_docker_image_exists",
+      "pull_docker_image_from_registry",
+      "remove_docker_image",
+      "prune_docker_images",
+      "check_if_docker_image_exists",
+      "extract_dir_from_docker_image",
+      "get_docker_containers",
+      "stop_containers",
+      "remove_container",
+      "prune_docker_containers"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

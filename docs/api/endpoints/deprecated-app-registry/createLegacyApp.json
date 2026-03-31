@@ -1,0 +1,149 @@
+{
+  "id": "api/endpoints/deprecated-app-registry/createLegacyApp",
+  "title": "Create App",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Create App\n\nCreate a new App or App Version in the App Registry. A new version will be automatically appended if the App already exists.\n\nNote : The Kelvin API request is not the recommended way to create an App and will not be documented. Check Kelvin's documentation on the best methods to create Apps.\n\nBecause the Applications have migrated to new types, this endpoint converts\nthe legacy type to the current one as shown in the following table: \n\n| Legacy Type | Current Type |\n|-------------|--------------|\n| `kelvin`    | `app`        |\n| `bridge`    | `importer    |\n| `docker`    | `docker`     |\n\n## Endpoint\n\n`POST /appregistry/create`",
+  "summary": "Create App",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/appregistry/create' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.deprecated_app_registry.createLegacyApp()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/deprecated-app-registry"
+  ],
+  "tags": [
+    "deprecated-app-registry",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/appregistry/create",
+    "method": "POST",
+    "operation_id": "createLegacyApp",
+    "tag": "(Deprecated) App Registry",
+    "permission": "kelvin.permission.app_registry.create",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "payload": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "The versions field is omitted in this response",
+        "schema": {
+          "properties": {
+            "created": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-06-26T18:22:18.582724Z",
+              "description": "UTC time when the App was first uploaded to the App Registry, formatted in RFC 3339."
+            },
+            "description": {
+              "type": "string",
+              "example": "This application controls the speed of the beam pump motor in order to increase production for this type of artificial lift well. It uses values available from the control system such as Downhole Pressure, Motor Speed, Motor Torque and Choke position.\n",
+              "maxLength": 256,
+              "description": "Description of the App in the App Registry."
+            },
+            "latest_version": {
+              "type": "string",
+              "format": "Major.Minor.Patch",
+              "example": "1.2.0",
+              "description": "Latest version number of the App in the App Registry."
+            },
+            "name": {
+              "type": "string",
+              "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+              "example": "motor-speed-control",
+              "maxLength": 64,
+              "description": "Unique identifier `name` of the App in the App Registry."
+            },
+            "title": {
+              "type": "string",
+              "example": "Motor Speed Control",
+              "maxLength": 64,
+              "description": "Display name (`title`) of the App in the App Registry."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "kelvin",
+                "docker",
+                "bridge"
+              ]
+            },
+            "updated": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2023-06-26T18:22:18.582724Z",
+              "description": "UTC time when any App keys in the App Registry were last updated, formatted in RFC 3339."
+            },
+            "versions": {
+              "type": "array",
+              "description": "Array of all App versions available in the App Registry.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "created": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-06-26T18:22:18.582724Z",
+                    "description": "UTC time when this App version was first uploaded to the App Registry, formatted in RFC 3339."
+                  },
+                  "id": {
+                    "type": "string",
+                    "format": "^[a-z]+([A-Z][a-z0-9]+)*$",
+                    "example": "58ba052085dfd66545bf24a4957f6c8fd4af3c27",
+                    "description": "Unique identifier for this version of the App in the App Registry."
+                  },
+                  "payload": {
+                    "type": "object",
+                    "description": "Dictionary with keys for app inputs/outputs, info, spec version and system packages. Each key represents specific settings and parameters for the App."
+                  },
+                  "updated": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2023-06-26T18:22:18.582724Z",
+                    "description": "UTC time when any App keys for this App version in the App Registry were last updated, formatted in RFC 3339."
+                  },
+                  "version": {
+                    "type": "string",
+                    "format": "Major.Minor.Patch",
+                    "example": "1.2.0",
+                    "description": "Version number of this App in the App Registry."
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

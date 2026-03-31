@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/dataqualitystatistics",
+  "title": "DataQualityStatistics",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataQualityStatistics\n\nInherits from: DataModelBase\n\n\nDataQualityStatistics object.\n\nParameters\n----------\n    asset_names: Optional[list[StrictStr]]\n    asset_type_names: Optional[list[StrictStr]]\n    start_time: datetime\n    end_time: datetime\n    threshold: StrictFloat\n",
+  "summary": "DataQualityStatistics object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

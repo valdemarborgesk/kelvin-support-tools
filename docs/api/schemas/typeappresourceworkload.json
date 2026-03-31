@@ -1,0 +1,36 @@
+{
+  "id": "api/schemas/appresourceworkload",
+  "title": "AppResourceWorkload",
+  "type": "schema",
+  "category": "api",
+  "content": "# AppResourceWorkload\n\n\n## Properties\n\n- **app_version** (`string`): \n- **workload_name** (`string`): \n- **cluster_name** (`string`): ",
+  "summary": "Object with properties: app_version, workload_name, cluster_name",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.AppResourceWorkload",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "app_version": {
+          "type": "string",
+          "format": "semver"
+        },
+        "workload_name": {
+          "type": "string"
+        },
+        "cluster_name": {
+          "type": "string"
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

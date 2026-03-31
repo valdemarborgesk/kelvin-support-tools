@@ -11,7 +11,7 @@ The user is a **technical person** who builds or operates Kelvin apps. They unde
 - **Be thorough but efficient.** The user can follow technical explanations, but they want answers, not a lecture. Lead with findings, then explain the reasoning.
 - **Investigate before asking.** Don't ask "what cluster is it on?" — look it up. Don't ask "what data streams does it use?" — list them. Only ask when you genuinely need human input (which environment, what's the expected behavior, should I restart it).
 - **Follow the diagnostic methodology.** Don't jump to conclusions. Check logs, check data, check infrastructure — in that order.
-- **If the SDK doesn't work, use the API.** Some SDK CLI commands have bugs or require complex config files. The REST API is often simpler. Check `kelvin-ai-docs/docs-ai/api/endpoints/` for alternatives.
+- **If the SDK doesn't work, use the API.** Some SDK CLI commands have bugs or require complex config files. The REST API is often simpler. Check `docs/api/endpoints/` for alternatives.
 - **Use ClickHouse for deep data analysis.** The REST API timeseries endpoints are good for quick checks, but ClickHouse (via Grafana proxy) is the power tool — aggregations, gap detection, cross-asset comparisons.
 
 ## Diagnostic Methodology
@@ -215,14 +215,14 @@ Environments are in `config.json`. Use `--env <name>` with any tool.
 
 | Topic | Path |
 |-------|------|
-| Concepts (assets, data streams, apps) | `kelvin-ai-docs/docs-ai/concepts/` |
-| REST API endpoints | `kelvin-ai-docs/docs-ai/api/endpoints/` |
-| API schemas | `kelvin-ai-docs/docs-ai/api/schemas/` |
-| Python SDK | `kelvin-ai-docs/docs-ai/sdk/` |
-| Development how-to guides | `kelvin-ai-docs/docs-ai/how-to/development/` |
-| Infrastructure (k3s, NATS, clusters) | `kelvin-ai-docs/docs-ai/infra/` |
+| Concepts (assets, data streams, apps) | `docs/concepts/` |
+| REST API endpoints | `docs/api/endpoints/` |
+| API schemas | `docs/api/schemas/` |
+| Python SDK | `docs/sdk/` |
+| Development how-to guides | `docs/how-to/development/` |
+| Operations how-to guides | `docs/how-to/operations/` |
 
-See `kelvin-ai-docs/docs-ai/agents.md` for detailed query strategies.
+See `docs/agents.md` for detailed query strategies.
 
 ## API Conventions
 
@@ -255,7 +255,7 @@ See `kelvin-ai-docs/docs-ai/agents.md` for detailed query strategies.
 - **NEVER use interactive scripts** — they hang in AI agent environments.
 - **ALWAYS use the venv** — `source venv/bin/activate` or `venv/bin/python`, `venv/bin/kelvin`.
 - **API base path** — `/api/v4` (not `/api/v1`).
-- **If the SDK CLI is giving trouble, check if there's an equivalent API call.** The REST API is often simpler. Check `kelvin-ai-docs/docs-ai/api/endpoints/`.
+- **If the SDK CLI is giving trouble, check if there's an equivalent API call.** The REST API is often simpler. Check `docs/api/endpoints/`.
 - **SDK version must match the platform.** After login, check for version mismatch warnings (`Current: X Recommended: Y`). If mismatched, install the recommended version: `venv/bin/pip install kelvin-sdk==<recommended>`. Older platforms may need older SDK versions — some newer API endpoints won't exist.
 - **Always verify API endpoints against the platform's OpenAPI spec.** After first login to an environment, fetch the spec: `venv/bin/python tools/api_spec.py --env <env> fetch`. Before using any API endpoint, check it exists: `venv/bin/python tools/api_spec.py --env <env> check /assets/list GET`. This prevents calling endpoints that don't exist on older platform versions.
 - **ASK before** restarting workloads, deleting resources, or deploying debug pods.

@@ -1,0 +1,31 @@
+{
+  "id": "api/schemas/volumeencoding",
+  "title": "VolumeEncoding",
+  "type": "schema",
+  "category": "api",
+  "content": "# VolumeEncoding\n\nText encoding format.\n\n## Enum Values\n\n- `utf-8`\n- `ascii`\n- `latin_1`",
+  "summary": "Text encoding format.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.VolumeEncoding",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "title": "Encoding",
+      "description": "Text encoding format.",
+      "enum": [
+        "utf-8",
+        "ascii",
+        "latin_1"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,392 @@
+{
+  "id": "api/endpoints/data-quality/updateDataQuality",
+  "title": "Update a Data Quality Configuration",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Update a Data Quality Configuration\n\nUpdate a Data Quality by providing the new configuration.\nThis request changes the whole Data Quality Configuration.\n\n## Endpoint\n\n`POST /data-quality/configuration/{resource}/update`",
+  "summary": "Update a Data Quality Configuration",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/data-quality/configuration/{resource}/update' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.data_quality.updateDataQuality()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/data-quality"
+  ],
+  "tags": [
+    "data-quality",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/data-quality/configuration/{resource}/update",
+    "method": "POST",
+    "operation_id": "updateDataQuality",
+    "tag": "Data Quality",
+    "permission": "kelvin.permission.data-quality.update",
+    "parameters": [
+      {
+        "name": "resource",
+        "in": "path",
+        "required": true,
+        "description": "Asset Data Stream pair to update the associated Data Quality configurations. (example: `krn:ad:asset1/setpoint`).",
+        "type": "string"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "configurations": {
+            "type": "object",
+            "description": "The Data Quality configurations applied to the Asset Data Stream pair.",
+            "properties": {
+              "kelvin_timestamp_anomaly": {
+                "type": "object",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Define if the timestamp anomaly algorithm is enabled."
+                  }
+                }
+              },
+              "kelvin_stale_detection": {
+                "type": "object",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Define if the stale detection algorithm is enabled."
+                  },
+                  "configuration": {
+                    "type": "object",
+                    "description": "The configuration for the stale detection algorithm.",
+                    "properties": {
+                      "window_interval": {
+                        "type": "integer",
+                        "description": "The size of the window to check for stale data."
+                      },
+                      "window_interval_unit": {
+                        "$ref": "#/components/schemas/enum.WindowIntervalUnit",
+                        "example": "min",
+                        "description": "The unit of time for the window interval."
+                      }
+                    }
+                  }
+                }
+              },
+              "kelvin_out_of_range_detection": {
+                "type": "object",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Define if the out of range detection algorithm is enabled."
+                  },
+                  "configuration": {
+                    "type": "object",
+                    "description": "The configuration for the out of range detection algorithm.",
+                    "properties": {
+                      "min_threshold": {
+                        "type": "number",
+                        "description": "The minimum threshold for the out of range detection."
+                      },
+                      "max_threshold": {
+                        "type": "number",
+                        "description": "The maximum threshold for the out of range detection."
+                      }
+                    }
+                  }
+                }
+              },
+              "kelvin_outlier_detection": {
+                "type": "object",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Define if the outlier detection algorithm is enabled."
+                  },
+                  "configuration": {
+                    "type": "object",
+                    "description": "The configuration for the outlier detection algorithm.",
+                    "properties": {
+                      "model": {
+                        "$ref": "#/components/schemas/enum.OutlierDetectionModel"
+                      },
+                      "z_score": {
+                        "type": "object",
+                        "description": "The configuration for the z-score outlier detection model.",
+                        "properties": {
+                          "threshold": {
+                            "type": "number",
+                            "description": "The threshold for outlier detection."
+                          },
+                          "window_size": {
+                            "type": "integer",
+                            "description": "The size of the window to check for outliers."
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "kelvin_data_availability": {
+                "type": "object",
+                "required": [
+                  "enabled"
+                ],
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Define if the data availability algorithm is enabled."
+                  },
+                  "configuration": {
+                    "type": "object",
+                    "description": "The configuration for the data availability algorithm.",
+                    "properties": {
+                      "window_expected_number_msgs": {
+                        "type": "integer",
+                        "description": "The expected number of messages."
+                      },
+                      "window_interval_unit": {
+                        "$ref": "#/components/schemas/enum.WindowIntervalUnit",
+                        "example": "sec",
+                        "description": "The window interval unit for the data availability check."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "schema": {
+          "properties": {
+            "resource": {
+              "type": "string",
+              "description": "The Asset Data Stream pair to which the DataQuality is applied. (example: `krn:ad:asset1/setpoint`).",
+              "format": "krn",
+              "example": "krn:ad:asset1/setpoint",
+              "maxLength": 256
+            },
+            "configurations": {
+              "type": "object",
+              "description": "The Data Quality configurations applied to the Asset Data Stream pair.",
+              "properties": {
+                "kelvin_timestamp_anomaly": {
+                  "type": "object",
+                  "required": [
+                    "enabled"
+                  ],
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "description": "Define if the timestamp anomaly algorithm is enabled."
+                    }
+                  }
+                },
+                "kelvin_stale_detection": {
+                  "type": "object",
+                  "required": [
+                    "enabled"
+                  ],
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "description": "Define if the stale detection algorithm is enabled."
+                    },
+                    "configuration": {
+                      "type": "object",
+                      "description": "The configuration for the stale detection algorithm.",
+                      "properties": {
+                        "window_interval": {
+                          "type": "integer",
+                          "description": "The size of the window to check for stale data."
+                        },
+                        "window_interval_unit": {
+                          "type": "string",
+                          "enum": [
+                            "sec",
+                            "min",
+                            "hour",
+                            "day"
+                          ],
+                          "description": "The unit of time for the window interval. This is used in data availability and stale detection checks to define the time period over which data is expected."
+                        }
+                      }
+                    }
+                  }
+                },
+                "kelvin_out_of_range_detection": {
+                  "type": "object",
+                  "required": [
+                    "enabled"
+                  ],
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "description": "Define if the out of range detection algorithm is enabled."
+                    },
+                    "configuration": {
+                      "type": "object",
+                      "description": "The configuration for the out of range detection algorithm.",
+                      "properties": {
+                        "min_threshold": {
+                          "type": "number",
+                          "description": "The minimum threshold for the out of range detection."
+                        },
+                        "max_threshold": {
+                          "type": "number",
+                          "description": "The maximum threshold for the out of range detection."
+                        }
+                      }
+                    }
+                  }
+                },
+                "kelvin_outlier_detection": {
+                  "type": "object",
+                  "required": [
+                    "enabled"
+                  ],
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "description": "Define if the outlier detection algorithm is enabled."
+                    },
+                    "configuration": {
+                      "type": "object",
+                      "description": "The configuration for the outlier detection algorithm.",
+                      "properties": {
+                        "model": {
+                          "type": "string",
+                          "enum": [
+                            "z_score"
+                          ],
+                          "description": "The model to use for outlier detection. This is used in the outlier detection algorithm to determine how to identify outliers in the data."
+                        },
+                        "z_score": {
+                          "type": "object",
+                          "description": "The configuration for the z-score outlier detection model.",
+                          "properties": {
+                            "threshold": {
+                              "type": "number",
+                              "description": "The threshold for outlier detection."
+                            },
+                            "window_size": {
+                              "type": "integer",
+                              "description": "The size of the window to check for outliers."
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "kelvin_data_availability": {
+                  "type": "object",
+                  "required": [
+                    "enabled"
+                  ],
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "description": "Define if the data availability algorithm is enabled."
+                    },
+                    "configuration": {
+                      "type": "object",
+                      "description": "The configuration for the data availability algorithm.",
+                      "properties": {
+                        "window_expected_number_msgs": {
+                          "type": "integer",
+                          "description": "The expected number of messages."
+                        },
+                        "window_interval_unit": {
+                          "type": "string",
+                          "enum": [
+                            "sec",
+                            "min",
+                            "hour",
+                            "day"
+                          ],
+                          "description": "The unit of time for the window interval. This is used in data availability and stale detection checks to define the time period over which data is expected."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "created": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-12-18T18:22:18.582724Z",
+              "description": "UTC time when the data quality was created, formatted in RFC 3339."
+            },
+            "created_by": {
+              "type": "string",
+              "format": "krn",
+              "example": "krn:user:john@kelvininc.com",
+              "maxLength": 256,
+              "description": "The process that created this data quality. This can be a user or an automated process like a workload, application, etc."
+            },
+            "updated": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-12-18T18:22:18.582724Z",
+              "description": "UTC time when any data quality keys were last updated, formatted in RFC 3339."
+            },
+            "updated_by": {
+              "type": "string",
+              "format": "krn",
+              "example": "krn:user:john@kelvininc.com",
+              "maxLength": 256,
+              "description": "The process that last updated this data quality. This can be a user or an automated process like a workload, application, etc."
+            }
+          },
+          "required": [
+            "resource",
+            "configurations"
+          ],
+          "type": "object"
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

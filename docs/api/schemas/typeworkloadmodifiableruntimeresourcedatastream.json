@@ -1,0 +1,44 @@
+{
+  "id": "api/schemas/workloadmodifiableruntimeresourcedatastream",
+  "title": "WorkloadModifiableRuntimeResourceDatastream",
+  "type": "schema",
+  "category": "api",
+  "content": "# WorkloadModifiableRuntimeResourceDatastream\n\n\n## Properties\n\n- **map_to** (`string`): \n- **configuration** (`object`): \n- **way** (`string`): \n- **storage** (`string`): \n- **remote** (`boolean`): \n- **dynamic_io_type_name** (`string`): ",
+  "summary": "Object with properties: map_to, configuration, way, storage, remote",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.WorkloadModifiableRuntimeResourceDatastream",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "map_to": {
+          "type": "string"
+        },
+        "configuration": {
+          "type": "object"
+        },
+        "way": {
+          "type": "string"
+        },
+        "storage": {
+          "type": "string"
+        },
+        "remote": {
+          "type": "boolean"
+        },
+        "dynamic_io_type_name": {
+          "type": "string"
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

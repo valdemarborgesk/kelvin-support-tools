@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/datastreamcreate",
+  "title": "DataStreamCreate",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataStreamCreate\n\nInherits from: DataModelBase\n\n\nDataStreamCreate object.\n\nParameters\n----------\n    description: Optional[StrictStr]\n    name: StrictStr\n    data_type_name: enum.DataType\n    semantic_type_name: Optional[StrictStr]\n    title: StrictStr\n    type: enum.DataStreamType\n    unit_name: Optional[StrictStr]\n",
+  "summary": "DataStreamCreate object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

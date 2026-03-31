@@ -1,0 +1,28 @@
+{
+  "id": "api/schemas/outlierdetectionmodel",
+  "title": "OutlierDetectionModel",
+  "type": "schema",
+  "category": "api",
+  "content": "# OutlierDetectionModel\n\nThe model to use for outlier detection. This is used in the outlier detection algorithm to determine how to identify outliers in the data.\n\n## Enum Values\n\n- `z_score`",
+  "summary": "The model to use for outlier detection. This is used in the outlier detection algorithm to determine how to identify outliers in the data.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.OutlierDetectionModel",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "z_score"
+      ],
+      "description": "The model to use for outlier detection. This is used in the outlier detection algorithm to determine how to identify outliers in the data."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

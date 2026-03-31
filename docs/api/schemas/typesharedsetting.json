@@ -1,0 +1,59 @@
+{
+  "id": "api/schemas/sharedsetting",
+  "title": "SharedSetting",
+  "type": "schema",
+  "category": "api",
+  "content": "# SharedSetting\n\n\n## Properties\n\n- **created** (`string`): UTC time when the Shared Setting was created, formatted in RFC 3339.\n- **created_by** (`string`): The User who created the Shared Setting, represented by a KRN.\n- **payload** (`object`): The Shared Settings. The structure of this `payload` object depends on the type of Shared Setting being defined.\n- **setting_name** (`string`): Unique identifier Shared Setting key `setting_name`.\n- **updated** (`string`): UTC time when any Shared Setting keys were last updated, formatted in RFC 3339.\n- **updated_by** (`string`): The User who updated the Shared Setting, represented by a KRN.",
+  "summary": "Object with properties: created, created_by, payload, setting_name, updated",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.SharedSetting",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when the Shared Setting was created, formatted in RFC 3339."
+        },
+        "created_by": {
+          "type": "string",
+          "example": "krn:user:email@kelvin.ai",
+          "description": "The User who created the Shared Setting, represented by a KRN."
+        },
+        "payload": {
+          "type": "object",
+          "description": "The Shared Settings. The structure of this `payload` object depends on the type of Shared Setting being defined."
+        },
+        "setting_name": {
+          "type": "string",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "example": "kelvin-notifications",
+          "maxLength": 64,
+          "description": "Unique identifier Shared Setting key `setting_name`."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when any Shared Setting keys were last updated, formatted in RFC 3339."
+        },
+        "updated_by": {
+          "type": "string",
+          "example": "krn:user:email@kelvin.ai",
+          "description": "The User who updated the Shared Setting, represented by a KRN."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

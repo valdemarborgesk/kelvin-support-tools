@@ -1,0 +1,37 @@
+{
+  "id": "sdk/cli/sdk.lib.models.ksdk-global-configuration/kelvinsdkglobalconfiguration",
+  "title": "KelvinSDKGlobalConfiguration",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KelvinSDKGlobalConfiguration\n\nInherits from: KSDKSettings\n\n\n## Methods\n\n\n### __init__() -> Any\n\n\n### ksdk_temp_dir_path() -> KPath\n\nReturn the path to the KSDK's temporary directory. Usually hosted under `~/.config/kelvin/temp/`\n\n\n### ksdk_schema_dir_path() -> KPath\n\nReturn the path to the app schema hosting directory. Usually hosted under `~/.config/kelvin/schemas/`\n\n\n### ksdk_config_file_path() -> KPath\n\nReturn the complete path to the ksdk config file. Usually hosted under `~/.config/kelvin/ksdk.yaml`\n\n\n### ksdk_client_config_file_path() -> KPath\n\nReturn the complete path to the ksdk client config file. Usually hosted under `~/.config/kelvin/client.yaml`\n\n\n### ksdk_history_file_path() -> KPath\n\nReturn the complete path to the ksdk history log file. Usually hosted under `~/.config/kelvin/ksdk_history.log`\n\n\n### commit_ksdk_configuration() -> KelvinSDKGlobalConfiguration\n\n\n### reset_ksdk_configuration() -> Any\n\n\n### set_configuration(configuration: str, value: Any) -> bool\n\n\n### unset_configuration(configuration: str) -> bool\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/ksdk_global_configuration.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.ksdk_global_configuration",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "ksdk_temp_dir_path",
+      "ksdk_schema_dir_path",
+      "ksdk_config_file_path",
+      "ksdk_client_config_file_path",
+      "ksdk_history_file_path",
+      "commit_ksdk_configuration",
+      "reset_ksdk_configuration",
+      "set_configuration",
+      "unset_configuration"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

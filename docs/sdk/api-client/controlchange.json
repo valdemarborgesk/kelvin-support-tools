@@ -1,0 +1,39 @@
+{
+  "id": "sdk/api-client/client.api.control-change/controlchange",
+  "title": "ControlChange",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ControlChange\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### get_control_change_clustering(data: Optional[Union[requests.ControlChangeClusteringGet, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> KList[responses.ControlChangeClustering]\n\nRetrieve the total count of Control Changes matching an array of `resources` and filter options between two dates grouped by the parameter `time_bucket`. Will also return a list of all the Control Change `id`s counted.\n\n\n### create_control_change(data: Optional[Union[requests.ControlChangeCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.ControlChangeCreate\n\nSend a new value to be written to an Asset / Data Stream pair. The Control Change Manager will automatically find which Cluster and Bridge to communicate the change to.\n\n\n### get_control_change_last(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.ControlChangeLastGet, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.ControlChangeGet], responses.ControlChangeLastGetPaginatedResponseCursor]\n\nReturns a dictionary with a data property containing an array of latest Control Change objects. Only the latest Control Changes for each `resource` in the request filters will be returned.\n\n\n### list_control_changes(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.ControlChangesList, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.ControlChangeGet], responses.ControlChangesListPaginatedResponseCursor]\n\nReturns a list of Control Change objects for specific Asset / Data Stream pairs or Control Change IDs. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### get_control_change_range(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.ControlChangeRangeGet, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.ControlChangeGet], responses.ControlChangeRangeGetPaginatedResponseCursor]\n\nReturns a dictionary with a data property containing an array of Control Changes within a specified time range for all of the `resources` in the `resources` array that match the filter options.\n\n\n### delete_control_change(control_change_id: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDeletes a control change\n\n\n### get_control_change(control_change_id: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.ControlChangeGet\n\nRetrieves the properties, status and all associated logs of a Control Change.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/control_change.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.control_change.get_control_change_clustering()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.control_change",
+    "item_type": "class",
+    "methods": [
+      "get_control_change_clustering",
+      "create_control_change",
+      "get_control_change_last",
+      "list_control_changes",
+      "get_control_change_range",
+      "delete_control_change",
+      "get_control_change"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

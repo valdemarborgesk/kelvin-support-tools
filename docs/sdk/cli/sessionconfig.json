@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.session.session-storage/sessionconfig",
+  "title": "SessionConfig",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# SessionConfig\n\nInherits from: KSDKModel\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/session/session_storage.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.session.session_storage",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

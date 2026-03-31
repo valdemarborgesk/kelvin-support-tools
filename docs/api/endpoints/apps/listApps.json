@@ -1,0 +1,129 @@
+{
+  "id": "api/endpoints/apps/listApps",
+  "title": "List Apps",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# List Apps\n\nReturns a list of Applications based on the provided filters and sort\noptions.\n\n## Endpoint\n\n`GET /apps/list`",
+  "summary": "List Apps",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X GET \\\n  'https://api.kelvininc.com/api/v4/apps/list' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.apps.listApps()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/apps"
+  ],
+  "tags": [
+    "apps",
+    "api",
+    "get"
+  ],
+  "metadata": {
+    "path": "/apps/list",
+    "method": "GET",
+    "operation_id": "listApps",
+    "tag": "Apps",
+    "permission": "kelvin.permission.app.read",
+    "parameters": [
+      {
+        "name": "app_names",
+        "in": "query",
+        "required": false,
+        "description": "Filter the results by the provided application names.",
+        "type": "array"
+      },
+      {
+        "name": "app_types",
+        "in": "query",
+        "required": false,
+        "description": "Application type.",
+        "type": "array"
+      },
+      {
+        "name": "resources",
+        "in": "query",
+        "required": false,
+        "description": "Filter based on Resource (KRN format) associated with the App. Supported KRNs: `asset`.",
+        "type": "array"
+      },
+      {
+        "name": "search",
+        "in": "query",
+        "required": false,
+        "description": "Search the name or title of the application for the provided string.",
+        "type": "array"
+      },
+      {
+        "name": "sort_by",
+        "in": "query",
+        "required": false,
+        "description": "",
+        "type": "array"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      }
+    ],
+    "request_body": null,
+    "responses": {
+      "200": {
+        "description": "OK"
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

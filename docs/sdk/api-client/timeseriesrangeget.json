@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/timeseriesrangeget",
+  "title": "TimeseriesRangeGet",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# TimeseriesRangeGet\n\nInherits from: DataModelBase\n\n\nTimeseriesRangeGet object.\n\nParameters\n----------\n    agg: Optional[enum.TimeseriesAgg]\n    end_time: datetime\n    fill: Optional[StrictStr]\n    group_by_selector: Optional[StrictBool]\n    order: Optional[enum.TimeseriesOrder]\n    selectors: list[Selector]\n    start_time: datetime\n    time_bucket: Optional[StrictStr]\n    time_shift: Optional[StrictStr]\n",
+  "summary": "TimeseriesRangeGet object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

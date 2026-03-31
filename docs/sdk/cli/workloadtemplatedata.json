@@ -1,0 +1,30 @@
+{
+  "id": "sdk/cli/sdk.lib.models.workloads.ksdk-workload-deployment/workloadtemplatedata",
+  "title": "WorkloadTemplateData",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# WorkloadTemplateData\n\nInherits from: KSDKModel\n\n\n## Methods\n\n\n### validate_app_config(value: str) -> KPath\n\n\n### validate_empty_fields(value: Optional[str]) -> Optional[str]\n\n\n### dict() -> Dict[str, Any]\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/workloads/ksdk_workload_deployment.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.workloads.ksdk_workload_deployment",
+    "item_type": "class",
+    "methods": [
+      "validate_app_config",
+      "validate_empty_fields",
+      "dict"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

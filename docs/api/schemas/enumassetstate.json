@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/assetstate",
+  "title": "AssetState",
+  "type": "schema",
+  "category": "api",
+  "content": "# AssetState\n\n## Enum Values\n\n- `online`\n- `offline`\n- `unknown`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.AssetState",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "online",
+        "offline",
+        "unknown"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

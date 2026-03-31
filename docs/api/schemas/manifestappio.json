@@ -1,0 +1,62 @@
+{
+  "id": "api/schemas/appio",
+  "title": "AppIO",
+  "type": "schema",
+  "category": "api",
+  "content": "# AppIO\n\n\n## Properties\n\n- **name** (`string`): The name of the input/output used in the Application.\n- **data_type** (`string`): Primitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects.\n- **way** (`string`): The direction and characteristics of the input/output. The `cc` suffix means that in accepts or sends Control Changes on the input or output respectively.\n- **storage** (`string`): The storage location of the data. `node-and-cloud` means that the data is stored in the node and in the cloud. `node` means that the data is stored only in the node. `none` means that the data is not stored.\n- **unit** (`string`): The unit of the data. It's recommended to use the [UCUM](http://unitsofmeasure.org/ucum.html) standard for units.",
+  "summary": "Object with properties: name, data_type, way, storage, unit",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "manifest",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "manifest.AppIO",
+    "schema_type": "manifest",
+    "schema": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the input/output used in the Application."
+        },
+        "data_type": {
+          "type": "string",
+          "description": "Primitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects."
+        },
+        "way": {
+          "type": "string",
+          "enum": [
+            "output",
+            "input-cc",
+            "input-cc+output",
+            "input",
+            "output-cc",
+            "input+output-cc"
+          ],
+          "description": "The direction and characteristics of the input/output. The `cc` suffix means that in accepts or sends Control Changes on the input or output respectively."
+        },
+        "storage": {
+          "type": "string",
+          "enum": [
+            "node-and-cloud",
+            "node",
+            "none"
+          ],
+          "description": "The storage location of the data. `node-and-cloud` means that the data is stored in the node and in the cloud. `node` means that the data is stored only in the node. `none` means that the data is not stored."
+        },
+        "unit": {
+          "type": "string",
+          "description": "The unit of the data. It's recommended to use the [UCUM](http://unitsofmeasure.org/ucum.html) standard for units."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

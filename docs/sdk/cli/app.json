@@ -1,0 +1,28 @@
+{
+  "id": "sdk/cli/sdk.lib.models.apps.ksdk-app-configuration/app",
+  "title": "App",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# App\n\nInherits from: KSDKModel\n\n\n## Methods\n\n\n### app_type_configuration() -> Optional[Union[KelvinAppType, BridgeAppType]]\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/apps/ksdk_app_configuration.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.apps.ksdk_app_configuration",
+    "item_type": "class",
+    "methods": [
+      "app_type_configuration"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

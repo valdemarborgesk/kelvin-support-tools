@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/clustersetting",
+  "title": "ClusterSetting",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ClusterSetting\n\nInherits from: DataModelBase\n\n\nClusterSetting object.\n\nParameters\n----------\n    auto_update: Optional[ClusterSettingAutoUpdate]\n    cluster_upgrade: Optional[ClusterSettingDeployOptions]\n    forward_logs: Optional[ClusterSettingForwardLogs]\n    sync: Optional[ClusterSettingSync]\n    telemetry: Optional[ClusterSettingTelemetry]\n    workload_deploy: Optional[ClusterSettingDeployOptions]\n    edge_apps: Optional[ClusterSettingEdgeApps]\n",
+  "summary": "ClusterSetting object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

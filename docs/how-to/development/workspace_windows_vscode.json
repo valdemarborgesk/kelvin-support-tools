@@ -1,0 +1,24 @@
+{
+  "id": "how-to/workspace/windows/vscode",
+  "title": "Vscode",
+  "type": "how_to",
+  "category": "development",
+  "content": "<p style=\"text-align: center;\">\n  <a href=\"../docker/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">⬅</span>\n    Install Docker\n  </a>\n  <a href=\"../vscode-setup/\" class=\"md-button md-button--primary\">\n    Setup VSCode\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">➡</span>\n  </a>\n</p>\n\n## Introduction\n\nVisual Studio Code (VSCode) is a popular, free code editor developed by Microsoft that supports multiple programming languages.\n\nKnown for its flexibility and rich feature set, VSCode offers built-in tools like debugging, version control, and extensions for customizing the editor to suit any workflow. \n\nThe UI in general is split into three areas on a single screen that we normally use in Kelvin.\n\nWe do all our most recent demonstrations in Visual Studio Code, or VSCode for short.\n\n    Some of our older documentation is still using the terminal directly.\n\n## Install Visual Studio Code\n\n### Video Tutorial\n\nYou can watch this video tutorial or read the full step-by step written tutorial below.\n\n<iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/e5LeZ7yKNZc?si=Vgkhm2-aFqKzTKIx\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\n### Written Tutorial\n\nYou can install Visual Studio Code in two ways, depending on your preference;\n\n<div class=\"result\" markdown>\n\n=== \"From Visual Studio Code Website\"\n\n    To install Visual Studio Code, go to their [website](https://code.visualstudio.com/download) and click on the **Download for Windows** button.\n\n    \n\n    Once downloaded, run the installation file.\n\n    \n\n    If you accept the agreement, then click on the **I accept the agreement** option and click **Next >** button.\n\n    \n\n    You can keep the default destination location and click **Next >** button.\n\n    \n\n    You can keep the default Start Menu Folder and click **Next >** button.\n\n    \n\n    Choose the tasks you want to have or keep the default options.\n\n    \n\n    Review the settings and click **Install** to start the installation process.\n\n    \n\n    It will then install VSCode. Once finished, you can click on the **Finish** button.\n\n    \n\n    VSCode will automatically start and walkthrough the setup of VSCode.\n\n    \n\n=== \"From Microsoft Store\"\n\n    To install Visual Studio Code, click start and search for the Microsoft Store.\n\n    \n\n    In the Microsoft Store, search for `vscode`.\n\n    \n\n    Select Visual Studio Code and click on the **Get** button.\n\n    \n\n    When finished, the **Get** button will turn gray.\n\n    \n\n</div>\n\nCongratulations ! You have installed Visual Studio Code program. We will now set it up.\n\n<p style=\"text-align: center;\">\n  <a href=\"../docker/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">⬅</span>\n    Install Docker\n  </a>\n  <a href=\"../vscode-setup/\" class=\"md-button md-button--primary\">\n    Setup VSCode\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">➡</span>\n  </a>\n</p>",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/workspace/windows/vscode.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "development",
+    "docker",
+    "sdk",
+    "vscode"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

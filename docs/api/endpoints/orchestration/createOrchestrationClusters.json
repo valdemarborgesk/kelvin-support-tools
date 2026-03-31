@@ -1,0 +1,402 @@
+{
+  "id": "api/endpoints/orchestration/createOrchestrationClusters",
+  "title": "Create Cluster",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Create Cluster\n\nCreate a new Cluster. This only creates the Cloud registration, the actual installation still needs to be manually performed on the server/kubernetes cluster. The provision script to run locally on the server for `type` registered as `k3s` or on an existing kubernetes cluster for `type` registered as `kubernetes` will be in the key `provision_script ` in the 201 response body.\n\n## Endpoint\n\n`POST /orchestration/clusters/create`",
+  "summary": "Create Cluster",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/orchestration/clusters/create' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.orchestration.createOrchestrationClusters()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/orchestration"
+  ],
+  "tags": [
+    "orchestration",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/orchestration/clusters/create",
+    "method": "POST",
+    "operation_id": "createOrchestrationClusters",
+    "tag": "Orchestration",
+    "permission": "kelvin.permission.cluster.create",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+            "example": "aws-cluster",
+            "minLength": 1,
+            "maxLength": 64,
+            "description": "Unique identifier key `name` of the Cluster."
+          },
+          "title": {
+            "type": "string",
+            "example": "AWS Cluster",
+            "minLength": 1,
+            "maxLength": 64,
+            "description": "Display name (`title`) of the Cluster."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "k3s",
+              "kubernetes",
+              "docker"
+            ]
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Created",
+        "schema": {
+          "properties": {
+            "created": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-12-18T18:22:18.582724Z",
+              "description": "UTC time when the Cluster was created, formatted in RFC 3339."
+            },
+            "forward_logs_buffer_size": {
+              "type": "integer",
+              "default": 5,
+              "example": 10,
+              "minimum": 1,
+              "maximum": 20,
+              "description": "Size in gigabytes of the log storage in the Cluster when Cluster is offline. Any setting changes will delete all logs not yet transferred from the Cluster to Cloud."
+            },
+            "forward_logs_enabled": {
+              "type": "boolean",
+              "default": true,
+              "example": true,
+              "description": "Enable offline storage in the Cluster for log retention; transfers logs when Cluster is next online."
+            },
+            "join_script": {
+              "type": "string"
+            },
+            "download_provision_script": {
+              "type": "string",
+              "example": "bash <(curl -sfS https://{URL}/provision) --download",
+              "description": "Command to download the provision script required to install the Kelvin Software at the edge."
+            },
+            "ha_mode": {
+              "type": "boolean",
+              "example": false,
+              "description": "High Availability mode enabled for the Cluster."
+            },
+            "ha_mode_warning": {
+              "type": "string",
+              "example": "",
+              "description": "Warning message if High Availability mode is enabled but not all requirements are met."
+            },
+            "last_seen": {
+              "type": "string",
+              "nullable": true,
+              "format": "date-time",
+              "example": "2023-12-18T18:22:18.582724Z",
+              "description": "UTC time when the Cluster was last seen by the Cloud, formatted in RFC 3339."
+            },
+            "manifests_scrape_enabled": {
+              "type": "boolean",
+              "default": true,
+              "example": true,
+              "description": "Enable auto update Kelvin Software running on the Cluster."
+            },
+            "manifests_scrape_interval": {
+              "type": "integer",
+              "default": 86400,
+              "minimum": 30,
+              "maximum": 86400,
+              "example": 3600,
+              "description": "Frequency in seconds for checking updates in the Cloud for Kelvin Software running on the Cluster."
+            },
+            "name": {
+              "type": "string",
+              "format": "^[a-z]([-a-z0-9]*[a-z0-9])?$",
+              "example": "aws-cluster",
+              "maxLength": 64,
+              "description": "Unique identifier key `name` of the Cluster."
+            },
+            "provision_script": {
+              "type": "string",
+              "example": "bash <(curl -sfS https://{URL}/provision) --service-account bm9kZS1jbGllbnQt...",
+              "description": "Provision script required to install the Kelvin Software at the edge."
+            },
+            "ready": {
+              "type": "boolean",
+              "example": true,
+              "description": "Setting to inform Kelvin UI if the Cluster is ready."
+            },
+            "service_account_token": {
+              "type": "string",
+              "format": "^[A-Za-z0-9+/]{4,}(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$",
+              "description": "Service account token for automated processes to authenticate with when performing actions in the Cluster."
+            },
+            "status": {
+              "type": "string",
+              "description": "Current status of the Cluster.",
+              "enum": [
+                "pending_provision",
+                "pending",
+                "online",
+                "unreachable",
+                "requires_attention"
+              ]
+            },
+            "sync_scrape_interval": {
+              "type": "integer",
+              "default": 30,
+              "example": 3600,
+              "minimum": 10,
+              "maximum": 86400,
+              "description": "Frequency in seconds that the Cluster checks for new changes to apply to Workloads or Applications (deploy, start, stop, etc.)"
+            },
+            "telemetry_buffer_size": {
+              "type": "integer",
+              "default": 5,
+              "example": 10,
+              "minimum": 1,
+              "maximum": 20,
+              "description": "Size in gigabytes of telemetry data storage in the Cluster when the Cluster is offline. Any setting changes will delete all logs not yet transferred from the Cluster to Cloud."
+            },
+            "telemetry_enabled": {
+              "type": "boolean",
+              "default": true,
+              "description": "Enable offline storage in the Cluster for telemetry data retention; transfers data when the Cluster is next online."
+            },
+            "telemetry_scrape_interval": {
+              "type": "integer",
+              "default": 60,
+              "example": 60,
+              "minimum": 1,
+              "maximum": 3600,
+              "description": "Time interval in seconds to save each telemetry data. Any setting changes will delete all data not yet transferred from the Cluster to Cloud."
+            },
+            "telemetry_alerts_enabled": {
+              "type": "boolean",
+              "default": true,
+              "example": false,
+              "description": "Enables or disables the alerts on the cluster nodes."
+            },
+            "title": {
+              "type": "string",
+              "example": "AWS Cluster",
+              "maxLength": 64,
+              "description": "Display name (`title`) of the Cluster."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "k3s",
+                "kubernetes",
+                "docker"
+              ]
+            },
+            "updated": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-12-18T18:22:18.582724Z",
+              "description": "UTC time when any Cluster keys were last updated, formatted in RFC 3339."
+            },
+            "upgrade_instantly_apply": {
+              "type": "boolean",
+              "example": true,
+              "description": "Option if upgrades should be applied automatically and instantly as soon as they are available in the Cluster."
+            },
+            "upgrade_pre_download": {
+              "type": "boolean",
+              "example": true,
+              "description": "Option for pre-downloading new Workloads or Application upgrades to the Cluster. Actual upgrade initiation requires manual action or having `instantly_apply` set to true."
+            },
+            "upgrade_status": {
+              "type": "object",
+              "description": "Current status and messages for any ongoing updates to the Cluster.",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "",
+                  "description": "Any feedback messages about the current upgrade process."
+                },
+                "state": {
+                  "type": "string",
+                  "enum": [
+                    "idle",
+                    "downloading",
+                    "ready"
+                  ],
+                  "example": "downloading",
+                  "description": "Current state of the upgrade process."
+                }
+              }
+            },
+            "version": {
+              "type": "object",
+              "description": "Current versions of the different core component software installed on the Cluster.",
+              "properties": {
+                "k8s_version": {
+                  "type": "string",
+                  "example": "v1.24.10+k3s1",
+                  "description": "Current version of k8s installed on the Cluster."
+                },
+                "kelvin_version": {
+                  "type": "string",
+                  "example": "4.0.0-rc2024.519",
+                  "description": "Current version of Kelvin Software installed on the Cluster."
+                }
+              }
+            },
+            "edge_apps": {
+              "type": "object",
+              "properties": {
+                "edge_ui": {
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Disable the Edge UI service."
+                    }
+                  }
+                },
+                "edge_ccm": {
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Disable the Edge CCM service."
+                    }
+                  }
+                },
+                "edge_k8s": {
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Disable the Edge K8S service."
+                    }
+                  }
+                },
+                "edge_info": {
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Disable the Edge Info service."
+                    }
+                  }
+                },
+                "edge_mqtt": {
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Disable the Edge MQTT service."
+                    },
+                    "expose": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Expose the Edge MQTT service."
+                    },
+                    "anonymous": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Allow anonymous access to the Edge MQTT service."
+                    }
+                  }
+                },
+                "edge_nats": {
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Disable the Edge NATS service."
+                    }
+                  }
+                },
+                "edge_sync": {
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Disable the Edge Sync service."
+                    }
+                  }
+                },
+                "edge_leader_api": {
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Disable the Edge Leader API service."
+                    }
+                  }
+                },
+                "edge_custom_action_manager": {
+                  "type": "object",
+                  "properties": {
+                    "disabled": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Disable the Edge Custom Action Manager service."
+                    }
+                  }
+                }
+              }
+            },
+            "edge_options": {
+              "type": "object",
+              "properties": {
+                "image_pull_policy": {
+                  "type": "string",
+                  "example": "IfNotPresent",
+                  "description": "Image pull policy to be used when deploying workloads. Options are `Always`, and `IfNotPresent`. Default: `IfNotPresent`"
+                }
+              }
+            }
+          },
+          "type": "object"
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      },
+      "409": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

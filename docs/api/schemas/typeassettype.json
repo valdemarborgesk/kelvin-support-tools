@@ -1,0 +1,51 @@
+{
+  "id": "api/schemas/assettype",
+  "title": "AssetType",
+  "type": "schema",
+  "category": "api",
+  "content": "# AssetType\n\n\n## Properties\n\n- **created** (`string`): UTC time when the Asset Type was created, formatted in RFC 3339.\n- **name** (`string`): Unique identifier `name` for the Asset Type. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.\n- **title** (`string`): Display name (`title`) of the Asset Type.\n- **updated** (`string`): UTC time when any Asset Type keys were last updated, formatted in RFC 3339.",
+  "summary": "Object with properties: created, name, title, updated",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.AssetType",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when the Asset Type was created, formatted in RFC 3339."
+        },
+        "name": {
+          "type": "string",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "example": "beam_pump",
+          "maxLength": 64,
+          "description": "Unique identifier `name` for the Asset Type. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+        },
+        "title": {
+          "type": "string",
+          "example": "Beam Pump",
+          "maxLength": 64,
+          "description": "Display name (`title`) of the Asset Type."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when any Asset Type keys were last updated, formatted in RFC 3339."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

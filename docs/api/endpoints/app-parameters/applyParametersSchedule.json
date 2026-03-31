@@ -1,0 +1,78 @@
+{
+  "id": "api/endpoints/app-parameters/applyParametersSchedule",
+  "title": "Apply Parameters Schedule",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Apply Parameters Schedule\n\nApply the scheduled or reverted parameters of a specific schedule.\n\nThere are 2 types of the \"apply\" action:\n\n- `schedule`: Applies the scheduled parameters if the schedule is in the\n`scheduled` state.\n- `schedule-revert`: Applies the revert parameters if the schedule is in the\n`scheduled-revert` state.\n\nIf the schedule is not in the supported state for the selected type, the\nAPI will return an error.\n\nErrors encountered when calling this API will not affect the schedule\nstate.\n\n## Endpoint\n\n`POST /apps/parameters/schedules/{schedule_id}/apply`",
+  "summary": "Apply Parameters Schedule",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/apps/parameters/schedules/{schedule_id}/apply' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.app_parameters.applyParametersSchedule()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/app-parameters"
+  ],
+  "tags": [
+    "app-parameters",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/apps/parameters/schedules/{schedule_id}/apply",
+    "method": "POST",
+    "operation_id": "applyParametersSchedule",
+    "tag": "App Parameters",
+    "permission": "kelvin.permission.parameter.update",
+    "parameters": [
+      {
+        "name": "schedule_id",
+        "in": "path",
+        "required": true,
+        "description": "The parameter schedule key `id` to be applied immediately.",
+        "type": "string"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "schedule",
+              "schedule-revert"
+            ],
+            "description": "Type of the schedule action to apply. `schedule` applies the new parameters, `schedule-revert` reverts to the original parameters."
+          }
+        }
+      }
+    },
+    "responses": {
+      "204": {
+        "description": "No Content"
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

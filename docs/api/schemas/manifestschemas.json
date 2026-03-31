@@ -1,0 +1,52 @@
+{
+  "id": "api/schemas/schemas",
+  "title": "Schemas",
+  "type": "schema",
+  "category": "api",
+  "content": "# Schemas\n\nCustom JSON Schemas to be used by the UI when configuring the application.\n\n\n## Properties\n\n- **parameters** (`object`): JSON Schema that defines the Resource Parameters that can be configured for the App. The schema is limited to the having an `object` with `properties` that are `number`, `boolean`, or `string`.\n- **configuration** (`object`): JSON Schema used to generate the UI.\n- **io_configurations** (`array`): JSON Schema of each asset's dynamic I/O configuration.",
+  "summary": "Custom JSON Schemas to be used by the UI when configuring the application.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "manifest",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "manifest.Schemas",
+    "schema_type": "manifest",
+    "schema": {
+      "type": "object",
+      "description": "Custom JSON Schemas to be used by the UI when configuring the application.",
+      "properties": {
+        "parameters": {
+          "type": "object",
+          "description": "JSON Schema that defines the Resource Parameters that can be configured for the App. The schema is limited to the having an `object` with `properties` that are `number`, `boolean`, or `string`."
+        },
+        "configuration": {
+          "type": "object",
+          "description": "JSON Schema used to generate the UI."
+        },
+        "io_configurations": {
+          "type": "array",
+          "description": "JSON Schema of each asset's dynamic I/O configuration.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type_name": {
+                "type": "string",
+                "description": "Dynamic I/O type name."
+              },
+              "schema": {
+                "type": "object",
+                "description": "JSON Schema to build the configuration by the UI."
+              }
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

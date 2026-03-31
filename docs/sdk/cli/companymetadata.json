@@ -1,0 +1,28 @@
+{
+  "id": "sdk/cli/sdk.lib.models.ksdk-global-configuration/companymetadata",
+  "title": "CompanyMetadata",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# CompanyMetadata\n\nInherits from: KSDKModel\n\n\n## Methods\n\n\n### get_min_and_latest_schema_versions() -> Tuple[str, str]\n\nReturn the latest schema version from the metadata.\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/ksdk_global_configuration.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.ksdk_global_configuration",
+    "item_type": "class",
+    "methods": [
+      "get_min_and_latest_schema_versions"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

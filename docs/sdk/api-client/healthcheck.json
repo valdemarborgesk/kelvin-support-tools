@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.manifest/healthcheck",
+  "title": "HealthCheck",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# HealthCheck\n\nInherits from: DataModelBase\n\n\nHealthCheck object.\n\nParameters\n----------\n    liveness_probe: Optional[LivenessProbe]\n",
+  "summary": "HealthCheck object.",
+  "source": "api/src/kelvin/api/client/model/manifest.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.manifest.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.manifest",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

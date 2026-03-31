@@ -1,0 +1,80 @@
+{
+  "id": "api/endpoints/datastreams/deleteBulkDataStream",
+  "title": "Delete Bulk Data Stream",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Delete Bulk Data Stream\n\nDelete a list of Data Streams.\n\n## Endpoint\n\n`POST /datastreams/bulk/delete`",
+  "summary": "Delete Bulk Data Stream",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/datastreams/bulk/delete' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.datastreams.deleteBulkDataStream()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/datastreams"
+  ],
+  "tags": [
+    "datastreams",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/datastreams/bulk/delete",
+    "method": "POST",
+    "operation_id": "deleteBulkDataStream",
+    "tag": "Datastreams",
+    "permission": "kelvin.permission.datastreams.delete",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "required": [
+          "datastream_names"
+        ],
+        "type": "object",
+        "properties": {
+          "datastream_names": {
+            "type": "array",
+            "minItems": 1,
+            "description": "Array of Data Stream key `name` to delete. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+              "example": "gas_flow_rate",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Data Streams deleted successfully"
+      },
+      "207": {
+        "description": ""
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "403": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

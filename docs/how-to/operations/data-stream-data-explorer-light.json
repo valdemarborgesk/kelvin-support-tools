@@ -1,0 +1,24 @@
+{
+  "id": "how-to/data-stream-data-explorer-light",
+  "title": "Data Explorer Light",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Data Explorer Light\n\nYou can display data using the tradition Kelvin Data Explorer Light version embedded into the Kelvin AI chat window.\n\n## Written Example\n\nTo start, click on the Kelvin AI menu and type a prompt similar to this;\n\n> make a data explorer light graph of beam pump 1 for the last hour of the pressure and flow rate on the same graph\n\nKelvin AI will use the Data Explorer Light widget to provide an accurate answer.",
+  "summary": "You can display data using the tradition Kelvin Data Explorer Light version embedded into the Kelvin AI chat window.",
+  "source": "core-docs/docs/operations-tools/kelvin-ai/how-to/data-stream-data-explorer-light.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "data",
+    "explorer",
+    "light",
+    "operations"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

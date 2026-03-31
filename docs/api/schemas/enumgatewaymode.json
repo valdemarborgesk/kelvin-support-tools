@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/gatewaymode",
+  "title": "GatewayMode",
+  "type": "schema",
+  "category": "api",
+  "content": "# GatewayMode\n\nThe mode which the gateway is operates on. The default is `socket`, which uses a socket as an interface for the application to connect to the realtime data flow.\n\n## Enum Values\n\n- `socket`\n- `legacy`",
+  "summary": "The mode which the gateway is operates on. The default is `socket`, which uses a socket as an interface for the application to connect to the realtime data flow.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.GatewayMode",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "description": "The mode which the gateway is operates on. The default is `socket`, which uses a socket as an interface for the application to connect to the realtime data flow.",
+      "enum": [
+        "socket",
+        "legacy"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

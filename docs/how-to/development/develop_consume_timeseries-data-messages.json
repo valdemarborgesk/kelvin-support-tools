@@ -1,0 +1,82 @@
+{
+  "id": "how-to/develop/consume/timeseries-data-messages",
+  "title": "Filter by input data stream example 1",
+  "type": "how_to",
+  "category": "development",
+  "content": "## Timeseries Data Messages\n\n    Visit the [concept overview for Data Streams](../../../../overview/concepts/data-stream.md) to understand how time series data references are constructed using one Asset name and one Data Stream name as a pair.\n\nTimeseries data from Assets can be served to the Kelvin SmartApp™ in multiple ways, depending on the preferred data consumption method.\n\n### `app.yaml` setup\n\nTo consume streaming data, you must define the `inputs` section in the `app.yaml` file.\n\n    That means that Kelvin SmartApps™ is only going to be able to consume the specified inputs. i.e.:\n\n```yaml title=\"app.yaml Example\" linenums=\"1\"\ndata_streams:\n  inputs:\n    - name: motor_temperature\n      data_type: number\n    - name: motor_state\n      data_type: string\n```\n\n`inputs` is an array (list) composed by two fields:\n\n* A **unique name** to identify the input. This will be used in the Python code to reference the input. It must contain only lowercase alphanumeric characters. The characters `.`, `_` and `-` are allowed to separate words instead of a space BUT can not be at the beginning or end of the name.\n* An **expected data type**, which can be: `number`, `boolean` or `string`.\n\nNow that the Kelvin SmartApps™ inputs are defined, use one of the following methods to monitor and react to new incoming messages.\n\n### Stream Decorators (Preferred)\n\nThe preferred and simplest method for consuming incoming timeseries data is to create a **Stream Decorator** function.\n\nYou use the Data Stream filter to process only the relevant data.\n\n    You can use filtering to only react and process specific incoming messages.\n\n    You can see a full list of stream decorators available in the [SDK documentation section here](../../../sdk/app/sdk-python-messages.md#message-handling).\n\n```python title=\"Stream Decorators Method (preferred)\" linenums=\"1\"\nfrom kelvin.application import KelvinApp\nfrom kelvin.message.typing import AssetDataMessage\n\napp = KelvinApp()\n\n# Filter by input data stream example 1\n@app.stream(inputs=[\"temperature\", \"pressure\"])\nasync def handle_specific_inputs(msg: AssetDataMessage) -> None:\n    print(f\"From specific inputs: {msg.payload}\")\n\n# Filter by input data stream example 2\nasync def handle_inputs(msg: AssetDataMessage) -> None:\n    print(f\"From specific inputs: {msg.payload}\")\n\napp.stream(handle_inputs, inputs=[\"humidity\"])\n\napp.run()\n```\n\n### Callbacks (Advanced)\n\nFor advanced scenarios, you can define callbacks for specific lifecycle events.\n\nCallbacks work on a \"per asset\" message, so you will need to manually program filters for individual data stream processing.\n\nThe callback `on_asset_input` can be used to read every input flowing into Kelvin SmartApps™:\n\n```python title=\"Timeseries Data Callback Python Example\" linenums=\"1\"\nfrom kelvin.application import KelvinApp, AssetInfo\nfrom kelvin.message.typing import AssetDataMessage\n\napp = KelvinApp()\n\nasync def on_asset_input(msg: AssetDataMessage):\n    \"\"\"Called for data messages from asset inputs\"\"\"\n    print(f\"Data from {msg.resource}: {msg.payload}\")\n\n# Assign callbacks\napp.on_asset_input = on_asset_input\n\napp.run()\n```\n\n### Asynchronous Consumption\n\nThis approach pauses program execution until new data arrives, resuming only when data is available. To enhance efficiency and reduce unnecessary executions, filters can also be applied to limit the types of data that trigger events.\n\n<div class=\"result\" markdown>\n\n=== \"AsynGenerator\"\n\n    Streams are a different way of filtering inputs as a **Python Async Generator**, also based upon a filter function.\n\n            Different Data _filters_ are available within the `filters` class, such as `input_equals(input: str)`, `resource_equals(resource: KRN)` and `asset_equals(asset: str)`. On the following example we're gonna use the most common and expected use case (`input_equals(input: str)`).\n\n    Filters to limit which inputs are monitored can be expressed as `filters.input_equals(input: str)`.\n\n    ```python title=\"Streams (with AsynGenerator) Python Example\" linenums=\"1\"\n    import asyncio\n    from typing import AsyncGenerator # AsyncGenerator import\n\n    from kelvin.application import KelvinApp, filters # filters import\n    from kelvin.message import Number # Number (Input Type) import\n\n    async def main() -> None:\n        app = KelvinApp()\n\n        # Create a Filtered Stream with Temperature (Number) Input Messages\n        motor_temperature_msg_stream: AsyncGenerator[Number, None] = app.stream_filter(filters.input_equals(\"motor_temperature\"))\n\n        await app.connect()\n\n        # Wait & Read new Temperature Inputs\n        async for motor_temperature_msg in motor_temperature_msg_stream:\n            print(\"Received Motor Temperature: \", motor_temperature_msg)\n\n    if __name__ == \"__main__\":\n        asyncio.run(main())\n    ```\n\n=== \"Queue\"\n\n    Filters can be used to filter a specific subset of the Kelvin Inputs as a **Python Message Queue** based upon a filter function.\n\n            Different Data _filters_ are available within the `filters` class, such as `input_equals(input: str)`, `resource_equals(resource: KRN)` and `asset_equals(asset: str)`. On the following example we're gonna use the most common and expected use case (`input_equals(input: str)`).\n\n    Filters to limit which inputs are monitored can be expressed as `filters.input_equals(input: str)`.\n\n    ```python title=\"Streams (with Queue) Python Example\" linenums=\"1\"\n    import asyncio\n    from asyncio import Queue # Queue import\n\n    from kelvin.application import KelvinApp, filters # filters import\n    from kelvin.message import Number # Number (Input Type) import\n\n    async def main() -> None:\n        app = KelvinApp()\n\n        # Create a Filtered Queue with Temperature (Number) Input Messages\n        motor_temperature_msg_queue: Queue[Number] = app.filter(filters.input_equals(\"motor_temperature\"))\n\n        await app.connect()\n\n        while True:\n            # Wait & Read new Temperature Inputs\n            motor_temperature_msg = await motor_temperature_msg_queue.get()\n\n            print(\"Received Motor Temperature: \", motor_temperature_msg)\n\n    if __name__ == \"__main__\":\n        asyncio.run(main())\n    ```\n\n</div>\n\n## Filters\n\nWhen working with queues or async streams, you can apply filters to receive only the timeseries data that matches your criteria.\n\n    In our earlier examples above you will see how we use filters.\n\n### Built-in Filters\n\nThere are a number of built-in filters available.\n\n#### By Data Stream Name\n\nYou can receive Messages that only have certain Data Stream names.\n\n```python title=\"Filter by input data stream name(s)\" linenums=\"1\"\nfilters.input_equals(\"temperature\")\nfilters.input_equals([\"temperature\", \"pressure\"])\n```\n\n#### By Asset Name\n\nYou can receive Messages that only have certain Asset names.\n\n```python title=\"Filter by asset name(s)\" linenums=\"1\"\nfilters.asset_equals(\"my-asset\")\nfilters.asset_equals([\"asset-1\", \"asset-2\"])\n```\n\n#### By KRN Resource\n\nYou can receive Messages that only have certain Resources by Kelvin Resource Name (KRN).\n\n    You can see a full list of KRN names in [Developer Tools KRN page here](../krn.md).\n\n```python title=\"Filter by resource KRN\" linenums=\"1\"\nfilters.resource_equals(krn_instance)\nfilters.resource_equals([krn1, krn2])\n```\n\n#### By Message Type\n\nYou can receive certain types of Messages only.\n\n```python title=\"Filter by message type\" linenums=\"1\"\nfilters.is_data_message(msg)\nfilters.is_asset_data_message(msg)\nfilters.is_control_status_message(msg)\nfilters.is_custom_action(msg)\nfilters.is_data_quality_message(msg)\n```\n\n### Custom Filters\n\nYou can also create your own custom filters.\n\nFor example, you only want to receive Messages where the value is greater than 100.\n\n```python title=\"Custom Filter Example\" linenums=\"1\"\ndef custom_filter(msg: Message) -> bool:\n    \"\"\"Filter for high-value readings\"\"\"\n    return msg.payload > 100\n\nqueue = app.filter(custom_filter)\n```",
+  "summary": "@app.stream(inputs=[\"temperature\", \"pressure\"]) async def handle_specific_inputs(msg: AssetDataMessage) -> None: print(f\"From specific inputs: {msg.payload}\") async def handle_inputs(msg: AssetDataMessage) -> None:",
+  "source": "core-docs/docs/developer-tools/how-to/develop/consume/timeseries-data-messages.md",
+  "code_examples": [
+    {
+      "language": "yaml",
+      "code": "data_streams:\n  inputs:\n    - name: motor_temperature\n      data_type: number\n    - name: motor_state\n      data_type: string",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.application import KelvinApp\nfrom kelvin.message.typing import AssetDataMessage\n\napp = KelvinApp()\n\n# Filter by input data stream example 1\n@app.stream(inputs=[\"temperature\", \"pressure\"])\nasync def handle_specific_inputs(msg: AssetDataMessage) -> None:\n    print(f\"From specific inputs: {msg.payload}\")\n\n# Filter by input data stream example 2\nasync def handle_inputs(msg: AssetDataMessage) -> None:\n    print(f\"From specific inputs: {msg.payload}\")\n\napp.stream(handle_inputs, inputs=[\"humidity\"])\n\napp.run()",
+      "title": "Stream Decorators Method (preferred)"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.application import KelvinApp, AssetInfo\nfrom kelvin.message.typing import AssetDataMessage\n\napp = KelvinApp()\n\nasync def on_asset_input(msg: AssetDataMessage):\n    \"\"\"Called for data messages from asset inputs\"\"\"\n    print(f\"Data from {msg.resource}: {msg.payload}\")\n\n# Assign callbacks\napp.on_asset_input = on_asset_input\n\napp.run()",
+      "title": "Timeseries Data Callback Python Example"
+    },
+    {
+      "language": "python",
+      "code": "import asyncio\n    from typing import AsyncGenerator # AsyncGenerator import\n\n    from kelvin.application import KelvinApp, filters # filters import\n    from kelvin.message import Number # Number (Input Type) import\n\n\n    async def main() -> None:\n        app = KelvinApp()\n\n        # Create a Filtered Stream with Temperature (Number) Input Messages\n        motor_temperature_msg_stream: AsyncGenerator[Number, None] = app.stream_filter(filters.input_equals(\"motor_temperature\"))\n\n        await app.connect()\n\n        # Wait & Read new Temperature Inputs\n        async for motor_temperature_msg in motor_temperature_msg_stream:\n            print(\"Received Motor Temperature: \", motor_temperature_msg)\n\n\n    if __name__ == \"__main__\":\n        asyncio.run(main())",
+      "title": "Streams (with AsynGenerator) Python Example"
+    },
+    {
+      "language": "python",
+      "code": "import asyncio\n    from asyncio import Queue # Queue import\n\n    from kelvin.application import KelvinApp, filters # filters import\n    from kelvin.message import Number # Number (Input Type) import\n\n\n    async def main() -> None:\n        app = KelvinApp()\n\n        # Create a Filtered Queue with Temperature (Number) Input Messages\n        motor_temperature_msg_queue: Queue[Number] = app.filter(filters.input_equals(\"motor_temperature\"))\n\n        await app.connect()\n\n        while True:\n            # Wait & Read new Temperature Inputs\n            motor_temperature_msg = await motor_temperature_msg_queue.get()\n\n            print(\"Received Motor Temperature: \", motor_temperature_msg)\n\n\n    if __name__ == \"__main__\":\n        asyncio.run(main())",
+      "title": "Streams (with Queue) Python Example"
+    },
+    {
+      "language": "python",
+      "code": "filters.input_equals(\"temperature\")\nfilters.input_equals([\"temperature\", \"pressure\"])",
+      "title": "Filter by input data stream name(s)"
+    },
+    {
+      "language": "python",
+      "code": "filters.asset_equals(\"my-asset\")\nfilters.asset_equals([\"asset-1\", \"asset-2\"])",
+      "title": "Filter by asset name(s)"
+    },
+    {
+      "language": "python",
+      "code": "filters.resource_equals(krn_instance)\nfilters.resource_equals([krn1, krn2])",
+      "title": "Filter by resource KRN"
+    },
+    {
+      "language": "python",
+      "code": "filters.is_data_message(msg)\nfilters.is_asset_data_message(msg)\nfilters.is_control_status_message(msg)\nfilters.is_custom_action(msg)\nfilters.is_data_quality_message(msg)",
+      "title": "Filter by message type"
+    },
+    {
+      "language": "python",
+      "code": "def custom_filter(msg: Message) -> bool:\n    \"\"\"Filter for high-value readings\"\"\"\n    return msg.payload > 100\n\nqueue = app.filter(custom_filter)",
+      "title": "Custom Filter Example"
+    }
+  ],
+  "related": [
+    "concepts/data-stream"
+  ],
+  "tags": [
+    "create",
+    "data",
+    "development",
+    "example",
+    "filter",
+    "input",
+    "monitor",
+    "sdk",
+    "smartapp",
+    "stream"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

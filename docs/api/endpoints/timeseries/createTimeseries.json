@@ -1,0 +1,135 @@
+{
+  "id": "api/endpoints/timeseries/createTimeseries",
+  "title": "Create Time Series Data",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Create Time Series Data\n\nCreate Time Series Data individually or in bulk for one or more Asset / Data Stream resources.\n\n<span style=\"color: #ff0000;font-weight: bold;\">WARNING</span> : If a value already\nexists at the defined time, then it will be overwritten with the new payload value.\nThe old value will be lost and is not recoverable !\n\n## Endpoint\n\n`POST /timeseries/create`",
+  "summary": "Create Time Series Data",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/timeseries/create' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.timeseries.createTimeseries()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/timeseries"
+  ],
+  "tags": [
+    "timeseries",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/timeseries/create",
+    "method": "POST",
+    "operation_id": "createTimeseries",
+    "tag": "Timeseries",
+    "permission": "kelvin.permission.storage.create",
+    "parameters": [
+      {
+        "name": "publish",
+        "in": "query",
+        "required": false,
+        "description": "",
+        "type": "boolean"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "properties": {
+          "data": {
+            "type": "array",
+            "description": "Array of new time series data objects to create.",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "type",
+                "resource",
+                "timestamp",
+                "payload",
+                "source"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "example": "0002bc79-b42f-461b-95d6-cf0a28ba87aa",
+                  "description": "A unique randomly generated UUID as the key `id`. Duplicate keys are not allowed."
+                },
+                "type": {
+                  "type": "string",
+                  "format": "data;pt={primitive-type}",
+                  "description": "Kelvin Message Type representing the message type. If you do not know what Kelvin Message Type to put, most likely you can use `data;pt={primitive-type}`."
+                },
+                "resource": {
+                  "type": "string",
+                  "format": "krn",
+                  "example": "krn:ad:bp_01/motor_speed_setpoint",
+                  "description": "The resource that this message's data is linked with, expressed as a KRN. This can be an Asset, Data Stream, Asset / Data Stream pair, etc."
+                },
+                "source": {
+                  "type": "string",
+                  "format": "krn",
+                  "example": "krn:wlappv:cluster-01/beam-pump-optimization/3.4.7",
+                  "description": "The resource that has initiated the writing of this message, expressed as a KRN. This can be an Application, Workload, Version specific Workload, etc."
+                },
+                "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "UTC time representing the time of this message's data, formatted in RFC 3339. This is usually the current time of creation of the message, but can also be back dated to any time in the past."
+                },
+                "payload": {
+                  "description": "Value represented in one of these formats.",
+                  "oneOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Success"
+      },
+      "207": {
+        "description": ""
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

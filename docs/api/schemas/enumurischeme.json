@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/urischeme",
+  "title": "URIScheme",
+  "type": "schema",
+  "category": "api",
+  "content": "# URIScheme\n\nProtocol to use.\n\n## Enum Values\n\n- `http`\n- `https`",
+  "summary": "Protocol to use.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.URIScheme",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "description": "Protocol to use.",
+      "enum": [
+        "http",
+        "https"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

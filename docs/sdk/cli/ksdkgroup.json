@@ -1,0 +1,30 @@
+{
+  "id": "sdk/cli/sdk.lib.utils.click-utils/ksdkgroup",
+  "title": "KSDKGroup",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KSDKGroup\n\nInherits from: click.Group\n\n\n## Methods\n\n\n### add_command(cmd: Any, name: Any) -> None\n\n\n### add_command_alias(cmd: Any, name: str) -> None\n\n\n### get_command_tree() -> dict\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/utils/click_utils.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.utils.click_utils",
+    "item_type": "class",
+    "methods": [
+      "add_command",
+      "add_command_alias",
+      "get_command_tree"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

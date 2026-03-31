@@ -1,0 +1,41 @@
+{
+  "id": "sdk/api-client/client.api.custom-actions/customactions",
+  "title": "CustomActions",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# CustomActions\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### create_custom_action(data: Optional[Union[requests.CustomActionCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.CustomActionCreate\n\nCreate Custom Action\n\n\n### list_custom_actions(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.CustomActionsList, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.CustomAction], responses.CustomActionsListPaginatedResponseCursor]\n\nReturns a list of Custom Action objects. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### create_custom_actions_type(data: Optional[Union[requests.CustomActionsTypeCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.CustomActionsTypeCreate\n\nCreate a new Custom Action Type.\n\n\n### list_custom_actions_types(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], search: Optional[Sequence[str]], app_names: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.CustomActionType], responses.CustomActionsTypesListPaginatedCursor]\n\nReturns a list of Custom Action Type objects. The list can be optionally filtered and sorted on the server before being returned. **Permission Required:** `kelvin.permission.custom-actions.read`.\n\n\n### delete_custom_action_type(name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete an existing Custom Action Type. An error will be returned if there are any current Custom Action linked to the Custom Action Type. This cannot be undone once the API request has been submitted.\n\n\n### get_custom_actions_type(name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.CustomActionsTypeGet\n\nRetrieves the parameters of a Custom Action Type.\n\n\n### update_custom_actions_type(name: str, data: Optional[Union[requests.CustomActionsTypeUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.CustomActionsTypeUpdate\n\nUpdates an existing Custom Action Type with any new values passed through the body parameters. All body parameters are optional and if not provided will remain unchanged. Only the unique identifier `name` can not be changed.\n\n\n### delete_custom_action(action_id: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete an existing Custom Action.\n\n\n### get_custom_action(action_id: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.CustomActionGet\n\nGet Custom Action\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/custom_actions.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.custom_actions.create_custom_action()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.custom_actions",
+    "item_type": "class",
+    "methods": [
+      "create_custom_action",
+      "list_custom_actions",
+      "create_custom_actions_type",
+      "list_custom_actions_types",
+      "delete_custom_action_type",
+      "get_custom_actions_type",
+      "update_custom_actions_type",
+      "delete_custom_action",
+      "get_custom_action"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

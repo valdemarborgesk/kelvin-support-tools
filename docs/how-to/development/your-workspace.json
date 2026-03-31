@@ -1,0 +1,51 @@
+{
+  "id": "how-to/your-workspace",
+  "title": "Your Workspace",
+  "type": "how_to",
+  "category": "development",
+  "content": "<p style=\"text-align: center;\">\n  <a href=\"../introduction/\" class=\"md-button md-button--primary\">\n    ← Introduction\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-left: 0.4em;\">⓪</span>\n  </a>\n  <a href=\"../create-kelvin-smartapp/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">②</span>\n    Create SmartApp →\n  </a>\n</p>\n\n## Installation\n\nBefore you can start you need to setup your computer with all the development tools required to make Kelvin SmartApps™.\n\nThe list of software required for development and testing is;\n\n| Software | Mandatory | Install Method |\n| --- | --- | --- |\n| Google Chrome | Yes (Kelvin only guarantees on Google Chrome, though most if not all features will work in the other modern browsers) | From website |\n| Python 3 | Yes, See [Pypi](https://pypi.org/project/kelvin-sdk/) for compatible versions | From website |\n| Docker | Yes | From website |\n| Visual Studio Code | No, but we now standardize our newer documentation to be shown on VSCode | From website |\n| Kelvin SDK | Yes | `pip install kelvin-sdk` |\n\nThere is detailed step-by-step documentation available on how to install all the software and tools required for each OS type.\n\n* [Windows](../../how-to/workspace/windows/requirements.md)\n* [MacOS](../../sdk/installation/mac.md)\n* [Ubuntu](../../sdk/installation/ubuntu.md)\n\n## Login\n\nOnce everything is installed, then you need to login to you Kelvin Platform from the terminal.\n\n```bash title=\"CLI Login\" linenums=\"1\"\nkelvin auth login <kelvin-platform-url>\n```\n\nYou will be asked for your login, password and 2fa code.\n\nThe Kelvin SDK will then attempt to log you into two systems;\n\n    When logging into the Kelvin Docker Registry, you need to have access to Docker with your user. If you don't have this, this step will fail.\n\n    To setup local user access to the docker commands;\n    \n    On Windows and Linux, run this terminal command\n\n    ```bash title=\"Docker CLI for Local User\" linenums=\"1\"\n    sudo usermod -aG docker $USER\n    ```\n\n    and on MacOS run this command;\n\n    ```bash title=\"Docker CLI for Local User\" linenums=\"1\"\n    sudo dseditgroup -o edit -a $USER -t user docker\n    ```\n\n* Kelvin Platform\n* Kelvin Docker Registry\n\nWhen you are logged in you will see the following;\n\n```bash title=\"CLI Login Example\" linenums=\"1\"\n$ kelvin auth login\n[kelvin.sdk][2025-03-17 12:09:12][I] Refreshing metadata..\nPlatform: <KELVIN-PLATFORM-URL>\nEnter your username: <USERNAME>\nEnter your password: <PASSWORD>\nEnter 2 Factor Authentication (2FA) one-time password (blank if not required): <2FA>\n[kelvin.sdk][2025-03-17 12:09:53][I] Attempting to log on \"<KELVIN-PLATFORM-URL>\"\n[kelvin.sdk][2025-03-17 12:09:57][R] Successfully logged on \"<KELVIN-PLATFORM-URL>\" as \"<USERNAME>\"\n[kelvin.sdk][2025-03-17 12:09:58][I] Attempting to log on \"<KELVIN-PLATFORM-URL>\" Docker registry\nLogin Succeeded\n```\n\nWith your workspace setup, now we can start with creating your first Kelvin SmartApp™.\n\n<p style=\"text-align: center;\">\n  <a href=\"../introduction/\" class=\"md-button md-button--primary\">\n    ← Introduction\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-left: 0.4em;\">⓪</span>\n  </a>\n  <a href=\"../create-kelvin-smartapp/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">②</span>\n    Create SmartApp →\n  </a>\n</p>",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/quick-start/how-to/your-workspace.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "kelvin auth login <kelvin-platform-url>",
+      "title": "CLI Login"
+    },
+    {
+      "language": "bash",
+      "code": "sudo usermod -aG docker $USER",
+      "title": "Docker CLI for Local User"
+    },
+    {
+      "language": "bash",
+      "code": "sudo dseditgroup -o edit -a $USER -t user docker",
+      "title": "Docker CLI for Local User"
+    },
+    {
+      "language": "bash",
+      "code": "$ kelvin auth login\n[kelvin.sdk][2025-03-17 12:09:12][I] Refreshing metadata..\nPlatform: <KELVIN-PLATFORM-URL>\nEnter your username: <USERNAME>\nEnter your password: <PASSWORD>\nEnter 2 Factor Authentication (2FA) one-time password (blank if not required): <2FA>\n[kelvin.sdk][2025-03-17 12:09:53][I] Attempting to log on \"<KELVIN-PLATFORM-URL>\"\n[kelvin.sdk][2025-03-17 12:09:57][R] Successfully logged on \"<KELVIN-PLATFORM-URL>\" as \"<USERNAME>\"\n[kelvin.sdk][2025-03-17 12:09:58][I] Attempting to log on \"<KELVIN-PLATFORM-URL>\" Docker registry\nLogin Succeeded",
+      "title": "CLI Login Example"
+    }
+  ],
+  "related": [
+    "how-to/requirements"
+  ],
+  "tags": [
+    "cli",
+    "create",
+    "development",
+    "docker",
+    "sdk",
+    "smartapp",
+    "test",
+    "workspace",
+    "your"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

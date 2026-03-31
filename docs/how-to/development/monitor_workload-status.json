@@ -1,0 +1,51 @@
+{
+  "id": "how-to/monitor/workload-status",
+  "title": "View Workload Status",
+  "type": "how_to",
+  "category": "development",
+  "content": "# View Workload Status\n\nYou can check the current status of any workload at any time.\n\nThis status will indicate whether the workload is running, stopped, staged, or in another state, and it will also display detailed information about its current configuration, including assigned assets, recommendation definitions, environment variables, and more.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin UI\"\n\n    You can see the status of the workload for any Kelvin SmartApp™ in the Kelvin UI.\n\n    Click on Applications, select the Kelvin SmartApp™ card, then navigate to the Workload tab to view the list of workloads and their current status for that Kelvin SmartApp™.\n\n    \n\n    If the Workload has a staged Workload waiting to be activated then you will be able to expand the row and see details about the staged Workload.\n\n    \n\n=== \"Kelvin API\"\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"GET\" \\\n        \"https://<url.kelvin.ai>/api/v4/apps/workloads/list?sort_by=name&pagination_type=cursor&page_size=20&direction=asc\" \\\n        -H \"Authorization: Bearer <Your Current Token>\" \\\n        -H \"Accept: application/json-cursor\"\n    ```\n\n    You will get a response similar to this;\n\n    ```json title=\"API cURL Example Response\" linenums=\"1\"\n    {\n      \"pagination\": {\n        \"next_page\": null,\n        \"previous_page\": null\n      },\n      \"data\": [\n        {\n          \"name\": \"pcp-optimization-d1gdvz1gst7n\",\n          \"title\": \"pcp-optimization-d1gdvz1gst7n\",\n          \"enabled\": true,\n          \"acp_name\": \"beta-dev-01-cluster\",\n          \"cluster_name\": \"beta-dev-01-cluster\",\n          \"node_name\": \"beta-dev-01-cluster\",\n          \"app_name\": \"pcp-optimization\",\n          \"app_version\": \"1.0.05221921\",\n          \"created\": \"2024-05-22T18:27:27.70517Z\",\n          \"updated\": \"2024-06-13T14:13:18.985888Z\",\n          \"status\": {\n            \"state\": \"running\",\n            \"message\": \"Running\",\n            \"last_seen\": \"2024-06-14T04:57:52.520335503Z\",\n            \"warnings\": null\n          },\n          \"download_status\": \"pending\",\n          \"staged\": null\n        }\n      ]\n    }\n    ```\n    \n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Get Workloads List\n    response = client.app_workloads.list_workloads()\n\n    # Print the result\n    print(response[0])\n    ```\n\n    You will get a response similar to this;\n\n    ```bash title=\"API Client (Python) Example Response\" linenums=\"1\"\n    WorkloadSummary(updated_at=datetime.datetime(2025, 1, 22, 17, 52, 57, 879669, tzinfo=datetime.timezone.utc), updated_by=None, created_at=datetime.datetime(2025, 1, 22, 17, 52, 57, 879669, tzinfo=datetime.timezone.utc), created_by=None, title='asddsa', app_name='pcp-opcua-simulator', app_version='1.0.09122316', app_type='external', cluster_name='if-docker-cluster', node_name=sales-01-cluster, download_status='pending', download_error=None, status=WorkloadStatus(last_seen=datetime.datetime(2025, 1, 29, 11, 42, 30, 796253, tzinfo=datetime.timezone.utc), message='Unreachable', state='unreachable', warnings=None), staged=None)\n    ```\n\n</div>",
+  "summary": "You can check the current status of any workload at any time. This status will indicate whether the workload is running, stopped, staged, or in another state, and it will also display detailed information about its current configuration, including...",
+  "source": "core-docs/docs/developer-tools/how-to/monitor/workload-status.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"GET\" \\\n        \"https://<url.kelvin.ai>/api/v4/apps/workloads/list?sort_by=name&pagination_type=cursor&page_size=20&direction=asc\" \\\n        -H \"Authorization: Bearer <Your Current Token>\" \\\n        -H \"Accept: application/json-cursor\"",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n      \"pagination\": {\n        \"next_page\": null,\n        \"previous_page\": null\n      },\n      \"data\": [\n        {\n          \"name\": \"pcp-optimization-d1gdvz1gst7n\",\n          \"title\": \"pcp-optimization-d1gdvz1gst7n\",\n          \"enabled\": true,\n          \"acp_name\": \"beta-dev-01-cluster\",\n          \"cluster_name\": \"beta-dev-01-cluster\",\n          \"node_name\": \"beta-dev-01-cluster\",\n          \"app_name\": \"pcp-optimization\",\n          \"app_version\": \"1.0.05221921\",\n          \"created\": \"2024-05-22T18:27:27.70517Z\",\n          \"updated\": \"2024-06-13T14:13:18.985888Z\",\n          \"status\": {\n            \"state\": \"running\",\n            \"message\": \"Running\",\n            \"last_seen\": \"2024-06-14T04:57:52.520335503Z\",\n            \"warnings\": null\n          },\n          \"download_status\": \"pending\",\n          \"staged\": null\n        }\n      ]\n    }",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Get Workloads List\n    response = client.app_workloads.list_workloads()\n\n    # Print the result\n    print(response[0])",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "bash",
+      "code": "WorkloadSummary(updated_at=datetime.datetime(2025, 1, 22, 17, 52, 57, 879669, tzinfo=datetime.timezone.utc), updated_by=None, created_at=datetime.datetime(2025, 1, 22, 17, 52, 57, 879669, tzinfo=datetime.timezone.utc), created_by=None, title='asddsa', app_name='pcp-opcua-simulator', app_version='1.0.09122316', app_type='external', cluster_name='if-docker-cluster', node_name=sales-01-cluster, download_status='pending', download_error=None, status=WorkloadStatus(last_seen=datetime.datetime(2025, 1, 29, 11, 42, 30, 796253, tzinfo=datetime.timezone.utc), message='Unreachable', state='unreachable', warnings=None), staged=None)",
+      "title": "API Client (Python) Example Response"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "api",
+    "cli",
+    "configure",
+    "create",
+    "development",
+    "docker",
+    "sdk",
+    "smartapp",
+    "status",
+    "view",
+    "workload"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

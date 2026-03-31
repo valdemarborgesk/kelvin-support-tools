@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/controlchangesource",
+  "title": "ControlChangeSource",
+  "type": "schema",
+  "category": "api",
+  "content": "# ControlChangeSource\n\nIndicates who provided the value, the Bridge or the Control Change Manager\n\n## Enum Values\n\n- `bridge`\n- `ccm`",
+  "summary": "Indicates who provided the value, the Bridge or the Control Change Manager",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.ControlChangeSource",
+    "schema_type": "enum",
+    "schema": {
+      "description": "Indicates who provided the value, the Bridge or the Control Change Manager",
+      "type": "string",
+      "enum": [
+        "bridge",
+        "ccm"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

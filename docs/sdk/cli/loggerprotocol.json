@@ -1,0 +1,33 @@
+{
+  "id": "sdk/cli/sdk.lib.utils.logger-utils/loggerprotocol",
+  "title": "LoggerProtocol",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# LoggerProtocol\n\nInherits from: Protocol\n\n\n## Methods\n\n\n### debug(event: Optional[str]) -> Any\n\n\n### info(event: Optional[str]) -> Any\n\n\n### warning(event: Optional[str]) -> Any\n\n\n### error(event: Optional[str]) -> Any\n\n\n### relevant(event: Optional[str]) -> Any\n\n\n### exception(event: Optional[str]) -> Any\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/utils/logger_utils.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.utils.logger_utils",
+    "item_type": "class",
+    "methods": [
+      "debug",
+      "info",
+      "warning",
+      "error",
+      "relevant",
+      "exception"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

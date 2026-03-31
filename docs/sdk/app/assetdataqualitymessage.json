@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.typing/assetdataqualitymessage",
+  "title": "AssetDataQualityMessage",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AssetDataQualityMessage\n\nInherits from: Message\n",
+  "summary": "",
+  "source": "app/src/kelvin/message/typing.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import AssetDataQualityMessage\n\n# Usage example\napp = AssetDataQualityMessage()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.typing",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

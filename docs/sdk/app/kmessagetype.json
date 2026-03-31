@@ -1,0 +1,37 @@
+{
+  "id": "sdk/app/message.msg-type/kmessagetype",
+  "title": "KMessageType",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KMessageType\n\n\nKelvin Message Type representation\n\n\n## Methods\n\n\n### __init__(msg_type: Optional[str], components: Optional[Dict[str, str]]) -> None\n\n\n### validate(v: Any) -> KMessageType\n\n\n### from_krn(msg_type: str, components: Dict[str, str]) -> KMessageType\n\n\n### from_string(v: str) -> Self\n\n\n### encode() -> str\n",
+  "summary": "Kelvin Message Type representation",
+  "source": "app/src/kelvin/message/msg_type.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import KMessageType\n\n# Usage example\napp = KMessageType()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.msg_type",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "validate",
+      "from_krn",
+      "from_string",
+      "encode"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

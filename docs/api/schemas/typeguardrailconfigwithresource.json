@@ -1,0 +1,202 @@
+{
+  "id": "api/schemas/guardrailconfigwithresource",
+  "title": "GuardrailConfigWithResource",
+  "type": "schema",
+  "category": "api",
+  "content": "# GuardrailConfigWithResource\n\n\n## Properties\n\n- **resource** (`string`): The Asset/Data Stream pair to which the Guardrail will be applied.\n- **control_disabled** (`boolean`): Set the current status indicating whether this Guardrail is active or disabled.\n- **number** (`object`): \n- **updater** (`object`): ",
+  "summary": "Object with properties: resource, control_disabled, number, updater",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.GuardrailConfigWithResource",
+    "schema_type": "type",
+    "schema": {
+      "properties": {
+        "resource": {
+          "description": "The Asset/Data Stream pair to which the Guardrail will be applied.",
+          "example": "krn:ad:asset1/setpoint",
+          "type": "string",
+          "format": "krn"
+        },
+        "control_disabled": {
+          "description": "Set the current status indicating whether this Guardrail is active or disabled.",
+          "type": "boolean",
+          "default": false
+        },
+        "number": {
+          "properties": {
+            "min": {
+              "type": "object"
+            },
+            "max": {
+              "type": "object"
+            },
+            "relative": {
+              "type": "object",
+              "description": "Allowable rate of increase/decrease of the Asset / Data Stream pair. ",
+              "properties": {
+                "increase": {
+                  "type": "object",
+                  "description": "Allowable rate of increase of the Asset / Data Stream pair. ",
+                  "properties": {
+                    "min": {
+                      "type": "object",
+                      "description": "Rate of change limit definition",
+                      "required": [
+                        "value"
+                      ],
+                      "properties": {
+                        "value": {
+                          "description": "The limiting rate of change value.",
+                          "type": "number"
+                        },
+                        "inclusive": {
+                          "description": "The defined limiting rate of change value is inclusive within the allowable range.",
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "type": {
+                          "$ref": "#/components/schemas/enum.GuardrailRelativeType"
+                        }
+                      }
+                    },
+                    "max": {
+                      "type": "object",
+                      "description": "Rate of change limit definition",
+                      "required": [
+                        "value"
+                      ],
+                      "properties": {
+                        "value": {
+                          "description": "The limiting rate of change value.",
+                          "type": "number"
+                        },
+                        "inclusive": {
+                          "description": "The defined limiting rate of change value is inclusive within the allowable range.",
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "type": {
+                          "$ref": "#/components/schemas/enum.GuardrailRelativeType"
+                        }
+                      }
+                    }
+                  }
+                },
+                "decrease": {
+                  "type": "object",
+                  "description": "Allowable rate of decrease of the Asset / Data Stream pair. ",
+                  "properties": {
+                    "min": {
+                      "type": "object",
+                      "description": "Rate of change limit definition",
+                      "required": [
+                        "value"
+                      ],
+                      "properties": {
+                        "value": {
+                          "description": "The limiting rate of change value.",
+                          "type": "number"
+                        },
+                        "inclusive": {
+                          "description": "The defined limiting rate of change value is inclusive within the allowable range.",
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "type": {
+                          "$ref": "#/components/schemas/enum.GuardrailRelativeType"
+                        }
+                      }
+                    },
+                    "max": {
+                      "type": "object",
+                      "description": "Rate of change limit definition",
+                      "required": [
+                        "value"
+                      ],
+                      "properties": {
+                        "value": {
+                          "description": "The limiting rate of change value.",
+                          "type": "number"
+                        },
+                        "inclusive": {
+                          "description": "The defined limiting rate of change value is inclusive within the allowable range.",
+                          "type": "boolean",
+                          "default": false
+                        },
+                        "type": {
+                          "$ref": "#/components/schemas/enum.GuardrailRelativeType"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "updater": {
+          "properties": {
+            "number": {
+              "type": "object",
+              "description": "Limits for absolute minimum and maximum values.",
+              "properties": {
+                "min": {
+                  "type": "object",
+                  "required": [
+                    "source"
+                  ],
+                  "description": "Limiting value definitions.",
+                  "properties": {
+                    "source": {
+                      "description": "Asset / Data Stream pair used to determine the values for the minimum and maximum guardrail values.",
+                      "type": "string",
+                      "format": "krn"
+                    },
+                    "inclusive": {
+                      "description": "The Asset / Data Stream pair value is inclusive within the allowable range.",
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                },
+                "max": {
+                  "type": "object",
+                  "required": [
+                    "source"
+                  ],
+                  "description": "Limiting value definitions.",
+                  "properties": {
+                    "source": {
+                      "description": "Asset / Data Stream pair used to determine the values for the minimum and maximum guardrail values.",
+                      "type": "string",
+                      "format": "krn"
+                    },
+                    "inclusive": {
+                      "description": "The Asset / Data Stream pair value is inclusive within the allowable range.",
+                      "type": "boolean",
+                      "default": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "resource"
+      ],
+      "type": "object"
+    },
+    "last_updated": "2026-02-04"
+  }
+}

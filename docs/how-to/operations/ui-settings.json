@@ -1,0 +1,31 @@
+{
+  "id": "how-to/ui-settings",
+  "title": "Change Asset View Filters",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Change Asset View Filters\n\nYou can use Kelvin AI to quickly setup new filtered Asset Views through the prompt.\n\n<iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/rkBpDGGUyHg?si=6h0FPfEvRmb8akLD\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\n## Create New Asset View\n\nTo start, click on the **Kelvin AI** menu item.\n\nYou will see the popup like this;\n\nThen type in your request like;\n\n```\ncreate a list of all assets in the pcp optimization application which are currently in closed loop mode.\n```\n\nThe new UI view will be created and saved, then in the response you will be given a link button to go directly to this new view.\n\nClick on the **Open New View** button.\n\nWhen the page opens, you will see the list filtered as requested.\n\nTo confirm the filters, click on the view list and you will see a new entry called **Kelvin AI Prompt**.\n\nLooking at the advanced filters you will also see all the filter settings you requested.",
+  "summary": "You can use Kelvin AI to quickly setup new filtered Asset Views through the prompt. <iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/rkBpDGGUyHg?si=6h0FPfEvRmb8akLD\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerome...",
+  "source": "core-docs/docs/operations-tools/kelvin-ai/how-to/ui-settings.md",
+  "code_examples": [
+    {
+      "language": "text",
+      "code": "create a list of all assets in the pcp optimization application which are currently in closed loop mode."
+    }
+  ],
+  "related": [],
+  "tags": [
+    "asset",
+    "change",
+    "cli",
+    "create",
+    "filters",
+    "operations",
+    "view"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

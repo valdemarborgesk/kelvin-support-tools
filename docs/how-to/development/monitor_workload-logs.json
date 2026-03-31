@@ -1,0 +1,26 @@
+{
+  "id": "how-to/monitor/workload-logs",
+  "title": "View Workload Logs",
+  "type": "how_to",
+  "category": "development",
+  "content": "# View Workload Logs\n\nYou can see the logs of the workload for any Application in the Kelvin UI.\n\n## Logs\n\nClick on **Applications**, select the Application card, then navigate to the Workload tab to view the list of workloads for that Application.\n\n    You can also see a Workload's logs by clicking on the Cluster menu, selecting a Cluster and then selecting the Workload from there.\n\nThen click on a Workload name to see the details.\n\nand then click on the **Logs** tab.\n\n## Live Data\n\nIn the Logs screen you have a toggle option called **Live Data**.\n\n| Option | Description |\n| --- | --- |\n| Live Data  | The Workload logs are pulled directly from the edge to the Kelvin UI |\n| Live Data (Locked)  | The Workload logs are pulled directly from the edge to the Kelvin UI. This behavior is fixed and cannot be modified for the current Edition of the Kelvin Platform. |\n| Forwarded Data  | The Workload logs are pulled from the Kelvin Cloud to the Kelvin UI. Logs from the Workload at the edge are synced between the edge and the Kelvin Cloud automatically when online. |\n| Forwarded Data (Locked)  | The Workload logs are pulled from the Kelvin Cloud to the Kelvin UI. Logs from the Workload at the edge are synced between the edge and the Kelvin Cloud automatically when online. This behavior is fixed and cannot be modified for the current Edition of the Kelvin Platform. |\n\nUse the **Live Data** toggle to switch between viewing Workload log data from the Edge or from the Kelvin Platform.\n\n    Live feature is preferred if you want to view the direct logs as a new Workload is deployed to the edge.\n\n    Forwarded Data is preferred if you want to compile a time range of historical log data for performance analytics.",
+  "summary": "You can see the logs of the workload for any Application in the Kelvin UI.",
+  "source": "core-docs/docs/developer-tools/how-to/monitor/workload-logs.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "deploy",
+    "development",
+    "logs",
+    "monitor",
+    "view",
+    "workload"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

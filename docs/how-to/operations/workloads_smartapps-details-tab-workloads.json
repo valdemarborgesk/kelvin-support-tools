@@ -1,0 +1,25 @@
+{
+  "id": "how-to/workloads/smartapps-details-tab-workloads",
+  "title": "Workloads",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Workloads\n\nThis section manages the deployment of Assets for a Kelvin SmartApp™ to the edge from the App Registry in the Cloud.\n\nThis is a Developer tool and is documented in the [Developer Tools](../../../../developer-tools/how-to/deploy/deploy-workloads-deploy.md) section.",
+  "summary": "This section manages the deployment of Assets for a Kelvin SmartApp™ to the edge from the App Registry in the Cloud. This is a Developer tool and is documented in the Developer Tools section.",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/workloads/smartapps-details-tab-workloads.md",
+  "code_examples": [],
+  "related": [
+    "how-to/deploy-workloads-deploy"
+  ],
+  "tags": [
+    "deploy",
+    "operations",
+    "smartapp",
+    "workloads"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

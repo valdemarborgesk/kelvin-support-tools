@@ -1,0 +1,45 @@
+{
+  "id": "how-to/develop/test/custom-actions",
+  "title": "Custom Actions",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Custom Actions\n\nIn the Kelvin SDK there is a `kelvin-publisher` test tool to help you ingest data to the inputs and debug the outputs to test the performance of your Kelvin SmartApp™.\n\nIt is a CLI utility for exercising your application during development. It is not imported into your code and is used only as a standalone testing tool.\n\n    You must have installed the `kelvin-python-sdk[publisher]` library for this feature to work.\n\nYou can use Custom Actions to enable communication between two Applications on either the same cluster or across different clusters.\n\n    To understand the purpose of Custom Actions or view the overall structure of how they work, check out the [documentation in the overview page here](../../../../overview/concepts/custom-action.md).\n\n<iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/jMD7oIb6Vf4?si=OWBkhHJAC6yfMnSz\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\nOnce you have created a Consumer Application (Executor), you may want to test it first locally on your development computer before uploading it to the Kelvin Platform.\n\n## Generator Application\n\nTo test your Consumer Application (Executor), you will need to first create a local Generator Application.\n\n    This Application is only for local testing and does not form part of your code to upload to the Kelvin Platform.\n\nIn our documentation examples in the [Produce - Custom Actions](../produce/custom-actions.md) and [Consume - Custom Actions](../consume/custom-actions.md) sections, we showed you the code to create Publisher and Consumer (Executor) Applications.\n\nHere is a typical Generator Application you would create to send Custom Actions with the type `email`.\n\n```python title=\"mygenerator.py Example\" linenums=\"1\"\n# mygenerator.py\nimport asyncio\nfrom datetime import timedelta\nfrom typing import AsyncGenerator\n\nfrom kelvin.message import Message, CustomAction\nfrom kelvin.publisher import DataGenerator\nfrom kelvin.krn import KRNAsset\n\nclass CustomActionGenerator(DataGenerator):\n    def __init__(self) -> None:\n        print(\"Hello from MyGenerator\")\n\n    async def run(self) -> AsyncGenerator[Message, None]:\n        print(\"Running MyGenerator\")\n\n        for i in range(10):\n            print(\"Create and Send Custom Action message\")\n            msg = CustomAction(\n                    resource=KRNAsset(\"test-asset-1\"),\n                    expiration_date=timedelta(seconds=30),\n                    type=\"email\",\n                    title=\"Send Emails\",\n                    payload={\n                    \"recipient\": \"operations@example.com\",\n                    \"subject\": \"Recommendation to reduce speed\",\n                    \"body\": \"This is the email body\",\n                }\n            )\n            yield msg\n\n            print (\"Sent custom action message: \", msg)\n            await asyncio.sleep(3)\n```\n\n## Test Consumer Application\n\nWith your Generator Application ready, you can now test your Consumer Application (Executor).\n\n    In this example you would use the code from the [Consumer Application example](../consume/custom-actions.md#consumer-app-example) of the Custom Actions.\n\nFirst in the terminal run the Generator Test Application.\n\n```bash title=\"Start Generator Test Application\" linenums=\"1\"\nkelvin-publisher generator --entrypoint mygenerator.py:CustomActionGenerator\n```\n\nThen run your Consumer Application (Executor).\n\n    This is to test the Custom Action consumer application **NOT** the Custom Action publisher application.\n\n    The test generator is simulating a Custom Action publisher application.\n\n    You can add Recommendation, Control Changes, etc. in your Consumer application. They will be received by the test generator and displayed in the terminal like a normal test.\n\n```bash title=\"Start Testing Consumer Application\" linenums=\"1\"\npython main.py\n```\n\nThe Custom Action Objects created in the Generator Test Application will now be sent to the Consumer Application (Executor).",
+  "summary": "In the Kelvin SDK there is a kelvin-publisher test tool to help you ingest data to the inputs and debug the outputs to test the performance of your Kelvin SmartApp™. It is a CLI utility for exercising your application during development. It is not...",
+  "source": "core-docs/docs/developer-tools/how-to/develop/test/custom-actions.md",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "# mygenerator.py\nimport asyncio\nfrom datetime import timedelta\nfrom typing import AsyncGenerator\n\nfrom kelvin.message import Message, CustomAction\nfrom kelvin.publisher import DataGenerator\nfrom kelvin.krn import KRNAsset\n\nclass CustomActionGenerator(DataGenerator):\n    def __init__(self) -> None:\n        print(\"Hello from MyGenerator\")\n\n    async def run(self) -> AsyncGenerator[Message, None]:\n        print(\"Running MyGenerator\")\n\n        for i in range(10):\n            print(\"Create and Send Custom Action message\")\n            msg = CustomAction(\n                    resource=KRNAsset(\"test-asset-1\"),\n                    expiration_date=timedelta(seconds=30),\n                    type=\"email\",\n                    title=\"Send Emails\",\n                    payload={\n                    \"recipient\": \"operations@example.com\",\n                    \"subject\": \"Recommendation to reduce speed\",\n                    \"body\": \"This is the email body\",\n                }\n            )\n            yield msg\n\n            print (\"Sent custom action message: \", msg)\n            await asyncio.sleep(3)",
+      "title": "mygenerator.py Example"
+    },
+    {
+      "language": "bash",
+      "code": "kelvin-publisher generator --entrypoint mygenerator.py:CustomActionGenerator",
+      "title": "Start Generator Test Application"
+    },
+    {
+      "language": "bash",
+      "code": "python main.py",
+      "title": "Start Testing Consumer Application"
+    }
+  ],
+  "related": [
+    "concepts/custom-action"
+  ],
+  "tags": [
+    "actions",
+    "cli",
+    "create",
+    "custom",
+    "development",
+    "sdk",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

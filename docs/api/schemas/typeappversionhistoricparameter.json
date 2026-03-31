@@ -1,0 +1,96 @@
+{
+  "id": "api/schemas/appversionhistoricparameter",
+  "title": "AppVersionHistoricParameter",
+  "type": "schema",
+  "category": "api",
+  "content": "# AppVersionHistoricParameter\n\n\n## Properties\n\n- **app_name** (`string`): Unique identifier `name` of the App in the App Registry linked to this Parameter.\n- **app_version** (`string`): Version number of the App in the App Registry linked to this Parameter.\n- **comment** (`string`): Latest information from user when creating or updating this Parameter.\n- **created** (`string`): UTC time when the Parameter was first created, formatted in RFC 3339.\n- **name** (`string`): The name of the Parameter.\n- **resource** (`string`): KRN of the Asset associated with the Parameter.\n- **value** (`any`): Value represented in one of these formats.\n- **created_at** (`string`): UTC time when the object was created, formatted in RFC 3339.\n- **created_by** (`string`): KRN of the user or process that created the object.\n- **updated_at** (`string`): UTC time when any keys were last updated, formatted in RFC 3339.\n- **updated_by** (`string`): KRN of the user or process that last updated any of the keys.\n- **invalidated** (`string`): UTC time when any Parameter value were invalidated, formatted in RFC 3339.",
+  "summary": "Object with properties: app_name, app_version, comment, created, name",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.AppVersionHistoricParameter",
+    "schema_type": "type",
+    "schema": {
+      "properties": {
+        "app_name": {
+          "type": "string",
+          "description": "Unique identifier `name` of the App in the App Registry linked to this Parameter."
+        },
+        "app_version": {
+          "type": "string",
+          "description": "Version number of the App in the App Registry linked to this Parameter."
+        },
+        "comment": {
+          "type": "string",
+          "description": "Latest information from user when creating or updating this Parameter."
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "description": "UTC time when the Parameter was first created, formatted in RFC 3339."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the Parameter."
+        },
+        "resource": {
+          "type": "string",
+          "format": "krn",
+          "description": "KRN of the Asset associated with the Parameter."
+        },
+        "value": {
+          "description": "Value represented in one of these formats.",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "description": "UTC time when the object was created, formatted in RFC 3339.",
+          "format": "date-time"
+        },
+        "created_by": {
+          "type": "string",
+          "description": "KRN of the user or process that created the object.",
+          "format": "krn",
+          "example": "krn:user:me@example.com"
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "UTC time when any keys were last updated, formatted in RFC 3339.",
+          "format": "date-time"
+        },
+        "updated_by": {
+          "type": "string",
+          "description": "KRN of the user or process that last updated any of the keys.",
+          "format": "krn",
+          "example": "krn:user:me@example.com"
+        },
+        "invalidated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "UTC time when any Parameter value were invalidated, formatted in RFC 3339."
+        }
+      },
+      "type": "object"
+    },
+    "last_updated": "2026-02-04"
+  }
+}

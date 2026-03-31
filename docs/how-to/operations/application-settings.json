@@ -1,0 +1,27 @@
+{
+  "id": "how-to/application-settings",
+  "title": "Application Settings",
+  "type": "how_to",
+  "category": "operations",
+  "content": "## Application Settings\n\nYou can setup the default application settings that will be used when one or more Assets are added to the Application through the **Assets** tab.\n\n    The **Add Assets** method in Assets tab allows Operations to deploy Assets without any knowledge on the Kelvin Platform infrastructure or the Program variables.\n\n    Application Settings can be preset by the Developers.\n\nTo edit, click on the Configuration icon in the Application's details page.\n\nYou will then see the configurations popup. Here you can set the defaults for all the configuration options.\n\nTo read more about all the options, read the [deploy documentation in the Developers Tools section here](../../../developer-tools/how-to/deploy/deploy-workloads-deploy.md#deploy-standard-workload).",
+  "summary": "",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/application-settings.md",
+  "code_examples": [],
+  "related": [
+    "how-to/deploy-workloads-deploy"
+  ],
+  "tags": [
+    "application",
+    "cli",
+    "configure",
+    "deploy",
+    "operations",
+    "settings"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

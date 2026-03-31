@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.runtime-manifest/relativevalueguardrail",
+  "title": "RelativeValueGuardrail",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# RelativeValueGuardrail\n\nInherits from: BaseModel\n",
+  "summary": "",
+  "source": "app/src/kelvin/message/runtime_manifest.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import RelativeValueGuardrail\n\n# Usage example\napp = RelativeValueGuardrail()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.runtime_manifest",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

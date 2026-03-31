@@ -1,0 +1,25 @@
+{
+  "id": "how-to/workspace/windows/requirements",
+  "title": "Requirements",
+  "type": "how_to",
+  "category": "development",
+  "content": "<p style=\"text-align: center;\">\n  <a href=\"../python/\" class=\"md-button md-button--primary\">\n    Install Python\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">➡</span>\n  </a>\n</p>\n\n## Introduction\n\nTo setup your developer environment you will need to install a number of software and tools.\n\n    Throughout our documentation we will use Visual Studio Code as the default developer tool for showcasing programming and terminal commands.\n\nOn this page we will take you through the full process on getting your computer environment ready to start developing and administrating on the Kelvin Platform.\n\n## Requirements\n\nFor setting up Windows 11, we are demonstrating the install guides on version 22H2 (OS Build 22621.4317).\n\nFor the purpose of setting up your workspace we will assume this is a blank new Windows installation.\n\n    As you know, there are many ways things can go wrong in Windows.\n\n    If you find something does not work properly, especially in cases where you have previously installed the software using your own methods, we recommend that you uninstall the problematic software and try reinstalling it using our guide.\n\nThe list of software required for development and testing is;\n\n| Software | Mandatory | Install Method |\n| --- | --- | --- |\n| Google Chrome | Yes (Kelvin only guarantees on Google Chrome, though most if not all features will work in the other modern browsers) | From website |\n| Python 3 | Yes, See [Pypi](https://pypi.org/project/kelvin-sdk/) for compatible versions | From website |\n| Docker | Yes | From website |\n| Visual Studio Code | No, but we now standardize our newer documentation to be shown on VSCode | From website |\n| Kelvin SDK | Yes | `pip install kelvin-sdk` |\n\n<p style=\"text-align: center;\">\n  <a href=\"../python/\" class=\"md-button md-button--primary\">\n    Install Python\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">➡</span>\n  </a>\n</p>",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/workspace/windows/requirements.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "development",
+    "docker",
+    "requirements",
+    "sdk",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

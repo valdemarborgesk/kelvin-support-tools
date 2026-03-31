@@ -1,0 +1,57 @@
+{
+  "id": "sdk/app/application.client/kelvinapp",
+  "title": "KelvinApp",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KelvinApp\n\n\nKelvin App to connect and interface with the KelvinStream.\n\nAfter connecting, the connection is handled automatically in the background.\n\nUse filters or filter_stream to easily listen for specific messages.\nUse register_callback methods to register callbacks for events like connect and disconnect.\nUse tasks to run background functions that can be async or sync.\nUse timers to run functions at regular intervals.\n\nThe app can be used as an async context manager, which will automatically connect on enter and disconnect on exit.\n\nExample usage:\n    async with KelvinApp() as app:\n        await app.publish(Number(resource=KRNAssetDataStream('my-asset', 'my-input'), payload=1.0))\n        async for msg in app.stream_filter(filters.is_asset_data_message):\n            print(msg)\n\n\n## Methods\n\n\n### __init__(config: KelvinStreamConfig, api: Optional[AsyncClient]) -> None\n\n\n### is_connected() -> bool\n\nIndicates whether the read loop is active, implying an established connection.\n\n\n### assets() -> Dict[str, AssetInfo]\n\nGet all assets configured for this application.\n\n\n### app_configuration() -> dict\n\nGet the application configuration.\n\n\n### config_received() -> Event\n\nEvent set when the initial configuration is received.\n\n\n### inputs() -> List[AppIO]\n\nList all input metrics configured for the application.\n\n\n### outputs() -> List[AppIO]\n\nList all output metrics configured for the application.\n\n\n### tasks() -> Dict[str, Callable[Any, Awaitable]]\n\nRetrieve registered asynchronous tasks.\n\n\n### async connect() -> None\n\nEstablish connection, retrying indefinitely until success. Starts the read loop and waits for App Configuration before firing `on_connect` callback and tasks/timers.\n\n\n### async disconnect() -> None\n\nCancel read loop, stop all tasks, fire on_disconnect, and close stream.\n\n\n### async publish(msg: Union[Message, MessageBuilder]) -> bool\n\nPublish a message to KelvinStream.\n\n\n### filter(func: Callable[Any, TypeGuard[T]]) -> Queue[T]\n\nCreates a filter for the received Kelvin Messages based on a filter function.\n\n\n### stream_filter(func: Callable[Any, TypeGuard[T]]) -> AsyncGenerator[T, None]\n\nCreates a stream for the received Kelvin Messages based on a filter function. See filter.\n\n\n### tumbling_window(window_size: timedelta, assets: Optional[List[str]], inputs: Optional[List[str]], round_to: Optional[timedelta]) -> TumblingWindow\n\nCreates a fixed, non-overlapping windowing.\n\n\n### hopping_window(window_size: timedelta, hop_size: timedelta, assets: Optional[List[str]], inputs: Optional[List[str]], round_to: Optional[timedelta]) -> HoppingWindow\n\nCreates a window with fixed size and overlap.\n\n\n### rolling_window(count_size: int, assets: Optional[List[str]], inputs: Optional[List[str]], round_to: Optional[timedelta], slide: int) -> RollingWindow\n\nCreates a sliding count-based window over incoming data.\n\n\n### stream(fn: Optional[StreamFunc]) -> Union[AsyncFunc[P, R], Callable[Any, AsyncFunc[P, R]]]\n\nRegister a per-message stream handler that is invoked for each incoming AssetDataMessage matching the optional assets/inputs filters.\n\n\n### task(fn: Optional[TaskFunc[P, R]]) -> Union[AsyncFunc[P, R], Callable[Any, AsyncFunc[P, R]]]\n\nRegister a function as a task, either sync or async.\n\n\n### handle_task_result(task: asyncio.Task) -> None\n\n\n### timer(fn: TaskFunc[Any, Any]) -> AsyncFunc[Any, Any]\n\n\n### timer() -> Callable[Any, AsyncFunc[Any, Any]]\n\n\n### timer(fn: Optional[TaskFunc[Any, Any]]) -> Union[AsyncFunc[Any, Any], Callable[Any, AsyncFunc[Any, Any]]]\n\nRegister a function to be called at a repeating interval.\n\n\n### async run_forever() -> None\n\nConnects to the service and then waits indefinitely until cancelled. On cancellation, disconnects cleanly before propagating the cancellation.\n\n\n### run() -> None\n\nSynchronous entry point: - Starts an asyncio event loop to run run_forever(). - Blocks until run_forever() completes or is cancelled. - Allows Ctrl-C (KeyboardInterrupt) to stop cleanly.\n\n\n### msg_is_control_change(msg: Message) -> TypeGuard[AssetDataMessage]\n",
+  "summary": "Kelvin App to connect and interface with the KelvinStream.",
+  "source": "app/src/kelvin/application/client.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import KelvinApp\n\n# Usage example\napp = KelvinApp()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "application.client",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "is_connected",
+      "assets",
+      "app_configuration",
+      "config_received",
+      "inputs",
+      "outputs",
+      "tasks",
+      "connect",
+      "disconnect",
+      "publish",
+      "filter",
+      "stream_filter",
+      "tumbling_window",
+      "hopping_window",
+      "rolling_window",
+      "stream",
+      "task",
+      "handle_task_result",
+      "timer",
+      "timer",
+      "timer",
+      "run_forever",
+      "run",
+      "msg_is_control_change"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

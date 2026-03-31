@@ -1,0 +1,30 @@
+{
+  "id": "how-to/targeted-summaries",
+  "title": "Target AI Summaries",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Target AI Summaries\n\nYou can create detailed targeted summaries about an Asset. These help summarize the data and bring new insights and ideas to help optimize the performance of the asset.\n\n<iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/iEzLNn1ugTw?si=3koaGuE6FKBHopFb\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\n## Summarize Asset\n\nYou can ask to summarize an asset either through a prompt or by clicking on the **Summarize** button on the Asset Details.\n\n## Hands-On Test Drive\n\nExplore this feature in Action.\n\n<!--ARCADE EMBED START--><div style=\"position: relative; padding-bottom: calc(50.31250000000001% + 41px); height: 0; width: 100%;\"><iframe src=\"https://demo.arcade.software/1oA1Ho2lDIwypswWAcCE?embed&embed_mobile=inline&embed_desktop=inline&show_copy_link=true\" title=\"Explore Asset Insights with KelvinAI\" frameborder=\"0\" loading=\"lazy\" webkitallowfullscreen mozallowfullscreen allowfullscreen allow=\"clipboard-write\" style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;\" ></iframe></div><!--ARCADE EMBED END-->\n\n## Results\n\n### Trends Table\n\nThis will give a table listing all the data streams connected with the asset and some analytical statistics such as;\n\n* 1 day average\n* 30 day average\n* Difference between averages\n* Standard deviation of the average difference\n* Trending direction\n\n### Trend Analysis\n\nAn AI analysis report on the current trends and what it could mean.\n\n### Performance Evaluation\n\nAn AI generated review of the current performance of the Asset.\n\n### Issues and Recommendations\n\nKelvin AI will do a deep review of the data and identify potential current issues on the Asset.\n\nIt will also try to give some recommendations on how to resolve the issues.\n\n### Conclusions\n\nA conclusion to all the summarized information for the asset.\n\n## AI Generated Graphs\n\nYou can also quickly generate graphs on the Asset's data streams through the Kelvin AI prompt.\n\nFor example if you type;\n\n```\nplot the rod load for the past week for beam pump #01\n```\n\nYou'll get a response similar to this.",
+  "summary": "You can create detailed targeted summaries about an Asset. These help summarize the data and bring new insights and ideas to help optimize the performance of the asset. <iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/iEzLNn1ugT...",
+  "source": "core-docs/docs/operations-tools/kelvin-ai/how-to/targeted-summaries.md",
+  "code_examples": [
+    {
+      "language": "text",
+      "code": "plot the rod load for the past week for beam pump #01"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "cli",
+    "create",
+    "operations",
+    "summaries",
+    "target",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

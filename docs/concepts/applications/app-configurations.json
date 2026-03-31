@@ -1,0 +1,22 @@
+{
+  "id": "concepts/applications/app-configurations",
+  "title": "App Configurations",
+  "type": "concept",
+  "category": "applications",
+  "content": "# App Configurations\n\n# Overview\n\n**App Configurations** are the default global values use in a Kelvin SmartApp™. They are dynamic and can be modified at runtime by Operations through the Kelvin UI.\n\nThey are the same value for all Assets that is added to the Kelvin SmartApp™.\n\n    Kelvin SmartApps™ can be deployed as multiple workloads.\n\n    Each workload can have multiple Assets.\n\n    In technical terms, the Kelvin SmartApp™ App Configuration values can be changed for each workload, meaning that different Assets in the same Kelvin SmartApp™ but running in different workloads can have different global app configurations values.\n\n## Data Type\n\nIt's essential to choose the appropriate Data Type that matches the kind of data you expect to use.\n\n    Some Semantic Types are predefined and will automatically determine the Data Type for you. For instance, if you choose \"Pressure\" as the semantic type, the system will automatically set the data type to Number. In contrast, the \"State\" semantic type offers more flexibility and can be a Boolean, Number, or String. In such cases, you'll need to manually select the correct Data Type.\n\nBelow are the available primitive data types with brief descriptions and their respective ranges:\n\nOption  | Declaration Name | Description                                                            \n------- | ----------|------------------------------------------------------------ \nBoolean | `boolean` | Represents a binary state, either True or False                        \nNumber  | `number`  | Uses a double precision floating point format.                         \nString  | `string`  | Variable-length text.                                                     \nObject  | Any word  | This is unique because the word object is not explicitly used. Instead, an object is first defined in ui_schemas, and its filename serves as its identifier.</p> For example, you can use the word `dynacard` which you can define in ui_schemas/io_configuration/, corresponding to the file schemas/io_configuration/dynacard.json.\n\nEnsure that you pick the type that best aligns with the data you anticipate receiving to maintain data integrity and optimize processing.",
+  "summary": "App Configurations are the default global values use in a Kelvin SmartApp™. They are dynamic and can be modified at runtime by Operations through the Kelvin UI.",
+  "source": "core-docs/docs/overview/concepts/variables/app-configurations.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "app",
+    "application",
+    "applications",
+    "asset",
+    "configurations"
+  ],
+  "metadata": {
+    "section": "concepts/variables",
+    "last_updated": "2026-02-04"
+  }
+}

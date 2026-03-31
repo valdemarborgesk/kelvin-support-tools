@@ -1,0 +1,120 @@
+{
+  "id": "how-to/cluster/provision/provision-a-cloud-cluster",
+  "title": "Provision a Kubernetes Cluster - How to",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Provision a Kubernetes Cluster - How to\n\n_On this page you will learn how to setup an edge system with a generic Kubernetes cluster using the cluster installation tools in the Kelvin UI._\n\n    If you want Kelvin to be responsible to also install the Kubernetes cluster directly and handle all the management of the cluster, you can choose the K3S option.\n\n## Kubernetes\n\nKubernetes is an open-source platform that automates the deployment, scaling, and management of containerized Kelvin SmartApps™. It enables portability, efficient resource utilization, and provides features for rolling updates, self-healing, and service discovery.\n\nIt was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF).\n\n## Requirements & Limitations\n\nBefore running the Kelvin provision script, we advise you read the [edge setup requirements documentation here](../edge-requirements.md).\n\nFor cloud Kubernetes, implementations vary across providers and even within the same provider there can be different types of stacks based on the selected services.\n\nSo it is not possible to list all the requirements, limitations and fixed design options available and will heavily depend on your project and budgets.\n\nWhen setting up your Kubernetes cluster here are some links to the Kubernetes documentation that can help you decide what type of setup to implement.\n\n* [Production environment Considerations](https://kubernetes.io/docs/setup/production-environment/)\n* [Considerations for large clusters](https://kubernetes.io/docs/setup/best-practices/cluster-large/)\n* [Running in multiple zones](https://kubernetes.io/docs/setup/best-practices/multiple-zones/)\n\n## Installation\n\nThe installation process is very simple and you can have your new Kelvin Cluster cluster up and running within ten minutes depending on your internet speed.\n\n_Setup Kubernetes Cluster_\n\nTo start you need to setup your own Kubernetes cluster.  There are four basic steps to installing and setting up Kubernetes clusters;\n\n1. **Prepare Infrastructure**: Set up a group of machines (physical or virtual) to run Kubernetes nodes.\n1. **Install Kubernetes on Each Node**: Use a tool like kubeadm, Minikube, or Kops to install Kubernetes on each machine. One machine will act as the master node, and others as worker nodes.\n1. **Initialize the Cluster**: On the master node, initialize the Kubernetes cluster.\n1. **Join Worker Nodes**: Use a command provided during initialization to join the worker nodes to the cluster.\n\nKuberenetes documentation website has a getting started guide for achieving all these steps; https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/\n\n_Install Cluster_\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin UI\"\n\n    Let's dive in and show you how fast and easy the setup can be by first logging into the Kelvin Platform and going step by through the process.\n\n    #1. Register Cluster in the Cloud\n\n    To start, go to the Orchestration page and click on the **Register Cluster** button;\n\n    \n\n    Then in the popup you will see three cluster options to choose from.\n\n            Basic users who do not want to maintain their own Kubernetes clusters can choose K3S. In this case Kelvin will install and manage all aspects of the cluster.\n\n        Some versions of Kelvin only allow the basic Docker environment create option.\n\n    For this tutorial we will select the **Kubernetes** option.\n\n    Then click on the **Next** button.\n\n    \n\n    In step two, assign the new cluster a recognizable display name. The name id will be automatically created from your display name. It can usually be left unchanged.\n\n            The **Name ID** will be created automatically when you create a Display Name. Normally this default name is satisfactory but you do have the option to customize it if you want.\n\n    | Option  | Description  |\n    |---|---|\n    | Display Name | This can be any characters and spaces that gives your cluster a memorable name for reference |\n    |Name ID | A unique lower-case alphanumeric name which uniquely identifies this cluster. This will be automatically filled in when you type the Display Name. Normally you do not need to change unless the Name ID clashes with another cluster's Name ID.\n\n    \n        The Name ID is the unique identifier name for the cluster. This must contain only lowercase alphanumeric characters. The `.`, `_` and `-` characters are also allowed to separate words instead of a space BUT can not be at the beginning or end of the name.\n\n    \n\n    Click **Register**.\n   \n    You can then download the manifest YAML file and then run the CLI command in your Kubernetes environment.\n\n    \n        Make sure the manifest YAML file is locally accessible to the `kubectl` command.\n\n    Also you can see the sample `kubectl` command you will need to execute for your Cluster.\n\n    ```bash title=\"Install Kelvin Specific Pods on Kubernetes Cluster\" linenums=\"1\"\n    kubectl apply --server-side -f kelvin.yaml\n    ```\n\n    \n\n    Next click the **Close** button. The cluster is now registered in the Cloud and you can see it is pending registration.\n\n    \n\n    #2. Install Kelvin specific pods on your Cluster\n\n    Run the command to execute the yaml file parameters into your Cluster.\n\n    \n        Congratulations, after a few minutes depending on your Internet speed your new cluster is ready for use.\n\n    ```bash title=\"Install Kelvin Specific Pods on Kubernetes Cluster\" linenums=\"1\"\n    kubectl apply --server-side -f kelvin.yaml\n    ```\n\n=== \"Kelvin API\"\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/create\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n        \"name\": \"doc-demo-cluster-kubernetes\",\n        \"title\": \"Doc Demo Cluster Kubernetes\",\n        \"type\": \"kubernetes\"\n    }'\n    ```\n\n    The response will look something like this;\n\n    ```json title=\"API cURL Example Response\" linenums=\"1\"\n    {\n       \"name\":\"doc-demo-cluster-kubernetes\",\n       \"title\":\"Doc Demo Cluster Kubernetes\",\n       \"type\":\"kubernetes\",\n       \"ready\":false,\n       \"status\":\"pending_provision\",\n       \"last_seen\":null,\n       \"sync_scrape_interval\":120,\n       \"manifests_scrape_interval\":130,\n       \"manifests_scrape_enabled\":false,\n       \"version\":{\n          \"k8s_version\":\"\",\n          \"kelvin_version\":\"\"\n       },\n       \"created\":\"2025-01-23T14:12:45.798357Z\",\n       \"updated\":\"2025-01-23T14:12:45.798357Z\",\n       \"service_account_token\":\"bm9kZS1jbGllbnQtZG9jLWRlbW8tY2x1c3Rlci1rdWJlcm5ldGVzOjZyellHbURuTVBpVzUySkt1YmM3b1RlMVpxajhBOVUz\",\n       \"provision_script\":\"kubectl apply --server-side -f kelvin.yaml\",\n       \"join_script\":\"\",\n       \"telemetry_scrape_interval\":110,\n       \"telemetry_enabled\":false,\n       \"telemetry_buffer_size\":10,\n       \"forward_logs_enabled\":false,\n       \"forward_logs_buffer_size\":10,\n       \"upgrade_status\":{\n          \"state\":\"idle\",\n          \"message\":\"\"\n       },\n       \"upgrade_pre_download\":false,\n       \"upgrade_instantly_apply\":true\n    }\n    ```\n\n    You can then get the manifest YAML file that is mentioned in the provision script with the API request;\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"GET\" \\\n    \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/doc-demo-cluster-kubernetes/provision/get\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \n    ```\n\n    which will give a YAML response starting like this;\n\n    ```yaml title=\"API cURL Example Response\" linenums=\"1\"\n    kind: Namespace\n    apiVersion: v1\n    metadata:\n      name: kelvin-admin\n    ---\n    apiVersion: v1\n    kind: Secret\n    type: kubernetes.io/tls\n    metadata:\n      name: kelvin-certificate\n      namespace: kelvin-admin\n      labels:\n        app.kubernetes.io/part-of: kelvin\n    data:\n      ca.crt:\n\n      ...\n    ```\n\n    Copy and paste this into a file called `kelvin.yaml` and then run the CLI command given in the key `provision_script` in your Kubernetes environment.\n\n    \n        Make sure the manifest YAML file is locally accessible to the `kubectl` command.\n\n    The actual CLI command is;\n\n    ```bash title=\"Install Kelvin Specific Pods on Kubernetes Cluster\" linenums=\"1\"\n    kubectl apply --server-side -f kelvin.yaml\n    ```\n\n    \n        Congratulations, after a few minutes depending on your Internet speed your new cluster is ready for use.\n\n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Set or Update the Default Cluster in an Instance\n    response = client.orchestration.create_orchestration_clusters(data={\n        \"name\": \"doc-demo-cluster-kubernetes\",\n        \"title\": \"Doc Demo Cluster Kubernetes\",\n        \"type\": \"kubernetes\"\n        })\n\n    print(response)\n    ```\n\n    You can save the manifest YAML file that is mentioned in the provision script with;\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    kelvin_yaml = client.orchestration.get_orchestration_clusters_provision(cluster_name=response.name)\n    with open(\"kelvin.yaml\", 'w') as file:\n        file.write(str(kelvin_yaml))\n    ```\n\n    \n        Make sure the manifest YAML file is locally accessible to the `kubectl` command.\n\n    And then run the CLI command given in the key `provision_script` in your Kubernetes environment. The actual CLI command is;\n\n    ```bash title=\"Install Kelvin Specific Pods on Kubernetes Cluster\" linenums=\"1\"\n    kubectl apply --server-side -f kelvin.yaml\n    ```\n\n    \n        Congratulations, after a few minutes depending on your Internet speed your new cluster is ready for use.\n\n</div>\n\n<!-- \n*** HIDDEN SECTION ***\n\n*** DO NOT DELETE, FOR INTERNAL USE ***\n\n# Test the get provision feature\n<div>\n=== \"Kelvin API\"\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"GET' \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/doc-demo-cluster-kubernetes/provision/get\" -H \"Authorization: Bearer <Your Current Token>\" -H \"Accept: application/json\" \n    ```\n=== \"Kelvin API Client (Python)\"\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n    response = client.orchestration.get_orchestration_clusters_provision(cluster_name=\"doc-demo-cluster-kubernetes\")\n    print(response)\n    ```\n</div>\n\n# Clean up dangling items from instance\n<div>\n=== \"Kelvin API\"\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/doc-demo-cluster-kubernetes/delete\" -H \"Authorization: Bearer <Your Current Token>\" -H \"Accept: */*' -d ''\n    ```\n=== \"Kelvin API Client (Python)\"\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n    response = client.orchestration.delete_orchestration_clusters(cluster_name=\"doc-demo-cluster-kubernetes\")\n    print(response)\n    ```\n</div>\n*** END OF HIDDEN SECTION ***\n-->",
+  "summary": "_On this page you will learn how to setup an edge system with a generic Kubernetes cluster using the cluster installation tools in the Kelvin UI._",
+  "source": "core-docs/docs/platform-administration/how-to/cluster/provision/provision-a-cloud-cluster.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "kubectl apply --server-side -f kelvin.yaml",
+      "title": "Install Kelvin Specific Pods on Kubernetes Cluster"
+    },
+    {
+      "language": "bash",
+      "code": "kubectl apply --server-side -f kelvin.yaml",
+      "title": "Install Kelvin Specific Pods on Kubernetes Cluster"
+    },
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/create\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n        \"name\": \"doc-demo-cluster-kubernetes\",\n        \"title\": \"Doc Demo Cluster Kubernetes\",\n        \"type\": \"kubernetes\"\n    }'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n       \"name\":\"doc-demo-cluster-kubernetes\",\n       \"title\":\"Doc Demo Cluster Kubernetes\",\n       \"type\":\"kubernetes\",\n       \"ready\":false,\n       \"status\":\"pending_provision\",\n       \"last_seen\":null,\n       \"sync_scrape_interval\":120,\n       \"manifests_scrape_interval\":130,\n       \"manifests_scrape_enabled\":false,\n       \"version\":{\n          \"k8s_version\":\"\",\n          \"kelvin_version\":\"\"\n       },\n       \"created\":\"2025-01-23T14:12:45.798357Z\",\n       \"updated\":\"2025-01-23T14:12:45.798357Z\",\n       \"service_account_token\":\"bm9kZS1jbGllbnQtZG9jLWRlbW8tY2x1c3Rlci1rdWJlcm5ldGVzOjZyellHbURuTVBpVzUySkt1YmM3b1RlMVpxajhBOVUz\",\n       \"provision_script\":\"kubectl apply --server-side -f kelvin.yaml\",\n       \"join_script\":\"\",\n       \"telemetry_scrape_interval\":110,\n       \"telemetry_enabled\":false,\n       \"telemetry_buffer_size\":10,\n       \"forward_logs_enabled\":false,\n       \"forward_logs_buffer_size\":10,\n       \"upgrade_status\":{\n          \"state\":\"idle\",\n          \"message\":\"\"\n       },\n       \"upgrade_pre_download\":false,\n       \"upgrade_instantly_apply\":true\n    }",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "bash",
+      "code": "curl -X \"GET\" \\\n    \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/doc-demo-cluster-kubernetes/provision/get\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\"",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "yaml",
+      "code": "kind: Namespace\n    apiVersion: v1\n    metadata:\n      name: kelvin-admin\n    ---\n    apiVersion: v1\n    kind: Secret\n    type: kubernetes.io/tls\n    metadata:\n      name: kelvin-certificate\n      namespace: kelvin-admin\n      labels:\n        app.kubernetes.io/part-of: kelvin\n    data:\n      ca.crt:\n\n      ...",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "bash",
+      "code": "kubectl apply --server-side -f kelvin.yaml",
+      "title": "Install Kelvin Specific Pods on Kubernetes Cluster"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Set or Update the Default Cluster in an Instance\n    response = client.orchestration.create_orchestration_clusters(data={\n        \"name\": \"doc-demo-cluster-kubernetes\",\n        \"title\": \"Doc Demo Cluster Kubernetes\",\n        \"type\": \"kubernetes\"\n        })\n\n    print(response)",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "python",
+      "code": "kelvin_yaml = client.orchestration.get_orchestration_clusters_provision(cluster_name=response.name)\n    with open(\"kelvin.yaml\", 'w') as file:\n        file.write(str(kelvin_yaml))",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "bash",
+      "code": "kubectl apply --server-side -f kelvin.yaml",
+      "title": "Install Kelvin Specific Pods on Kubernetes Cluster"
+    },
+    {
+      "language": "bash",
+      "code": "curl -X \"GET' \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/doc-demo-cluster-kubernetes/provision/get\" -H \"Authorization: Bearer <Your Current Token>\" -H \"Accept: application/json\"",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n    response = client.orchestration.get_orchestration_clusters_provision(cluster_name=\"doc-demo-cluster-kubernetes\")\n    print(response)",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/doc-demo-cluster-kubernetes/delete\" -H \"Authorization: Bearer <Your Current Token>\" -H \"Accept: */*' -d ''",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n    response = client.orchestration.delete_orchestration_clusters(cluster_name=\"doc-demo-cluster-kubernetes\")\n    print(response)",
+      "title": "API Client (Python) Example"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "api",
+    "cli",
+    "cluster",
+    "create",
+    "deploy",
+    "docker",
+    "kubernetes",
+    "monitor",
+    "operations",
+    "provision",
+    "sdk",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "Prepare Infrastructure: Set up a group of machines (physical or virtual) to run Kubernetes nodes."
+      },
+      {
+        "step": 2,
+        "instruction": "Install Kubernetes on Each Node: Use a tool like kubeadm, Minikube, or Kops to install Kubernetes on each machine. One machine will act as the master node, and others as worker nodes."
+      },
+      {
+        "step": 3,
+        "instruction": "Initialize the Cluster: On the master node, initialize the Kubernetes cluster."
+      },
+      {
+        "step": 4,
+        "instruction": "Join Worker Nodes: Use a command provided during initialization to join the worker nodes to the cluster."
+      }
+    ],
+    "step_count": 4,
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "id": "api/schemas/asset",
+  "title": "Asset",
+  "type": "schema",
+  "category": "api",
+  "content": "# Asset\n\n\n## Properties\n\n- **asset_type_name** (`string`): Unique identifier `name` of the Asset Type linked to this Asset.\n- **asset_type_title** (`string`): Display name (`title`) of the Asset Type linked to this Asset.\n- **created** (`string`): UTC time when the Asset was created, formatted in RFC 3339.\n- **name** (`string`): Unique identifier `name` of the Asset.\n- **properties** (`array`): Array of custom properties. These properties are not used by the Kelvin Platform and are for end-user use only.\n- **in_use_by** (`array`): List of workload sources that are using this Asset.\n- **status** (`object`): Asset's status information.\n- **title** (`string`): Display name (`title`) of the Asset.\n- **updated** (`string`): UTC time when any Asset keys were last updated, formatted in RFC 3339.",
+  "summary": "Object with properties: asset_type_name, asset_type_title, created, name, properties",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.Asset",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "asset_type_name": {
+          "type": "string",
+          "example": "beam_pump",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "maxLength": 64,
+          "description": "Unique identifier `name` of the Asset Type linked to this Asset."
+        },
+        "asset_type_title": {
+          "type": "string",
+          "example": "Beam Pump",
+          "maxLength": 64,
+          "description": "Display name (`title`) of the Asset Type linked to this Asset."
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when the Asset was created, formatted in RFC 3339."
+        },
+        "name": {
+          "type": "string",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "example": "well_01",
+          "maxLength": 64,
+          "description": "Unique identifier `name` of the Asset."
+        },
+        "properties": {
+          "type": "array",
+          "description": "Array of custom properties. These properties are not used by the Kelvin Platform and are for end-user use only.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+                "example": "water-line-pressure",
+                "maxLength": 64,
+                "description": "Unique identifier `name` for the Asset Property. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+              },
+              "title": {
+                "type": "string",
+                "example": "Water Line Pressure",
+                "maxLength": 64,
+                "description": "Display name (title) for the Asset Property. You can use any character, numeric, space and special character in this key."
+              },
+              "value": {
+                "oneOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "boolean"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "in_use_by": {
+          "type": "array",
+          "description": "List of workload sources that are using this Asset.",
+          "items": {
+            "type": "string",
+            "format": "krn",
+            "example": "krn:wlappv:cluster1/workload1/app1/1.2.0"
+          }
+        },
+        "status": {
+          "type": "object",
+          "description": "Asset's status information.",
+          "properties": {
+            "last_seen": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2024-12-18T18:22:18.582724Z",
+              "description": "UTC time when the Asset was last seen, formatted in RFC 3339."
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "online",
+                "offline",
+                "unknown"
+              ]
+            }
+          }
+        },
+        "title": {
+          "type": "string",
+          "example": "Well 01",
+          "maxLength": 64,
+          "description": "Display name (`title`) of the Asset."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when any Asset keys were last updated, formatted in RFC 3339."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

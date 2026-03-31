@@ -42,10 +42,11 @@ else
     echo "  WARNING: kelvin CLI not available (SDK install may have failed)"
 fi
 
-# Init submodules
-if [ -f ".gitmodules" ]; then
-    echo "  Initializing submodules..."
-    git submodule update --init --recursive 2>/dev/null || echo "  WARNING: submodule init failed (not a git repo yet?)"
+# Check docs
+if [ -d "docs" ]; then
+    echo "  Platform docs: available"
+else
+    echo "  WARNING: docs/ directory not found"
 fi
 
 # Check Docker

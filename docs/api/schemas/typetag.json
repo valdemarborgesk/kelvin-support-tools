@@ -1,0 +1,49 @@
+{
+  "id": "api/schemas/tag",
+  "title": "Tag",
+  "type": "schema",
+  "category": "api",
+  "content": "# Tag\n\n\n## Properties\n\n- **name** (`string`): Tag name\n- **metadata** (`object`): Detailed Attributes of the Tag. The structure of the `metadata` object can have any key/value structure and will depend on the required properties of the Tag.\n- **created** (`string`): UTC time when the Data Tag was created, formatted in RFC 3339.\n- **updated** (`string`): UTC time when any Data Tag keys were last updated, formatted in RFC 3339.",
+  "summary": "Object with properties: name, metadata, created, updated",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.Tag",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Valve Change",
+          "format": "^[a-zA-Z0-9]([-_ .a-zA-Z0-9]*[a-zA-Z0-9])?$",
+          "maxLength": 64,
+          "description": "Tag name"
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Detailed Attributes of the Tag. The structure of the `metadata` object can have any key/value structure and will depend on the required properties of the Tag."
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-02-06T19:22:18.582724Z",
+          "description": "UTC time when the Data Tag was created, formatted in RFC 3339."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-02-06T19:22:18.582724Z",
+          "description": "UTC time when any Data Tag keys were last updated, formatted in RFC 3339."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

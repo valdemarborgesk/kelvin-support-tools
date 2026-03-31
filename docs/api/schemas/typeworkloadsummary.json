@@ -1,0 +1,199 @@
+{
+  "id": "api/schemas/workloadsummary",
+  "title": "WorkloadSummary",
+  "type": "schema",
+  "category": "api",
+  "content": "# WorkloadSummary\n\n\n## Properties\n\n- **name** (`string`): \n- **title** (`string`): \n- **app_name** (`string`): \n- **app_version** (`string`): \n- **app_type** (`string`): The type of application.\n\n- `app`: An App that allows mapping inputs and outputs to data\nstreams, sending control changes, recommendations, and data tags.\n- `importer`: Connects to an external system to import data into the\nplatform as well as receive control changes to act on the external\nsystem.\n- `exporter`: Connects to the platform to export data to an external\nsystem.\n- `docker`: An external application that does not connect to the\nplatform's data streams.\n- `task`: An application type used internally by the Tasks feature.\n- **cluster_name** (`string`): \n- **node_name** (`string`): \n- **download_status** (`string`): Status of downloading Workload to the Edge System.\n- **download_error** (`string`): Simple description of the error in case the image download failed.\n- **status** (`object`): Realtime information about the Workload as seen from the Cloud.\n- **staged** (`object`): \n- **created_at** (`string`): UTC time when the object was created, formatted in RFC 3339.\n- **created_by** (`string`): KRN of the user or process that created the object.\n- **updated_at** (`string`): UTC time when any keys were last updated, formatted in RFC 3339.\n- **updated_by** (`string`): KRN of the user or process that last updated any of the keys.",
+  "summary": "Object with properties: name, title, app_name, app_version, app_type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.WorkloadSummary",
+    "schema_type": "type",
+    "schema": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "app_name": {
+          "type": "string"
+        },
+        "app_version": {
+          "type": "string"
+        },
+        "app_type": {
+          "type": "string",
+          "enum": [
+            "app",
+            "importer",
+            "exporter",
+            "docker",
+            "task"
+          ],
+          "description": "The type of application.\n\n- `app`: An App that allows mapping inputs and outputs to data\nstreams, sending control changes, recommendations, and data tags.\n- `importer`: Connects to an external system to import data into the\nplatform as well as receive control changes to act on the external\nsystem.\n- `exporter`: Connects to the platform to export data to an external\nsystem.\n- `docker`: An external application that does not connect to the\nplatform's data streams.\n- `task`: An application type used internally by the Tasks feature."
+        },
+        "cluster_name": {
+          "type": "string"
+        },
+        "node_name": {
+          "type": "string"
+        },
+        "download_status": {
+          "type": "string",
+          "description": "Status of downloading Workload to the Edge System.",
+          "enum": [
+            "pending",
+            "scheduled",
+            "processing",
+            "downloading",
+            "ready",
+            "failed"
+          ]
+        },
+        "download_error": {
+          "type": "string",
+          "description": "Simple description of the error in case the image download failed."
+        },
+        "status": {
+          "type": "object",
+          "description": "Realtime information about the Workload as seen from the Cloud.",
+          "properties": {
+            "last_seen": {
+              "type": "string",
+              "format": "date-time",
+              "description": "UTC time when the Workload was last seen by the Cloud, formatted in RFC 3339."
+            },
+            "message": {
+              "type": "string",
+              "description": "Descriptive, human-readable string for `state`."
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "pending_deploy",
+                "pending_update",
+                "pending_start",
+                "pending_stop",
+                "pending_apply",
+                "deploying",
+                "running",
+                "stopping",
+                "stopped",
+                "failed",
+                "starting",
+                "applying",
+                "received",
+                "downloading",
+                "ready",
+                "unreachable",
+                "staged"
+              ]
+            },
+            "warnings": {
+              "type": "array",
+              "description": "All warnings received for any Workload operations.",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "staged": {
+          "type": "object",
+          "properties": {
+            "ready": {
+              "type": "boolean",
+              "description": "Staged workload ready to be applied."
+            },
+            "app_version": {
+              "type": "string",
+              "format": "semver",
+              "description": "Version Number of the Kelvin App used for the Staged Workload."
+            },
+            "deployment_type": {
+              "type": "string",
+              "enum": [
+                "standard",
+                "staged+instant-apply",
+                "staged-only"
+              ],
+              "description": "Specifies the method for deploying a workload on the platform.\n\n- `standard`: The default deployment method. The workload is\nautomatically created and started.\n- `staged+instant-apply`: Similar to `standard`, but if the workload\nexists with a different app image, the new image is downloaded before\nstopping the existing workload. This minimizes application downtime.\n- `staged-only`: Prepares the workload by downloading the necessary\nimages, but does not create or start the workload. The workload is only\nstarted upon explicit user request (see `/workloads/apply`)."
+            },
+            "status": {
+              "type": "object",
+              "description": "Realtime information about the Staged Workload as seen from the Cloud.",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Descriptive, human-readable string for `state`."
+                },
+                "state": {
+                  "type": "string",
+                  "enum": [
+                    "pending_deploy",
+                    "pending_update",
+                    "pending_start",
+                    "pending_stop",
+                    "pending_apply",
+                    "deploying",
+                    "running",
+                    "stopping",
+                    "stopped",
+                    "failed",
+                    "starting",
+                    "applying",
+                    "received",
+                    "downloading",
+                    "ready",
+                    "unreachable",
+                    "staged"
+                  ]
+                },
+                "warnings": {
+                  "type": "array",
+                  "description": "All warnings received for any Staged Workload operations.",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "created_at": {
+          "type": "string",
+          "description": "UTC time when the object was created, formatted in RFC 3339.",
+          "format": "date-time"
+        },
+        "created_by": {
+          "type": "string",
+          "description": "KRN of the user or process that created the object.",
+          "format": "krn",
+          "example": "krn:user:me@example.com"
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "UTC time when any keys were last updated, formatted in RFC 3339.",
+          "format": "date-time"
+        },
+        "updated_by": {
+          "type": "string",
+          "description": "KRN of the user or process that last updated any of the keys.",
+          "format": "krn",
+          "example": "krn:user:me@example.com"
+        }
+      },
+      "type": "object"
+    },
+    "last_updated": "2026-02-04"
+  }
+}

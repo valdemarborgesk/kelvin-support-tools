@@ -1,0 +1,33 @@
+{
+  "id": "api/schemas/customactionstate",
+  "title": "CustomActionState",
+  "type": "schema",
+  "category": "api",
+  "content": "# CustomActionState\n\nThe state of an action.\n\n## Enum Values\n\n- `pending`\n- `ready`\n- `in_progress`\n- `completed`\n- `cancelled`\n- `failed`",
+  "summary": "The state of an action.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.CustomActionState",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "description": "The state of an action.",
+      "enum": [
+        "pending",
+        "ready",
+        "in_progress",
+        "completed",
+        "cancelled",
+        "failed"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/parametersdefinitionslist",
+  "title": "ParametersDefinitionsList",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ParametersDefinitionsList\n\nInherits from: DataModelBase\n\n\nParametersDefinitionsList object.\n\nParameters\n----------\n    app_names: Optional[list[AppName]]\n    names: Optional[list[NameModel3]]\n    primitive_types: Optional[list[enum.ParameterType]]\n    search: Optional[list[SearchItem]]\n",
+  "summary": "ParametersDefinitionsList object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

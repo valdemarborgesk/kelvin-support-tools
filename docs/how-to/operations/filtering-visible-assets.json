@@ -1,0 +1,28 @@
+{
+  "id": "how-to/filtering-visible-assets",
+  "title": "Filtering Visible Assets",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Filtering Visible Assets\n\nOn the page you have a number of common features that help you quickly navigate, find and filter the assets of interest.\n\n<div class=\"result\" markdown>\n\n=== \"Views\"\n\n    You can customize your column views and save them, allowing you to quickly change views for different operations.\n\n            This is the same feature found in the Assets view.\n\n        You can read how to manage your Views in the [Asset documentation page here](../../assets-page/how-to/managing-assets.md#custom-views).\n\n    \n\n=== \"Asset Types\"\n\n    You can do a quick filter on the Asset Types.\n\n    \n\n=== \"Status\"\n\n    You can do a quick filter on the status of Assets.\n\n    | Status | Description |\n    | :---: | :--- |\n    | Offline | All Data Streams associated with the Asset are currently not connected to the Cloud |\n    | Online | All Data Streams associated with the Asset are currently connected to the Cloud and recording data |\n    | Unknown | All Data Streams associated with the Asset have not sent any data since being created |\n\n    \n\n=== \"Filter\"\n\n    There is a powerful filtering setup that can help configure the information you want to display.\n\n    \n        All filters are persistent, so if you go to other pages or log out the filters will still be implemented when you return.\n\n    There are three types of filters you can apply;\n\n    * On Asset Properties\n    * On App Parameters in Kelvin SmartApps™\n    * On Asset / Data Stream pairs aggregation of data\n\n            See full details on advanced filters in the [Asset page documentation](../../assets-page/how-to/managing-assets.md#advanced-filters).\n\n    \n\n=== \"Search\"\n\n    When dealing with large quantities of Assets, you can search for the Assets of interest.\n\n    This is dynamic and will update the visible assets on the map based on your search term.",
+  "summary": "On the page you have a number of common features that help you quickly navigate, find and filter the assets of interest. <div class=\"result\" markdown> === \"Views\" You can customize your column views and save them, allowing you to quickly change vi...",
+  "source": "core-docs/docs/operations-tools/asset-map/how-to/filtering-visible-assets.md",
+  "code_examples": [],
+  "related": [
+    "how-to/managing-assets"
+  ],
+  "tags": [
+    "assets",
+    "configure",
+    "create",
+    "filtering",
+    "operations",
+    "smartapp",
+    "visible"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

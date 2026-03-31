@@ -1,0 +1,30 @@
+{
+  "id": "api/schemas/deploymenttargettype",
+  "title": "DeploymentTargetType",
+  "type": "schema",
+  "category": "api",
+  "content": "# DeploymentTargetType\n\nType of target to deploy the application to.\n\n- `cluster`: Deploy the application to a specific cluster, and optionally to a specific node.\n- `resource-cluster`: Deploy the application to the cluster specified by the resource property `cluster`.\n\n## Enum Values\n\n- `cluster`\n- `resource-cluster`",
+  "summary": "Type of target to deploy the application to.\n\n- `cluster`: Deploy the application to a specific cluster, and optionally to a specific node.\n- `resource-cluster`: Deploy the application to the cluster specified by the resource property `cluster`.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.DeploymentTargetType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "cluster",
+        "resource-cluster"
+      ],
+      "default": "cluster",
+      "description": "Type of target to deploy the application to.\n\n- `cluster`: Deploy the application to a specific cluster, and optionally to a specific node.\n- `resource-cluster`: Deploy the application to the cluster specified by the resource property `cluster`."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "api/schemas/simulationdata",
+  "title": "SimulationData",
+  "type": "schema",
+  "category": "api",
+  "content": "# SimulationData\n\n\n## Properties\n\n- **payload** (`any`): Value represented in one of these formats.\n- **resource** (`string`): The `resource` (Asset / Data Stream pair) associated with the `payload`.\n- **timestamp** (`string`): UTC time when the `payload` values were saved, formatted in RFC 3339.",
+  "summary": "Object with properties: payload, resource, timestamp",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.SimulationData",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "payload": {
+          "description": "Value represented in one of these formats.",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "resource": {
+          "type": "string",
+          "nullable": true,
+          "format": "krn",
+          "example": "krn:ad:asset1/data_stream1",
+          "maxLength": 256,
+          "description": "The `resource` (Asset / Data Stream pair) associated with the `payload`."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-11-13T12:00:00Z",
+          "description": "UTC time when the `payload` values were saved, formatted in RFC 3339."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

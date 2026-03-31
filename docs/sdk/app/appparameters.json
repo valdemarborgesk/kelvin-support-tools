@@ -1,0 +1,33 @@
+{
+  "id": "sdk/app/message.msg-builders/appparameters",
+  "title": "AppParameters",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AppParameters\n\nInherits from: MessageBuilder\n\n\nParameters Builder. Set application parameters in bulk.\n\nArgs:\n    resource (Optional[KRNAppVersion]): Optional Kelvin Resource name for the target App Version.\n        Defaults to current app.\n    parameters (List[AssetParameters]): list of single asset parameters\n\n\n## Methods\n\n\n### to_message() -> ParametersMsg\n",
+  "summary": "Parameters Builder. Set application parameters in bulk.",
+  "source": "app/src/kelvin/message/msg_builders.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import AppParameters\n\n# Usage example\napp = AppParameters()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.msg_builders",
+    "item_type": "class",
+    "methods": [
+      "to_message"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

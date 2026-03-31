@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.pagination/paginationcursor",
+  "title": "PaginationCursor",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# PaginationCursor\n\nInherits from: DataModelBase\n\n\nPaginationCursor object.\n\nParameters\n----------\n    next_page: Optional[StrictStr]\n    previous_page: Optional[StrictStr]\n",
+  "summary": "PaginationCursor object.",
+  "source": "api/src/kelvin/api/client/model/pagination.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.pagination.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.pagination",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

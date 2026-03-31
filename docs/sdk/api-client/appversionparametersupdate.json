@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/appversionparametersupdate",
+  "title": "AppVersionParametersUpdate",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AppVersionParametersUpdate\n\nInherits from: DataModelBase\n\n\nAppVersionParametersUpdate object.\n\nParameters\n----------\n    source: Optional[KRN]\n    resource_parameters: list[type_1.AppVersionResourceParameters]\n",
+  "summary": "AppVersionParametersUpdate object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

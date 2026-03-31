@@ -1,0 +1,112 @@
+{
+  "id": "api/endpoints/app-parameters/updateAppVersionParameters",
+  "title": "Update App Version Parameters",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Update App Version Parameters\n\nUpdate App Version Parameters\n\n## Endpoint\n\n`POST /apps/{app_name}/v/{app_version}/parameters/values/update`",
+  "summary": "Update App Version Parameters",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/apps/{app_name}/v/{app_version}/parameters/values/update' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.app_parameters.updateAppVersionParameters()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/app-parameters"
+  ],
+  "tags": [
+    "app-parameters",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/apps/{app_name}/v/{app_version}/parameters/values/update",
+    "method": "POST",
+    "operation_id": "updateAppVersionParameters",
+    "tag": "App Parameters",
+    "permission": "kelvin.permission.parameter.update",
+    "parameters": [
+      {
+        "name": "app_name",
+        "in": "path",
+        "required": true,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": "app_version",
+        "in": "path",
+        "required": true,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": "patch",
+        "in": "query",
+        "required": false,
+        "description": "If set to `true`, it only updates the parameters that are explicitly defined in the request.",
+        "type": "boolean"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "required": [
+          "resource_parameters"
+        ],
+        "properties": {
+          "source": {
+            "type": "string",
+            "format": "krn",
+            "description": "The source of the change request (restricted to Service Accounts)"
+          },
+          "resource_parameters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "resource",
+                "parameters"
+              ],
+              "properties": {
+                "resource": {
+                  "type": "string",
+                  "format": "krn",
+                  "description": "The target resource to which the parameters are to be applied"
+                },
+                "parameters": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/type.ParameterItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "204": {
+        "description": "No Content"
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

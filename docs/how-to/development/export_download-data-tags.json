@@ -1,0 +1,50 @@
+{
+  "id": "how-to/export/download-data-tags",
+  "title": "Download Data Tags",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Download Data Tags\n\n## Available Guides\n* [Download Data Tags for an Asset](#download-data-tags-for-an-asset)\n\n**Reference:**\n\nField                | Description\n---------------------|------------------------------------------\nstart_date  | Start date for the Data Tag. Time is based on UTC timezone, formatted in RFC 3339.\nend_date  | End date for the Data Tag. Time is based on UTC timezone, formatted in RFC 3339.\ntag_name  | Tag name to categorize the Data Tag\nresource  |  The Asset that this Data Tag is related to. This is in KRN format (e.g. `krn:asset:bp_01`)\nsource  |  The process that created this Data Tag. This can be a user or an automated process like a workload, Kelvin SmartApps™, Docker Apps, etc. This is KRN format.\ndescription  |  Detailed description of the Data Tag.\ncontexts  |  A list of associated resources with this Data Tag. This can be a Data Stream, Kelvin SmartApps™ or any other valid resource in the Kelvin Platform.\n\n### Download Data Tags for an Asset\n\nIn this example we will retrieve all Data Tags for an Asset.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin UI\"\n\n    You can download a range of Data Tag information from the Data Explorer page.\n\n    To do this go to the Data Explorer page.\n\n    \n\n    Select the Asset.\n\n    \n\n    Select one or more Data Streams that you want to download the related information.\n\n    \n\n    Choose a time period.\n\n    \n\n    Then click on the download button.\n\n    \n\n    Select the **Export Tags** option.\n\n    \n\n    And finally confirm the download by clicking on the **Okay** button.\n\n    \n\n=== \"Kelvin API\"\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n      \"https://<url.kelvin.ai>/api/v4/datatags/list\" \\\n      -H \"Authorization: Bearer <Your Current Token>\" \\\n      -H \"Accept: application/json\" \\\n      -H \"Content-Type: application/json\" \\\n      -d '{\n            \"start_date\": \"2025-07-01T12:00:00.000Z\",\n            \"end_date\": \"2025-08-01T12:00:00.000Z\",\n            \"resources\": [\n              \"krn:asset:pcp_01\"\n            ]\n        }'\n    ```\n\n    The response will look like this;\n\n    ```json title=\"API cURL Example Response\" linenums=\"1\"\n    {\n       \"pagination\":{\n          \"next_page\":null,\n          \"previous_page\":null\n       },\n       \"data\":[\n          {\n             \"id\":\"80d9c4f1-9aa6-4ac8-9b31-18f49640b282\",\n             \"start_date\":\"2025-07-19T14:40:14.98Z\",\n             \"end_date\":\"2025-07-20T02:40:14.98Z\",\n             \"tag_name\":\"Maintenance event\",\n             \"resource\":\"krn:asset:pcp_01\",\n             \"source\":\"krn:user:demo@kelvin.ai\",\n             \"description\":null,\n             \"contexts\":[],\n             \"created\":\"2025-04-20T13:48:15.09811Z\",\n             \"updated\":\"2025-04-20T13:48:15.09811Z\"\n          }\n       ]\n    }\n    ```\n\n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # List all Data Tags\n    response = client.data_tag.list_data_tag(\n        data={\n            \"start_date\": \"2025-07-01T12:00:00.000Z\",\n            \"end_date\": \"2025-08-01T12:00:00.000Z\",\n            \"resources\": [\n                \"krn:asset:pcp_01\",\n            ],\n        }\n    )\n\n    # Convert the response into a Pandas DataFrame\n    df = response.to_df()\n    \n    # Print the result\n    print(df)\n    ```\n\n    The response will look like this;\n\n    ```bash title=\"API Client (Python) Example Response\" linenums=\"1\"\n                                         id                        start_date                          end_date           tag_name  ... description contexts                           created                           updated\n    0  80d9c4f1-9aa6-4ac8-9b31-18f49640b282  2025-04-19T14:40:14.980000+00:00  2025-04-20T02:40:14.980000+00:00  Maintenance event  ...        None       []  2025-04-20T13:48:15.098110+00:00  2025-04-20T13:48:15.098110+00:00\n\n    [1 rows x 10 columns]\n    ```\n\n</div>",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/export/download-data-tags.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n      \"https://<url.kelvin.ai>/api/v4/datatags/list\" \\\n      -H \"Authorization: Bearer <Your Current Token>\" \\\n      -H \"Accept: application/json\" \\\n      -H \"Content-Type: application/json\" \\\n      -d '{\n            \"start_date\": \"2025-07-01T12:00:00.000Z\",\n            \"end_date\": \"2025-08-01T12:00:00.000Z\",\n            \"resources\": [\n              \"krn:asset:pcp_01\"\n            ]\n        }'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n       \"pagination\":{\n          \"next_page\":null,\n          \"previous_page\":null\n       },\n       \"data\":[\n          {\n             \"id\":\"80d9c4f1-9aa6-4ac8-9b31-18f49640b282\",\n             \"start_date\":\"2025-07-19T14:40:14.98Z\",\n             \"end_date\":\"2025-07-20T02:40:14.98Z\",\n             \"tag_name\":\"Maintenance event\",\n             \"resource\":\"krn:asset:pcp_01\",\n             \"source\":\"krn:user:demo@kelvin.ai\",\n             \"description\":null,\n             \"contexts\":[],\n             \"created\":\"2025-04-20T13:48:15.09811Z\",\n             \"updated\":\"2025-04-20T13:48:15.09811Z\"\n          }\n       ]\n    }",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # List all Data Tags\n    response = client.data_tag.list_data_tag(\n        data={\n            \"start_date\": \"2025-07-01T12:00:00.000Z\",\n            \"end_date\": \"2025-08-01T12:00:00.000Z\",\n            \"resources\": [\n                \"krn:asset:pcp_01\",\n            ],\n        }\n    )\n\n    # Convert the response into a Pandas DataFrame\n    df = response.to_df()\n    \n    # Print the result\n    print(df)",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "bash",
+      "code": "id                        start_date                          end_date           tag_name  ... description contexts                           created                           updated\n    0  80d9c4f1-9aa6-4ac8-9b31-18f49640b282  2025-04-19T14:40:14.980000+00:00  2025-04-20T02:40:14.980000+00:00  Maintenance event  ...        None       []  2025-04-20T13:48:15.098110+00:00  2025-04-20T13:48:15.098110+00:00\n\n    [1 rows x 10 columns]",
+      "title": "API Client (Python) Example Response"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "api",
+    "cli",
+    "create",
+    "data",
+    "development",
+    "docker",
+    "download",
+    "sdk",
+    "smartapp",
+    "tags"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

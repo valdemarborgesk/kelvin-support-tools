@@ -1,0 +1,70 @@
+{
+  "id": "api/schemas/assetproperty",
+  "title": "AssetProperty",
+  "type": "schema",
+  "category": "api",
+  "content": "# AssetProperty\n\n\n## Properties\n\n- **name** (`string`): Unique identifier `name` for the Asset Property. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.\n- **title** (`string`): Display name (title) for the Asset Property. You can use any character, numeric, space and special character in this key.\n- **value** (`any`): ",
+  "summary": "Object with properties: name, title, value",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.AssetProperty",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "example": "water-line-pressure",
+          "maxLength": 64,
+          "description": "Unique identifier `name` for the Asset Property. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters."
+        },
+        "title": {
+          "type": "string",
+          "example": "Water Line Pressure",
+          "maxLength": 64,
+          "description": "Display name (title) for the Asset Property. You can use any character, numeric, space and special character in this key."
+        },
+        "value": {
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "boolean"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

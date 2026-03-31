@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.type/recommendationcontrolchange",
+  "title": "RecommendationControlChange",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# RecommendationControlChange\n\nInherits from: DataModelBase\n\n\nRecommendationControlChange object.\n\nParameters\n----------\n    control_change_id: Optional[UUID]\n    trace_id: Optional[StrictStr]\n    expiration_date: Optional[datetime]\n    payload: Union[StrictInt, StrictFloat, StrictStr, StrictBool, dict[str, Any]]\n    resource: KRN\n    retries: Optional[StrictInt]\n    timeout: Optional[StrictInt]\n    from_: Optional[ControlChangeFrom]\n    status: Optional[enum.RecommendationActionStatus]\n    status_message: Optional[StrictStr]\n",
+  "summary": "RecommendationControlChange object.",
+  "source": "api/src/kelvin/api/client/model/type.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.type.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.type",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

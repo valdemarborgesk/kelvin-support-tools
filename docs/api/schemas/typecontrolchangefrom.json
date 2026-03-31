@@ -1,0 +1,54 @@
+{
+  "id": "api/schemas/controlchangefrom",
+  "title": "ControlChangeFrom",
+  "type": "schema",
+  "category": "api",
+  "content": "# ControlChangeFrom\n\nInformation about the current `resource` data when the the Control Change `payload` is created.\n\n\n## Properties\n\n- **value** (`any`): Value represented in one of these formats.\n- **timestamp** (`string`): UTC time when the current `value` is recorded in the Control Change object, formatted in RFC 3339.",
+  "summary": "Information about the current `resource` data when the the Control Change `payload` is created.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.ControlChangeFrom",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "description": "Information about the current `resource` data when the the Control Change `payload` is created.",
+      "required": [
+        "value",
+        "timestamp"
+      ],
+      "properties": {
+        "value": {
+          "description": "Value represented in one of these formats.",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when the current `value` is recorded in the Control Change object, formatted in RFC 3339."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

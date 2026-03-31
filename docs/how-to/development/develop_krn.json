@@ -1,0 +1,259 @@
+{
+  "id": "how-to/develop/krn",
+  "title": "Kelvin Resource Name Registry",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Kelvin Resource Name Registry\n\n## Overview\n\nThe Kelvin Resource Name (KRN) Registry serves as the centralized system for uniquely identifying various types of resources within the Kelvin Platform. It is conceptually similar to Uniform Resource Names (URN) or Amazon Resource Names (ARN), tailored for Kelvin's use.\n\n## Specification\n\nA KRN must conform to the following criteria:\n\n* **Format**: A KRN should adhere to a specific URN-based format that starts with `krn:` followed by a Namespace Identifier (NID) and a Namespace-Specific String (NSS), separated by colons.\n  * **Example for Data Streams**: `krn:ad:air-conditioner/temperature`\n  * **Example for Workloads**: `krn:wl:my-node/modbus-bridge-1`\n* **Validity**: It must be a valid URN scheme URI, which means it has to contain at least a NID and an NSS.\n*   **Syntax**: The KRN should follow a subset of the URN's ABNF syntax rules, as outlined below:\n\n    ```makefile\n    makefileCopy codekrn           = \"krn\" \":\" NID \":\" NSS\n    NID           = (alphanum) 0*30(ldh) (alphanum)\n    NSS           = pchar *(pchar / \"/\")\n    ```\n* **Documentation**: All NIDs used in KRN must be documented, along with the NSS specification.\n\n## Definitions\n\n* [Asset Custom Action (`aca`)](#asset-custom-action)\n* [Action (`action`)](#action)\n* [Asset Data Stream (`ad`)](#asset-data-stream)\n* [Asset Parameter (`ap`)](#asset-parameter)\n* [App (`app`)](#app)\n* [App Parameter (`app-parameter`)](#app-parameter)\n* [App Version (`appversion`)](#app-version)\n* [Asset (`asset`)](#asset)\n* [Asset Type (`asset-type`)](#asset-type)\n- [Control Change (`control-change`)](#control-change)\n* [Data Stream(`datastream`)](#data-stream)\n* [Data Quality - Asset Data Stream (`dqad`)](#data-quality-asset-data-stream)\n* [Data Quality - Asset (`dqasset`)](#data-quality-asset)\n* [Job (`job`)](#job)\n* [Recommendation (`recommendation`)](#recommendation)\n* [Schedule (`schedule`)](#schedule)\n* [Service Account (`srv-acc`)](#service-account)\n* [System (`system`)](#system)\n* [User (`user`)](#user)\n* [Workload (`wl`)](#workload)\n* [Workload App Version(`wlappv`)](#workload-app-version)\n\n## Asset Custom Action\n\n```abnf\naca-krn = \"krn\" \":\" \"aca\" \":\" asset \"/\" action\n\nasset = NAME\naction = NAME-V2\n```\n\n**Examples**\n\n```\nkrn:aca:air-conditioner-1/email\nkrn:aca:beam-pump/Webhook\n```\n\n## Action\n\n```abnf\naction-krn = \"krn\" \":\" \"action\" \":\" email\n\naction     = NAME-V2\n```\n\n**Examples**\n\n```\nkrn:action:email\nkrn:action:Webhook\n```\n\n## Asset Data Stream\n\n```abnf\nad-krn = \"krn\" \":\" \"ad\" \":\" asset \"/\" datastream\n\nasset       = NAME\ndatastream = NAME\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNAssetDataStream\n\nKRNAssetDataStream(asset=\"air-conditioner-1\", data_stream=\"temp-setpoint\")\n```\n\n**Examples**\n\n```\nkrn:ad:air-conditioner-1/temp-setpoint\nkrn:ad:beam-pump/casing.temperature\nkrn:ad:centrifugal-pump-02/oee\nkrn:ad:centrifugal-pump-02/failure_quotient\n```\n\n## Asset Parameter\n```abnf\nap-krn = \"krn\" \":\" \"ap\" \":\" asset \"/\" parameter\n\nasset  = NAME\nparameter = NAME\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNAssetParameter\n\nKRNAssetParameter(asset=\"air-conditioner-1\",parameter=\"closed_loop\")\n```\n\n**Examples**\n\n```\nkrn:ap:air-conditioner-1/closed_loop\n```\n\n## App\n\n```abnf\napp-krn = \"krn\" \":\" \"app\" \":\" app\n\napp     = NAME\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNApp\n\nKRNApp(app=\"smart-pcp\")\n```\n\n**Examples**\n\n```\nkrn:app:smart-pcp\nkrn:app:pvc\n```\n\n## App Parameter\n\n```abnf\napp-parameter-krn = \"krn\" \":\" \"app-paramter\" \":\" app \":\" parameter\n\napp       = NAME\nparameter = NAME\n```\n\n**Examples**\n\n```\nkrn:app-parameter:my-app:my-param\nkrn:app-parameter:smart-pcp:closed_loop\n```\n\n## App Version\n\n```abnf\nappversion-krn = \"krn\" \":\" \"appversion\" \":\" app \"/\" version\n\napp     = NAME\nversion = NAME\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNAppVersion\n\nKRNAppVersion(app=\"smart-pcp\",version=\"2.0.0\")\n```\n\n**Examples**\n\n```\nkrn:appversion:smart-pcp/2.0.0\nkrn:appversion:pvc/3.0.1\n```\n\n## Asset\n\n```abnf\nasset-krn = \"krn\" \":\" \"asset\" \":\" asset\n\nasset  = NAME\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNAsset\n\nKRNAsset(asset=\"air-conditioner-1\")\n```\n\n**Examples**\n\n```\nkrn:asset:air-conditioner-1\nkrn:asset:beam-pump\n```\n\n## Asset Type\n\n```abnf\nasset-type-krn = \"krn\" \":\" \"asset-type\" \"/\" asset-type\n\nasset-type  = NAME\n```\n\n**Examples**\n\n```\nkrn:asset-type/beam-pump\n```\n\n## Control Change\n\n```abnf\ncontrol-change-krn = \"krn\" \":\" \"control-change\" \":\" control-change-id\n\ncontrol-change-id  = UUID\n```\n\n**Examples**\n\n```\nkrn:control-change:86a425b4-b43f-4989-a38f-b18f6b3d1ec7\n```\n\n## Data Stream\n\n```abnf\ndatastream-krn = \"krn\" \":\" \"datastream\" \":\" datastream\n\ndatastream  = NAME\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNDatastream\n\nKRNDatastream(datastream=\"temp-setpoint\")\n```\n\n**Examples**\n\n```\nkrn:datastream:temp-setpoint\nkrn:datastream:casing.temperature\nkrn:datastream:oee\n```\n\n## Data Quality - Asset Data Stream\n\n```abnf\ndqad-krn = \"krn\" \":\" \"dqad\" \":\" data-quality \":\" asset \"/\" datastream\n\nasset        = NAME\ndatastream   = NAME\ndata-quality = NAME\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNAssetDataStreamDataQuality\n\nKRNAssetDataStreamDataQuality(asset=\"pcp_01\",data_stream=\"gas_flow\",data_quality=\"kelvin_timestamp_anomaly\")\n```\n\n**Examples**\n\n```\nkrn:dqad:kelvin_timestamp_anomaly:pcp_01/gas_flow \nkrn:dqad:kelvin_out_of_range_detection:pcp_01/gas_flow\n```\n\n## Data Quality - Asset\n\n```abnf\ndqasset-krn = \"krn\" \":\" \"dqasset\" \":\" data-quality \":\" asset\n\nasset        = NAME\ndata-quality = NAME\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNAssetDataQuality\n\nKRNAssetDataQuality(asset=\"pcp01\",data_quality=\"asset_score\")\n```\n\n**Examples**\n\n```\nkrn:dqasset:asset_score:pcp01\n```\n\n## Job\n\n```abnf\njob-krn = \"krn\" \":\" \"job\" \":\" job \"/\" job-run-id\n\njob = NAME\njob-run-id = 1*(DIGIT / ALPHA / \"_\" / \"-\")\n```\n\n**Examples**\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNJob\n\nKRNJob(job=\"parameters-schedule-worker\",job_run_id=\"1257897347822083\")\n```\n\n```\nkrn:job:parameters-schedule-worker/1257897347822083\n```\n\n## Recommendation\n\n```abnf\nrecommendation-krn = \"krn\" \":\" \"recommendation\" \":\" recommendation-id\n\nrecommendation-id  = UUID\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNRecommendation\n\nKRNRecommendation(recommendation_id=\"86a425b4-b43f-4989-a38f-b18f6b3d1ec7\")\n```\n\n**Examples**\n\n```\nkrn:recommendation:86a425b4-b43f-4989-a38f-b18f6b3d1ec7\n```\n\n## Schedule\n\n```abnf\nschedule-krn = \"krn\" \":\" \"schedule\" \":\" schedule\n\nschedule = USERNAME\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNSchedule\n\nKRNSchedule(schedule=\"6830a7d3-bcf3-4a64-8126-eaaeeca86676\")\n```\n\n**Examples**\n\n```\nkrn:schedule:6830a7d3-bcf3-4a64-8126-eaaeeca86676\n```\n\n## Service Account\n\n```abnf\nsrv-acc-krn = \"krn\" \":\" \"srv-acc\" \":\" account-name\n\naccount-name = USERNAME\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNServiceAccount\n\nKRNServiceAccount(service_account=\"node-client-my-edge-cluster\")\n```\n\n**Examples**\n\n```\nkrn:srv-acc:node-client-my-edge-cluster\n```\n\n## System\n\n```abnf\nsystem-krn = \"krn\" \":\" \"system\" \":\" system_name\n\nsystem_name = NAME-V2\n```\n\n**Examples**\n\n```\nkrn:system:kelvin\n```\n\n## User\n\n```abnf\nuser-krn = \"krn\" \":\" \"user\" \":\" user\n\nuser  = USERNAME\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNUser\n\nKRNUser(user=\"me@example.com\")\n```\n\n**Examples**\n\n```\nkrn:user:me@example.com\n```\n\n## Workload\n\n```abnf\nwl-krn = \"krn\" \":\" \"wl\" \":\" cluster \"/\" workload\n\ncluster  = DNS-SAFE\nworkload = DNS-SAFE\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNWorkload\n\nKRNWorkload(node=\"my-node\",workload=\"temp-adjuster-1\")\n```\n\n**Examples**\n\n```\nkrn:wl:my-node/temp-adjuster-1\n```\n\n## Workload App Version\n\n```abnf\nwlappv-krn = \"krn\" \":\" \"wlappv\" \":\" wl-krn \":\" appversion-krn\n```\n\n**SDK Example**\n\n```python linenums=\"1\"\nfrom kelvin.krn import KRNWorkloadAppVersion\n\nKRNWorkloadAppVersion(node=\"my-node\",workload=\"pvc-r312\",app=\"pvc\",version=\"1.0.0\")\n```\n\n**Examples**\n\n```\nkrn:wlappv:cluster_name/workload_name:app_name/app_version\nkrn:wlappv:my-node/pvc-r312:pvc/1.0.0\n```\n\n# Common Components\n\nSee [Kelvin Platform\nRegex](https://docs.google.com/spreadsheets/d/1kOG7G6oz8PirKhCsljeHQe2xX96gV2kdUogmGxlnRG4/edit#gid=0)\nfor the complete and authoritative document.\n\n| Component     | Regex\n|---            | ---\n| DNS-SAFE-NAME | `^[a-z]([-a-z0-9]*[a-z0-9])?$`\n| NAME          | `^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$`\n| NAME-V2       | `^[a-zA-Z0-9]([-_ .a-zA-Z0-9]*[a-zA-Z0-9])?$`\n| SEMVER        | See [Semantic Versioning](https://semver.org/)\n| USERNAME      | Probably limited by the URN spec, so `([-a-zA-Z0-9()+,.:=@;$_!*'&~\\/]|%[0-9a-f]{2})+`\n| UUID          | `^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$`",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/develop/krn.md",
+  "code_examples": [
+    {
+      "language": "makefile",
+      "code": "makefileCopy codekrn           = \"krn\" \":\" NID \":\" NSS\n    NID           = (alphanum) 0*30(ldh) (alphanum)\n    NSS           = pchar *(pchar / \"/\")"
+    },
+    {
+      "language": "abnf",
+      "code": "aca-krn = \"krn\" \":\" \"aca\" \":\" asset \"/\" action\n\nasset = NAME\naction = NAME-V2"
+    },
+    {
+      "language": "text",
+      "code": "krn:aca:air-conditioner-1/email\nkrn:aca:beam-pump/Webhook"
+    },
+    {
+      "language": "abnf",
+      "code": "action-krn = \"krn\" \":\" \"action\" \":\" email\n\naction     = NAME-V2"
+    },
+    {
+      "language": "text",
+      "code": "krn:action:email\nkrn:action:Webhook"
+    },
+    {
+      "language": "abnf",
+      "code": "ad-krn = \"krn\" \":\" \"ad\" \":\" asset \"/\" datastream\n\nasset       = NAME\ndatastream = NAME"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNAssetDataStream\n\nKRNAssetDataStream(asset=\"air-conditioner-1\", data_stream=\"temp-setpoint\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:ad:air-conditioner-1/temp-setpoint\nkrn:ad:beam-pump/casing.temperature\nkrn:ad:centrifugal-pump-02/oee\nkrn:ad:centrifugal-pump-02/failure_quotient"
+    },
+    {
+      "language": "abnf",
+      "code": "ap-krn = \"krn\" \":\" \"ap\" \":\" asset \"/\" parameter\n\nasset  = NAME\nparameter = NAME"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNAssetParameter\n\nKRNAssetParameter(asset=\"air-conditioner-1\",parameter=\"closed_loop\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:ap:air-conditioner-1/closed_loop"
+    },
+    {
+      "language": "abnf",
+      "code": "app-krn = \"krn\" \":\" \"app\" \":\" app\n\napp     = NAME"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNApp\n\nKRNApp(app=\"smart-pcp\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:app:smart-pcp\nkrn:app:pvc"
+    },
+    {
+      "language": "abnf",
+      "code": "app-parameter-krn = \"krn\" \":\" \"app-paramter\" \":\" app \":\" parameter\n\napp       = NAME\nparameter = NAME"
+    },
+    {
+      "language": "text",
+      "code": "krn:app-parameter:my-app:my-param\nkrn:app-parameter:smart-pcp:closed_loop"
+    },
+    {
+      "language": "abnf",
+      "code": "appversion-krn = \"krn\" \":\" \"appversion\" \":\" app \"/\" version\n\napp     = NAME\nversion = NAME"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNAppVersion\n\nKRNAppVersion(app=\"smart-pcp\",version=\"2.0.0\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:appversion:smart-pcp/2.0.0\nkrn:appversion:pvc/3.0.1"
+    },
+    {
+      "language": "abnf",
+      "code": "asset-krn = \"krn\" \":\" \"asset\" \":\" asset\n\nasset  = NAME"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNAsset\n\nKRNAsset(asset=\"air-conditioner-1\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:asset:air-conditioner-1\nkrn:asset:beam-pump"
+    },
+    {
+      "language": "abnf",
+      "code": "asset-type-krn = \"krn\" \":\" \"asset-type\" \"/\" asset-type\n\nasset-type  = NAME"
+    },
+    {
+      "language": "text",
+      "code": "krn:asset-type/beam-pump"
+    },
+    {
+      "language": "abnf",
+      "code": "control-change-krn = \"krn\" \":\" \"control-change\" \":\" control-change-id\n\ncontrol-change-id  = UUID"
+    },
+    {
+      "language": "text",
+      "code": "krn:control-change:86a425b4-b43f-4989-a38f-b18f6b3d1ec7"
+    },
+    {
+      "language": "abnf",
+      "code": "datastream-krn = \"krn\" \":\" \"datastream\" \":\" datastream\n\ndatastream  = NAME"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNDatastream\n\nKRNDatastream(datastream=\"temp-setpoint\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:datastream:temp-setpoint\nkrn:datastream:casing.temperature\nkrn:datastream:oee"
+    },
+    {
+      "language": "abnf",
+      "code": "dqad-krn = \"krn\" \":\" \"dqad\" \":\" data-quality \":\" asset \"/\" datastream\n\nasset        = NAME\ndatastream   = NAME\ndata-quality = NAME"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNAssetDataStreamDataQuality\n\nKRNAssetDataStreamDataQuality(asset=\"pcp_01\",data_stream=\"gas_flow\",data_quality=\"kelvin_timestamp_anomaly\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:dqad:kelvin_timestamp_anomaly:pcp_01/gas_flow \nkrn:dqad:kelvin_out_of_range_detection:pcp_01/gas_flow"
+    },
+    {
+      "language": "abnf",
+      "code": "dqasset-krn = \"krn\" \":\" \"dqasset\" \":\" data-quality \":\" asset\n\nasset        = NAME\ndata-quality = NAME"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNAssetDataQuality\n\nKRNAssetDataQuality(asset=\"pcp01\",data_quality=\"asset_score\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:dqasset:asset_score:pcp01"
+    },
+    {
+      "language": "abnf",
+      "code": "job-krn = \"krn\" \":\" \"job\" \":\" job \"/\" job-run-id\n\njob = NAME\njob-run-id = 1*(DIGIT / ALPHA / \"_\" / \"-\")"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNJob\n\nKRNJob(job=\"parameters-schedule-worker\",job_run_id=\"1257897347822083\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:job:parameters-schedule-worker/1257897347822083"
+    },
+    {
+      "language": "abnf",
+      "code": "recommendation-krn = \"krn\" \":\" \"recommendation\" \":\" recommendation-id\n\nrecommendation-id  = UUID"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNRecommendation\n\nKRNRecommendation(recommendation_id=\"86a425b4-b43f-4989-a38f-b18f6b3d1ec7\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:recommendation:86a425b4-b43f-4989-a38f-b18f6b3d1ec7"
+    },
+    {
+      "language": "abnf",
+      "code": "schedule-krn = \"krn\" \":\" \"schedule\" \":\" schedule\n\nschedule = USERNAME"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNSchedule\n\nKRNSchedule(schedule=\"6830a7d3-bcf3-4a64-8126-eaaeeca86676\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:schedule:6830a7d3-bcf3-4a64-8126-eaaeeca86676"
+    },
+    {
+      "language": "abnf",
+      "code": "srv-acc-krn = \"krn\" \":\" \"srv-acc\" \":\" account-name\n\naccount-name = USERNAME"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNServiceAccount\n\nKRNServiceAccount(service_account=\"node-client-my-edge-cluster\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:srv-acc:node-client-my-edge-cluster"
+    },
+    {
+      "language": "abnf",
+      "code": "system-krn = \"krn\" \":\" \"system\" \":\" system_name\n\nsystem_name = NAME-V2"
+    },
+    {
+      "language": "text",
+      "code": "krn:system:kelvin"
+    },
+    {
+      "language": "abnf",
+      "code": "user-krn = \"krn\" \":\" \"user\" \":\" user\n\nuser  = USERNAME"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNUser\n\nKRNUser(user=\"me@example.com\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:user:me@example.com"
+    },
+    {
+      "language": "abnf",
+      "code": "wl-krn = \"krn\" \":\" \"wl\" \":\" cluster \"/\" workload\n\ncluster  = DNS-SAFE\nworkload = DNS-SAFE"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNWorkload\n\nKRNWorkload(node=\"my-node\",workload=\"temp-adjuster-1\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:wl:my-node/temp-adjuster-1"
+    },
+    {
+      "language": "abnf",
+      "code": "wlappv-krn = \"krn\" \":\" \"wlappv\" \":\" wl-krn \":\" appversion-krn"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.krn import KRNWorkloadAppVersion\n\nKRNWorkloadAppVersion(node=\"my-node\",workload=\"pvc-r312\",app=\"pvc\",version=\"1.0.0\")"
+    },
+    {
+      "language": "text",
+      "code": "krn:wlappv:cluster_name/workload_name:app_name/app_version\nkrn:wlappv:my-node/pvc-r312:pvc/1.0.0"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "cli",
+    "development",
+    "kelvin",
+    "name",
+    "registry",
+    "resource",
+    "sdk"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

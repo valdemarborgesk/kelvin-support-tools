@@ -1,0 +1,37 @@
+{
+  "id": "sdk/app/application.stream/kelvinstream",
+  "title": "KelvinStream",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KelvinStream\n\nInherits from: StreamInterface\n\n\n## Methods\n\n\n### __init__(config: KelvinStreamConfig) -> None\n\n\n### async connect() -> None\n\nConnects to Kelvin Stream\n\n\n### async disconnect() -> None\n\nDisconnects from Kelvin Stream\n\n\n### async read() -> Message\n\nReads the next Kelvin Message\n\n\n### async write(msg: Message) -> bool\n\nWrites a Message to the Kelvin Stream\n",
+  "summary": "",
+  "source": "app/src/kelvin/application/stream.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import KelvinStream\n\n# Usage example\napp = KelvinStream()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "application.stream",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "connect",
+      "disconnect",
+      "read",
+      "write"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

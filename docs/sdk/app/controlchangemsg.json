@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/message.base-messages/controlchangemsg",
+  "title": "ControlChangeMsg",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ControlChangeMsg\n\nInherits from: Message\n\n\nGeneric Control Change Message\n",
+  "summary": "Generic Control Change Message",
+  "source": "app/src/kelvin/message/base_messages.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import ControlChangeMsg\n\n# Usage example\napp = ControlChangeMsg()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "message.base_messages",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

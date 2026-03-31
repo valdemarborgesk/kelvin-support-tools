@@ -1,0 +1,29 @@
+{
+  "id": "how-to/asset-details-overview",
+  "title": "View Assets Details",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# View Assets Details\n\n_On this page you will learn about accessing and understanding the Asset Details Page in Kelvin UI._\n\n## Overview\n\nThe Assets page is the first page you will see when you log into the Kelvin UI. You can also go there by clicking on the Asset option in the left sidebar.\n\nHere you have a list of all Assets registered in Kelvin. From here you can see the Assets and associated information.\n\nWhen you click on an Asset and then click on the **Applications Tab** you will see an overview with all the details about the Asset for each Application.\n\n    In our example we only have one Kelvin SmartApp™ associated with this Asset, so you see the Kelvin SmartApp™ name in the tab bar.\n\n    If there are multiple Applications, then the tab will say **Applications** and in this tab will be a sub tab with each Kelvin SmartApp™'s name.\n\nOn this tab, the Production Engineers will be able to perform most of the operational tasks required in managing the Assets including;\n\n* See the status of an Asset\n* See the Recommendations and its status for each Kelvin SmartApp™\n* View all details about an Asset in each Kelvin SmartApp™ that it is associated with\n* Change the App Parameter values for any Kelvin SmartApps™\n* Set and Manage App Parameter change Schedules\n\n## Status and Links\n\nAt the top you have the Asset status, the ability to switch between Assets and links to **Manual Controls** and **Data Explorer**.\n\n<div class=\"result\" markdown>\n\n=== \"Tabs\"\n\n    The tabs has all the information and actions for the Asset.\n\n    Currently there are three tabs;\n\n    * **Control Panel**: This is a customizable area where you can setup your dashboard for your Assets.\n    * **Manual Controls**: This is where you can change any of the Data Stream values that are Read/Write (this is declared in Connections). Read-only values are still be viewed in here.\n    * **Applications** or **Name of Application**: This is where you can manage the App Parameters, schedules and recommendations for each Application associated with the Asset. If there is only one Application, then the name will be shown in the tab instead of the word **Applications**.\n\n    \n\n=== \"Quick Change\"\n\n    At the top right hand corner you have two buttons to move quickly between the Assets.\n\n    \n        Kelvin UI intelligently remembers your search results from the Assets Overview page and will rotate through your Assets that are in the search results ONLY. This allows you to quickly move between the Assets that matter the most to you at that time.\n\n        If you want to view other Assets you will need to return to the Assets page and update or clear the search box\n\n    \n\n=== \"Asset Status\"\n\n    At the top you can see the status of the Asset.\n\n    \n\n    | Title | Description |\n    | --- | --- |\n    | Asset Status | This tells you if Kelvin SmartApps™ processing the Asset is connected to the Kelvin Cloud. If it is not connected, then Kelvin SmartApps™ has no access to the Data Streams for its inputs and outputs. |\n    | Asset Type | This is a group classification for Assets. It has no affect on the operations of the Asset and is used to group similar Assets together for easy viewing. |\n\n=== \"AI Quick Links\"\n\n    At the top you have two AI quick links.\n\n    \n\n    Click on the link to read more about each feature;\n\n    * [Summarize](../../kelvin-ai/how-to/targeted-summaries.md)\n    * [Notes](../../kelvin-ai/how-to/history-notes.md)\n\n=== \"Tabs Configuration\"\n\n    You have full flexibility to customize the tabs for the Asset to optimize your workflow process.\n\n    \n\n    When you click on the button, the options will appear on the side where you can order the tabs to suit your workflow.\n\n    \n\n=== \"Data Explorer\"\n\n    This button will take you to the Data Explorer and pre-populate the Asset into the filters selection.\n\n    \n\n    In Data Explorer you can see the historical graphical data about one or more Assets and all the Data Streams associated with the asset.\n\n    \n\n    The Data Explorer is tightly integrated with the Kelvin and gives many additional features to the standard graphs including;\n\n    * Reference to time when a control change was performed on a Data Stream\n    * Reference when a Recommendation was activated\n    * Easily change timezone to see what time events happened according to your location\n    * Filter which Assets and Data Streams to view - even data that is not related to this Asset.\n    * Select the Y axis to be either all Data Streams on one axis value range, one axis value range per Data Stream or one axis value range per type (e.g. for temperature, vibrations, etc)\n    * Independent Y-Axis Zoom controls when displaying multiple y-axis value ranges.\n    * Multi-chart (up to four) to deeper analysis of multiple Assets together.\n\n    \n        To learn all the details and features of the Data Explorer, check out the [Data Explorer documentation page](../../data-explorer-page/data-explorer-overview.md) in Operations Tools.\n\n</div>",
+  "summary": "_On this page you will learn about accessing and understanding the Asset Details Page in Kelvin UI._",
+  "source": "core-docs/docs/operations-tools/assets-page/how-to/asset-details-overview.md",
+  "code_examples": [],
+  "related": [
+    "how-to/targeted-summaries",
+    "how-to/history-notes"
+  ],
+  "tags": [
+    "assets",
+    "cli",
+    "configure",
+    "details",
+    "operations",
+    "smartapp",
+    "view"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

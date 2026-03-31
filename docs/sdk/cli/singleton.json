@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.session.session-manager/singleton",
+  "title": "Singleton",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Singleton\n\nInherits from: type\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/session/session_manager.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.session.session_manager",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "id": "how-to/upload-kelvin-smartapp",
+  "title": "Upload Application",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Upload Application\n\n<p style=\"text-align: center;\">\n  <a href=\"../test-kelvin-smartapp/\" class=\"md-button md-button--primary\">\n    ← Test Application\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-left: 0.4em;\">③</span>\n  </a>\n  <a href=\"../configure-cloud-for-smartapp/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">⑤</span>\n    Configure Kelvin Cloud →\n  </a>\n</p>\n\nNow it is time to build your image and upload it to the Kelvin Cloud instance.\n\nThe App Registry is a centralized repository that stores all the Applications you create. Once uploaded, you can deploy your Application to any Kelvin Edge cluster connected to your Kelvin Cloud instance.\n\nLet's start by making sure your Application is ready for upload.\n\n## Prerequisites\nThe main section in the `app.yaml` file defines crucial attributes such as the unique name, display name, description, and version of your app. Below is an example of what your `app.yaml` file might look like:\n\n```yaml title=\"app.yaml Example\" linenums=\"1\"\nname: event-detection\ntitle: Event Detection\ndescription: Monitors if a motor is overheating. If so, it will send a Control Change to reduce the Motor Speed.\nversion: 1.0.0\n```\n\n    If you try to upload an app with the same version number as an existing one in the App Registry, you’ll encounter an error. Always ensure you increment the version number before uploading.\n\n## SDK Login\n\nBefore uploading your app, you need to login the SDK with your Kelvin Cloud credentials.\n\nOpen a terminal and run the following command:\n\n```bash title=\"Kelvin SDK Command Line Login\" linenums=\"1\"\nkelvin auth login <url.kelvin.ai>\n```\n\nAnd type in your Kelvin Cloud credentials when prompted.\n\n## Build (optional)\n\nBefore uploading, you have the option to build your application to verify that all components compile successfully.\n\n    This step is optional. You can proceed directly to the upload step, which will automatically build the Kelvin SmartApp™ as part of the process.\n\nOpen a terminal in the directory where your app and its associated files are located, and run the following command:\n\n```bash title=\"Building Your Kelvin SmartApp™\" linenums=\"1\"\nkelvin app build\n```\n\n| Options | Description |\n| --- | --- |\n| `--app-dir PATH` | The path to the application's directory. Assumes the current directory if not specified. |\n| `--build-arg TEXT` | Additional custom arguments that are passed straight to the docker build command. |\n| `--multiarch TEXT` | Comma-separated list of architectures to build.</br>Supported Architectures: amd64,arm64,arm32.</br> ny other value will be passed to docker build engine as is.</br>Default is **amd64** |\n| `-v, --verbose` | Display all executed steps to the screen. |\n| `--help` | Show this message and exit. |\n\n## Upload\nUploading your app is straightforward and requires just a single command. Open a terminal in the directory where your app and its associated files are located, and run the following command:\n\n    Make sure Docker is installed and running before executing the upload command. Docker is essential for packaging and uploading apps to the App Registry.\n\n```bash title=\"Kelvin SDK Command Line Example\" linenums=\"1\"\nkelvin app upload\n```\n\nAs the command runs, you will observe the app being packaged and subsequently uploaded to the App Registry. Here's a sample output:\n\n```bash title=\"Kelvin SDK Command Line Output\" linenums=\"1\"\n[kelvin.sdk][2025-10-03 20:53:51][R] Image successfully built: \"event-detection:1.0.0\"\n[kelvin.sdk][2025-10-03 20:53:51][I] Pushing application content to \"https://<url.kelvin.ai>\"\n       [elapsed: 00:19] - [Layer: 2e1bc7550524] - [Pushed]\n       [elapsed: 00:19] - [Layer: f15701d79da8] - [Layer already exists]\n[kelvin.sdk][2025-10-03 20:54:10][R] Application \"event-detection:1.0.0\" successfully pushed to registry \"https://<url.kelvin.ai>\"\n[kelvin.sdk][2025-10-03 20:54:10][R]\n\n            Application successfully uploaded:\n                Name: event-detection\n                Version: 1.0.0\n```\n\n    **Congratulations!** You successfully uploaded your Kelvin Application™ to the App Registry.\n\n## Next Step\n\nThe next step is to configure your Kelvin Cloud instance to simulate a real-world edge deployment.\n\n<p style=\"text-align: center;\">\n  <a href=\"../test-kelvin-smartapp/\" class=\"md-button md-button--primary\">\n    ← Test Application\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-left: 0.4em;\">③</span>\n  </a>\n  <a href=\"../configure-cloud-for-smartapp/\" class=\"md-button md-button--primary\">\n    <span style=\"font-size: 1.5em; vertical-align: middle; margin-right: 0.4em;\">⑤</span>\n    Configure Kelvin Cloud →\n  </a>\n</p>",
+  "summary": "<p style=\"text-align: center;\"> <a href=\"../test-kelvin-smartapp/\" class=\"md-button md-button--primary\"> ← Test Application <span style=\"font-size: 1.5em; vertical-align: middle; margin-left: 0.4em;\">③</span>",
+  "source": "core-docs/docs/developer-tools/quick-start/how-to/upload-kelvin-smartapp.md",
+  "code_examples": [
+    {
+      "language": "yaml",
+      "code": "name: event-detection\ntitle: Event Detection\ndescription: Monitors if a motor is overheating. If so, it will send a Control Change to reduce the Motor Speed.\nversion: 1.0.0",
+      "title": "app.yaml Example"
+    },
+    {
+      "language": "bash",
+      "code": "kelvin auth login <url.kelvin.ai>",
+      "title": "Kelvin SDK Command Line Login"
+    },
+    {
+      "language": "bash",
+      "code": "kelvin app build",
+      "title": "Building Your Kelvin SmartApp™"
+    },
+    {
+      "language": "bash",
+      "code": "kelvin app upload",
+      "title": "Kelvin SDK Command Line Example"
+    },
+    {
+      "language": "bash",
+      "code": "[kelvin.sdk][2025-10-03 20:53:51][R] Image successfully built: \"event-detection:1.0.0\"\n[kelvin.sdk][2025-10-03 20:53:51][I] Pushing application content to \"https://<url.kelvin.ai>\"\n       [elapsed: 00:19] - [Layer: 2e1bc7550524] - [Pushed]\n       [elapsed: 00:19] - [Layer: f15701d79da8] - [Layer already exists]\n[kelvin.sdk][2025-10-03 20:54:10][R] Application \"event-detection:1.0.0\" successfully pushed to registry \"https://<url.kelvin.ai>\"\n[kelvin.sdk][2025-10-03 20:54:10][R]\n\n            Application successfully uploaded:\n                Name: event-detection\n                Version: 1.0.0",
+      "title": "Kelvin SDK Command Line Output"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "application",
+    "cli",
+    "configure",
+    "create",
+    "deploy",
+    "development",
+    "docker",
+    "monitor",
+    "sdk",
+    "smartapp",
+    "test",
+    "upload"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

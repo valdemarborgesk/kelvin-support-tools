@@ -1,0 +1,126 @@
+{
+  "id": "api/schemas/clusteredgeapps",
+  "title": "ClusterEdgeApps",
+  "type": "schema",
+  "category": "api",
+  "content": "# ClusterEdgeApps\n\n\n## Properties\n\n- **edge_ui** (`object`): \n- **edge_ccm** (`object`): \n- **edge_k8s** (`object`): \n- **edge_info** (`object`): \n- **edge_mqtt** (`object`): \n- **edge_nats** (`object`): \n- **edge_sync** (`object`): \n- **edge_leader_api** (`object`): \n- **edge_custom_action_manager** (`object`): ",
+  "summary": "Object with properties: edge_ui, edge_ccm, edge_k8s, edge_info, edge_mqtt",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.ClusterEdgeApps",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "edge_ui": {
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "Disable the Edge UI service."
+            }
+          }
+        },
+        "edge_ccm": {
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "Disable the Edge CCM service."
+            }
+          }
+        },
+        "edge_k8s": {
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "Disable the Edge K8S service."
+            }
+          }
+        },
+        "edge_info": {
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "Disable the Edge Info service."
+            }
+          }
+        },
+        "edge_mqtt": {
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "Disable the Edge MQTT service."
+            },
+            "expose": {
+              "type": "boolean",
+              "default": false,
+              "description": "Expose the Edge MQTT service."
+            },
+            "anonymous": {
+              "type": "boolean",
+              "default": false,
+              "description": "Allow anonymous access to the Edge MQTT service."
+            }
+          }
+        },
+        "edge_nats": {
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "Disable the Edge NATS service."
+            }
+          }
+        },
+        "edge_sync": {
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "Disable the Edge Sync service."
+            }
+          }
+        },
+        "edge_leader_api": {
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "Disable the Edge Leader API service."
+            }
+          }
+        },
+        "edge_custom_action_manager": {
+          "type": "object",
+          "properties": {
+            "disabled": {
+              "type": "boolean",
+              "default": false,
+              "description": "Disable the Edge Custom Action Manager service."
+            }
+          }
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

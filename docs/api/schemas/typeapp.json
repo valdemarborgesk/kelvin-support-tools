@@ -1,0 +1,137 @@
+{
+  "id": "api/schemas/app",
+  "title": "App",
+  "type": "schema",
+  "category": "api",
+  "content": "# App\n\n\n## Properties\n\n- **name** (`string`): The name of the application. This is the unique identifier for the application.\n- **title** (`string`): Human-readable name of the application.\n- **description** (`string`): Human-readable description of the application.\n- **category** (`string`): The category of the application.\n- **type** (`string`): The type of application.\n\n- `app`: An App that allows mapping inputs and outputs to data\nstreams, sending control changes, recommendations, and data tags.\n- `importer`: Connects to an external system to import data into the\nplatform as well as receive control changes to act on the external\nsystem.\n- `exporter`: Connects to the platform to export data to an external\nsystem.\n- `docker`: An external application that does not connect to the\nplatform's data streams.\n- `task`: An application type used internally by the Tasks feature.\n- **dashboard_uid** (`string`): \n- **latest_version** (`string`): The version of the Application that was crated last\n- **versions** (`array`): \n- **deployment** (`object`): \n- **created_at** (`string`): UTC time when the object was created, formatted in RFC 3339.\n- **created_by** (`string`): KRN of the user or process that created the object.\n- **updated_at** (`string`): UTC time when any keys were last updated, formatted in RFC 3339.\n- **updated_by** (`string`): KRN of the user or process that last updated any of the keys.",
+  "summary": "Object with properties: name, title, description, category, type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.App",
+    "schema_type": "type",
+    "schema": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the application. This is the unique identifier for the application."
+        },
+        "title": {
+          "type": "string",
+          "description": "Human-readable name of the application."
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of the application."
+        },
+        "category": {
+          "type": "string",
+          "description": "The category of the application."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "app",
+            "importer",
+            "exporter",
+            "docker",
+            "task"
+          ],
+          "description": "The type of application.\n\n- `app`: An App that allows mapping inputs and outputs to data\nstreams, sending control changes, recommendations, and data tags.\n- `importer`: Connects to an external system to import data into the\nplatform as well as receive control changes to act on the external\nsystem.\n- `exporter`: Connects to the platform to export data to an external\nsystem.\n- `docker`: An external application that does not connect to the\nplatform's data streams.\n- `task`: An application type used internally by the Tasks feature."
+        },
+        "dashboard_uid": {
+          "type": "string"
+        },
+        "latest_version": {
+          "type": "string",
+          "format": "semver",
+          "description": "The version of the Application that was crated last"
+        },
+        "versions": {
+          "type": "array",
+          "items": {
+            "properties": {
+              "version": {
+                "type": "string",
+                "format": "semver"
+              },
+              "created_at": {
+                "type": "string",
+                "description": "UTC time when the object was created, formatted in RFC 3339.",
+                "format": "date-time"
+              },
+              "created_by": {
+                "type": "string",
+                "description": "KRN of the user or process that created the object.",
+                "format": "krn",
+                "example": "krn:user:me@example.com"
+              },
+              "updated_at": {
+                "type": "string",
+                "description": "UTC time when any keys were last updated, formatted in RFC 3339.",
+                "format": "date-time"
+              },
+              "updated_by": {
+                "type": "string",
+                "description": "KRN of the user or process that last updated any of the keys.",
+                "format": "krn",
+                "example": "krn:user:me@example.com"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "deployment": {
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "running",
+                "stopped",
+                "updating",
+                "requires_attention"
+              ]
+            }
+          },
+          "type": "object"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "UTC time when the object was created, formatted in RFC 3339.",
+          "format": "date-time"
+        },
+        "created_by": {
+          "type": "string",
+          "description": "KRN of the user or process that created the object.",
+          "format": "krn",
+          "example": "krn:user:me@example.com"
+        },
+        "updated_at": {
+          "type": "string",
+          "description": "UTC time when any keys were last updated, formatted in RFC 3339.",
+          "format": "date-time"
+        },
+        "updated_by": {
+          "type": "string",
+          "description": "KRN of the user or process that last updated any of the keys.",
+          "format": "krn",
+          "example": "krn:user:me@example.com"
+        }
+      },
+      "required": [
+        "name",
+        "title",
+        "description",
+        "type"
+      ],
+      "type": "object"
+    },
+    "last_updated": "2026-02-04"
+  }
+}

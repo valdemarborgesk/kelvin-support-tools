@@ -1,0 +1,33 @@
+{
+  "id": "sdk/app/application.timer/timer",
+  "title": "Timer",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Timer\n\n\nA repeating async timer that corrects clock drift.\n\n\n## Methods\n\n\n### __init__(interval: float, name: str, max_drift_correction: float) -> Any\n",
+  "summary": "A repeating async timer that corrects clock drift.",
+  "source": "app/src/kelvin/application/timer.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import Timer\n\n# Usage example\napp = Timer()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "application.timer",
+    "item_type": "class",
+    "methods": [
+      "__init__"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

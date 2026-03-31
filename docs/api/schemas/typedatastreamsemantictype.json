@@ -1,0 +1,50 @@
+{
+  "id": "api/schemas/datastreamsemantictype",
+  "title": "DataStreamSemanticType",
+  "type": "schema",
+  "category": "api",
+  "content": "# DataStreamSemanticType\n\n\n## Properties\n\n- **created** (`string`): UTC time when the Semantic Type was first created, formatted in RFC 3339.\n- **name** (`string`): Unique identifier `name` of the Semantic Type.\n- **title** (`string`): Display name (`title`) of the Semantic Type.\n- **updated** (`string`): UTC time when any Semantic Type keys were last updated, formatted in RFC 3339.",
+  "summary": "Object with properties: created, name, title, updated",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.DataStreamSemanticType",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-06-26T18:22:18.582724Z",
+          "description": "UTC time when the Semantic Type was first created, formatted in RFC 3339."
+        },
+        "name": {
+          "type": "string",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "example": "mass_flow_rate",
+          "description": "Unique identifier `name` of the Semantic Type."
+        },
+        "title": {
+          "type": "string",
+          "example": "Mass Flow Rate",
+          "maxLength": 64,
+          "description": "Display name (`title`) of the Semantic Type."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when any Semantic Type keys were last updated, formatted in RFC 3339."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

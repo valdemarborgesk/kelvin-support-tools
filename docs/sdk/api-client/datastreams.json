@@ -1,0 +1,53 @@
+{
+  "id": "sdk/api-client/client.api.datastreams/datastreams",
+  "title": "Datastreams",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Datastreams\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### create_bulk_data_stream(data: Optional[Union[requests.BulkDataStreamCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nCreate a list of new Data Streams.\n\n\n### delete_bulk_data_stream(data: Optional[Union[requests.BulkDataStreamDelete, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDelete a list of Data Streams.\n\n\n### list_data_stream_contexts(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.DataStreamContextsList, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.DataStreamContext], responses.DataStreamContextsListPaginatedResponseCursor]\n\nReturns a list of Data Streams, where each stream includes an array of its associated Assets and respective data sources. The list can be optionally filtered and sorted on the server before being returned.\n\n\n### create_data_stream(data: Optional[Union[requests.DataStreamCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataStreamCreate\n\nCreate a new Data Stream.\n\n\n### list_data_streams_data_types(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], search: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.DataStreamDataType], responses.DataStreamsDataTypesListPaginatedResponseCursor]\n\nReturns a list of Data Types and its parameters. The Data Types can be optionally filtered and sorted on the server before being returned.\n\n\n### list_data_streams(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.DataStreamsList, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[responses.DataStream], responses.DataStreamsListPaginatedResponseCursor]\n\nReturns a list of Data Streams and its parameters. The Data Streams can be optionally filtered and sorted on the server before being returned.\n\n\n### create_data_stream_semantic_type(data: Optional[Union[requests.DataStreamSemanticTypeCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataStreamSemanticTypeCreate\n\nCreate a new Semantic Type.\n\n\n### list_data_streams_semantic_types(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], search: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.DataStreamSemanticType], responses.DataStreamsSemanticTypesListPaginatedResponseCursor]\n\nReturns a list of Semantic Types and its parameters. The Semantic Types can be optionally filtered and sorted on the server before being returned.\n\n\n### delete_data_stream_semantic_type(semantic_type_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete an existing Semantic Type. An error will be returned if there are any current links to a Semantic Type. This cannot be undone once the API request has been submitted.\n\n\n### get_data_stream_semantic_type(semantic_type_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataStreamSemanticTypeGet\n\nRetrieve the parameters of a Semantic Type.\n\n\n### update_data_stream_semantic_type(semantic_type_name: str, data: Optional[Union[requests.DataStreamSemanticTypeUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataStreamSemanticTypeUpdate\n\nUpdates an existing Semantic Type with any new values passed through the body parameters. All body parameters are optional and if not provided will remain unchanged.\n\n\n### create_bulk_data_stream_unit(data: Optional[Union[requests.BulkDataStreamUnitCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nCreate a list of new Units.\n\n\n### create_data_stream_unit(data: Optional[Union[requests.DataStreamUnitCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataStreamUnitCreate\n\nCreate a new Unit.\n\n\n### list_data_streams_units(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], sort_by: Optional[Sequence[str]], search: Optional[Sequence[str]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.Unit], responses.DataStreamsUnitsListPaginatedResponseCursor]\n\nReturns a list of Units and its parameters. The Units can be optionally filtered and sorted on the server before being returned.\n\n\n### delete_data_stream_unit(unit_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete an existing Unit. An error will be returned if there are any current links to a Unit. This cannot be undone once the API request has been submitted.\n\n\n### get_data_stream_unit(unit_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataStreamUnitGet\n\nRetrieve the parameters of a Unit.\n\n\n### update_data_stream_unit(unit_name: str, data: Optional[Union[requests.DataStreamUnitUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataStreamUnitUpdate\n\nUpdates an existing Unit with any new values passed through the body parameters. All body parameters are optional and if not provided will remain unchanged.\n\n\n### get_data_stream_context(datastream_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataStreamContextGet\n\nRetrieve an array of Assets and respective data sources contextualized within a specific Data Stream.\n\n\n### delete_data_stream(datastream_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nPermanently delete an existing Data Stream. You will no longer be able to access any data saved in Asset / Data Stream pairs. This cannot be undone once the API request has been submitted.\n\n\n### get_data_stream(datastream_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataStreamGet\n\nRetrieve the parameters of a Data Stream.\n\n\n### update_data_stream(datastream_name: str, data: Optional[Union[requests.DataStreamUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataStreamUpdate\n\nUpdate an existing Data Stream with a new 'title' and/or 'description' and/or 'type' and/or 'semantic_type_name' and/or 'unit_name'. Any parameters that are not provided will remain unchanged.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/datastreams.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.datastreams.create_bulk_data_stream()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.datastreams",
+    "item_type": "class",
+    "methods": [
+      "create_bulk_data_stream",
+      "delete_bulk_data_stream",
+      "list_data_stream_contexts",
+      "create_data_stream",
+      "list_data_streams_data_types",
+      "list_data_streams",
+      "create_data_stream_semantic_type",
+      "list_data_streams_semantic_types",
+      "delete_data_stream_semantic_type",
+      "get_data_stream_semantic_type",
+      "update_data_stream_semantic_type",
+      "create_bulk_data_stream_unit",
+      "create_data_stream_unit",
+      "list_data_streams_units",
+      "delete_data_stream_unit",
+      "get_data_stream_unit",
+      "update_data_stream_unit",
+      "get_data_stream_context",
+      "delete_data_stream",
+      "get_data_stream",
+      "update_data_stream"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

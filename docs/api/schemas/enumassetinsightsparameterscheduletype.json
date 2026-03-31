@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/assetinsightsparameterscheduletype",
+  "title": "AssetInsightsParameterScheduleType",
+  "type": "schema",
+  "category": "api",
+  "content": "# AssetInsightsParameterScheduleType\n\nFilter schedules by type.\n\n## Enum Values\n\n- `permanent`\n- `temporary`",
+  "summary": "Filter schedules by type.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.AssetInsightsParameterScheduleType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "description": "Filter schedules by type.",
+      "enum": [
+        "permanent",
+        "temporary"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.responses/legacyworkloaditem",
+  "title": "LegacyWorkloadItem",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# LegacyWorkloadItem\n\nInherits from: DataModelBase\n\n\nLegacyWorkloadItem object.\n\nParameters\n----------\n    acp_name: Optional[StrictStr]\n    app_name: Optional[StrictStr]\n    app_version: Optional[StrictStr]\n    cluster_name: Optional[StrictStr]\n    created: Optional[datetime]\n    download_status: Optional[enum.WorkloadDownloadStatus]\n    download_error: Optional[StrictStr]\n    enabled: Optional[StrictBool]\n    instantly_apply: Optional[StrictBool]\n    name: Optional[StrictStr]\n    node_name: Optional[StrictStr]\n    pre_download: Optional[StrictBool]\n    status: Optional[type_1.LegacyWorkloadStatus]\n    title: Optional[StrictStr]\n    updated: Optional[datetime]\n    staged: Optional[Staged]\n",
+  "summary": "LegacyWorkloadItem object.",
+  "source": "api/src/kelvin/api/client/model/responses.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.responses.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.responses",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "sdk/app/config.appconfig/kelvinappconfig",
+  "title": "KelvinAppConfig",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KelvinAppConfig\n\nInherits from: BaseSettings\n\n\nKelvin application base configuration.\n\nLoad order and override precedence:\n    1. init kwargs\n    2. environment variables\n    3. .env file\n    4. YAML configuration (first match in YAML_PATHS or defaults)\n    5. file secrets\n\nThis means values from environment variables or `.env` override values from YAML.\n\nYAML discovery:\n    - Reads from the first existing file among:\n        * /opt/kelvin/share/config.yaml\n        * /opt/kelvin/share/app.yaml\n        * config.yaml\n        * app.yaml\n\n    - If the file name is `config.yaml` (local or under /opt/kelvin/share),\n      the entire YAML root is used.\n    - Otherwise, the loader extracts:\n          app.docker.configuration\n      or falls back to:\n          defaults.configuration\n\nNested environment variables:\n    - Set `env_nested_delimiter=\"__\"` so nested fields can be overridden.\n      Example: `MQTT__PASSWORD=secret` overrides `mqtt.password`.\n\nCustomization:\n    - Override YAML_PATHS on your subclass to change search locations.\n    - Adjust model_config.env_prefix to fit your application.\n\n\n## Methods\n\n\n### settings_customise_sources(settings_cls: Type[BaseSettings], init_settings: PydanticBaseSettingsSource, env_settings: PydanticBaseSettingsSource, dotenv_settings: PydanticBaseSettingsSource, file_secret_settings: PydanticBaseSettingsSource) -> tuple[PydanticBaseSettingsSource, Ellipsis]\n",
+  "summary": "Kelvin application base configuration.",
+  "source": "app/src/kelvin/config/appconfig.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import KelvinAppConfig\n\n# Usage example\napp = KelvinAppConfig()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "config.appconfig",
+    "item_type": "class",
+    "methods": [
+      "settings_customise_sources"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

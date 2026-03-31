@@ -1,0 +1,30 @@
+{
+  "id": "api/schemas/volumetype",
+  "title": "VolumeType",
+  "type": "schema",
+  "category": "api",
+  "content": "# VolumeType\n\nType of volume to use.\n\n## Enum Values\n\n- `persistent`\n- `host`\n- `text`",
+  "summary": "Type of volume to use.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.VolumeType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "description": "Type of volume to use.",
+      "enum": [
+        "persistent",
+        "host",
+        "text"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

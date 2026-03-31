@@ -1,0 +1,33 @@
+{
+  "id": "sdk/app/config.appyaml/appyaml",
+  "title": "AppYaml",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AppYaml\n\nInherits from: ConfigBaseModel\n\n\n## Methods\n\n\n### to_manifest(read_schemas: bool, workdir: Path) -> AppManifest\n",
+  "summary": "",
+  "source": "app/src/kelvin/config/appyaml.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import AppYaml\n\n# Usage example\napp = AppYaml()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "config.appyaml",
+    "item_type": "class",
+    "methods": [
+      "to_manifest"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

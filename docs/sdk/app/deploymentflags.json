@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/config.manifest/deploymentflags",
+  "title": "DeploymentFlags",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DeploymentFlags\n\nInherits from: ConfigBaseModel\n",
+  "summary": "",
+  "source": "app/src/kelvin/config/manifest.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import DeploymentFlags\n\n# Usage example\napp = DeploymentFlags()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "config.manifest",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

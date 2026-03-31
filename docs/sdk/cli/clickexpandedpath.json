@@ -1,0 +1,28 @@
+{
+  "id": "sdk/cli/sdk.lib.utils.click-utils/clickexpandedpath",
+  "title": "ClickExpandedPath",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ClickExpandedPath\n\nInherits from: click.Path\n\n\nA Click path argument that returns a ``Path``, not a string.\n\n\n## Methods\n\n\n### convert(value: str, param: Optional[click.core.Parameter], ctx: Optional[click.core.Context]) -> Any\n\nReturn a ``Path`` from the string ``click`` would have created with the given options.\n",
+  "summary": "A Click path argument that returns a ``Path``, not a string.",
+  "source": "cli/src/kelvin/sdk/lib/utils/click_utils.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.utils.click_utils",
+    "item_type": "class",
+    "methods": [
+      "convert"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

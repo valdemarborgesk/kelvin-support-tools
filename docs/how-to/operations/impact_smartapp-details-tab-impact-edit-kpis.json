@@ -1,0 +1,25 @@
+{
+  "id": "how-to/impact/smartapp-details-tab-impact-edit-kpis",
+  "title": "Edit KPI's",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Edit KPI's\n\n    This tab is only available with the Application `type` Kelvin SmartApp™\n\nYou can modify the Impacts screen both in layout and information.\n\nTo edit them, click on the **Edit KPIs** button.\n\nA new tab will open the dashboard in an edit mode.\n\nYou have complete flexibility to setup the dashboards to suit your needs.\n\nIt is connected to the Kelvin database, so you can perform and display any type of SQL query about your Kelvin Platform data.\n\nYou can visit the [Grafana dashboards documentation](https://grafana.com/docs/grafana/latest/dashboards/){:target=\"_blank\"} to learn all the features and panels available.",
+  "summary": "",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/impact/smartapp-details-tab-impact-edit-kpis.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "edit",
+    "kpi's",
+    "operations",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

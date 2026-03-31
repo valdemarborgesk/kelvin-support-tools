@@ -1,0 +1,192 @@
+{
+  "id": "api/endpoints/datastreams/listDataStreams",
+  "title": "List Data Streams",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# List Data Streams\n\nReturns a list of Data Streams and its parameters. The Data Streams can be optionally filtered and sorted on the server before being returned.\n\n## Endpoint\n\n`POST /datastreams/list`",
+  "summary": "List Data Streams",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/datastreams/list' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.datastreams.listDataStreams()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/datastreams"
+  ],
+  "tags": [
+    "datastreams",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/datastreams/list",
+    "method": "POST",
+    "operation_id": "listDataStreams",
+    "tag": "Datastreams",
+    "permission": "kelvin.permission.datastreams.read",
+    "parameters": [
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": null,
+        "in": null,
+        "required": false,
+        "description": "",
+        "type": "string"
+      },
+      {
+        "name": "sort_by",
+        "in": "query",
+        "required": false,
+        "description": "",
+        "type": "array"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "data_type_names": {
+            "type": "array",
+            "example": [
+              "number",
+              "string"
+            ],
+            "description": "A filter on the list based on the key `data_type_name`. The filter is on the full name only. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "names": {
+            "type": "array",
+            "example": [
+              "motor_temperature",
+              "water_flow_rate"
+            ],
+            "description": "A filter on the list based on the  Data Stream key `name`. The filter is on the full name only. All strings in the array are treated as `OR`. Each string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "types": {
+            "type": "array",
+            "example": [
+              "computed",
+              "measurement"
+            ],
+            "description": "A filter on the list based on the Data Stream key `type`. The filter is on the full name only. All strings in the array are treated as `OR`.",
+            "items": {
+              "type": "string",
+              "enum": [
+                "computed",
+                "measurement",
+                "set_point"
+              ],
+              "description": "Specifies the technique used for generating data in the Data Stream."
+            }
+          },
+          "search": {
+            "type": "array",
+            "example": [
+              "motor",
+              "water"
+            ],
+            "description": "Search and filter on the list based on the keys `title` (Display Name) or `name`. The search is case insensitive and will find partial matches as well. All strings in the array are treated as `OR`.",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "semantic_type_names": {
+            "type": "array",
+            "example": [
+              "sound_pressure",
+              "volume"
+            ],
+            "description": "A filter on the list based on the key `semantic_type_name`. The filter is on the full name only. All strings in the array are treated as `OR`. The string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          },
+          "unit_names": {
+            "type": "array",
+            "example": [
+              "kilogram",
+              "litre_per_second"
+            ],
+            "description": "A filter on the list based on the key `unit_name`. The filter is on the full name only. All strings in the array are treated as `OR`. Each string can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+              "minLength": 1,
+              "maxLength": 64
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK"
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

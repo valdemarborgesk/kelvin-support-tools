@@ -1,0 +1,36 @@
+{
+  "id": "how-to/develop/spotlight-tips/data-to-dataframe",
+  "title": "Overview - DataFrames",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Overview - DataFrames\n\nFor Data Scientists, a common format for storing and managing data in Python is using Pandas DataFrames.\n\nKelvin has a convenient function to convert your Kelvin data into a Pandas DataFrame.\n\n```python title=\"Python Method Call\" linenums=\"1\"\ndata.to_df()\n```\n\n## Example\n\nHere is a simple example to retrieve data from the Kelvin Platform and convert it into a Pandas DataFrame for further analysis and manipulation.\n\n```python title=\"DataFrame Python Example\" linenums=\"1\"\nfrom kelvin.api.client import Client\n\n# Login\nclient = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\nclient.login(password=\"<your_password>\")\n\n# Get Time Series Data\nresponse = client.timeseries.get_timeseries_range(\n    data={\n        \"start_time\": \"2025-04-18T12:00:00.000000Z\",\n        \"end_time\": \"2025-04-19T12:00:00.000000Z\",\n        \"selectors\": [\n            {\n                \"resource\": \"krn:ad:pcp_01/casing_pressure\",\n            }\n        ]\n    }\n)\n\n# Convert the response into a Pandas DataFrame\ndf = response.to_df()\n\n# Print the result\nprint(df)\n```",
+  "summary": "For Data Scientists, a common format for storing and managing data in Python is using Pandas DataFrames. Kelvin has a convenient function to convert your Kelvin data into a Pandas DataFrame. data.to_df()",
+  "source": "core-docs/docs/developer-tools/how-to/develop/spotlight-tips/data-to-dataframe.md",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "data.to_df()",
+      "title": "Python Method Call"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n# Login\nclient = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\nclient.login(password=\"<your_password>\")\n\n# Get Time Series Data\nresponse = client.timeseries.get_timeseries_range(\n    data={\n        \"start_time\": \"2025-04-18T12:00:00.000000Z\",\n        \"end_time\": \"2025-04-19T12:00:00.000000Z\",\n        \"selectors\": [\n            {\n                \"resource\": \"krn:ad:pcp_01/casing_pressure\",\n            }\n        ]\n    }\n)\n\n# Convert the response into a Pandas DataFrame\ndf = response.to_df()\n\n# Print the result\nprint(df)",
+      "title": "DataFrame Python Example"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "api",
+    "cli",
+    "dataframes",
+    "development",
+    "overview",
+    "sdk"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

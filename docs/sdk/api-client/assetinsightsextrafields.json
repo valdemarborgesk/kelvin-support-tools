@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.requests/assetinsightsextrafields",
+  "title": "AssetInsightsExtraFields",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AssetInsightsExtraFields\n\nInherits from: DataModelBase\n\n\nAssetInsightsExtraFields object.\n\nParameters\n----------\n    apps: Optional[list[AppExtraField]]\n    asset_properties: Optional[list[AssetPropertyExtraField]]\n    control_changes: Optional[list[ControlChangeExtraField]]\n    custom_actions: Optional[list[CustomActionExtraField]]\n    datastreams: Optional[list[DatastreamExtraField]]\n    data_qualities: Optional[list[DataQualityExtraField]]\n    parameters: Optional[list[ParameterExtraField]]\n    recommendations: Optional[list[RecommendationExtraField]]\n    parameters_schedule: Optional[list[ParametersScheduleExtraField]]\n",
+  "summary": "AssetInsightsExtraFields object.",
+  "source": "api/src/kelvin/api/client/model/requests.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.requests.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.requests",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

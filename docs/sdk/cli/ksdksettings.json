@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.models.generic/ksdksettings",
+  "title": "KSDKSettings",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KSDKSettings\n\nInherits from: KSDKModel, BaseSettings\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/generic.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.generic",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

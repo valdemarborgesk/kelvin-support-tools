@@ -1,0 +1,26 @@
+{
+  "id": "how-to/advanced/docker-apps/upload-docker",
+  "title": "Upload Docker",
+  "type": "how_to",
+  "category": "development",
+  "content": "## Upload Docker App\n\nDocker Apps are treated the same way as all Applications in the Kelvin Platform.\n\nSo you can use the same instructions for [uploading a Kelvin SmartApp™ Application](../../../quick-start/how-to/upload-kelvin-smartapp.md).\n\nAfter uploading it, you will see it listed in the **Docker** section where you can manage deploying **Workloads**.\n\n    When you upload, by default it will be placed in the Docker group.\n\n    You can change this default location for all users by defining its group in the `category` key in the `app.yaml` file.",
+  "summary": "",
+  "source": "core-docs/docs/developer-tools/how-to/advanced/docker-apps/upload-docker.md",
+  "code_examples": [],
+  "related": [
+    "how-to/upload-kelvin-smartapp"
+  ],
+  "tags": [
+    "deploy",
+    "development",
+    "docker",
+    "smartapp",
+    "upload"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

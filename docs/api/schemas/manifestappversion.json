@@ -1,0 +1,305 @@
+{
+  "id": "api/schemas/appversion",
+  "title": "AppVersion",
+  "type": "schema",
+  "category": "api",
+  "content": "# AppVersion\n\n\n## Properties\n\n- **name** (`string`): The name of the application. This is the unique identifier for the application.\n- **title** (`string`): Human-readable name of the application.\n- **description** (`string`): Human-readable description of the application.\n- **category** (`string`): The category of the application.\n- **type** (`string`): The type of application.\n\n- `app`: An App that allows mapping inputs and outputs to data\nstreams, sending control changes, recommendations, and data tags.\n- `importer`: Connects to an external system to import data into the\nplatform as well as receive control changes to act on the external\nsystem.\n- `exporter`: Connects to the platform to export data to an external\nsystem.\n- `docker`: An external application that does not connect to the\nplatform's data streams.\n- `task`: An application type used internally by the Tasks feature.\n- **version** (`string`): The version of the application being created.\n- **flags** (`object`): Flags that can be set to enable specific behaviours on the platform when managing the application.\n- **io** (`array`): \n- **dynamic_io** (`array`): \n- **parameters** (`array`): \n- **custom_actions** (`array`): \n- **data_quality** (`array`): ",
+  "summary": "Object with properties: name, title, description, category, type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "manifest",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "manifest.AppVersion",
+    "schema_type": "manifest",
+    "schema": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the application. This is the unique identifier for the application."
+        },
+        "title": {
+          "type": "string",
+          "description": "Human-readable name of the application."
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable description of the application."
+        },
+        "category": {
+          "type": "string",
+          "description": "The category of the application."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "app",
+            "importer",
+            "exporter",
+            "docker",
+            "task"
+          ],
+          "description": "The type of application.\n\n- `app`: An App that allows mapping inputs and outputs to data\nstreams, sending control changes, recommendations, and data tags.\n- `importer`: Connects to an external system to import data into the\nplatform as well as receive control changes to act on the external\nsystem.\n- `exporter`: Connects to the platform to export data to an external\nsystem.\n- `docker`: An external application that does not connect to the\nplatform's data streams.\n- `task`: An application type used internally by the Tasks feature."
+        },
+        "version": {
+          "type": "string",
+          "format": "semver",
+          "description": "The version of the application being created."
+        },
+        "flags": {
+          "type": "object",
+          "description": "Flags that can be set to enable specific behaviours on the platform when managing the application.",
+          "properties": {
+            "spec_version": {
+              "type": "string",
+              "format": "semver",
+              "description": "The version of the specification that the application is using."
+            },
+            "legacy_data_types": {
+              "type": "boolean",
+              "default": false,
+              "description": "If `true`, the application uses the legacy data types (e.g. `raw.float64`, `raw.int32`,...)."
+            },
+            "legacy_extras": {
+              "type": "object"
+            },
+            "gateway_mode": {
+              "type": "string",
+              "description": "The mode which the gateway is operates on. The default is `socket`, which uses a socket as an interface for the application to connect to the realtime data flow.",
+              "enum": [
+                "socket",
+                "legacy"
+              ]
+            },
+            "enable_runtime_update": {
+              "type": "object",
+              "properties": {
+                "configuration": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "resource_parameters": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "resource_properties": {
+                  "type": "boolean",
+                  "default": true
+                }
+              }
+            },
+            "deployment": {
+              "type": "object",
+              "properties": {
+                "allowed_resources": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "krn",
+                    "x-kelvin-supported-krns": [
+                      "asset-type"
+                    ]
+                  }
+                }
+              }
+            },
+            "resources_required": {
+              "type": "boolean",
+              "description": "Define whether the application is deployed to specific resources (e.g. assets) or not. Applications that have inputs or outputs always require resources."
+            }
+          }
+        },
+        "io": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The name of the input/output used in the Application."
+              },
+              "data_type": {
+                "type": "string",
+                "description": "Primitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects."
+              },
+              "way": {
+                "type": "string",
+                "enum": [
+                  "output",
+                  "input-cc",
+                  "input-cc+output",
+                  "input",
+                  "output-cc",
+                  "input+output-cc"
+                ],
+                "description": "The direction and characteristics of the input/output. The `cc` suffix means that in accepts or sends Control Changes on the input or output respectively."
+              },
+              "storage": {
+                "type": "string",
+                "enum": [
+                  "node-and-cloud",
+                  "node",
+                  "none"
+                ],
+                "description": "The storage location of the data. `node-and-cloud` means that the data is stored in the node and in the cloud. `node` means that the data is stored only in the node. `none` means that the data is not stored."
+              },
+              "unit": {
+                "type": "string",
+                "description": "The unit of the data. It's recommended to use the [UCUM](http://unitsofmeasure.org/ucum.html) standard for units."
+              }
+            }
+          }
+        },
+        "dynamic_io": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "type_name"
+            ],
+            "properties": {
+              "type_name": {
+                "type": "string",
+                "description": "Dynamic I/O type name."
+              },
+              "data_types": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "Primitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects."
+                },
+                "description": "List of data types that the dynamic I/O type can have. If empty, any data type is allowed."
+              },
+              "ownership": {
+                "type": "string",
+                "enum": [
+                  "both",
+                  "owned",
+                  "remote"
+                ]
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "both",
+                  "data",
+                  "control"
+                ]
+              }
+            }
+          }
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The name of the parameter."
+              },
+              "title": {
+                "type": "string",
+                "description": "Human-readable name of the parameter."
+              },
+              "data_type": {
+                "type": "string",
+                "enum": [
+                  "string",
+                  "number",
+                  "boolean"
+                ],
+                "description": "The data type of the parameter. It can be `string`, `number`, or `boolean`."
+              },
+              "default": {
+                "oneOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "boolean"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "custom_actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The type of the custom action."
+              },
+              "way": {
+                "type": "string",
+                "enum": [
+                  "input-ca",
+                  "output-ca"
+                ],
+                "description": "The direction of the custom action. If `input-ca`, the app recieves and executes custom actions. If `output-ca`, the app sends custom actions which are then executed by an app with the corresponding `input-ca`."
+              }
+            }
+          }
+        },
+        "data_quality": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The name of the data quality."
+              },
+              "data_type": {
+                "type": "string",
+                "description": "Primitive data types are: `string`, `number`, `boolean` and `object`. If another name is used, it will be considered an object with that name. It's highly recommended using a custom name when using objects."
+              },
+              "datastreams": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "way": {
+                "type": "string",
+                "enum": [
+                  "output",
+                  "input"
+                ],
+                "description": "The direction of the data quality. If `output`, the app computes and produces the data quality value. If `input`, the app receives the data quality value."
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "name",
+        "title",
+        "description",
+        "type",
+        "version"
+      ],
+      "type": "object"
+    },
+    "last_updated": "2026-02-04"
+  }
+}

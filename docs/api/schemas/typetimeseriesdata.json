@@ -1,0 +1,91 @@
+{
+  "id": "api/schemas/timeseriesdata",
+  "title": "TimeseriesData",
+  "type": "schema",
+  "category": "api",
+  "content": "# TimeseriesData\n\n\n## Properties\n\n- **created** (`string`): UTC time when the `last_value` values were first created, formatted in RFC 3339.\n- **data_type** (`string`): Primitive data type of the `last_value` values.\n- **fields** (`array`): Data `field` element name of each value in `last_value`.\n- **last_timestamp** (`string`): UTC time when the time series data was last accessed, formatted in RFC 3339.\n- **last_value** (`any`): Value represented in one of these formats.\n- **resource** (`string`): Asset / Data Stream associated with `last_value`.\n- **source** (`string`): Specifies the user or workload source for `last_value`.\n- **updated** (`string`): UTC time when the time series data was last updated, formatted in RFC 3339.",
+  "summary": "Object with properties: created, data_type, fields, last_timestamp, last_value",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.TimeseriesData",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-06-26T18:22:18.582724Z",
+          "description": "UTC time when the `last_value` values were first created, formatted in RFC 3339."
+        },
+        "data_type": {
+          "type": "string",
+          "description": "Primitive data type of the `last_value` values."
+        },
+        "fields": {
+          "type": "array",
+          "example": [
+            "value"
+          ],
+          "description": "Data `field` element name of each value in `last_value`.",
+          "items": {
+            "type": "string",
+            "format": "^[a-z]+([A-Z][a-z0-9]+)*$",
+            "example": "value"
+          }
+        },
+        "last_timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-11-10T09:55:08.627924Z",
+          "description": "UTC time when the time series data was last accessed, formatted in RFC 3339."
+        },
+        "last_value": {
+          "description": "Value represented in one of these formats.",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        },
+        "resource": {
+          "type": "string",
+          "format": "krn",
+          "example": "krn:ad:asset/data_stream",
+          "maxLength": 256,
+          "description": "Asset / Data Stream associated with `last_value`."
+        },
+        "source": {
+          "type": "string",
+          "format": "krn",
+          "example": "krn:wlappv:cluster1/app1/1.2.0",
+          "maxLength": 256,
+          "description": "Specifies the user or workload source for `last_value`."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2023-11-10T09:55:09.31857Z",
+          "description": "UTC time when the time series data was last updated, formatted in RFC 3339."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "id": "how-to/cluster/manage-clusters/update-cluster",
+  "title": "Update Cluster",
+  "type": "how_to",
+  "category": "operations",
+  "content": "## Upgrading Clusters\n\nThere are three areas of a Cluster than need to be upgraded when new versions are released. \n\n1. The Kubernetes cluster software\n2. The custom Kelvin pods\n3. Kelvin SmartApps™ and Connections deployed to a Cluster\n\n### 1. Kubernetes Cluster Upgrades\n\nIf you choose the option that Kelvin installs the Kubernetes cluster, Kelvin installs a customized K3s installation. The K3s can manage its own upgrades using the system-upgrade-controller.\n\nIf you choose to use your own Kubernetes cluster, then you should refer to its documentation on how to manage the updates.\n\n### 2. Custom Kelvin Pod Upgrades\n\nAll Nodes in a Cluster have Kelvin specific pods running behind the scenes managing all the Kelvin related services. \n\nFrom time to time these will need to be upgraded with the latest versions for both new features and for security updates. You can apply these upgrades automatically or manually.\n\n#### Automatic Upgrades\n\nAutomatic upgrades will check for new versions at regular intervals and upgrade when new versions are available.\n\nYou can turn on and manage the frequency of upgrades from Kelvin UI.\n\nFrom **Orchestration** menu click on a single Cluster, then under the **Configuration** tab you can set or disable the auto update feature and the frequency to check for updates.\n\n    Remember to click save after changing any settings otherwise you will lose those changes.\n\nIf you have **Auto Update** set, then Kelvin will automatically regularly check and upgrade all Kelvin pods when available.\n\n#### Manual Upgrades\n\nIn circumstances when you want to apply upgrades manually, for example during maintenance shifts or when your assets are not in operation, you can turn off automatic upgrades.\n\nFor manual upgrades you have two options;\n\n* Download and upgrade simultaneously.\n* Download the updates but do not immediately apply them. At a later date you can separately initiate the actual upgrade process.\n\n    If your Internet connection is unreliable or slow, we advise splitting the download and upgrade steps. This approach reduces disruption to edge operations, allowing updates to be downloaded and staged in advance and then the upgrade itself executed regardless of Internet status during scheduled maintenance periods or when the asset is not running.\n\nBefore applying the changes, it is important that you understand the Cluser key options available in Kelvin API.\n\n| Key | Options | Description |\n| :--- | :--- | :--- |\n| manifests_scrape_enabled | true / false | Enable or disable automatic upgrade of the cluster |\n| manifests_scrape_interval | integer in seconds | If in automatic upgrade mode, how often the system will check for upgrades. |\n| upgrade / instantly_apply | true / false | If set to `true`, the upgrade process will begin immediately after the updates have been downloaded and staged. If set to `false`, after download the cluster will wait for a signal to apply the upgrade. |\n| upgrade / pre_download | true / false | If set to true, it will pre-download all the necessary workloads/images and stage them ready for upgrade. If set to `false` then Kubernetes will handle the image download and upgrade immediately. |\n\nFirst you need to turn off automatic upgrades. You can do this from Kelvin API or Kelvin UI.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin UI\"\n\n    To turn off automatic upgrades from Kelvin UI;\n\n    From **Orchestration** menu click on a single Cluster, then under the **Configuration** tab you uncheck the auto update feature **Enable Auto Updates**.\n\n    \n        Remember to click save after changing any settings otherwise you will lose those changes.\n\n    \n\n=== \"Kelvin API\"\n\n    To turn off automatic upgrades you can set the `manifests_scrape_enabled` to false.\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n      \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/<Your Cluster Name>/update\" \\\n      -H \"Authorization: Bearer <Your Current Token>\" \\\n      -H \"Accept: application/json\" \\\n      -H \"Content-Type: application/json\" \\\n      -d '{\n      \"manifests_scrape_enabled\": false\n    }'\n    ```\n\n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Set or Update the Default Cluster in an Instance\n    cluster_updates =  client.orchestration.update_orchestration_clusters(\n        cluster_name=\"sales-01-cluster\", \n        data={\n        \"manifests_scrape_enabled\": False\n        })\n    ```\n\n</div>\n\nNow with Kelvin API you can setup the configuration on the Cluster on whether to download and upgrade each workload simultaneously or separately.\n\n??? info \"Download and Upgrade Simultaneously\"\n\n    There are two ways to do a manual upgrade where the download and upgrade is done simultaneously.\n        \n    You will need to set the correct values for the keys for the Cluster to assign the way you want the upgrades to be performed.\n        \n    |  Upgrade Process |  `instantly_apply` key | `pre_download` key | Description |\n    | --- | :---: | :---: | --- |\n    | By Kubernetes | true | false | When an upgrade is manually initiated, Kubernetes will handle the download and upgrade of all the Kelvin specific images. Images will be download and upgraded one by one. It is not guaranteed which order this will happen. |\n    | By Kelvin | true | true | Kelvin will monitor and download all new images and stage them when they become available. When an upgrade is manually initiated, Kelvin will first ensure all new updates have been downloaded to the edge, then the upgrade is started. |\n\n    Select the manual upgrade option in the table above then use these commands to set your choice in Kelvin.\n\n    === \"Kelvin UI\"\n\n        This is not possible to set in the Kelvin UI.\n\n    === \"Kelvin API\"\n\n        ```bash title=\"API cURL Example\" linenums=\"1\"\n        curl -X \"POST\" \\\n          \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/docs-demo-cluster-k3s/update\" \\\n          -H \"Authorization: Bearer <Your Current Token>\" \\\n          -H \"Accept: application/json\" \\\n          -H \"Content-Type: application/json\" \\\n          -d '{\n          \"upgrade\": {\n            \"instantly_apply\": <Boolean Value>,\n            \"pre_download\": <Boolean Value>\n          }\n        }'\n        ```\n\n    === \"Kelvin API Client (Python)\"\n\n        ```python title=\"API Client (Python) Example\" linenums=\"1\"\n        from kelvin.api.client import Client\n\n        # Login\n        client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n        client.login(password=\"<your_password>\")\n\n        # Set or Update the Default Cluster in an Instance\n        cluster_updates =  client.orchestration.update_orchestration_clusters(\n            cluster_name=\"sales-01-cluster\", \n            data={\n                \"instantly_apply\": <Boolean Value>,\n                \"pre_download\": <Boolean Value>\n            })\n        ```\n\n??? info \"Download and Upgrade Separately\"\n\n    You will first need to set the correct values for the keys for the Cluster to ensure the download and upgrades processes are done by two different commands.\n        \n    |  Upgrade Process |  `instantly_apply` key | `pre_download` key | Description |\n    | --- | :---: | :---: | --- |\n    | By Kubernetes | NA | NA | Not possible. |\n    | By Kelvin | false | true | Kelvin will monitor and download all new images and stage them when they become available. When an upgrade is manually initiated, Kelvin will first ensure all new updates have been downloaded to the edge, then the upgrade is started. |\n\n    === \"Kelvin UI\"\n\n        This is not possible to set in the Kelvin UI.\n\n    === \"Kelvin API\"\n\n        ```bash title=\"API cURL Example\" linenums=\"1\"\n        curl -X \"POST\" \\\n          \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/docs-demo-cluster-k3s/update\" \\\n          -H \"Authorization: Bearer <Your Current Token>\" \\\n          -H \"Accept: application/json\" \\\n          -H \"Content-Type: application/json\" \\\n          -d '{\n          \"upgrade\": {\n            \"instantly_apply\": false,\n            \"pre_download\": true\n          }\n        }'\n        ```\n\n    === \"Kelvin API Client (Python)\"\n\n        ```python title=\"API Client (Python) Example\" linenums=\"1\"\n        from kelvin.api.client import Client\n\n        # Login\n        client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n        client.login(password=\"<your_password>\")\n\n        # Set or Update the Default Cluster in an Instance\n        cluster_updates =  client.orchestration.update_orchestration_clusters(\n            cluster_name=\"sales-01-cluster\", \n            data={\n                \"instantly_apply\": False,\n                \"pre_download\": True\n            })\n        ```\n\nFinally you can trigger an upgrade to start on a Cluster either from your computer or directly on the edge system using the `kelvin-provision` command.\n\n??? info \"Trigger Upgrade from your Computer\"\n\n    There are a few conditions that must be met to ensure your upgrade request succeeds.\n\n    * The cluster must be connected.\n    * The cluster must be configured with the `pre_download == true` and `instantly_apply = false`\n\n    === \"Kelvin UI\"\n\n        This is not possible to initiate in the Kelvin UI.\n\n    === \"Kelvin API\"\n\n        Calling the following endpoint `/orchestration/clusters/{cluster_name}/edge-apps/version/apply` will cause the cluster to apply the upgrade according to the configuration you have created in the previous step.\n\n        ```bash title=\"API cURL Example\" linenums=\"1\"\n        curl -X \"GET\" \\\n          \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/docs-demo-cluster-k3s/edge-apps/version/apply\" \\\n          -H \"Authorization: Bearer <Your Current Token>\" \\\n          -H \"Accept: application/json\" \\\n          -H \"Accept: application/json\"\n        ```\n\n    === \"Kelvin API Client (Python)\"\n\n        Running this function will cause the cluster to apply the upgrade according to the configuration you have created in the previous step.\n\n        ```python title=\"API Client (Python) Example\" linenums=\"1\"\n        from kelvin.api.client import Client\n\n        # Login\n        client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n        client.login(password=\"<your_password>\")\n\n        # Set or Update the Default Cluster in an Instance\n        response =  client.orchestration.apply_orchestration_clusters_edge_apps_version(\n            cluster_name=\"sales-01-cluster\"\n            )\n        ```\n\n??? info \"Trigger Upgrade on Edge System\"\n\n    In the terminal of the Edge System you can also initiate the upgrade to start. This is very useful if the upgrade is done while the Cluster is disconnected from the Internet.\n\n    \n        For an offline upgrade, the updates should be downloaded and staged beforehand. To download, the Cluster must be connected to the Internet.\n\n        This method allows you to download updates at your convenience, regardless of whether the asset is operational. The download process will not interfere with current operations.\n\n    ```bash title=\"Kelvin SDK Command Line Example\" linenums=\"1\"\n    kelvin-provision cluster apply\n    ```\n\n    \n\n### 3. Kelvin SmartApps™, Docker Apps and Connections Upgrades\n\nWorkloads and Connections must be upgraded manually. You can send a new deploy for the new version and the old version currently running will be managed depending on the `staged` key.\n\nKelvin SmartApps™ can be upgraded from the Kelvin UI. You can read [full documentation on this feature here](../../../../developer-tools/how-to/deploy/update-workload-version.md).",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/cluster/manage-clusters/update-cluster.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n      \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/<Your Cluster Name>/update\" \\\n      -H \"Authorization: Bearer <Your Current Token>\" \\\n      -H \"Accept: application/json\" \\\n      -H \"Content-Type: application/json\" \\\n      -d '{\n      \"manifests_scrape_enabled\": false\n    }'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Set or Update the Default Cluster in an Instance\n    cluster_updates =  client.orchestration.update_orchestration_clusters(\n        cluster_name=\"sales-01-cluster\", \n        data={\n        \"manifests_scrape_enabled\": False\n        })",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n          \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/docs-demo-cluster-k3s/update\" \\\n          -H \"Authorization: Bearer <Your Current Token>\" \\\n          -H \"Accept: application/json\" \\\n          -H \"Content-Type: application/json\" \\\n          -d '{\n          \"upgrade\": {\n            \"instantly_apply\": <Boolean Value>,\n            \"pre_download\": <Boolean Value>\n          }\n        }'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n        # Login\n        client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n        client.login(password=\"<your_password>\")\n\n        # Set or Update the Default Cluster in an Instance\n        cluster_updates =  client.orchestration.update_orchestration_clusters(\n            cluster_name=\"sales-01-cluster\", \n            data={\n                \"instantly_apply\": <Boolean Value>,\n                \"pre_download\": <Boolean Value>\n            })",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n          \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/docs-demo-cluster-k3s/update\" \\\n          -H \"Authorization: Bearer <Your Current Token>\" \\\n          -H \"Accept: application/json\" \\\n          -H \"Content-Type: application/json\" \\\n          -d '{\n          \"upgrade\": {\n            \"instantly_apply\": false,\n            \"pre_download\": true\n          }\n        }'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n        # Login\n        client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n        client.login(password=\"<your_password>\")\n\n        # Set or Update the Default Cluster in an Instance\n        cluster_updates =  client.orchestration.update_orchestration_clusters(\n            cluster_name=\"sales-01-cluster\", \n            data={\n                \"instantly_apply\": False,\n                \"pre_download\": True\n            })",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "bash",
+      "code": "curl -X \"GET\" \\\n          \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/docs-demo-cluster-k3s/edge-apps/version/apply\" \\\n          -H \"Authorization: Bearer <Your Current Token>\" \\\n          -H \"Accept: application/json\" \\\n          -H \"Accept: application/json\"",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n        # Login\n        client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n        client.login(password=\"<your_password>\")\n\n        # Set or Update the Default Cluster in an Instance\n        response =  client.orchestration.apply_orchestration_clusters_edge_apps_version(\n            cluster_name=\"sales-01-cluster\"\n            )",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "bash",
+      "code": "kelvin-provision cluster apply",
+      "title": "Kelvin SDK Command Line Example"
+    }
+  ],
+  "related": [
+    "how-to/update-workload-version"
+  ],
+  "tags": [
+    "api",
+    "cli",
+    "cluster",
+    "configure",
+    "create",
+    "deploy",
+    "docker",
+    "monitor",
+    "operations",
+    "sdk",
+    "smartapp",
+    "test",
+    "update"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "The Kubernetes cluster software"
+      },
+      {
+        "step": 2,
+        "instruction": "The custom Kelvin pods"
+      },
+      {
+        "step": 3,
+        "instruction": "Kelvin SmartApps™ and Connections deployed to a Cluster"
+      }
+    ],
+    "step_count": 3,
+    "last_updated": "2026-02-04"
+  }
+}

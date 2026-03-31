@@ -1,0 +1,29 @@
+{
+  "id": "sdk/cli/sdk.lib.models.ksdk-docker/ksdkdockerauthentication",
+  "title": "KSDKDockerAuthentication",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# KSDKDockerAuthentication\n\nInherits from: KSDKModel\n\n\n## Methods\n\n\n### full_registry_url() -> str\n\n\n### docker_client_credentials() -> dict\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/models/ksdk_docker.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.models.ksdk_docker",
+    "item_type": "class",
+    "methods": [
+      "full_registry_url",
+      "docker_client_credentials"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "sdk/app/config.parser/appconfigobj",
+  "title": "AppConfigObj",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AppConfigObj\n\n\n## Methods\n\n\n### is_legacy() -> bool\n\n\n### to_app_manifest(read_schemas: bool, workdir: Path) -> AppManifest\n",
+  "summary": "",
+  "source": "app/src/kelvin/config/parser.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import AppConfigObj\n\n# Usage example\napp = AppConfigObj()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "config.parser",
+    "item_type": "class",
+    "methods": [
+      "is_legacy",
+      "to_app_manifest"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

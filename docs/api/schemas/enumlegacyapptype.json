@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/legacyapptype",
+  "title": "LegacyAppType",
+  "type": "schema",
+  "category": "api",
+  "content": "# LegacyAppType\n\n## Enum Values\n\n- `kelvin`\n- `docker`\n- `bridge`",
+  "summary": "String type",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.LegacyAppType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "kelvin",
+        "docker",
+        "bridge"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

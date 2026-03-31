@@ -1,0 +1,49 @@
+{
+  "id": "api/schemas/usersetting",
+  "title": "UserSetting",
+  "type": "schema",
+  "category": "api",
+  "content": "# UserSetting\n\n\n## Properties\n\n- **created** (`string`): UTC time when the User Setting was created, formatted in RFC 3339.\n- **payload** (`object`): The User Settings. The structure of this `payload` object depends on the type of User Setting being defined.\n- **setting_name** (`string`): Unique identifier User Setting key `setting_name`.\n- **updated** (`string`): UTC time when any User Setting keys were last updated, formatted in RFC 3339.",
+  "summary": "Object with properties: created, payload, setting_name, updated",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.UserSetting",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when the User Setting was created, formatted in RFC 3339."
+        },
+        "payload": {
+          "type": "object",
+          "description": "The User Settings. The structure of this `payload` object depends on the type of User Setting being defined."
+        },
+        "setting_name": {
+          "type": "string",
+          "format": "^[a-z0-9]([-_.a-z0-9]*[a-z0-9])?$",
+          "example": "kelvin-notifications",
+          "maxLength": 64,
+          "description": "Unique identifier User Setting key `setting_name`."
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time",
+          "example": "2024-12-18T18:22:18.582724Z",
+          "description": "UTC time when any User Setting keys were last updated, formatted in RFC 3339."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

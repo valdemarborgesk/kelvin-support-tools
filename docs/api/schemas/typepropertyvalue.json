@@ -1,0 +1,52 @@
+{
+  "id": "api/schemas/propertyvalue",
+  "title": "PropertyValue",
+  "type": "schema",
+  "category": "api",
+  "content": "# PropertyValue\n",
+  "summary": "Schema definition",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.PropertyValue",
+    "schema_type": "type",
+    "schema": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "array",
+          "items": {
+            "type": "boolean"
+          }
+        }
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

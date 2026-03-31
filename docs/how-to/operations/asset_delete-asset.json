@@ -1,0 +1,36 @@
+{
+  "id": "how-to/asset/delete-asset",
+  "title": "Delete Asset",
+  "type": "how_to",
+  "category": "operations",
+  "content": "**Reference:**\n\nField                | Description\n---------------------|------------------------------------------\nName (Name ID)                 | Unique name identifier. It must contain only lowercase alphanumeric characters. The characters `.`, `_` and `-` are allowed to separate words instead of a space BUT can not be at the beginning or end of the name.\nTitle (Display Name)               | The display name to show on the Kelvin UI. It can contain any characters, including spaces.\nAsset Type           | The name of the Asset Type that this Asset belongs to. This must be a valid Asset Type name.\nProperties           | A list of key/value pairs that define custom properties of the asset. Use this to define attributes like: Location, Site, PLC Type, Manufacturer, Serial Number, etc.\n\n## Delete Asset\n\nDeleting an Asset is very simple. The only information you need is the actual `name` of the Asset. \n\n<div class=\"result\" markdown>\n\n=== \"Kelvin UI\"\n\n    Assets can be managed from the Administration section of the UI.\n\n    \n        Do not get confused with the Asset management in the Operations section which is designed for the Production Engineers.\n\n    To start, go to the **Assets** in the Administration section of the left side bar.\n\n    \n\n    To delete an Asset, click on the rubbish bin icon on the right hand side of of an Asset row;\n\n    \n\n    Then in the popup type **PERMANENTLY DELETE** to confirm the delete action.\n\n=== \"Kelvin API\"\n\n    \n        To make life easier, you can copy the Asset Name from the Kelvin UI in Operations → Assets. Hover over the Asset Name below the Asset Title in the table, then click on the copy icon that will appear to the right of the name.\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/assets/doc_demo_asset/delete\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -d ''\n    ```\n\n=== \"Kelvin API Client (Python)\"\n\n    \n        To make life easier, you can copy the Asset Name from the Kelvin UI in Operations → Assets. Hover over the Asset Name below the Asset Title in the table, then click on the copy icon that will appear to the right of the name.\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Delete Asset\n    response = client.asset.delete_asset(asset_name=\"doc_demo_asset\")\n\n    print(response)\n    ```\n\n    You will not receive a response.\n</div>",
+  "summary": "",
+  "source": "core-docs/docs/platform-administration/how-to/asset/delete-asset.md",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/assets/doc_demo_asset/delete\" \\\n    -H \"Authorization: Bearer <Your Current Token>\" \\\n    -H \"Accept: application/json\" \\\n    -d ''",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Delete Asset\n    response = client.asset.delete_asset(asset_name=\"doc_demo_asset\")\n\n    print(response)",
+      "title": "API Client (Python) Example"
+    }
+  ],
+  "related": [],
+  "tags": [
+    "api",
+    "asset",
+    "cli",
+    "delete",
+    "operations",
+    "sdk"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

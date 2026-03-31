@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.utils.click-utils/clickconfigs",
+  "title": "ClickConfigs",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# ClickConfigs\n",
+  "summary": "",
+  "source": "cli/src/kelvin/sdk/lib/utils/click_utils.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.utils.click_utils",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

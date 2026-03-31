@@ -1,0 +1,47 @@
+{
+  "id": "sdk/api-client/client.api.apps/apps",
+  "title": "Apps",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Apps\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### list_apps_context(sort_by: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], data: Optional[Union[requests.AppsContextList, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.AppsResourceContext], responses.AppsContextListPaginatedResponseCursor]\n\nList Apps Contexts\n\n\n### create_app_version(data: Optional[Union[requests.AppVersionCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.AppVersionCreate\n\nCreate App Version\n\n\n### list_apps(app_names: Optional[Sequence[str]], app_types: Optional[Sequence[str]], resources: Optional[Sequence[str]], search: Optional[Sequence[str]], sort_by: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.AppShort], responses.AppsListPaginatedResponseCursor]\n\nReturns a list of Applications based on the provided filters and sort options.\n\n\n### delete_app(app_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDelete App\n\n\n### get_app(app_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.AppGet\n\nGet details of an Application\n\n\n### patch_app(app_name: str, data: Optional[Union[requests.AppPatch, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.AppPatch\n\nUpdate details of an Application. Any parameters that are not provided will remain unchanged.\n\n\n### delete_app_resources(app_name: str, data: Optional[Union[requests.AppResourcesDelete, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDelete App Resources\n\n\n### disable_app_resources(app_name: str, data: Optional[Union[requests.AppResourcesDisable, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDisable App Resources\n\n\n### enable_app_resources(app_name: str, data: Optional[Union[requests.AppResourcesEnable, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nEnable App Resources\n\n\n### list_app_resources(app_name: str, search: Optional[Sequence[str]], resources: Optional[Sequence[str]], app_versions: Optional[Sequence[str]], workload_names: Optional[Sequence[str]], enabled: Optional[bool], sort_by: Optional[Sequence[str]], pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.AppResource], responses.AppResourcesListPaginatedResponseCursor]\n\nList App Resources\n\n\n### delete_app_version(app_name: str, app_version: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDelete App Version\n\n\n### deploy_app_version(app_name: str, app_version: str, data: Optional[Union[requests.AppVersionDeploy, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.AppVersionDeploy\n\nDeploy App Version\n\n\n### get_app_version(app_name: str, app_version: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.AppVersionGet\n\nGet App Version\n\n\n### patch_app_version(app_name: str, app_version: str, data: Optional[Union[requests.AppVersionPatch, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.AppVersionPatch\n\nUpdate App Version\n\n\n### update_app_version(app_name: str, app_version: str, data: Optional[Union[requests.AppVersionUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.AppVersionUpdate\n\nUpdate App Version\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/apps.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.apps.list_apps_context()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.apps",
+    "item_type": "class",
+    "methods": [
+      "list_apps_context",
+      "create_app_version",
+      "list_apps",
+      "delete_app",
+      "get_app",
+      "patch_app",
+      "delete_app_resources",
+      "disable_app_resources",
+      "enable_app_resources",
+      "list_app_resources",
+      "delete_app_version",
+      "deploy_app_version",
+      "get_app_version",
+      "patch_app_version",
+      "update_app_version"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

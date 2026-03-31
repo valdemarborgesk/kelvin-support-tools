@@ -1,0 +1,82 @@
+{
+  "id": "api/endpoints/app-workloads/deleteWorkloads",
+  "title": "Delete Workloads",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Delete Workloads\n\nDelete Workload\n\n## Endpoint\n\n`POST /apps/workloads/delete`",
+  "summary": "Delete Workloads",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/apps/workloads/delete' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.app_workloads.deleteWorkloads()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/app-workloads"
+  ],
+  "tags": [
+    "app-workloads",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/apps/workloads/delete",
+    "method": "POST",
+    "operation_id": "deleteWorkloads",
+    "tag": "App Workloads",
+    "permission": "kelvin.permission.workload.delete",
+    "parameters": [
+      {
+        "name": "staged",
+        "in": "query",
+        "required": false,
+        "description": "",
+        "type": "boolean"
+      }
+    ],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "properties": {
+          "workload_names": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "type": "object"
+      }
+    },
+    "responses": {
+      "204": {
+        "description": "No Content"
+      },
+      "207": {
+        "description": ""
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "403": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      },
+      "500": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

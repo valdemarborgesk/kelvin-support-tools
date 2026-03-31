@@ -1,0 +1,48 @@
+{
+  "id": "sdk/api-client/client.api.data-quality/dataquality",
+  "title": "DataQuality",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataQuality\n\nInherits from: ApiServiceModel\n\n\n## Methods\n\n\n### delete_bulk_data_quality(data: Optional[Union[requests.BulkDataQualityDelete, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDeletes multiple data quality configurations.\n\n\n### upsert_bulk_data_quality(data: Optional[Union[requests.BulkDataQualityUpsert, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nCreate or update multiple data quality configurations at once.\n\n\n### create_data_quality(data: Optional[Union[requests.DataQualityCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataQualityCreate\n\nCreate a new Data Quality Configuration.\n\n\n### list_data_quality(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], search: Optional[Sequence[str]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.DataQualityList, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.DataQuality], responses.DataQualityListPaginatedResponseCursor]\n\nList data quality configurations based on the provided filters.\n\n\n### delete_data_quality(resource: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDelete a Data Quality configuration by resource.\n\n\n### get_data_quality(resource: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataQualityGet\n\nGet a Data Quality configuration by resource.\n\n\n### update_data_quality(resource: str, data: Optional[Union[requests.DataQualityUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataQualityUpdate\n\nUpdate a Data Quality by providing the new configuration. This request changes the whole Data Quality Configuration.\n\n\n### bulk_delete_data_quality_metrics(data: Optional[Union[requests.DeleteDataQualityMetricsBulk, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDelete multiple Data Quality Metrics by their names in a single request.\n\n\n### bulk_upsert_data_quality_metrics(data: Optional[Union[requests.UpsertDataQualityMetricsBulk, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nCreate or update multiple Data Quality Metrics in a single request.\n\n\n### create_data_quality_metric(data: Optional[Union[requests.DataQualityMetricCreate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataQualityMetricCreate\n\nCreate a new Data Quality Metric.\n\n\n### list_data_quality_metrics(pagination_type: Optional[Literal[limits, cursor, stream]], page_size: Optional[int], page: Optional[int], next: Optional[str], previous: Optional[str], direction: Optional[Literal[asc, desc]], search: Optional[Sequence[str]], sort_by: Optional[Sequence[str]], data: Optional[Union[requests.DataQualityMetricsList, Mapping[str, object]]], fetch: bool, _dry_run: bool, _client: Optional[SyncBaseClient]) -> Union[KList[type.DataQualityMetric], responses.DataQualityMetricsListPaginatedResponseCursor]\n\nReturns a list of Data Quality Metrics and its parameters. The Data Quality Metrics can be optionally filtered and sorted on the server before being returned.\n\n\n### delete_data_quality_metric(metric_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> None\n\nDelete a Data Quality Metric by name.\n\n\n### get_data_quality_metric(metric_name: str, _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataQualityMetricGet\n\nRetrieve the parameters of a Data Quality Metric.\n\n\n### update_data_quality_metric(metric_name: str, data: Optional[Union[requests.DataQualityMetricUpdate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataQualityMetricUpdate\n\nUpdate an existing Data Quality Metric.\n\n\n### data_quality_simulate(data: Optional[Union[requests.DataQualitySimulate, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataQualitySimulate\n\nSimulate the effect of data quality updates without making permanent changes.\n\n\n### data_quality_statistics(data: Optional[Union[requests.DataQualityStatistics, Mapping[str, object]]], _dry_run: bool, _client: Optional[SyncBaseClient]) -> responses.DataQualityStatistics\n\nRetrieve data quality statistics regarding the 'kelvin_data_quality_score' metric.\n",
+  "summary": "",
+  "source": "api/src/kelvin/api/client/api/data_quality.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.api.data_quality.delete_bulk_data_quality()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.api.data_quality",
+    "item_type": "class",
+    "methods": [
+      "delete_bulk_data_quality",
+      "upsert_bulk_data_quality",
+      "create_data_quality",
+      "list_data_quality",
+      "delete_data_quality",
+      "get_data_quality",
+      "update_data_quality",
+      "bulk_delete_data_quality_metrics",
+      "bulk_upsert_data_quality_metrics",
+      "create_data_quality_metric",
+      "list_data_quality_metrics",
+      "delete_data_quality_metric",
+      "get_data_quality_metric",
+      "update_data_quality_metric",
+      "data_quality_simulate",
+      "data_quality_statistics"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

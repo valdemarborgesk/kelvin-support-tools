@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.responses/role",
+  "title": "Role",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# Role\n\nInherits from: DataModelBase\n\n\nRole object.\n\nParameters\n----------\n    name: Optional[StrictStr]\n    title: Optional[StrictStr]\n",
+  "summary": "Role object.",
+  "source": "api/src/kelvin/api/client/model/responses.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.responses.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.responses",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

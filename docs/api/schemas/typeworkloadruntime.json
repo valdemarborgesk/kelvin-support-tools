@@ -1,0 +1,109 @@
+{
+  "id": "api/schemas/workloadruntime",
+  "title": "WorkloadRuntime",
+  "type": "schema",
+  "category": "api",
+  "content": "# WorkloadRuntime\n\n\n## Properties\n\n- **custom_actions** (`array`): \n- **resources** (`array`): \n- **configuration** (`object`): ",
+  "summary": "Object with properties: custom_actions, resources, configuration",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.WorkloadRuntime",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "custom_actions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The type of the custom action."
+              },
+              "way": {
+                "type": "string",
+                "enum": [
+                  "input-ca",
+                  "output-ca"
+                ],
+                "description": "The direction of the custom action. If `input-ca`, the app recieves and executes custom actions. If `output-ca`, the app sends custom actions which are then executed by an app with the corresponding `input-ca`."
+              }
+            }
+          }
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "resource": {
+                "type": "string",
+                "format": "krn"
+              },
+              "parameters": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/type.PropertyValue"
+                }
+              },
+              "datastreams": {
+                "type": "object",
+                "additionalProperties": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/type.WorkloadModifiableRuntimeResourceDatastream"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "guardrail": {
+                          "type": "object",
+                          "properties": {
+                            "control_disabled": {
+                              "type": "boolean",
+                              "default": false
+                            },
+                            "number": {
+                              "$ref": "#/components/schemas/type.GuardrailNumberConfig"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "data_quality": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/type.AppDataQuality"
+                }
+              },
+              "properties": {
+                "type": "object",
+                "additionalProperties": {
+                  "$ref": "#/components/schemas/type.PropertyValue"
+                }
+              }
+            }
+          }
+        },
+        "configuration": {
+          "type": "object"
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

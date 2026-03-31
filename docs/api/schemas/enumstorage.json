@@ -1,0 +1,30 @@
+{
+  "id": "api/schemas/storage",
+  "title": "Storage",
+  "type": "schema",
+  "category": "api",
+  "content": "# Storage\n\nThe storage location of the data. `node-and-cloud` means that the data is stored in the node and in the cloud. `node` means that the data is stored only in the node. `none` means that the data is not stored.\n\n## Enum Values\n\n- `node-and-cloud`\n- `node`\n- `none`",
+  "summary": "The storage location of the data. `node-and-cloud` means that the data is stored in the node and in the cloud. `node` means that the data is stored only in the node. `none` means that the data is not stored.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.Storage",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "node-and-cloud",
+        "node",
+        "none"
+      ],
+      "description": "The storage location of the data. `node-and-cloud` means that the data is stored in the node and in the cloud. `node` means that the data is stored only in the node. `none` means that the data is not stored."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

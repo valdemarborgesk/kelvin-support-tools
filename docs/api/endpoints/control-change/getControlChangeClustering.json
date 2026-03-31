@@ -1,0 +1,159 @@
+{
+  "id": "api/endpoints/control-change/getControlChangeClustering",
+  "title": "Get Control Change Clustering",
+  "type": "api_endpoint",
+  "category": "api",
+  "content": "# Get Control Change Clustering\n\nRetrieve the total count of Control Changes matching an array of `resources` and filter options between two dates grouped by the parameter `time_bucket`. Will also return a list of all the Control Change `id`s counted.\n\n## Endpoint\n\n`POST /control-changes/clustering/get`",
+  "summary": "Get Control Change Clustering",
+  "source": "openapi.json",
+  "code_examples": [
+    {
+      "language": "bash",
+      "code": "curl -X POST \\\n  'https://api.kelvininc.com/api/v4/control-changes/clustering/get' \\\n  -H 'Authorization: Bearer $TOKEN' \\\n  -H 'Content-Type: application/json' \\\n  -d '{...}'"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client(api_key=\"your-api-key\")\nresponse = client.control_change.getControlChangeClustering()\nprint(response)"
+    }
+  ],
+  "related": [
+    "api/schemas/control-change"
+  ],
+  "tags": [
+    "control-change",
+    "api",
+    "post"
+  ],
+  "metadata": {
+    "path": "/control-changes/clustering/get",
+    "method": "POST",
+    "operation_id": "getControlChangeClustering",
+    "tag": "Control Change",
+    "permission": "kelvin.permission.control_change.read",
+    "parameters": [],
+    "request_body": {
+      "content_type": "application/json",
+      "required": true,
+      "schema": {
+        "required": [
+          "end_date",
+          "start_date",
+          "time_bucket"
+        ],
+        "type": "object",
+        "properties": {
+          "end_date": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-12-18T18:22:18.582724Z",
+            "description": "Most recent (end) creation time for counting the number of Control Changes. Time is based on UTC timezone, formatted in RFC 3339."
+          },
+          "resources": {
+            "type": "array",
+            "example": [
+              "krn:ad:bp_01/motor_speed_set_point",
+              "krn:ad:bp_16/motor_speed_set_point"
+            ],
+            "description": "Filter Assets / Data Streams (`resources`) linked to Control Changes for inclusion in the count. The filter is on the full name only. All strings in the array are treated as `OR`. Each Asset and Data Stream name can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "krn",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "sources": {
+            "type": "array",
+            "example": [
+              "krn:app:motor-speed-control"
+            ],
+            "description": "Filter to only count Control Changes from certain `sources`. The filter is on the full name only. All strings in the array are treated as `OR`. Each KRN name can only contain lowercase alphanumeric characters and `.`, `_` or `-` characters.",
+            "items": {
+              "type": "string",
+              "format": "krn",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-12-18T18:22:18.582724Z",
+            "description": "Earliest (start) creation time for counting the  number of Control Changes. Time is based on UTC timezone, formatted in RFC 3339."
+          },
+          "states": {
+            "type": "array",
+            "example": [
+              "sent",
+              "applied"
+            ],
+            "description": "Filter to only count Control Changes associated with one or more `states`. The filter is on the full `state` name only. All strings in the array are treated as `OR`.",
+            "items": {
+              "type": "string",
+              "enum": [
+                "pending",
+                "ready",
+                "sent",
+                "processed",
+                "applied",
+                "failed",
+                "rejected"
+              ]
+            }
+          },
+          "time_bucket": {
+            "type": "string",
+            "example": "5m",
+            "description": "Defines the time range to use to group and count the Control Changes."
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "OK",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "control_change_ids": {
+                "type": "array",
+                "example": [
+                  "0002bc79-b42f-461b-95d6-cf0a28ba87aa",
+                  "518bcb79-ffaa-4d3f-8042-52634c34b71e"
+                ],
+                "description": "An array of Control Change `id`'s that have been counted.",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "count": {
+                "type": "integer",
+                "example": 2,
+                "description": "Number of occurrences of Control Changes over the time period of `time_bucket` that meet the request parameters starting from time `time_bucket_start`."
+              },
+              "time_bucket_start": {
+                "type": "string",
+                "format": "date-time",
+                "example": "2024-12-18T18:22:18.582724Z",
+                "description": "Time of the start of the count for the current `time_bucket` period in RFC 3339 UTC date/time format."
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": ""
+      },
+      "401": {
+        "description": ""
+      },
+      "404": {
+        "description": ""
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

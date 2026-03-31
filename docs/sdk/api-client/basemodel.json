@@ -1,0 +1,36 @@
+{
+  "id": "sdk/api-client/base.base-model/basemodel",
+  "title": "BaseModel",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# BaseModel\n\nInherits from: pydantic.BaseModel\n\n\nBase data-model with mapping methods.\n\n\n## Methods\n\n\n### __init__(_owner: Optional[BaseModel], _name: Optional[str]) -> None\n\nInitialise model.\n\n\n### items() -> Iterable[tuple[str, object]]\n\nReturn items as key-value pairs.\n\n\n### keys() -> Iterator[str]\n\nReturn field names.\n\n\n### values() -> Iterator[object]\n\nReturn field values.\n",
+  "summary": "Base data-model with mapping methods.",
+  "source": "api/src/kelvin/api/base/base_model.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.base.base_model.__init__()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "base.base_model",
+    "item_type": "class",
+    "methods": [
+      "__init__",
+      "items",
+      "keys",
+      "values"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

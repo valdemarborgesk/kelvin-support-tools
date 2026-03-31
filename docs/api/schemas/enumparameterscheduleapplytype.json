@@ -1,0 +1,29 @@
+{
+  "id": "api/schemas/parameterscheduleapplytype",
+  "title": "ParameterScheduleApplyType",
+  "type": "schema",
+  "category": "api",
+  "content": "# ParameterScheduleApplyType\n\nType of the schedule action to apply. `schedule` applies the new parameters, `schedule-revert` reverts to the original parameters.\n\n## Enum Values\n\n- `schedule`\n- `schedule-revert`",
+  "summary": "Type of the schedule action to apply. `schedule` applies the new parameters, `schedule-revert` reverts to the original parameters.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.ParameterScheduleApplyType",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "schedule",
+        "schedule-revert"
+      ],
+      "description": "Type of the schedule action to apply. `schedule` applies the new parameters, `schedule-revert` reverts to the original parameters."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

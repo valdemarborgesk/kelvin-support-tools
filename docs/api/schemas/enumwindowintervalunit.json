@@ -1,0 +1,31 @@
+{
+  "id": "api/schemas/windowintervalunit",
+  "title": "WindowIntervalUnit",
+  "type": "schema",
+  "category": "api",
+  "content": "# WindowIntervalUnit\n\nThe unit of time for the window interval. This is used in data availability and stale detection checks to define the time period over which data is expected.\n\n## Enum Values\n\n- `sec`\n- `min`\n- `hour`\n- `day`",
+  "summary": "The unit of time for the window interval. This is used in data availability and stale detection checks to define the time period over which data is expected.",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "enum",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "enum.WindowIntervalUnit",
+    "schema_type": "enum",
+    "schema": {
+      "type": "string",
+      "enum": [
+        "sec",
+        "min",
+        "hour",
+        "day"
+      ],
+      "description": "The unit of time for the window interval. This is used in data availability and stale detection checks to define the time period over which data is expected."
+    },
+    "last_updated": "2026-02-04"
+  }
+}

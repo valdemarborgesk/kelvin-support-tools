@@ -1,0 +1,25 @@
+{
+  "id": "how-to/user-management/access-control/manage-groups",
+  "title": "Manage User Groups",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Manage User Groups\n\nThis feature in the Administration section of the Kelvin UI is the management of the Groups in the Attribute Based Access Control.\n\nA Group is a collection of Roles. Roles are a collection of Policies.\n\nThe name of the Group must match the name of the group in Keycloak or your SSO for these Roles and Policies to function properly.\n\n    This is not the group in Keycloak or your SSO. That is managed outside of Kelvin UI.\n\n    This group is in the Attribute Based Access Control section and is directly linked to the identically named group in the authentication section, Keycloak or your SSO.\n\n    The authentication group determines the users who are assigned membership to this group.\n\n<div class=\"result\" markdown>\n\n=== \"Create a Group\"\n\n            You will still need to make the relevant Group with the same name in Keycloak or your SSO.\n\n    To start, click on **User Management** in the Administration section of the left side bar and click on the **Add Group** button.\n\n    \n\n    You will see a popup appear.\n\n    \n\n    Now type a friendly Display Name.\n\n    \n        The name ID will be automatically created from the Display Name. You can change this if required.\n\n    \n\n    Add from the list of available roles the ones that are relevant to your group and optionally add a description for this Group.\n\n    \n\n    Then click the **Add** button.\n\n    \n\n    Congratulations, you have created a new group and assigned Roles to it.\n\n=== \"Edit Group\"\n\n    To edit the Group, click on **User Management** in the Administration section of the left side bar and then click on the options `...` at the end of the row that you wish to edit, then click **Edit**.\n\n    \n\n    You will then see the editing section of the selected Group.\n\n    \n\n    Edit the Roles for the Group and then click the **Save** button to update.\n\n    Congratulations, you have updated a Group.\n\n=== \"Delete Group\"\n\n    To edit the Group, click on **User Management** in the Administration section of the left side bar and then click on the options `...` at the end of the row that you wish to edit, then click **Delete**.\n\n    \n\n    You will then see a deletion confirmation popup.\n\n    \n\n    Type **PERMNANETLY DELETE** in the text box and click delete to confirm the process.\n\n    Congratulations, you have deleted a Group.\n\n</div>",
+  "summary": "This feature in the Administration section of the Kelvin UI is the management of the Groups in the Attribute Based Access Control. A Group is a collection of Roles. Roles are a collection of Policies. The name of the Group must match the name of t...",
+  "source": "core-docs/docs/platform-administration/how-to/user-management/access-control/manage-groups.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "cli",
+    "create",
+    "groups",
+    "manage",
+    "operations",
+    "user"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

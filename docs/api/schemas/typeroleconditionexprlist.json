@@ -1,0 +1,45 @@
+{
+  "id": "api/schemas/roleconditionexprlist",
+  "title": "RoleConditionExprList",
+  "type": "schema",
+  "category": "api",
+  "content": "# RoleConditionExprList\n\n\n## Properties\n\n- **of** (`array`): ",
+  "summary": "Object with properties: of",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.RoleConditionExprList",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "of": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "expr": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "expr"
+            ]
+          }
+        }
+      },
+      "required": [
+        "of"
+      ]
+    },
+    "last_updated": "2026-02-04"
+  }
+}

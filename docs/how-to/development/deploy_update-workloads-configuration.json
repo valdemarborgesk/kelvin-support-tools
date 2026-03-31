@@ -1,0 +1,29 @@
+{
+  "id": "how-to/deploy/update-workloads-configuration",
+  "title": "Update Workload Configuration",
+  "type": "how_to",
+  "category": "development",
+  "content": "# Update Workload Configuration\n\nThe App Configurations for a Kelvin SmartApp™ can be updated individually for each Workload.\n\n    You can read the full concept of [App Configurations in the Overview ⟶ Concepts page](../../../overview/concepts/variables/app-configurations.md).\n\nClick on the **Applications** menu item on the left sidebar menu.\n\nSelect the Application you want to edit the App Configurations and click on the **Workloads** tab.\n\nNext click on the workload name.\n\nClick on the **Configuration** tab and update the configurations as required. When finished click on the **Apply and Redeploy** button.\n\n*",
+  "summary": "The App Configurations for a Kelvin SmartApp™ can be updated individually for each Workload.",
+  "source": "core-docs/docs/developer-tools/how-to/deploy/update-workloads-configuration.md",
+  "code_examples": [],
+  "related": [
+    "concepts/app-configurations"
+  ],
+  "tags": [
+    "cli",
+    "configuration",
+    "configure",
+    "deploy",
+    "development",
+    "smartapp",
+    "update",
+    "workload"
+  ],
+  "metadata": {
+    "subcategory": "developer-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

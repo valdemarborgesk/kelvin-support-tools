@@ -1,0 +1,33 @@
+{
+  "id": "sdk/app/application.window/tumblingwindow",
+  "title": "TumblingWindow",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# TumblingWindow\n\nInherits from: BaseTimeWindow\n\n\nNon-overlapping time windows where hop_size equals window_size.\n\n\n## Methods\n\n\n### __init__(assets: List[str], inputs: List[str], queue: asyncio.Queue[AssetDataMessage], window_size: timedelta) -> None\n",
+  "summary": "Non-overlapping time windows where hop_size equals window_size.",
+  "source": "app/src/kelvin/application/window.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import TumblingWindow\n\n# Usage example\napp = TumblingWindow()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "application.window",
+    "item_type": "class",
+    "methods": [
+      "__init__"
+    ],
+    "last_updated": "2026-02-04"
+  }
+}

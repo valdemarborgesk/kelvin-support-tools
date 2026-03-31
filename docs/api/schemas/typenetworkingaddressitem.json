@@ -1,0 +1,43 @@
+{
+  "id": "api/schemas/networkingaddressitem",
+  "title": "NetworkingAddressItem",
+  "type": "schema",
+  "category": "api",
+  "content": "# NetworkingAddressItem\n\n\n## Properties\n\n- **address** (`string`): IPV4 address to reach the Service.\n- **interface** (`string`): Interface responsible for hosting the Service.\n- **port** (`integer`): Port designated for accessing the Service.",
+  "summary": "Object with properties: address, interface, port",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.NetworkingAddressItem",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "example": "172.0.0.2",
+          "description": "IPV4 address to reach the Service."
+        },
+        "interface": {
+          "type": "string",
+          "example": "eth0",
+          "description": "Interface responsible for hosting the Service."
+        },
+        "port": {
+          "type": "integer",
+          "example": 8080,
+          "minimum": 1,
+          "maximum": 65535,
+          "description": "Port designated for accessing the Service."
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

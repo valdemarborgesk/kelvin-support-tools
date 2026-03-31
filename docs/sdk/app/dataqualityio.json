@@ -1,0 +1,31 @@
+{
+  "id": "sdk/app/config.smart-app/dataqualityio",
+  "title": "DataQualityIO",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataQualityIO\n\nInherits from: ConfigBaseModel\n",
+  "summary": "",
+  "source": "app/src/kelvin/config/smart_app.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.application import DataQualityIO\n\n# Usage example\napp = DataQualityIO()"
+    }
+  ],
+  "related": [
+    "sdk/app"
+  ],
+  "tags": [
+    "app",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "app",
+    "module": "config.smart_app",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

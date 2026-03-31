@@ -1,0 +1,79 @@
+{
+  "id": "api/schemas/kelvinmessage",
+  "title": "KelvinMessage",
+  "type": "schema",
+  "category": "api",
+  "content": "# KelvinMessage\n\n\n## Properties\n\n- **id** (`string`): A unique randomly generated UUID as the key `id`. Duplicate keys are not allowed.\n- **type** (`string`): Kelvin Message Type representing the message type. If you do not know what Kelvin Message Type to put, most likely you can use `data;pt={primitive-type}`.\n- **resource** (`string`): The resource that this message's data is linked with, expressed as a KRN. This can be an Asset, Data Stream, Asset / Data Stream pair, etc.\n- **source** (`string`): The resource that has initiated the writing of this message, expressed as a KRN. This can be an Application, Workload, Version specific Workload, etc.\n- **timestamp** (`string`): UTC time representing the time of this message's data, formatted in RFC 3339. This is usually the current time of creation of the message, but can also be back dated to any time in the past.\n- **payload** (`any`): Value represented in one of these formats.",
+  "summary": "Object with properties: id, type, resource, source, timestamp",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.KelvinMessage",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "resource",
+        "timestamp",
+        "payload",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "example": "0002bc79-b42f-461b-95d6-cf0a28ba87aa",
+          "description": "A unique randomly generated UUID as the key `id`. Duplicate keys are not allowed."
+        },
+        "type": {
+          "type": "string",
+          "format": "data;pt={primitive-type}",
+          "description": "Kelvin Message Type representing the message type. If you do not know what Kelvin Message Type to put, most likely you can use `data;pt={primitive-type}`."
+        },
+        "resource": {
+          "type": "string",
+          "format": "krn",
+          "example": "krn:ad:bp_01/motor_speed_setpoint",
+          "description": "The resource that this message's data is linked with, expressed as a KRN. This can be an Asset, Data Stream, Asset / Data Stream pair, etc."
+        },
+        "source": {
+          "type": "string",
+          "format": "krn",
+          "example": "krn:wlappv:cluster-01/beam-pump-optimization/3.4.7",
+          "description": "The resource that has initiated the writing of this message, expressed as a KRN. This can be an Application, Workload, Version specific Workload, etc."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "UTC time representing the time of this message's data, formatted in RFC 3339. This is usually the current time of creation of the message, but can also be back dated to any time in the past."
+        },
+        "payload": {
+          "description": "Value represented in one of these formats.",
+          "oneOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "object"
+            }
+          ]
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

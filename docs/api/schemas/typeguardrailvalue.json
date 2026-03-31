@@ -1,0 +1,38 @@
+{
+  "id": "api/schemas/guardrailvalue",
+  "title": "GuardrailValue",
+  "type": "schema",
+  "category": "api",
+  "content": "# GuardrailValue\n\n\n## Properties\n\n- **value** (`number`): The limiting value.\n- **inclusive** (`boolean`): The defined limiting value is inclusive within the allowable range.",
+  "summary": "Object with properties: value, inclusive",
+  "source": "openapi.json",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "schema",
+    "type",
+    "api"
+  ],
+  "metadata": {
+    "schema_name": "type.GuardrailValue",
+    "schema_type": "type",
+    "schema": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "description": "The limiting value.",
+          "type": "number"
+        },
+        "inclusive": {
+          "description": "The defined limiting value is inclusive within the allowable range.",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "last_updated": "2026-02-04"
+  }
+}

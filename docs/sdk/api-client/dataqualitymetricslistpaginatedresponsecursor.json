@@ -1,0 +1,31 @@
+{
+  "id": "sdk/api-client/client.model.responses/dataqualitymetricslistpaginatedresponsecursor",
+  "title": "DataQualityMetricsListPaginatedResponseCursor",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# DataQualityMetricsListPaginatedResponseCursor\n\n\nDataQualityMetricsListPaginatedResponseCursor object.\n\nParameters\n----------\n    data: Optional[list[type_1.DataQualityMetric]]\n    pagination: Optional[pagination_1.PaginationCursor]\n",
+  "summary": "DataQualityMetricsListPaginatedResponseCursor object.",
+  "source": "api/src/kelvin/api/client/model/responses.py",
+  "code_examples": [
+    {
+      "language": "python",
+      "code": "from kelvin.api import Client\n\nclient = Client()\nresult = client.client.model.responses.method()"
+    }
+  ],
+  "related": [
+    "sdk/api-client"
+  ],
+  "tags": [
+    "api-client",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "api-client",
+    "module": "client.model.responses",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

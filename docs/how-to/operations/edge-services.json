@@ -1,0 +1,161 @@
+{
+  "id": "how-to/edge-services",
+  "title": "Edge Services",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Edge Services\n\n_On this page you will learn about the Edge UI, Edge API and Kelvin Provision features._\n\n## Overview\n\nThe Edge computers and VM's are built on Kubernetes Clusters.\n\nNormally they will run and two-way sync all data with the Kelvin Platform in realtime.\n\n    They are able to operate offline, running the workloads, processing local data and collecting data from Assets.\n\n    Any data generated that needs to be sync to the Kelvin Platform will be stored and transfered when a connection to the Kelvin Platform is reestablished.\n\nThere are three local **Edge Services** available that you can use to interact directly with the Cluster installed on the edge computer/VM. These are;\n\n* Edge UI - A webserver interface accessible through a local web browser\n* Edge API - A set of API endpoints for iteracting with the Edge computer/VM through RestFUL API\n* Kelvin Provision - A command line tool on the edge computer/VM\n\nHere is a video tutorial overview of the Edge UI and Edge API in action.\n\n<iframe width=\"800\" height=\"450\" src=\"https://www.youtube.com/embed/2VLd5063PKA?si=4SJ9PZNApFzdhVrN\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>\n\n### Edge UI\n\nKelvin also has a local **Edge UI** web server for you to do certain local tasks on the Cluster such as;\n\n* View a list of all installed Workloads and their current status\n* Start and stop any Workload\n* Deploy new Workload images (useful when there is no Internet connection to the Kelvin Platform)\n* Delete Workloads\n* See current Workload's Kelvin SmartApp™ name and version\n\nThis is accessible by opening a modern web browser on the local computer or to any computer that has a direct IP connection to the computer with;\n\n```\nhttp://127.0.0.1:30000\n\nor\n\nhttp://<ip-address>:30000\n```\n\n### Edge API\n\nKelvin also has a local **Edge UI** and **Edge API** Services for you to do certain local tasks on the Cluster such as;\n\n* View a list of all installed Workloads and their current status\n* Start and stop any Workload\n* Deploy new Workload images (useful when there is no Internet connection to the Kelvin Platform)\n* Delete Workloads\n* See current Workload's Kelvin SmartApp™ name and version\n\n    This documentation page shows you how to perform many of the common tasks using the Edge API.\n\n    To see a detailed reference of the Edge API endpoints, you can read [full documentation here](../../../developer-tools/api-edge/overview-edge.md).\n\nYou can also see a swagger reference documentation on the local computer with the following address;\n\n```\nhttp://<ip_address>:30000/swagger\n```\n\n### Kelvin Provision\n\nOn the Edge computer/VM you can also do many local tasks in the CLI (Command Line Interface).\n\n    The Kelvin provision CLI tools has more features than the Edge UI and Edge API options and are designed for power users working directly on the Edge computer/VM.\n\nYou can see all the options by typing;\n\n```\nkelvin-provision --help\n```\n\nOr you can read more details about each option by typing the option and then `--help`\n\n```\nkelvin-provision workloads --help\n```\n\n    On this page you will only see the `kelvin-provision` commands that are associated with Workload tasks.\n\n    Throughout the docs.kelvin.ai site you will see more references to `kelvin-provision` where appropriate.\n\n## Installation & Updates\n\nThe Edge Services will be automatically installed when you first provision the cluster.\n\nAll updates are transparent and will be automatically handled by Kelvin. There is nothing for the user to set.\n\n## Managing User Credentials\n\nThe Edge UI / Edge API credentials are not the same as the Kelvin Platform credentials. They are independently associated with each Cluster.\n\n    The default credentials are;\n\n    ```\n    username: admin\n    password: admin\n    ```\n\nThe Kelvin Provision does not need any credentials as you need to have the OS credentials already to log into the edge computer to use this Edge Service.\n\n<div class=\"result\" markdown>\n\n=== \"Kelvin UI\"\n\n    It is not possible to change the Edge Cluster credentials from the Kelvin UI.\n\n=== \"Kelvin API\"\n\n    You can change the local user credentials using the Kelvin API `/orchestration/clusters/{cluster_name}/update` endpoint with the following;\n\n    \n        The password must contain at least one captial and one lowercase letter and one number.\n\n    \n        This is API request is on the Kelvin API not the Edge API !\n\n    ```bash title=\"API cURL Example\" linenums=\"1\"\n    curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/doc-demo-cluster-pro-1/update\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n        \"api_credentials\": {\n            \"username\": \"my_username\",\n            \"password\": \"MY_passw0rd\"\n        }\n    }'\n    ```\n\n    You will get a response similar to this; \n\n    ```json title=\"API cURL Example Response\" linenums=\"1\"\n    {\n    \"name\": \"doc-demo-cluster-pro-1\",\n    \"title\": \"Doc Demo Cluster Pro 1\",\n    \"type\": \"k3s\",\n    \"ready\": true,\n    \"status\": \"unreachable\",\n    \"last_seen\": \"2024-07-15T19:14:31.85572Z\",\n    \"sync_scrape_interval\": 30,\n    \"manifests_scrape_interval\": 86400,\n    \"manifests_scrape_enabled\": true,\n    \"version\": {\n        \"k8s_version\": \"v1.24.10+k3s1\",\n        \"kelvin_version\": \"4.0.0-rc2024.773\"\n    },\n    \"created\": \"2024-07-15T14:50:12.894904Z\",\n    \"updated\": \"2024-07-15T19:26:23.455376Z\",\n    \"service_account_token\": \"bm9kZS1jbGllbnQtZG9jLWRlbW8tY2x1c3Rlci1wcm8tMTpGbURKODcySzM1cmpHWU5NZDRUY3Z3cDY5T1V1c3lueA==\",\n    \"provision_script\": \"bash <(curl -sfS https://<url.kelvin.ai>/provision) --service-account bm9kZS1jbGllbnQtZG9jLWRlbW8tY2x1c3Rlci1wcm8tMTpGbURKODcySzM1cmpHWU5NZDRUY3Z3cDY5T1V1c3lueA==\",\n    \"join_script\": \"bash <(curl -sfS https://<url.kelvin.ai>/provision) --join --ip <main_cluster_node_ip_address> --token K103877ea0977db610b278ad4c42d471f4bf165a90e903cb822f30aac4c172158be::server:984cc2be87de8f55757c656b5cd8baf3\",\n    \"telemetry_scrape_interval\": 30,\n    \"telemetry_enabled\": false,\n    \"telemetry_buffer_size\": 5,\n    \"forward_logs_enabled\": false,\n    \"forward_logs_buffer_size\": 5,\n    \"upgrade_status\": {\n        \"state\": \"idle\",\n        \"message\": \"\"\n    },\n    \"upgrade_pre_download\": false,\n    \"upgrade_instantly_apply\": true\n    }\n    ```\n\n=== \"Kelvin API Client (Python)\"\n\n    ```python title=\"API Client (Python) Example\" linenums=\"1\"\n    from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Update Cluster Credentials\n    response = client.orchestration.update_orchestration_clusters(cluster_name='doc-demo-cluster-pro-1',\n    data={\n        \"api_credentials\": {\n        \"username\": \"my_username\",\n        \"password\": \"My_passw0rd\"\n        }\n      }\n    )\n\n    print(response)\n    ```\n\n    You will get a response similar to this;\n\n    ```bash title=\"API Client (Python) Example Response\" linenums=\"1\"\n    created=datetime.datetime(2024, 7, 15, 14, 50, 12, 894904, tzinfo=datetime.timezone.utc) forward_logs_buffer_size=5 forward_logs_enabled=False join_script='bash <(curl -sfS https://<url.kelvin.ai>/provision) --join --ip <main_cluster_node_ip_address> --token K103877ea0977db610b278ad4c42d471f4bf165a90e903cb822f30aac4c172158be::server:984cc2be87de8f55757c656b5cd8baf3' last_seen=datetime.datetime(2024, 7, 15, 19, 14, 31, 855720, tzinfo=datetime.timezone.utc) manifests_scrape_enabled=True manifests_scrape_interval=86400 name='doc-demo-cluster-pro-1' provision_script='bash <(curl -sfS https://<url.kelvin.ai>/provision) --service-account bm9kZS1jbGllbnQtZG9jLWRlbW8tY2x1c3Rlci1wcm8tMTpGbURKODcySzM1cmpHWU5NZDRUY3Z3cDY5T1V1c3lueA==' ready=True service_account_token='bm9kZS1jbGllbnQtZG9jLWRlbW8tY2x1c3Rlci1wcm8tMTpGbURKODcySzM1cmpHWU5NZDRUY3Z3cDY5T1V1c3lueA==' status=<OrchestrationClusterStatus.unreachable: 'unreachable'> sync_scrape_interval=30 telemetry_buffer_size=5 telemetry_enabled=False telemetry_scrape_interval=30 title='Doc Demo Cluster Pro 1' type=<ClusterType.k3s: 'k3s'> updated=datetime.datetime(2024, 7, 15, 19, 53, 44, 812102, tzinfo=datetime.timezone.utc) upgrade_instantly_apply=True upgrade_pre_download=False upgrade_status=UpgradeStatus(message='', state=<State.idle: 'idle'>) version=VersionModel(k8s_version='v1.24.10+k3s1', kelvin_version='4.0.0-rc2024.773') client=Client(url=\"https://<url.kelvin.ai>')\n    ```\n\n=== \"Kelvin Provision\"\n\n    For Kelvin Provision CLI you do not need any credentials as you need to have the OS credentials already to log into the edge computer.\n\n    Kelvin Provision can not edit the local credentials for the Edge UI and Edge API Services.\n\n</div>\n\n## Login to Edge Services\n\n    === \"Edge UI\"\n\n        Open the Edge UI in a browser.\n\n        The login screen looks very similar to the login screen of the Kelvin Platform.\n\n                    The username and password are NOT the same as your Kelvin Platform credentials. They are edge specific.\n\n            The default username and password is `admin` and `admin`.\n\n        \n\n    === \"Edge API\"\n\n        You can read the Edge API authentication documentation in the [Edge API reference section here](../../../developer-tools/api-edge/authentication-edge.md).\n\n    === \"Kelvin Provision\"\n\n        For Kelvin Provision CLI you do not need any credentials as you need to have the OS credentials already to log into the edge computer.\n\n## Edge UI Dashboard\n\nThe main dashboard on the Edge UI will show you all the Workloads that are on the Cluster and their current status.\n\nIn the dashboard you can;\n\n* Control the Workload\n* See the current Status of the Workload\n* See the Workload's Kelvin SmartApp™ and version\n* The Node that the Workload is running on\n* Search and line spacing features are available for quickly locating the wanted Workloads when the list is long\n\nIf you click on a workload, then you can see detailed information about the workload.\n\n* Logs for the workload\n* Telemetry for the workload\n* Configuration for the workload\n* System settings for the workload\n\n## Deploy New Workload\n\nTo deploy a new workload in the Edge UI you will need to first prepare the image in the Kelvin Platform and download the image, then open the Edge UI to deploy.\n\n### Create Your Workload\n\nThis method of Deployment can be done for Kelvin SmartApps™, Workloads and Connections.\n\n* For Applications deployment you can find full details to deploy them [here](../../../developer-tools/how-to/deploy/deploy-workloads-deploy.md).\n* For a Connection deployment, go to Connections and click on the `Create Connection` button. Once successfully created, then go to Orchestration and select the Cluster where you have deployed the Connection where you will see the workload that is your Connection. \n\n### Download Your Workload Image\n\nTo download the image you can follow this documentation [here](../../../developer-tools/how-to/deploy/deploy-workloads-deploy-offline.md).\n\n    For Kelvin Professional edition the image will be automatically created.\n\nThe workload image is stored as a zip file.\n\n    Do not unpack the zip file !\n\n### Deploy Workload Image\n\nYou have a few options to deploy the workload image using the Edge computer.\n\n    === \"Edge UI\"\n\n        Open the Edge UI in a browser.\n\n        \n\n        In the dashboard, click on the `Deploy Workload` button.\n\n        \n\n        Either drag and drop the downloaded image file or click and select it then click on the **Deploy** button when it turns blue.\n\n        \n\n        The Workload will be uploaded and deployed to a Node in the Cluster.\n\n        \n            Once deployed successfully, the status of the Workload on the Kelvin Platform will be updated from `Pending Deploy` to `Running` the next time the edge computer is connected to the Internet.\n\n        \n\n        Congratulations, you have deployed your new Workload.\n\n    === \"Edge API\"\n\n        \n            This endpoint is only available in the Edge API. With the Kelvin API you can only do a full Workload deployment with the `/workloads/deploy` endpoint.\n\n        ```bash title=\"API cURL Example\" linenums=\"1\"\n        curl -X \"POST\" \\\n        'https://<edge-computer-ip>/api/v4/workloads/import\" \\\n        -H \"Authorization: Bearer <Your Current Token>\" \\\n        -H \"Accept: application/json\" \\\n        -H \"Content-Type: multipart/form-data\" \\\n        -F 'file=@/home/ubuntu/Documents/doc-demo-opcua-server_20240716101813.zip;type=application/zip'\n        ```\n\n        You will get a response similar to this;\n\n        ```json title=\"API cURL Example Response\" linenums=\"1\"\n        {\n        \"name\":\"doc-demo-opcua-server\",\n        \"title\":\"Doc Demo OPCUA Server\",\n        \"app_name\":\"qa-opcua-server-docker-app\",\n        \"app_version\":\"1.0.1\",\n        \"node_name\":null,\n        \"status\":{\n            \"state\":\"received\",\n            \"message\":\"Received\",\n            \"warnings\":null\n        },\n        \"staged\":null\n        }\n        ```\n\n    === \"Kelvin Provision\"\n\n        Ensure the Workload image is accessible from the command line and then type this command;\n\n        ```bash title=\"Kelvin Provision Command Line Example\" linenums=\"1\"\n        sudo kelvin-provision workloads import -f [fileLocation/filename]\n        ```\n\n        Afterwards you can check the workload is running with the command.\n\n        ```bash title=\"Kelvin Provision Command Line Output\" linenums=\"1\"\n        sudo kelvin-provision workloads list\n        ```\n\n## Start / Stop Workload\n\nYou can start / stop a Workload.\n\n    This will not undeploy the workload from the edge system, so you can restart it at anytime without having to deploy the Workload again.\n\nYou have a few options to deploy the workload image using the Edge computer.\n\n    === \"Edge UI\"\n\n        Open the Edge UI in a browser.\n\n        \n\n        In the dashboard, find the Workload you want to control and then click the button in the `action` column on that row.\n\n        \n\n        The Workload will start or stop depending on its current state.\n\n    === \"Edge API\"\n\n        **Start Workload**\n\n        You can start a Workload with the Edge API endpoint `/workloads/{workload_name}/start`.\n\n        ```bash title=\"API cURL Example\" linenums=\"1\"\n        curl -X \"GET\" \\\n        \"http://<edge-computer-ip>/api/v4/workloads/doc-demo-opcua-server/start\" \\\n        -H \"Authorization: Bearer <Your Current Token>\" \\\n        -H \"Accept: application/json\"\n        ```\n\n        You will get a response similar to this;\n\n        ```json title=\"API cURL Example Response\" linenums=\"1\"\n        {\n        \"name\":\"doc-demo-opcua-server\",\n        \"title\":\"Doc Demo OPCUA Server\",\n        \"app_name\":\"qa-opcua-server-docker-app\",\n        \"app_version\":\"1.0.1\",\n        \"node_name\":null,\n        \"status\":{\n            \"state\":\"starting\",\n            \"message\":\"Starting\",\n            \"warnings\":null\n        },\n        \"staged\":null\n        }\n        ```\n\n        **Stop Workload**\n\n        You can stop a Workload with the Edge API endpoint `/workloads/{workload_name}/stop`.\n\n        ```bash title=\"API cURL Example\" linenums=\"1\"\n        curl -X \"GET\" \\\n        \"http://<edge-computer-ip>/api/v4/workloads/doc-demo-opcua-server/stop\" \\\n        -H \"Authorization: Bearer <Your Current Token>\" \\\n        -H \"Accept: application/json\"\n        ```\n\n        You will get a response similar to this;\n\n        ```json title=\"API cURL Example Response\" linenums=\"1\"\n        {\n        \"name\":\"doc-demo-opcua-server\",\n        \"title\":\"Doc Demo OPCUA Server\",\n        \"app_name\":\"qa-opcua-server-docker-app\",\n        \"app_version\":\"1.0.1\",\n        \"node_name\":null,\n        \"status\":{\n            \"state\":\"stopping\",\n            \"message\":\"Stopping\",\n            \"warnings\":null\n        },\n        \"staged\":null\n        }\n        ```\n\n    === \"Kelvin Provision\"\n\n        To start a Workload;\n\n        ```bash title=\"Kelvin Provision Command Line Example\" linenums=\"1\"\n        kelvin-provision workloads start -n doc-demo-opcua-server\n        ```\n\n        You will see a response like this;\n\n        ```bash title=\"Kelvin Provision Command Line Output\" linenums=\"1\"\n        Connecting to cluster API...[OK]\n        Reading cluster config...[OK]\n        Test cluster connection...[OK]\n        ```\n\n        Then you can check the status of the workload to ensure it is started;\n\n        ```bash title=\"Kelvin Provision Command Line Output\" linenums=\"1\"\n        $ kelvin-provision workloads list\n        Connecting to cluster API...[OK]\n        Reading cluster config...[OK]\n        Test cluster connection...[OK]\n        Fetching workloads...[OK]\n        +-----------------------+---------+------+----------+\n        | Name                  | State   | Node | Warnings |\n        +-----------------------+---------+------+----------+\n        | doc-demo-opcua-server | running | n/a  |          |\n        +-----------------------+---------+------+----------+\n        ```\n\n        To stop a Workload;\n\n        ```bash title=\"Kelvin Provision Command Line Example\" linenums=\"1\"\n        kelvin-provision workloads stop -n doc-demo-opcua-server\n        ```\n\n        You will see a response like this;\n\n        ```bash title=\"Kelvin Provision Command Line Output\" linenums=\"1\"\n        Connecting to cluster API...[OK]\n        Reading cluster config...[OK]\n        Test cluster connection...[OK]\n        ```\n\n        Then you can check the status of the workload to ensure it has stopped;\n\n        ```bash title=\"Kelvin Provision Command Line Output\" linenums=\"1\"\n        $ kelvin-provision workloads list\n        Connecting to cluster API...[OK]\n        Reading cluster config...[OK]\n        Test cluster connection...[OK]\n        Fetching workloads...[OK]\n        +-----------------------+---------+------+----------+\n        | Name                  | State   | Node | Warnings |\n        +-----------------------+---------+------+----------+\n        | doc-demo-opcua-server | stopped | n/a  |          |\n        +-----------------------+---------+------+----------+\n        ```\n\n## Delete Workload\n\nYou can delete a Workload.\n\n    This will also remove the workload registration from the Kelvin Platform.\n\n    You can NOT use the existing Workload image to reinstall the Workload. You will need to create a new image and use the new image for the new deploy.\n\nYou have a few options to delete the workload image using the Edge computer.\n\n    === \"Edge UI\"\n\n        Open the Edge UI in a browser.\n\n        \n\n        In the dashboard, find the Workload you want to control and then click the delete button on that row.\n\n        \n\n        You will then be asked to confirm the delete action.\n\n        Then the Workload will be deleted.\n\n        \n            The Kelvin Platform will be updated with the delete action the next time the Edge computer is connected to the Internet.\n\n    === \"Edge API\"\n\n        You can delete a Workload with the Edge API endpoint `/workloads/{workload_name}/delete`.\n\n        ```bash title=\"API cURL Example\" linenums=\"1\"\n        curl -X \"POST\" \\\n        \"http://<edge-computer-ip>/api/v4/workloads/doc-demo-opcua-server/delete\" \\\n        -H \"Authorization: Bearer <Your Current Token>\" \\\n        -H \"Accept: */*\" \\\n        -d ''\n        ```\n\n        You will get a 200 response if successful.\n\n    === \"Kelvin Provision\"\n\n        To delete a Workload;\n\n        ```bash title=\"Kelvin Provision Command Line Example\" linenums=\"1\"\n        kelvin-provision workloads delete -n doc-demo-opcua-server\n        ```\n\n        You will see a response like this;\n\n        ```bash title=\"Kelvin Provision Command Line Output\" linenums=\"1\"\n        Connecting to cluster API...[OK]\n        Reading cluster config...[OK]\n        Test cluster connection...[OK]\n        Requesting workload to be deleted...\n        Successfully deleted the workload\n        ```",
+  "summary": "_On this page you will learn about the Edge UI, Edge API and Kelvin Provision features._",
+  "source": "core-docs/docs/platform-administration/how-to/edge-services/index.md",
+  "code_examples": [
+    {
+      "language": "text",
+      "code": "http://127.0.0.1:30000\n\nor\n\nhttp://<ip-address>:30000"
+    },
+    {
+      "language": "text",
+      "code": "http://<ip_address>:30000/swagger"
+    },
+    {
+      "language": "text",
+      "code": "kelvin-provision --help"
+    },
+    {
+      "language": "text",
+      "code": "kelvin-provision workloads --help"
+    },
+    {
+      "language": "text",
+      "code": "username: admin\n    password: admin"
+    },
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n    \"https://<url.kelvin.ai>/api/v4/orchestration/clusters/doc-demo-cluster-pro-1/update\" \\\n    -H \"Accept: application/json\" \\\n    -H \"Content-Type: application/json\" \\\n    -d '{\n        \"api_credentials\": {\n            \"username\": \"my_username\",\n            \"password\": \"MY_passw0rd\"\n        }\n    }'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n    \"name\": \"doc-demo-cluster-pro-1\",\n    \"title\": \"Doc Demo Cluster Pro 1\",\n    \"type\": \"k3s\",\n    \"ready\": true,\n    \"status\": \"unreachable\",\n    \"last_seen\": \"2024-07-15T19:14:31.85572Z\",\n    \"sync_scrape_interval\": 30,\n    \"manifests_scrape_interval\": 86400,\n    \"manifests_scrape_enabled\": true,\n    \"version\": {\n        \"k8s_version\": \"v1.24.10+k3s1\",\n        \"kelvin_version\": \"4.0.0-rc2024.773\"\n    },\n    \"created\": \"2024-07-15T14:50:12.894904Z\",\n    \"updated\": \"2024-07-15T19:26:23.455376Z\",\n    \"service_account_token\": \"bm9kZS1jbGllbnQtZG9jLWRlbW8tY2x1c3Rlci1wcm8tMTpGbURKODcySzM1cmpHWU5NZDRUY3Z3cDY5T1V1c3lueA==\",\n    \"provision_script\": \"bash <(curl -sfS https://<url.kelvin.ai>/provision) --service-account bm9kZS1jbGllbnQtZG9jLWRlbW8tY2x1c3Rlci1wcm8tMTpGbURKODcySzM1cmpHWU5NZDRUY3Z3cDY5T1V1c3lueA==\",\n    \"join_script\": \"bash <(curl -sfS https://<url.kelvin.ai>/provision) --join --ip <main_cluster_node_ip_address> --token K103877ea0977db610b278ad4c42d471f4bf165a90e903cb822f30aac4c172158be::server:984cc2be87de8f55757c656b5cd8baf3\",\n    \"telemetry_scrape_interval\": 30,\n    \"telemetry_enabled\": false,\n    \"telemetry_buffer_size\": 5,\n    \"forward_logs_enabled\": false,\n    \"forward_logs_buffer_size\": 5,\n    \"upgrade_status\": {\n        \"state\": \"idle\",\n        \"message\": \"\"\n    },\n    \"upgrade_pre_download\": false,\n    \"upgrade_instantly_apply\": true\n    }",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "python",
+      "code": "from kelvin.api.client import Client\n\n    # Login\n    client = Client(url=\"https://<url.kelvin.ai>\", username=\"<your_username>\")\n    client.login(password=\"<your_password>\")\n\n    # Update Cluster Credentials\n    response = client.orchestration.update_orchestration_clusters(cluster_name='doc-demo-cluster-pro-1',\n    data={\n        \"api_credentials\": {\n        \"username\": \"my_username\",\n        \"password\": \"My_passw0rd\"\n        }\n      }\n    )\n\n    print(response)",
+      "title": "API Client (Python) Example"
+    },
+    {
+      "language": "bash",
+      "code": "created=datetime.datetime(2024, 7, 15, 14, 50, 12, 894904, tzinfo=datetime.timezone.utc) forward_logs_buffer_size=5 forward_logs_enabled=False join_script='bash <(curl -sfS https://<url.kelvin.ai>/provision) --join --ip <main_cluster_node_ip_address> --token K103877ea0977db610b278ad4c42d471f4bf165a90e903cb822f30aac4c172158be::server:984cc2be87de8f55757c656b5cd8baf3' last_seen=datetime.datetime(2024, 7, 15, 19, 14, 31, 855720, tzinfo=datetime.timezone.utc) manifests_scrape_enabled=True manifests_scrape_interval=86400 name='doc-demo-cluster-pro-1' provision_script='bash <(curl -sfS https://<url.kelvin.ai>/provision) --service-account bm9kZS1jbGllbnQtZG9jLWRlbW8tY2x1c3Rlci1wcm8tMTpGbURKODcySzM1cmpHWU5NZDRUY3Z3cDY5T1V1c3lueA==' ready=True service_account_token='bm9kZS1jbGllbnQtZG9jLWRlbW8tY2x1c3Rlci1wcm8tMTpGbURKODcySzM1cmpHWU5NZDRUY3Z3cDY5T1V1c3lueA==' status=<OrchestrationClusterStatus.unreachable: 'unreachable'> sync_scrape_interval=30 telemetry_buffer_size=5 telemetry_enabled=False telemetry_scrape_interval=30 title='Doc Demo Cluster Pro 1' type=<ClusterType.k3s: 'k3s'> updated=datetime.datetime(2024, 7, 15, 19, 53, 44, 812102, tzinfo=datetime.timezone.utc) upgrade_instantly_apply=True upgrade_pre_download=False upgrade_status=UpgradeStatus(message='', state=<State.idle: 'idle'>) version=VersionModel(k8s_version='v1.24.10+k3s1', kelvin_version='4.0.0-rc2024.773') client=Client(url=\"https://<url.kelvin.ai>')",
+      "title": "API Client (Python) Example Response"
+    },
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n        'https://<edge-computer-ip>/api/v4/workloads/import\" \\\n        -H \"Authorization: Bearer <Your Current Token>\" \\\n        -H \"Accept: application/json\" \\\n        -H \"Content-Type: multipart/form-data\" \\\n        -F 'file=@/home/ubuntu/Documents/doc-demo-opcua-server_20240716101813.zip;type=application/zip'",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n        \"name\":\"doc-demo-opcua-server\",\n        \"title\":\"Doc Demo OPCUA Server\",\n        \"app_name\":\"qa-opcua-server-docker-app\",\n        \"app_version\":\"1.0.1\",\n        \"node_name\":null,\n        \"status\":{\n            \"state\":\"received\",\n            \"message\":\"Received\",\n            \"warnings\":null\n        },\n        \"staged\":null\n        }",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "bash",
+      "code": "sudo kelvin-provision workloads import -f [fileLocation/filename]",
+      "title": "Kelvin Provision Command Line Example"
+    },
+    {
+      "language": "bash",
+      "code": "sudo kelvin-provision workloads list",
+      "title": "Kelvin Provision Command Line Output"
+    },
+    {
+      "language": "bash",
+      "code": "curl -X \"GET\" \\\n        \"http://<edge-computer-ip>/api/v4/workloads/doc-demo-opcua-server/start\" \\\n        -H \"Authorization: Bearer <Your Current Token>\" \\\n        -H \"Accept: application/json\"",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n        \"name\":\"doc-demo-opcua-server\",\n        \"title\":\"Doc Demo OPCUA Server\",\n        \"app_name\":\"qa-opcua-server-docker-app\",\n        \"app_version\":\"1.0.1\",\n        \"node_name\":null,\n        \"status\":{\n            \"state\":\"starting\",\n            \"message\":\"Starting\",\n            \"warnings\":null\n        },\n        \"staged\":null\n        }",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "bash",
+      "code": "curl -X \"GET\" \\\n        \"http://<edge-computer-ip>/api/v4/workloads/doc-demo-opcua-server/stop\" \\\n        -H \"Authorization: Bearer <Your Current Token>\" \\\n        -H \"Accept: application/json\"",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "json",
+      "code": "{\n        \"name\":\"doc-demo-opcua-server\",\n        \"title\":\"Doc Demo OPCUA Server\",\n        \"app_name\":\"qa-opcua-server-docker-app\",\n        \"app_version\":\"1.0.1\",\n        \"node_name\":null,\n        \"status\":{\n            \"state\":\"stopping\",\n            \"message\":\"Stopping\",\n            \"warnings\":null\n        },\n        \"staged\":null\n        }",
+      "title": "API cURL Example Response"
+    },
+    {
+      "language": "bash",
+      "code": "kelvin-provision workloads start -n doc-demo-opcua-server",
+      "title": "Kelvin Provision Command Line Example"
+    },
+    {
+      "language": "bash",
+      "code": "Connecting to cluster API...[OK]\n        Reading cluster config...[OK]\n        Test cluster connection...[OK]",
+      "title": "Kelvin Provision Command Line Output"
+    },
+    {
+      "language": "bash",
+      "code": "$ kelvin-provision workloads list\n        Connecting to cluster API...[OK]\n        Reading cluster config...[OK]\n        Test cluster connection...[OK]\n        Fetching workloads...[OK]\n        +-----------------------+---------+------+----------+\n        | Name                  | State   | Node | Warnings |\n        +-----------------------+---------+------+----------+\n        | doc-demo-opcua-server | running | n/a  |          |\n        +-----------------------+---------+------+----------+",
+      "title": "Kelvin Provision Command Line Output"
+    },
+    {
+      "language": "bash",
+      "code": "kelvin-provision workloads stop -n doc-demo-opcua-server",
+      "title": "Kelvin Provision Command Line Example"
+    },
+    {
+      "language": "bash",
+      "code": "Connecting to cluster API...[OK]\n        Reading cluster config...[OK]\n        Test cluster connection...[OK]",
+      "title": "Kelvin Provision Command Line Output"
+    },
+    {
+      "language": "bash",
+      "code": "$ kelvin-provision workloads list\n        Connecting to cluster API...[OK]\n        Reading cluster config...[OK]\n        Test cluster connection...[OK]\n        Fetching workloads...[OK]\n        +-----------------------+---------+------+----------+\n        | Name                  | State   | Node | Warnings |\n        +-----------------------+---------+------+----------+\n        | doc-demo-opcua-server | stopped | n/a  |          |\n        +-----------------------+---------+------+----------+",
+      "title": "Kelvin Provision Command Line Output"
+    },
+    {
+      "language": "bash",
+      "code": "curl -X \"POST\" \\\n        \"http://<edge-computer-ip>/api/v4/workloads/doc-demo-opcua-server/delete\" \\\n        -H \"Authorization: Bearer <Your Current Token>\" \\\n        -H \"Accept: */*\" \\\n        -d ''",
+      "title": "API cURL Example"
+    },
+    {
+      "language": "bash",
+      "code": "kelvin-provision workloads delete -n doc-demo-opcua-server",
+      "title": "Kelvin Provision Command Line Example"
+    },
+    {
+      "language": "bash",
+      "code": "Connecting to cluster API...[OK]\n        Reading cluster config...[OK]\n        Test cluster connection...[OK]\n        Requesting workload to be deleted...\n        Successfully deleted the workload",
+      "title": "Kelvin Provision Command Line Output"
+    }
+  ],
+  "related": [
+    "how-to/deploy-workloads-deploy",
+    "how-to/deploy-workloads-deploy-offline"
+  ],
+  "tags": [
+    "api",
+    "cli",
+    "configure",
+    "create",
+    "deploy",
+    "docker",
+    "edge",
+    "monitor",
+    "operations",
+    "sdk",
+    "services",
+    "smartapp",
+    "test"
+  ],
+  "metadata": {
+    "subcategory": "platform-administration",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}

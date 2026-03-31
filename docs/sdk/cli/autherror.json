@@ -1,0 +1,26 @@
+{
+  "id": "sdk/cli/sdk.lib.auth.errors/autherror",
+  "title": "AuthError",
+  "type": "sdk_class",
+  "category": "sdk",
+  "content": "# AuthError\n\nInherits from: KSDKException\n\n\nBase class for authentication errors.\n",
+  "summary": "Base class for authentication errors.",
+  "source": "cli/src/kelvin/sdk/lib/auth/errors.py",
+  "code_examples": [],
+  "related": [
+    "sdk/cli"
+  ],
+  "tags": [
+    "cli",
+    "sdk",
+    "python",
+    "class"
+  ],
+  "metadata": {
+    "package": "cli",
+    "module": "sdk.lib.auth.errors",
+    "item_type": "class",
+    "methods": [],
+    "last_updated": "2026-02-04"
+  }
+}

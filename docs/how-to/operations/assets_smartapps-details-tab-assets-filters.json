@@ -1,0 +1,26 @@
+{
+  "id": "how-to/assets/smartapps-details-tab-assets-filters",
+  "title": "Asset List Filters",
+  "type": "how_to",
+  "category": "operations",
+  "content": "# Asset List Filters\n\nThere are a number of filter options available to view the Assets that are important.\n\n<div class=\"result\" markdown>\n\n=== \"Assets\"\n\n    You can select the Assets that you want to see in the list.\n\n    \n\n=== \"SmartApp Version\"\n\n    You can select Assets that are running a particular version of the Kelvin SmartApp™.\n\n    \n\n=== \"Workloads\"\n\n    You can select to view only Assets which are running on certain Workloads.\n\n    \n\n=== \"Filters\"\n\n    There is a powerful filtering setup that can help configure the information you want to display.\n\n    \n        All filters are processed together as `AND`.\n\n    There are three types of filters you can apply;\n\n    * On Asset Properties\n    * On Application App Parameters\n    * On Asset / Data Stream pairs aggregation of data\n\n    \n\n    The **Add Filter** section allows you to create complex multi-criteria on Asset / Data Stream data or on any Kelvin SmartApp™ Recommendations and Control Changes.\n\n    \n        If your filter is complex, then it can take time for the rows to be initially updated, sometimes over 10 seconds or more.\n\n        If you update your filter conditions with extra conditions, it will not take so long the second time as it only applies the new filter conditions to the existing list.\n\n</div>",
+  "summary": "There are a number of filter options available to view the Assets that are important. <div class=\"result\" markdown> === \"Assets\" You can select the Assets that you want to see in the list. ![](../../../../assets/applications_asset_filter_assets.png)",
+  "source": "core-docs/docs/operations-tools/kelvin-smartapps-page/how-to/assets/smartapps-details-tab-assets-filters.md",
+  "code_examples": [],
+  "related": [],
+  "tags": [
+    "asset",
+    "configure",
+    "create",
+    "filters",
+    "list",
+    "operations",
+    "smartapp"
+  ],
+  "metadata": {
+    "subcategory": "operations-tools",
+    "steps": [],
+    "step_count": 0,
+    "last_updated": "2026-02-04"
+  }
+}
