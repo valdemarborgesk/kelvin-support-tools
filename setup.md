@@ -27,7 +27,7 @@ Set these variables based on the OS (use them in all subsequent commands):
 | `VENV_PYTHON` | `venv/bin/python` | `venv\Scripts\python.exe` |
 | `VENV_PIP` | `venv/bin/pip` | `venv\Scripts\pip.exe` |
 
-> **IMPORTANT — always use full venv paths.** Never call bare `kelvin`, `python`, or `pip` — always use `<REPO_PATH>/<KELVIN>`, `<REPO_PATH>/<VENV_PYTHON>`, etc. Most AI agents run each command in a fresh shell, so `source activate` does not persist. Full paths always work.
+> **IMPORTANT — always activate the venv before running commands.** Never call bare `kelvin`, `python`, or `pip` without activating first. Activate and run in the same command: `<ACTIVATE> && kelvin ...`. If your agent runs each command in a separate shell, chain them: `cd <REPO_PATH> && <ACTIVATE> && kelvin workload list`. Alternatively, use full venv paths: `<REPO_PATH>/<KELVIN>`, `<REPO_PATH>/<VENV_PYTHON>`, etc.
 
 ## Step 2: Ask the user about their current state
 
