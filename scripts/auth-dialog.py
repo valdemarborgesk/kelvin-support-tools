@@ -1,20 +1,25 @@
 #!/usr/bin/env python3
-"""Authenticate to Kelvin using native macOS dialogs.
+"""Authenticate to Kelvin using native OS dialogs with terminal fallback.
 
-Pops up username/password dialogs, authenticates via the SDK,
-and stores tokens in the keyring. No Terminal needed.
+Detects the OS and uses the appropriate GUI prompt:
+  - macOS:   osascript (AppleScript dialogs)
+  - Windows: PowerShell Get-Credential / InputBox
+  - Linux:   zenity (GNOME) or kdialog (KDE)
+  - Fallback: terminal input() / getpass()
 
 Usage:
     venv/bin/python scripts/auth-dialog.py https://myenv.kelvin.ai
 """
 
+import getpass
+import platform
+import shutil
 import subprocess
 import sys
-from pathlib import Path
 
 
-def macos_prompt(message: str, title: str = "Kelvin Login", hidden: bool = False) -> str:
-    """Show a native macOS input dialog and return the user's input."""
+def _macos_prompt(message: str, title: str = "Kelvin Login", hidden: bool = False) -> str:
+    """Show a native macOS input dialog via osascript."""
     hidden_flag = "with hidden answer" if hidden else ""
     script = (
         f'display dialog "{message}" default answer "" {hidden_flag} '
@@ -24,32 +29,106 @@ def macos_prompt(message: str, title: str = "Kelvin Login", hidden: bool = False
     try:
         result = subprocess.run(
             ["osascript", "-e", script],
-            capture_output=True, text=True, timeout=120
+            capture_output=True, text=True, timeout=120,
         )
         if result.returncode != 0:
             return ""
-        output = result.stdout.strip()
-        return output.split("text returned:")[1]
+        return result.stdout.strip().split("text returned:")[1]
     except (subprocess.TimeoutExpired, IndexError):
         return ""
 
 
+def _windows_prompt(message: str, title: str = "Kelvin Login", hidden: bool = False) -> str:
+    """Show a native Windows input dialog via PowerShell."""
+    if hidden:
+        # Use Get-Credential for password (masks input)
+        ps = (
+            f'$c = Get-Credential -Message "{message}" -UserName "password"; '
+            f'$c.GetNetworkCredential().Password'
+        )
+    else:
+        ps = (
+            f'Add-Type -AssemblyName Microsoft.VisualBasic; '
+            f'[Microsoft.VisualBasic.Interaction]::InputBox("{message}", "{title}", "")'
+        )
+    try:
+        result = subprocess.run(
+            ["powershell", "-NoProfile", "-Command", ps],
+            capture_output=True, text=True, timeout=120,
+        )
+        if result.returncode != 0:
+            return ""
+        return result.stdout.strip()
+    except (subprocess.TimeoutExpired, FileNotFoundError):
+        return ""
+
+
+def _linux_prompt(message: str, title: str = "Kelvin Login", hidden: bool = False) -> str:
+    """Show a native Linux input dialog via zenity or kdialog."""
+    if shutil.which("zenity"):
+        cmd = ["zenity", "--entry", "--title", title, "--text", message]
+        if hidden:
+            cmd.append("--hide-text")
+    elif shutil.which("kdialog"):
+        if hidden:
+            cmd = ["kdialog", "--title", title, "--password", message]
+        else:
+            cmd = ["kdialog", "--title", title, "--inputbox", message]
+    else:
+        return ""  # No GUI available, caller will use terminal fallback
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+        if result.returncode != 0:
+            return ""
+        return result.stdout.strip()
+    except (subprocess.TimeoutExpired, FileNotFoundError):
+        return ""
+
+
+def _terminal_prompt(message: str, hidden: bool = False) -> str:
+    """Fallback: prompt in the terminal."""
+    try:
+        if hidden:
+            return getpass.getpass(f"{message} ")
+        return input(f"{message} ")
+    except (EOFError, KeyboardInterrupt):
+        return ""
+
+
+def prompt(message: str, title: str = "Kelvin Login", hidden: bool = False) -> str:
+    """Show an input prompt using the best available method for the current OS."""
+    system = platform.system()
+    value = ""
+
+    if system == "Darwin":
+        value = _macos_prompt(message, title, hidden)
+    elif system == "Windows":
+        value = _windows_prompt(message, title, hidden)
+    elif system == "Linux":
+        value = _linux_prompt(message, title, hidden)
+
+    # Fallback to terminal if GUI prompt failed or returned empty
+    if not value:
+        value = _terminal_prompt(message, hidden)
+
+    return value
+
+
 def main():
     if len(sys.argv) < 2:
-        print("Usage: venv/bin/python scripts/auth-dialog.py <kelvin-url>", file=sys.stderr)
+        print("Usage: python scripts/auth-dialog.py <kelvin-url>", file=sys.stderr)
         sys.exit(1)
 
     url = sys.argv[1]
     if not url.startswith("http"):
         url = f"https://{url}"
 
-    # Show native macOS dialogs for credentials
-    username = macos_prompt("Enter your Kelvin username (email):")
+    username = prompt("Enter your Kelvin username (email):")
     if not username:
         print("Cancelled or no username provided.")
         sys.exit(1)
 
-    password = macos_prompt("Enter your Kelvin password:", hidden=True)
+    password = prompt("Enter your Kelvin password:", hidden=True)
     if not password:
         print("Cancelled or no password provided.")
         sys.exit(1)

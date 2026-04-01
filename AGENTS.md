@@ -32,17 +32,21 @@ Don't skip steps. A workload in CrashLoopBackOff is visible at step 2 — no nee
 ## Quick Setup
 
 ```bash
-bash scripts/setup.sh
-source venv/bin/activate
+python3 scripts/setup.py    # macOS/Linux
+python scripts/setup.py     # Windows
 ```
 
-For first-time auth (macOS native dialogs, no Terminal needed):
+For first-time auth (shows native OS dialog with terminal fallback):
 ```bash
-venv/bin/python scripts/auth-dialog.py https://<env-url>
+venv/bin/python scripts/auth-dialog.py https://<env-url>     # macOS/Linux
+venv\Scripts\python scripts/auth-dialog.py https://<env-url>  # Windows
 ```
 
 For subsequent logins:
 ```bash
+source venv/bin/activate           # macOS/Linux
+venv\Scripts\activate              # Windows
+
 kelvin auth login https://<env-url>
 ```
 

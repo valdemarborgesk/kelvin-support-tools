@@ -4,7 +4,13 @@ Read **[AGENTS.md](AGENTS.md)** for the full troubleshooting guide, diagnostic m
 
 ## First Run Check
 
-Before doing anything else, verify the environment is set up:
+Before doing anything else, detect the OS and verify the environment is set up:
+
+```bash
+python3 -c "import platform; print(platform.system())" 2>/dev/null || python -c "import platform; print(platform.system())"
+```
+
+Then check the venv (use `venv/bin/kelvin` on macOS/Linux, `venv\Scripts\kelvin.exe` on Windows):
 
 ```bash
 test -d venv && venv/bin/kelvin --version 2>/dev/null
@@ -13,10 +19,11 @@ test -d venv && venv/bin/kelvin --version 2>/dev/null
 If the venv doesn't exist or the kelvin CLI is not found, run setup first:
 
 ```bash
-bash scripts/setup.sh
+python3 scripts/setup.py    # macOS/Linux
+python scripts/setup.py     # Windows
 ```
 
-Then activate: `source venv/bin/activate`
+Then activate: `source venv/bin/activate` (macOS/Linux) or `venv\Scripts\activate` (Windows)
 
 ## Skills
 
