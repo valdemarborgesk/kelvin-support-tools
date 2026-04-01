@@ -25,6 +25,9 @@ Set these variables based on the OS (use them in all subsequent commands):
 | `ACTIVATE` | `source venv/bin/activate` | `venv\Scripts\activate` |
 | `KELVIN` | `venv/bin/kelvin` | `venv\Scripts\kelvin.exe` |
 | `VENV_PYTHON` | `venv/bin/python` | `venv\Scripts\python.exe` |
+| `VENV_PIP` | `venv/bin/pip` | `venv\Scripts\pip.exe` |
+
+> **IMPORTANT — always use full venv paths.** Never call bare `kelvin`, `python`, or `pip` — always use `<REPO_PATH>/<KELVIN>`, `<REPO_PATH>/<VENV_PYTHON>`, etc. Most AI agents run each command in a fresh shell, so `source activate` does not persist. Full paths always work.
 
 ## Step 2: Ask the user about their current state
 
@@ -151,19 +154,19 @@ Tell the user a login prompt will appear. After it completes, verify:
 After login, check if the SDK version matches what the platform recommends:
 
 ```bash
-<ACTIVATE> && kelvin auth login https://<resolved-url> 2>&1 | grep -i "recommended"
+<REPO_PATH>/<KELVIN> auth login https://<resolved-url> 2>&1 | grep -i "recommended"
 ```
 
 If the output shows a version mismatch like `Current: 9.7.3 Recommended: 9.4.4`, install the recommended version:
 
 ```bash
-<REPO_PATH>/<VENV_BIN>/pip install -q kelvin-sdk==<recommended-version>
+<REPO_PATH>/<VENV_PIP> install -q kelvin-sdk==<recommended-version>
 ```
 
 Then verify:
 
 ```bash
-kelvin --version
+<REPO_PATH>/<KELVIN> --version
 ```
 
 If no mismatch warning appears, the current version is fine — skip this step.
@@ -171,7 +174,7 @@ If no mismatch warning appears, the current version is fine — skip this step.
 ## Step 7: Verify
 
 ```bash
-<ACTIVATE> && kelvin workload list 2>&1 | head -5
+<REPO_PATH>/<KELVIN> workload list 2>&1 | head -5
 ```
 
 ## Step 8: Done
