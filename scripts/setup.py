@@ -50,6 +50,49 @@ def install_deps():
         print("  WARNING: requirements.txt not found")
 
 
+def configure_windows_keyring():
+    """Install keyrings.alt and configure keyring to use file-based storage.
+
+    The Windows Credential Manager has a 2560-byte limit on credential values.
+    Kelvin tokens (access + refresh as JSON) often exceed this, causing
+    'Failed to store credentials' errors during auth.
+
+    keyrings.alt.file.PlaintextKeyring has no size limit and is read by both
+    auth-dialog.py and the kelvin CLI (via keyring.cfg auto-discovery).
+
+    Credentials are stored in plaintext at:
+      %LOCALAPPDATA%\\Python Keyring\\keyring_pass.cfg
+    """
+    import os
+
+    print("  Configuring keyring backend for Windows...")
+
+    # Install keyrings.alt (file-based keyring backend with no size limit)
+    result = subprocess.run(
+        [str(PIP), "install", "-q", "keyrings.alt"],
+        capture_output=True, text=True,
+    )
+    if result.returncode != 0:
+        print("  WARNING: Could not install keyrings.alt — auth may fail for large tokens")
+        return
+
+    # Write keyring.cfg so both auth-dialog.py and the kelvin CLI use PlaintextKeyring
+    # Windows config path: %APPDATA%\Python Keyring\keyring.cfg
+    appdata = os.environ.get("APPDATA", "")
+    if not appdata:
+        print("  WARNING: APPDATA not set — skipping keyring.cfg write")
+        return
+
+    cfg_dir = Path(appdata) / "Python Keyring"
+    cfg_dir.mkdir(parents=True, exist_ok=True)
+    cfg_file = cfg_dir / "keyring.cfg"
+    cfg_file.write_text(
+        "[backend]\ndefault-keyring=keyrings.alt.file.PlaintextKeyring\n",
+        encoding="utf-8",
+    )
+    print(f"  Keyring configured: file-based backend (no size limit)")
+
+
 def check_kelvin():
     try:
         result = subprocess.run(
@@ -96,6 +139,8 @@ def main():
     check_python()
     create_venv()
     install_deps()
+    if IS_WINDOWS:
+        configure_windows_keyring()
     check_kelvin()
     check_docs()
     check_docker()
