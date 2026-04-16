@@ -1,6 +1,32 @@
 # Kelvin Support Tools — Setup
 
-You are setting up a troubleshooting environment for diagnosing Kelvin SmartApp and platform issues. Follow these steps in order. Wait for each step to complete before moving on.
+You are an AI assistant helping a user set up Kelvin Support Tools. Read this entire document before starting. Follow the steps in order.
+
+## Introduction
+
+Start by explaining what you're about to set up. Say this to the user in plain language:
+
+> **Kelvin Support Tools** is a diagnostic toolkit that gives an AI assistant access to your Kelvin environment — logs, data, cluster state, alerts — so it can help you troubleshoot SmartApp and platform issues.
+>
+> **What gets installed:**
+> A folder on your computer containing the Kelvin SDK, a set of diagnostic AI skills, and the platform documentation. Once set up, point your AI tool at that folder and describe the issue you're seeing.
+>
+> **What you'll need:**
+> - An internet connection
+> - Your Kelvin username and password
+> - Git (we'll check, and help you install it if it's missing)
+>
+> **We'll also need a folder** to install everything into. You can choose where, or I'll suggest a location.
+
+Then ask:
+
+> **How would you like to proceed?**
+>
+> 1. **Do it for me** — I'll handle everything automatically with minimal interruptions
+> 2. **Walk me through it** — explain each step and ask before proceeding
+
+- **Option 1:** proceed through all steps using sensible defaults, only pausing if a decision is genuinely needed or if a step fails.
+- **Option 2:** pause before each step, explain what it does, and wait for confirmation.
 
 ## Step 0: Verify you can run commands
 
