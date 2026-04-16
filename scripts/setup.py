@@ -27,60 +27,60 @@ PYTHON = VENV_BIN / ("python.exe" if IS_WINDOWS else "python")
 def check_python():
     v = sys.version_info
     if v < (3, 9):
-        print(f"ERROR: Python 3.9+ required (found {v.major}.{v.minor})")
+        print(f"ERROR: Python {v.major}.{v.minor} is not supported — Python 3.9 or newer is required.")
+        print("  Download Python from https://www.python.org/downloads/ and run setup again.")
         sys.exit(1)
     print(f"  Python {v.major}.{v.minor} OK")
 
 
 def create_venv():
     if VENV_DIR.exists():
-        print("  venv/ already exists")
+        print("  Tools environment already set up.")
     else:
-        print("  Creating virtual environment...")
-        subprocess.run([sys.executable, "-m", "venv", str(VENV_DIR)], check=True)
+        print("  Setting up tools environment...")
+        try:
+            subprocess.run([sys.executable, "-m", "venv", str(VENV_DIR)], check=True)
+        except subprocess.CalledProcessError:
+            print("ERROR: Could not set up the tools environment.")
+            print("  Try running setup again. If it keeps failing, restart your terminal first.")
+            sys.exit(1)
 
 
 def install_deps():
-    print("  Installing dependencies...")
-    subprocess.run([str(PIP), "install", "-q", "--upgrade", "pip"], check=True)
-    req = REPO_ROOT / "requirements.txt"
-    if req.exists():
-        subprocess.run([str(PIP), "install", "-q", "-r", str(req)], check=True)
-    else:
-        print("  WARNING: requirements.txt not found")
+    print("  Installing Kelvin packages...")
+    try:
+        subprocess.run([str(PIP), "install", "-q", "--upgrade", "pip"], check=True)
+        req = REPO_ROOT / "requirements.txt"
+        if req.exists():
+            subprocess.run([str(PIP), "install", "-q", "-r", str(req)], check=True)
+        else:
+            print("  WARNING: Package list not found — some files may be missing from the download.")
+    except subprocess.CalledProcessError:
+        print("ERROR: Could not install required packages.")
+        print("  Check your internet connection and try running setup again.")
+        sys.exit(1)
 
 
-def configure_windows_keyring():
-    """Install keyrings.alt and configure keyring to use file-based storage.
+def configure_windows_login():
+    """Configure login credential storage on Windows.
 
-    The Windows Credential Manager has a 2560-byte limit on credential values.
-    Kelvin tokens (access + refresh as JSON) often exceed this, causing
-    'Failed to store credentials' errors during auth.
-
-    keyrings.alt.file.PlaintextKeyring has no size limit and is read by both
-    auth-dialog.py and the kelvin CLI (via keyring.cfg auto-discovery).
-
-    Credentials are stored in plaintext at:
-      %LOCALAPPDATA%\\Python Keyring\\keyring_pass.cfg
+    Windows Credential Manager limits stored values to 2560 bytes.
+    Kelvin login tokens often exceed this, causing auth failures.
+    This installs a file-based alternative with no size limit.
     """
-    import os
+    print("  Configuring login storage...")
 
-    print("  Configuring keyring backend for Windows...")
-
-    # Install keyrings.alt (file-based keyring backend with no size limit)
     result = subprocess.run(
         [str(PIP), "install", "-q", "keyrings.alt"],
         capture_output=True, text=True,
     )
     if result.returncode != 0:
-        print("  WARNING: Could not install keyrings.alt — auth may fail for large tokens")
+        print("  WARNING: Login storage setup failed — you may see errors when logging in.")
         return
 
-    # Write keyring.cfg so both auth-dialog.py and the kelvin CLI use PlaintextKeyring
-    # Windows config path: %APPDATA%\Python Keyring\keyring.cfg
     appdata = os.environ.get("APPDATA", "")
     if not appdata:
-        print("  WARNING: APPDATA not set — skipping keyring.cfg write")
+        print("  WARNING: Could not configure login storage — you may see errors when logging in.")
         return
 
     cfg_dir = Path(appdata) / "Python Keyring"
@@ -90,7 +90,7 @@ def configure_windows_keyring():
         "[backend]\ndefault-keyring=keyrings.alt.file.PlaintextKeyring\n",
         encoding="utf-8",
     )
-    print(f"  Keyring configured: file-based backend (no size limit)")
+    print("  Login storage configured.")
 
 
 def check_kelvin():
@@ -101,19 +101,19 @@ def check_kelvin():
         )
         if result.returncode == 0:
             ver = result.stdout.strip().splitlines()[0]
-            print(f"  Kelvin SDK: {ver}")
+            print(f"  Kelvin: {ver}")
         else:
-            print("  WARNING: kelvin CLI not available (SDK install may have failed)")
+            print("  WARNING: Kelvin tools not found — try running setup again.")
     except (FileNotFoundError, subprocess.TimeoutExpired):
-        print("  WARNING: kelvin CLI not available (SDK install may have failed)")
+        print("  WARNING: Kelvin tools not found — try running setup again.")
 
 
 def check_docs():
     docs = REPO_ROOT / "docs"
     if docs.is_dir():
-        print("  Platform docs: available")
+        print("  Platform documentation: available")
     else:
-        print("  WARNING: docs/ directory not found")
+        print("  WARNING: Platform documentation not found.")
 
 
 def check_docker():
@@ -127,9 +127,9 @@ def check_docker():
         if result.returncode == 0:
             print("  Docker: available")
         else:
-            print("  NOTE: Docker not running (optional, needed for app build/test)")
+            print("  NOTE: Docker is not running (optional, needed for app build/test)")
     except (FileNotFoundError, subprocess.TimeoutExpired):
-        print("  NOTE: Docker not running (optional, needed for app build/test)")
+        print("  NOTE: Docker is not running (optional, needed for app build/test)")
 
 
 def main():
@@ -140,7 +140,7 @@ def main():
     create_venv()
     install_deps()
     if IS_WINDOWS:
-        configure_windows_keyring()
+        configure_windows_login()
     check_kelvin()
     check_docs()
     check_docker()
