@@ -22,11 +22,35 @@ Then ask:
 
 > **How would you like to proceed?**
 >
-> 1. **Do it for me** — I'll handle everything automatically with minimal interruptions
-> 2. **Walk me through it** — explain each step and ask before proceeding
+> 1. **Do it for me** — set everything up automatically, I'll only interrupt if something needs a decision
+> 2. **Walk me through it** — tell me what each step does, I'll run the commands myself and you check my progress
+> 3. **Show me exactly what gets installed first** — give me a full breakdown before we start
 
-- **Option 1:** proceed through all steps using sensible defaults, only pausing if a decision is genuinely needed or if a step fails.
-- **Option 2:** pause before each step, explain what it does, and wait for confirmation.
+- **Option 1:** proceed through all steps automatically using sensible defaults, only pausing for genuine decisions or failures.
+- **Option 2:** for each step, explain what it does and why, then provide the command for the user to run themselves. Wait for them to confirm it worked before moving on.
+- **Option 3:** before doing anything, give the user a detailed breakdown of everything that will be installed (see below), then ask whether to proceed with option 1 or 2.
+
+If the user picks **option 3**, explain the following in plain language:
+
+> Here is everything that will be installed:
+>
+> **1. The repository** — cloned from GitHub into a folder you choose. Contains all the tools, skills, and configuration.
+>
+> **2. Python virtual environment** — an isolated Python environment just for this toolkit, so nothing interferes with other software on your computer.
+>
+> **3. Kelvin SDK** — the official Kelvin Python library (version 9.x). This is what lets the AI talk to the Kelvin platform — query logs, check cluster state, inspect data, manage workloads, etc.
+>
+> **4. Supporting packages** — a set of Python libraries the SDK depends on, plus diagnostic tools for querying ClickHouse and Grafana. All installed automatically.
+>
+> **5. AI skills** — 14 pre-built diagnostic skills: checking app status, reading logs, querying data, inspecting clusters, running Grafana alert checks, and more.
+>
+> **6. Platform documentation** — a local copy of Kelvin's API, SDK, and infrastructure docs. The AI reads these to give accurate answers without needing internet access.
+>
+> **7. Environment configuration** — a list of Kelvin environment URLs (31 environments) so you can refer to environments by name.
+>
+> Nothing is installed system-wide — everything stays inside the folder we create. You can delete the folder at any time to remove it completely.
+
+Then ask: **"Ready to start? [1] Do it for me / [2] Walk me through it"** and proceed accordingly.
 
 ## Step 0: Verify you can run commands
 
@@ -119,14 +143,23 @@ print(f'Python version: {sys.version}')
 "
 ```
 
-If anything is missing, tell the user what to install and wait:
+If Git is missing, tell the user what to install and wait for them to confirm before continuing:
 
 | Tool | macOS | Linux (Debian/Ubuntu) | Linux (Fedora/RHEL) | Windows |
 |------|-------|-----------------------|---------------------|---------|
-| Python 3.9+ | `brew install python3` | `sudo apt install python3 python3-venv` | `sudo dnf install python3` | Download from python.org |
 | Git | `brew install git` | `sudo apt install git` | `sudo dnf install git` | Download from git-scm.com |
 
-> **Linux note:** The `python3-venv` package is required on Debian/Ubuntu — without it, `python3 -m venv` will fail.
+> **Python note:** The setup script handles Python automatically — it will find a compatible version or install one if needed.
+
+> **Linux note:** The `python3-venv` package is required on Debian/Ubuntu. The setup script will warn if it's missing: `sudo apt install python3-venv`.
+
+**Docker (optional):** Not required for diagnostics, but needed if the user also wants to build or test apps locally. Check whether it's available:
+
+```bash
+docker info 2>&1 | head -3
+```
+
+If Docker is not found or not running, note it but do not block setup — continue to the next step.
 
 Then clone. Check the current working directory first and ask the user:
 
